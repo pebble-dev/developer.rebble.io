@@ -21,7 +21,7 @@ order: 0
 ---
 
 Once a new Pebble watchface or watchapp has been created, the 
-[Pebble Developer Portal](https://dev-portal.getpebble.com/) allows the
+[Pebble Developer Portal](https://dev-portal.rebble.io/) allows the
 developer to publish their creation to the appstore either publicly, or
 privately. The appstore is built into the official mobile apps and means that
 every new app can be found and also featured for increased exposure and
@@ -97,7 +97,7 @@ timeline' to obtain API keys used for pushing pins. See the
 
 Once published, the key to growth in an app is through promotion. Aside from
 users recommending the app to each other, posting on websites such as the 
-[Pebble Forums](https://forums.getpebble.com/categories/watchapp-directory), 
+[Pebble Forums](https://forums.rebble.io/categories/watchapp-directory), 
 [Reddit](https://www.reddit.com/r/pebble), and [Twitter](https://twitter.com) 
 can help increase exposure.
 

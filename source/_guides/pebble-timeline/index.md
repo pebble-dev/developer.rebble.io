@@ -51,7 +51,7 @@ and notifications from any web-based external service.
 ## Enabling a New App
 
 To push pins via the Pebble timeline API, a first version of a new app must be
-uploaded to the [Developer Portal](https://dev-portal.getpebble.com). This is
+uploaded to the [Developer Portal](https://dev-portal.rebble.io). This is
 required so that the appstore can identify the app's UUID, and so generate
 sandbox and production API keys for the developer to push pins to. It is then
 possible to use the timeline web API in sandbox mode for development or in
@@ -74,7 +74,7 @@ The production mode is used when a user installs the app from the Pebble
 appstore. Use the two respective API key types for these purposes. If
 whitelisting is enabled in sandbox mode, the developer's account is
 automatically included, and they can add more Pebble users by adding the users'
-email addresses in the [Developer Portal](https://dev-portal.getpebble.com).
+email addresses in the [Developer Portal](https://dev-portal.rebble.io).
 
 If preferred, it is possible to enable whitelisting to limit this access to only
 users involved in development and testing of the app. Enter the email addresses

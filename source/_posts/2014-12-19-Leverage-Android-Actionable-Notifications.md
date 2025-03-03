@@ -214,7 +214,7 @@ guide][android-development-notifications]. Both are great resources to make the
 most of notifications!
 
 
-[android-beta]: https://blog.getpebble.com/2014/12/16/ad-23/
+[android-beta]: https://blog.rebble.io/2014/12/16/ad-23/
 [beta-channel]: /blog/2014/06/12/Android-Beta-Channel/
 [android-patterns-notifications]: http://developer.android.com/design/patterns/notifications.html
 [android-development-notifications]: http://developer.android.com/guide/topics/ui/notifiers/notifications.html

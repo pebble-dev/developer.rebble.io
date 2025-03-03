@@ -80,7 +80,7 @@ var clay = new Clay(clayConfig);
 
 ## Why I created Clay
 
-Clay began as a side project of mine. Whilst developing my [Segment watchface](https://apps.pebble.com/applications/560ae4754d43a36393000001), I wanted to add a configuration page to allow users to customize the colors of the watchface. However, I soon discovered this process to be rather fiddly. The old way of doing things required you to create and host HTML pages even for simple things like changing a background color or toggling an option. You would also need to write a bunch of boilerplate JavaScript to serialize and send the settings to the watch. Best case, for developers, this is super tedious. Worst case, it is terrifying. By day, I work as a web developer (mainly front-end) so if I was finding the process tiresome, I could only imagine how challenging it would be for someone who wasn't familiar with web technologies. And so I decided to create a framework that would alleviate this barrier for developers. I had a number of requirements that needed to be met in order for the framework to achieve my goals:
+Clay began as a side project of mine. Whilst developing my [Segment watchface](https://apps.rebble.io/applications/560ae4754d43a36393000001), I wanted to add a configuration page to allow users to customize the colors of the watchface. However, I soon discovered this process to be rather fiddly. The old way of doing things required you to create and host HTML pages even for simple things like changing a background color or toggling an option. You would also need to write a bunch of boilerplate JavaScript to serialize and send the settings to the watch. Best case, for developers, this is super tedious. Worst case, it is terrifying. By day, I work as a web developer (mainly front-end) so if I was finding the process tiresome, I could only imagine how challenging it would be for someone who wasn't familiar with web technologies. And so I decided to create a framework that would alleviate this barrier for developers. I had a number of requirements that needed to be met in order for the framework to achieve my goals:
 
  - It should not require developers to write any HTML or CSS.
  - It should use JSON to define the generated config page.
@@ -108,7 +108,7 @@ If developers want to add additional functionality to their config page, they ca
  - [App configuration guide.](/guides/user-interfaces/app-configuration/)
  - [Clay GitHub repository including full documentation.](https://github.com/pebble/clay)
  - Chat to us in the `#clay` channel on [Discord]({{ site.links.discord_invite }}).
- - Visit the [Pebble Forums](https://forums.pebble.com/)
+ - Visit the [Pebble Forums](https://forums.rebble.io/)
  - Tweet at [@pebbledev](https://twitter.com/pebbledev)
 
 

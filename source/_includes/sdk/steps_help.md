@@ -18,7 +18,7 @@
 
 If you have any issues with downloading or installing the Pebble SDK, you
 should take a look at the 
-[SDK Help category](https://forums.getpebble.com/categories/watchface-sdk-help) 
+[SDK Help category](https://forums.rebble.io/categories/watchface-sdk-help) 
 on our forums.
 
 Alternatively, you can [send us a message](/contact/) letting us know what

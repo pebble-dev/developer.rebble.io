@@ -23,7 +23,7 @@ If you’ve been living under a rock, or have just been sunning yourself on the
 beach for the past week, you might have missed the
 [launch of Pebble OS 4.0](/blog/2016/08/30/announcing-pebble-sdk4/). This new
 version introduced some fantastic new features, such as the
-[updated health app](https://blog.getpebble.com/2016/08/30/fw4-0/),
+[updated health app](https://blog.rebble.io/2016/08/30/fw4-0/),
 {% guide_link user-interfaces/unobstructed-area "timeline quick view" %},
 {% guide_link user-interfaces/appglance-c "app glances" %},
 [Rocky.js](/blog/2016/08/15/introducing-rockyjs-watchfaces/) and a new
@@ -44,7 +44,7 @@ wasn’t in the present or future, negatively affecting a number of apps and the
 use cases for the timeline.
 
 We carefully listened to feedback and suggestions from our developer community
-via the [forums](https://forums.pebble.com),
+via the [forums](https://forums.rebble.io),
 [Reddit](https://www.reddit.com/r/pebble),
 [Twitter](https://twitter.com/pebbledev) and
 [Discord]({{ site.links.discord_invite }}), and we are happy to announce that timeline past
@@ -85,7 +85,7 @@ Pebble package for a really quick and easy solution.
 #### 3. Display a One-Time Notification
 
 Display a
-[system notification](https://developer.pebble.com/guides/communication/using-pebblekit-js/#showing-a-notification)
+[system notification](https://developer.rebble.io/guides/communication/using-pebblekit-js/#showing-a-notification)
 which only fires once, and display a message informing users how to enable
 timeline past.
 
@@ -94,7 +94,7 @@ timeline past.
 #### 4. Display a Timeline Notification
 
 Display a
-[timeline notification](https://developer.pebble.com/guides/pebble-timeline/),
+[timeline notification](https://developer.rebble.io/guides/pebble-timeline/),
 and display a message informing users how to enable timeline past.
 
 ![Timeline Notification >{pebble-screenshot,pebble-screenshot--time-red}](/images/blog/2016-09-06-timeline-notification.png)
@@ -115,5 +115,5 @@ things. We love to receive your product and feature
 
 We’re particularly interested to hear about your use cases and ideas for
 timeline as we travel further into the future! Let us know via
-[the forums](https://forums.pebble.com),
+[the forums](https://forums.rebble.io),
 [Twitter](https://twitter.com/pebbledev) and [Discord]({{ site.links.discord_invite }})!

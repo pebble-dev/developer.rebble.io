@@ -69,7 +69,7 @@
     "hidden-questions": [
       {
         "question": "When is JS bundling?",
-        "answer": "Check tweets from @pebbledev and the bundling [forum thread](https://forums.getpebble.com/discussion/12451/pebble-js-bundling-updates)"
+        "answer": "Check tweets from @pebbledev and the bundling [forum thread](https://forums.rebble.io/discussion/12451/pebble-js-bundling-updates)"
       },
       {
         "question": "Why does this app say 'coming soon'?",
@@ -86,7 +86,7 @@
     "questions": [
       {
         "question": "My screen is artifacting/flashing/ customer support issues",
-        "answer": "Contact [support@getpebble.com](mailto:support@getpebble.com) for RMA issues."
+        "answer": "Contact [support@rebble.io](mailto:support@rebble.io) for RMA issues."
       }
     ]
   },

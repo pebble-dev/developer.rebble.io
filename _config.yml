@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-url: https://developer.pebble.com
-https_url: https://developer.pebble.com
+url: https://localhost:8888
+https_url: https://localhost:8888
 baseurl:
 asset_path: /assets
-external_server: https://developer-api.getpebble.com
+external_server: https://developer-api.rebble.io
 
 title: Pebble Developers
 description: The official developer website for the Pebble smartwatch.
@@ -51,26 +51,26 @@ sass:
 
 # Helpful and easily changeable external links.
 links:
-  pebble: https://www.pebble.com
-  jobs: https://www.pebble.com/jobs/
+  pebble: https://www.rebble.io
+  jobs: https://www.rebble.io/jobs/
   twitter: https://twitter.com/pebbledev/
   cloudpebble: https://cloudpebble.net/
   cloudpebble_beta: https://beta.cloudpebble.net/
-  devportal: https://dev-portal.getpebble.com/
-  site_repo: https://github.com/pebble/developer.getpebble.com/
+  devportal: https://dev-portal.rebble.io/
+  site_repo: https://github.com/pebble/developer.rebble.io/
   community_resources_repo: https://github.com/pebble/community-resources/
   github: https://github.com/pebble/
-  forums: https://forums.pebble.com
-  forums_developer: https://forums.pebble.com/c/development
+  forums: https://forums.rebble.io
+  forums_developer: https://forums.rebble.io/c/development
   pebblekit_android: https://github.com/pebble/pebble-android-sdk/
   pebblekit_ios: https://github.com/pebble/pebble-ios-sdk/
   examples_org: https://github.com/pebble-examples
   pebblekit_android_jar: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0-eclipse.jar
   legal:
-    privacy: https://www.pebble.com/legal/privacy/
-    cookies: https://www.pebble.com/legal/cookies/
-  s3_assets: https://developer-assets.getpebble.com
-  pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
+    privacy: https://www.rebble.io/legal/privacy/
+    cookies: https://www.rebble.io/legal/cookies/
+  s3_assets: https://developer-assets.rebble.io
+  pebble_tool_root: https://s3.amazonaws.com/assets.rebble.io/pebble-tool/
   libpebble: https://github.com/pebble/libpebble2
   kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
   discord_invite: http://discord.gg/aRUAYFN

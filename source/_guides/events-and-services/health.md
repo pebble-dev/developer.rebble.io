@@ -31,7 +31,7 @@ related_examples:
     url: https://github.com/pebble-examples/simple-health-example
 ---
 
-[Pebble Health](https://blog.getpebble.com/2015/12/15/health/) provides builtin
+[Pebble Health](https://blog.rebble.io/2015/12/15/health/) provides builtin
 health data tracking to allow users to improve their activity and sleep habits.
 With SDK 3.9, the ``HealthService`` API opens this data up to developers to
 include and use within their apps. For example, a watchface could display a
@@ -47,7 +47,7 @@ apps, and API calls will return values to reflect this.
 
 In addition, any app using the ``HealthService`` API must declare the 'health'
 capability in order to be accepted by the 
-[developer portal](https://dev-portal.getpebble.com/). This can be done in
+[developer portal](https://dev-portal.rebble.io/). This can be done in
 CloudPebble 'Settings', or in `package.json` in the local SDK:
 
 ```js

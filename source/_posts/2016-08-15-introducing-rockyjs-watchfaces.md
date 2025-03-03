@@ -285,7 +285,7 @@ of the classic Simplicity watchface.
 We hope you're as exicited about Rocky.js as we are. If you need assistance,
 have feedback or just want to send us some love, we're in #rockyjs on
 [Discord]({{ site.links.discord_invite }}) or the
-[Pebble developer forums](https://forums.pebble.com/c/development).
+[Pebble developer forums](https://forums.rebble.io/c/development).
 
 We're already working on the next update of Rocky.js and your feedback will help
 shape the future!

@@ -46,7 +46,7 @@ example project.
 ## Example Action Bar Icons
 
 There is a 
-[set of example icons](https://s3.amazonaws.com/developer.getpebble.com/assets/other/actionbar-icons.zip) 
+[set of example icons](https://s3.amazonaws.com/developer.rebble.io/assets/other/actionbar-icons.zip) 
 for developers to use for common actions. Each icon is shown below as a preview,
 along with a short description about its suggested usage.
 

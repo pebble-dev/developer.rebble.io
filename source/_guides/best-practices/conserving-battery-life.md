@@ -41,7 +41,7 @@ apps are discussed in this guide, alongside suggestions to help avoid them.
 
 ## Battery Ratings
 
-Any app published in the [Developer Portal](https://dev-portal.getpebble.com)
+Any app published in the [Developer Portal](https://dev-portal.rebble.io)
 will have a battery grade associated with it, once a minimum threshold of data
 has been collected. This can be used to get a rough idea of how much battery
 power the app consumes. For watchfaces and apps that will be launched for long

@@ -58,7 +58,7 @@ To create a pin, send a `PUT` request to the following URL scheme, where `ID` is
 the `id` of the pin object. For example 'reservation-1395203':
 
 ```text
-PUT https://timeline-api.getpebble.com/v1/user/pins/ID
+PUT https://timeline-api.rebble.io/v1/user/pins/ID
 ```
 
 Use the following headers, where `X-User-Token` is the user's
@@ -90,7 +90,7 @@ sample of an object is shown below:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
     -d @pin.json
@@ -104,7 +104,7 @@ To update a pin, send a `PUT` request with a new JSON object with the **same
 `id`**.
 
 ```text
-PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203
 
 ```
 
@@ -134,7 +134,7 @@ included. The example below shows an event updated with a new `time`:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
     -d @pin.json
@@ -147,7 +147,7 @@ OK
 Delete a pin by issuing a HTTP `DELETE` request.
 
 ```text
-DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+DELETE https://timeline-api.rebble.io/v1/user/pins/reservation-1395203
 ```
 
 Remember to include the user token in the headers.
@@ -164,7 +164,7 @@ event's details so that it can remain visible and useful to the user.
 #### Curl Example
 
 ```bash
-$ curl -X DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X DELETE https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"
 OK
@@ -178,7 +178,7 @@ OK
 It is possible to send a pin (and updates) to multiple users at once by
 modifying the `PUT` header to include `X-Pin-Topics` (the topics a user must be
 subscribed to in order to receive this pin) and `X-API-Key` (issued by the
-[Developer Portal](https://dev-portal.getpebble.com/)). In this case, the URL is
+[Developer Portal](https://dev-portal.rebble.io/)). In this case, the URL is
 also modified:
 
 ```text
@@ -211,7 +211,7 @@ The pin body remains the same:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/shared/pins/giants-game-1 \
     --header "Content-Type: application/json" \
     --header "X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9" \
     --header "X-Pin-Topics: giants,redsox,baseball" \
@@ -240,7 +240,7 @@ X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9
 #### Curl Example
 
 ```bash
-$ curl -X DELETE https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 \
+$ curl -X DELETE https://timeline-api.rebble.io/v1/shared/pins/giants-game-1 \
     --header "Content-Type: application/json" \
     --header "X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9" \
 OK
@@ -266,7 +266,7 @@ X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
 #### Curl Example
 
 ```bash
-$ curl -X GET https://timeline-api.getpebble.com/v1/user/subscriptions \
+$ curl -X GET https://timeline-api.rebble.io/v1/user/subscriptions \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
 ```
 
@@ -320,7 +320,7 @@ Check the returned HTTP headers of any API request to see the current rate limit
 status:
 
 ```text
-$ curl -i https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+$ curl -i https://timeline-api.rebble.io/v1/user/pins/reservation-1395203
 
 HTTP/1.1 429 OK
 date: Wed, 13 May 2015 21:36:58 GMT

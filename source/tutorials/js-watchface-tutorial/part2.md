@@ -180,7 +180,7 @@ services.
 
 In this tutorial, we will interface with
 [Open Weather Map](http://openweathermap.org/) – a common weather API used by
-the [Pebble Developer Community](https://forums.pebble.com/c/development).
+the [Pebble Developer Community](https://forums.rebble.io/c/development).
 
 The `XMLHttpRequest` object is quite powerful, but can be intimidating to get
 started with. To make things a bit simpler, we'll wrap the object with a helper

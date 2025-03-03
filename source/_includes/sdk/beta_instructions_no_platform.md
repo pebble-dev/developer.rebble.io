@@ -48,7 +48,7 @@ If you would prefer to not use Homebrew and would like to manually install the
 Pebble SDK:
 
 1. Download the
-   [SDK package](https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-mac.tar.bz2).
+   [SDK package](https://s3.amazonaws.com/assets.rebble.io/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-mac.tar.bz2).
 
 2. Follow the [manual installation instructions](/sdk/install/), but skip
    "Download and install the Pebble ARM toolchain", as the toolchain is
@@ -58,8 +58,8 @@ Pebble SDK:
 ### Linux
 
 1. Download the relevant package:
-   [Linux (32-bit)](https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux32.tar.bz2) |
-   [Linux (64-bit)](https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux64.tar.bz2)
+   [Linux (32-bit)](https://s3.amazonaws.com/assets.rebble.io/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux32.tar.bz2) |
+   [Linux (64-bit)](https://s3.amazonaws.com/assets.rebble.io/pebble-tool/pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux64.tar.bz2)
 
 2. Install the SDK by following the
    [manual installation instructions](/sdk/install/linux/), but skip
