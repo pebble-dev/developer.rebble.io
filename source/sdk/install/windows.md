@@ -57,4 +57,4 @@ Please make sure you provide as many details as you can about the issue you have
 encountered (copy/pasting your terminal output will help a lot).
 
 [cloudpebble]: {{ site.links.cloudpebble }}
-[sdk-install-help]: https://forums.getpebble.com/categories/sdk-install/
+[sdk-install-help]: https://forums.rebble.io/categories/sdk-install/

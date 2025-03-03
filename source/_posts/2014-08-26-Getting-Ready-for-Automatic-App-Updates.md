@@ -119,4 +119,4 @@ static void migrate_persist(void) {
 Obviously, that is just an example; you will have to deal with your own situation as appropriate.
 
 If you have further questions about getting ready for automatic app updates, let us know! [Contact us](/contact) or 
-[post on our forums](https://forums.getpebble.com/categories/developer-discussion).
+[post on our forums](https://forums.rebble.io/categories/developer-discussion).

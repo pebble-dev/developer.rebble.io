@@ -22,7 +22,7 @@ order: 3
 ---
 
 A number of graphical assets are required when publishing an app on the
-[Developer Portal](https://dev-portal.getpebble.com/), such as a marketing
+[Developer Portal](https://dev-portal.rebble.io/), such as a marketing
 banners. The resources on this page serve to help developers give these assets a
 more authentic feel.
 

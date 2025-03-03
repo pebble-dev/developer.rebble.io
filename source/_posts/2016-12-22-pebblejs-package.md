@@ -137,7 +137,7 @@ standard Clay [Getting Started](https://github.com/pebble/clay#clay)
 instructions!
 
 If you have any questions or problems, post the details on the
-[developer forum](https://forums.pebble.com/t/pebble-js-pebble-package-edition/27315)
+[developer forum](https://forums.rebble.io/t/pebble-js-pebble-package-edition/27315)
 or [Discord](http://discord.gg/aRUAYFN).
 
 Happy Holidays!

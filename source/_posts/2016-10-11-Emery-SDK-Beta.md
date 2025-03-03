@@ -22,7 +22,7 @@ tags:
 We're incredibly excited to announce the first public beta of the Pebble SDK
 4.2. This is the first time that developers can experience the new 'Emery'
 platform which is specifically created for the upcoming
-[Pebble Time 2](https://www.pebble.com/buy-pebble-time-2-smartwatch).
+[Pebble Time 2](https://www.rebble.io/buy-pebble-time-2-smartwatch).
 
 
 ![Pebble Time 2](/images/blog/2016-10-11-intro.jpg)

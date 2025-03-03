@@ -33,7 +33,7 @@ formats. The goal is to allow fitness and golf mobile apps to integrate with
 Pebble to show the wearer data about their activity without needing to create
 and maintain an additional app for Pebble. An example of a popular app that uses
 this approach is the 
-[Runkeeper](http://apps.getpebble.com/en_US/application/52e05bd5d8561de307000039) 
+[Runkeeper](http://apps.rebble.io/en_US/application/52e05bd5d8561de307000039) 
 app.
 
 The Sports and Golf apps are launched, closed, and controlled by PebbleKit in an

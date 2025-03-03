@@ -58,7 +58,7 @@ API.
 To create a slice, send a `PUT` request to the following URL scheme:
 
 ```text
-PUT https://timeline-api.getpebble.com/v1/user/glance
+PUT https://timeline-api.rebble.io/v1/user/glance
 ```
 
 Use the following headers, where `X-User-Token` is the user's
@@ -90,7 +90,7 @@ sample of an object is shown below:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/user/glance \
+$ curl -X PUT https://timeline-api.rebble.io/v1/user/glance \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
     -d @glance.json

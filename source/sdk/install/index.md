@@ -48,4 +48,4 @@ you may have encountered.
 Once you have installed the Pebble SDK, you should check out our
 [Tutorials](/tutorials/) section to learn the basics of Pebble development.
 
-[sdk-install-help]: https://forums.getpebble.com/categories/sdk-install/
+[sdk-install-help]: https://forums.rebble.io/categories/sdk-install/

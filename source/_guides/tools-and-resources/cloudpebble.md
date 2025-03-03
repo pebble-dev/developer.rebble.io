@@ -166,7 +166,7 @@ Pebble account.
 In addition to running apps, the 'Compilation' screen also offers the ability to
 view app log output and capture screenshots with the appropriate buttons.
 Lastly, the `.pbw` bundle can also be obtained for testing and distribution in
-the [Developer Portal](https://dev-portal.getpebble.com/).
+the [Developer Portal](https://dev-portal.rebble.io/).
 
 
 ### Interacting with the Emulator

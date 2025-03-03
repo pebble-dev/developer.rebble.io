@@ -40,7 +40,7 @@ use Rack::Rewrite do
 end
 
 use Rack::HostRedirect, {
-  'developer.getpebble.com' => 'developer.pebble.com'
+  'developer.rebble.io' => 'developer.rebble.io'
 }
 
 use Rack::TryStatic,

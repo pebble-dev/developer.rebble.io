@@ -94,7 +94,7 @@ has crashed, or was stopped/killed by iOS because it used too much memory.
 3. See the [Breaking API Changes](#breaking-api-changes) section below.
 
 4. When submitting the iOS companion to the
-  [Pebble appstore](https://dev-portal.getpebble.com/), make sure to check the
+  [Pebble appstore](https://dev-portal.rebble.io/), make sure to check the
   checkbox shown below.
 
 ![](/images/guides/migration/companion-checkbox.png)

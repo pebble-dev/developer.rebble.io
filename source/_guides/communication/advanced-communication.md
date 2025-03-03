@@ -446,7 +446,7 @@ of how to display a compressed PNG image will be discussed here. The image that
 will be displayed is
 [the HTML 5 logo](https://www.w3.org/html/logo/):
 
-![](http://developer.getpebble.com.s3.amazonaws.com/assets/other/html5-logo-small.png)
+![](http://developer.rebble.io.s3.amazonaws.com/assets/other/html5-logo-small.png)
 
 > Note: The above image has been resized and palettized for compatibility.
 
@@ -456,7 +456,7 @@ data in the correct format:
 
 ```js
 function downloadImage() {
-  var url = 'http://developer.getpebble.com.s3.amazonaws.com/assets/other/html5-logo-small.png';
+  var url = 'http://developer.rebble.io.s3.amazonaws.com/assets/other/html5-logo-small.png';
 
   var request = new XMLHttpRequest();
   request.onload = function() {

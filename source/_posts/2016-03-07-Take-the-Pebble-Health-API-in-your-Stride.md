@@ -20,11 +20,11 @@ tags:
 ---
 
 I've been desperate to write a blog post about the Pebble [HealthService API]
-(https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/)
+(https://developer.rebble.io/docs/c/Foundation/Event_Service/HealthService/)
 since it's initial release last month, and now I can finally share its
 awesomeness with you. I'm also going to show you how you can use this exciting
 new API to build an ultra-cool clone of the [Stride watchface]
-(https://apps.getpebble.com/en_US/application/56b15c5c9c4b20ed5300006c) by
+(https://apps.rebble.io/en_US/application/56b15c5c9c4b20ed5300006c) by
 Pebble.
 
 
@@ -50,7 +50,7 @@ available to help shape my future lifestyle decisions.
 ## What health data is available?
 
 The HealthService API exposes various [`HealthMetric`]
-(https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#HealthMetric)
+(https://developer.rebble.io/docs/c/Foundation/Event_Service/HealthService/#HealthMetric)
 values which relate to the user being physically active, or sleeping.
 
 - `HealthMetricStepCount` - The number of steps counted.
@@ -81,9 +81,9 @@ health api, your app will be terminated.
 2. Check if the user has enabled Pebble Health in the Pebble Health app settings
 and that there is any health data available. This is done by checking the
 [`HealthServiceAccessibilityMask`]
-(https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask) 
+(https://developer.rebble.io/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask) 
 using [`health_service_metric_accessible()`]
-(https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible).
+(https://developer.rebble.io/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible).
 
 Here is a basic example of the steps you should take before attempting to access
 health data:
@@ -141,7 +141,7 @@ going to need to query the HealthService API to retrieve:
 
 The step goal only needs to be updated once per day and we're going to use the
 [`HealthEventMovementUpdate`]
-(https://developer.pebble.com/guides/pebble-apps/sensors/health/#subscribing-to-healthservice-events)
+(https://developer.rebble.io/guides/pebble-apps/sensors/health/#subscribing-to-healthservice-events)
 event to trigger an update for the other data. This event will probably trigger
 multiple times per minute, so if you’re looking to conserve energy, you could
 manually update the data. Stride also changes the color of the text and icon if
@@ -162,10 +162,10 @@ rectangularly, checkout the [health-watchface on Github]
 
 The dots layer update procedure calculates the coordinates for each point using
 [`gpoint_from_polar()`]
-(https://developer.pebble.com/docs/c/Graphics/Drawing_Primitives/#gpoint_from_polar)
+(https://developer.rebble.io/docs/c/Graphics/Drawing_Primitives/#gpoint_from_polar)
 and then draws a circle at that point, for each dot. The progress layer update
 procedure uses [`graphics_fill_radial()`]
-(https://developer.pebble.com/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial)
+(https://developer.rebble.io/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial)
 which can fill a circle from a start and end angle, we’re using a narrow inset
 thickness so that the circle is just drawn as a ring.
 
@@ -182,7 +182,7 @@ we need to do is mark the layer dirty.
 The final thing we’re going to add is an indicator to show your average daily
 steps for this time of day. We’ve already calculated the average, and we’re
 going to use [`graphics_fill_radial()`]
-(https://developer.pebble.com/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial)
+(https://developer.rebble.io/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial)
 again but this time it’s just to draw a yellow line. We’ll need to add another
 new layer and update procedure to handle the drawing of the line.
 

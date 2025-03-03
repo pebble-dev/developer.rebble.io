@@ -25,7 +25,7 @@ application environment for PebbleOS 2.0 as well as to make Pebble easier to
 monitor and debug.
 
 The changes are available 
-[as a tarball](http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/dev-portal/FreeRTOS-8.0.0-Pebble.tar.gz)
+[as a tarball](http://assets.rebble.io.s3-website-us-east-1.amazonaws.com/dev-portal/FreeRTOS-8.0.0-Pebble.tar.gz)
 .
 
 Read on to learn more about the changes and why they were made.

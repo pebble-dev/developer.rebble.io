@@ -126,4 +126,4 @@ Now simply run `pebble build` and if there is anything wrong in your JS file, th
 
 CloudPebble users are encouraged to download and install JSHint on their machine. You can use the [web interface](http://www.jshint.com/) and set most of the recommended options but you will never get 100% correctness because there is no way to declare an extra global variable (the `Pebble` object).
 
-Good news is [CloudPebble is opensource](https://github.com/CloudPebble/CloudPebble/)! We would be happy to offer a brand new [Pebble Steel](http://www.getpebble.com/steel) to the developer who will submit and get through Katherine's approval a pull request to add jshint support in CloudPebble ;)
+Good news is [CloudPebble is opensource](https://github.com/CloudPebble/CloudPebble/)! We would be happy to offer a brand new [Pebble Steel](http://www.rebble.io/steel) to the developer who will submit and get through Katherine's approval a pull request to add jshint support in CloudPebble ;)

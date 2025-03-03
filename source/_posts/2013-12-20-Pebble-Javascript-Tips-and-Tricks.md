@@ -167,7 +167,7 @@ If the UI rendering is delayed, the user will get no feedbacks for their action 
 
 There is a lot of information on the web on how to build webpages that display nicely on mobile devices. iOS and Android both use WebKit based browsers which makes things easier, but it is safe to assume that you will never get the exact same look - and you will always need to test on both platforms. Even if you do not own both devices, you can use the built-in browser in the iOS or Android emulators to test your configuration webpage.
 
-Also consider using framework such as [JQuery Mobile](http://jquerymobile.com/) or [Sencha Touch](http://www.sencha.com/products/touch/) to make your life easier. They provide easy to use components and page templates. If you do not want to write any html, [setpebble.com](http://www.setpebble.com) is another great option that we have [discussed on the blog](/blog/2013/12/02/SetPebble-By-Matt-Clark/) previously.
+Also consider using framework such as [JQuery Mobile](http://jquerymobile.com/) or [Sencha Touch](http://www.sencha.com/products/touch/) to make your life easier. They provide easy to use components and page templates. If you do not want to write any html, [setrebble.io](http://www.setrebble.io) is another great option that we have [discussed on the blog](/blog/2013/12/02/SetPebble-By-Matt-Clark/) previously.
 
 ### Be prepared for the network to be unreachable during a UI configuration attempt
 

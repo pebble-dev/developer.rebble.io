@@ -461,7 +461,7 @@ output, it probably means there is an issue in the preceding code.
 
 If you've tried the steps above and you're still having problems, there are
 plenty of places to get help. You can post your question and code on the
-[Pebble Forums](https://forums.pebble.com/c/development) or join our
+[Pebble Forums](https://forums.rebble.io/c/development) or join our
 [Discord Server]({{ site.links.discord_invite }}) and ask for assistance.
 
 

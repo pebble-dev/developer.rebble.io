@@ -66,7 +66,7 @@ module Pebble
           child.content = '-'
         when 'ulink'
           child.name = 'a'
-          child['href'] = child['url'].sub(%r{^https?://developer.pebble.com/}, '/')
+          child['href'] = child['url'].sub(%r{^https?://developer.rebble.io/}, '/')
           child.remove_attribute('url')
         when 'text'
           # SKIP!

@@ -1,6 +1,6 @@
-# [developer.pebble.com][site]
+# [developer.rebble.io][site]
 
-[![Build Status](https://magnum.travis-ci.com/pebble/developer.getpebble.com.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]
+[![Build Status](https://magnum.travis-ci.com/pebble/developer.rebble.io.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]
 
 This is the repository for the [Pebble Developer website][site].
 
@@ -176,9 +176,9 @@ the text color, use `--fg-<COLOR>`.
 
 Trouble building the developer site? Read the [Troubleshooting](/docs/troubleshooting.md) page for some possible solutions.
 
-[site]: https://developer.pebble.com
+[site]: https://developer.rebble.io
 [markdown]: ./docs/markdown.md
 [slick]: http://kenwheeler.github.io/slick/
 [tinypng]: https://tinypng.com/
 [tinyjpg]: https://tinyjpg.com/
-[travis]: https://magnum.travis-ci.com/pebble/developer.getpebble.com
+[travis]: https://magnum.travis-ci.com/pebble/developer.rebble.io
