@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-url: https://localhost:8888
-https_url: https://localhost:8888
+url: https://developer.rebble.io
+https_url: https://developer.rebble.io
 baseurl:
 asset_path: /assets
 external_server: https://developer-api.rebble.io
