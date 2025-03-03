@@ -129,7 +129,7 @@ dimensions. Run the images through minifying tools, such as
   url: /blog/2014/12/19/Leverage-Android-Actionable-Notifications/
   background_image: /images/landing-page/actionable-notifications.png
   video:
-    url: https://s3.amazonaws.com/developer.rebble.io/videos/actionable-notifications.mp4
+    url: https://s3.amazonaws.com/developer.getpebble.com/videos/actionable-notifications.mp4
   button_text: Learn how to supercharge Your Android Apps
   button_fg: white
   button_bg: green
