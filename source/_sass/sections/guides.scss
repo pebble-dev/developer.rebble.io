@@ -1,3 +1,5 @@
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -48,5 +50,5 @@
 
 table td hr {
   margin: 0;
-  border-bottom-color: $gray-06;
+  border-bottom-color: colors.$gray-06;
 }

@@ -1,3 +1,10 @@
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables" as utilities-variables;
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -13,18 +20,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use "sidebar";
 
 $section-menu-width: 240px;
 
 .sidebar__wrapper--sectionmenu {
-  width: $sidebar-width + $section-menu-width;
+  width: sidebar.$sidebar-width + $section-menu-width;
 }
 
 .section-menu {
-  border-right: 1px solid $gray-08;
+  border-right: 1px solid colors.$gray-08;
   bottom: 0;
-  left: $sidebar-width;
-  margin-top: $header-height;
+  left: sidebar.$sidebar-width;
+  margin-top: header.$header-height;
   position: absolute;
   top: 0;
   width: $section-menu-width;
@@ -34,21 +42,21 @@ $section-menu-width: 240px;
     padding: 1em;
   }
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     display: none;
   }
 }
 
 .content--section-menu {
-  margin-left: $sidebar-width + $section-menu-width;
+  margin-left: sidebar.$sidebar-width + $section-menu-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     margin-left: 0;
   }
 }
 
 .section-menu__header {
-  height: $header-height;
+  height: header.$header-height;
   padding: 0 1em;
   position: fixed;
   top: 0;
@@ -56,19 +64,19 @@ $section-menu-width: 240px;
 
   h3 {
     border-bottom: 1px solid rgba(68,68,68,0.2);
-    font-size: $base-font-size * 1.2;
+    font-size: utilities-variables.$base-font-size * 1.2;
     font-weight: 400;
     margin-top: 3px;
-    padding: $base-line-height / 1.2 0;
+    padding: calc(utilities-variables.$base-line-height / 1.2) 0;
     text-transform: uppercase;
     width: 100%;
   }
 }
 
 .documentation-menu {
-  background-color: $color-docs;
+  background-color: colors.$color-docs;
   border-bottom: 1px solid rgba(68, 68, 68, 0.3);
-  border-right: 1px solid darken($color-docs, 10);
+  border-right: 1px solid color.adjust(colors.$color-docs, $lightness: -10%);
   box-shadow: rgba(68, 68, 68, 0.3) 0 5px 5px -5px;
   display: none;
   margin: -1em;
@@ -78,7 +86,7 @@ $section-menu-width: 240px;
     padding: 0.5em 1em;
 
     &:hover {
-      background-color: darken($color-docs, 5);
+      background-color: color.adjust(colors.$color-docs, $lightness: -5%);
     }
   }
 }
@@ -94,11 +102,11 @@ $section-menu-width: 240px;
 .section-menu__item {
 
   > a {
-    color: $gray-02;
+    color: colors.$gray-02;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
-    margin: $base-line-height / 4 0;
+    margin: calc(utilities-variables.$base-line-height / 4) 0;
     padding: 0.5em;
   }
 
@@ -114,7 +122,7 @@ $section-menu-width: 240px;
 .section-menu__subitem {
 
   > a {
-    color: $gray-02;
+    color: colors.$gray-02;
     display: block;
     font-size: 13px;
     font-weight: 600;
@@ -139,7 +147,7 @@ $section-menu-width: 240px;
 .section-menu__subsubitem {
 
   > a {
-    color: $gray-02;
+    color: colors.$gray-02;
     display: block;
     font-size: 12px;
     font-weight: normal;
@@ -158,15 +166,15 @@ $section-menu-width: 240px;
   &,
   a,
   .section-menu__header a {
-    color: $white;
+    color: colors.$white;
   }
 
   .section-menu__item.active > a,
   .section-menu__subitem.active > a,
   .section-menu__subsubitem.active > a span {
-    background-color: $white;
-    border-radius: $base-border-radius;
-    color: $gray-02;
+    background-color: colors.$white;
+    border-radius: variables.$base-border-radius;
+    color: colors.$gray-02;
   }
 }
 
@@ -175,68 +183,68 @@ $section-menu-width: 240px;
   &,
   a,
   .section-menu__header a {
-    color: $gray-02;
+    color: colors.$gray-02;
   }
 
   .section-menu__item.active > a,
   .section-menu__subitem.active > a,
   .section-menu__subsubitem.active > a span {
-    background-color: $gray-02;
-    border-radius: $base-border-radius;
-    color: $white;
+    background-color: colors.$gray-02;
+    border-radius: variables.$base-border-radius;
+    color: colors.$white;
   }
 }
 
 .section-menu--guides {
-  background-color: $color-guides;
-  border-right-color: darken($color-guides, 10);
+  background-color: colors.$color-guides;
+  border-right-color: color.adjust(colors.$color-guides, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-guides;
+    background-color: colors.$color-guides;
   }
 }
 
 .section-menu--docs {
-  background-color: $color-docs;
-  border-right-color: darken($color-docs, 10);
+  background-color: colors.$color-docs;
+  border-right-color: color.adjust(colors.$color-docs, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-docs;
+    background-color: colors.$color-docs;
   }
 }
 
 .section-menu--community {
-  background-color: $color-community;
-  border-right-color: darken($color-community, 10);
+  background-color: colors.$color-community;
+  border-right-color: color.adjust(colors.$color-community, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-community;
+    background-color: colors.$color-community;
   }
 }
 
 .section-menu--sdk {
-  background-color: $color-sdk;
-  border-right-color: darken($color-sdk, 10);
+  background-color: colors.$color-sdk;
+  border-right-color: color.adjust(colors.$color-sdk, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-sdk;
+    background-color: colors.$color-sdk;
   }
 }
 
 .section-menu--more {
-  background-color: $color-more;
-  border-right-color: darken($color-more, 10);
+  background-color: colors.$color-more;
+  border-right-color: color.adjust(colors.$color-more, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-more;
+    background-color: colors.$color-more;
   }
 }
 
 .section-menu--getting-started {
-  background-color: $color-getting-started;
-  border-right-color: darken($color-getting-started, 10);
+  background-color: colors.$color-getting-started;
+  border-right-color: color.adjust(colors.$color-getting-started, $lightness: -10%);
 
   .section-menu__header {
-    background-color: $color-getting-started;
+    background-color: colors.$color-getting-started;
   }
 }

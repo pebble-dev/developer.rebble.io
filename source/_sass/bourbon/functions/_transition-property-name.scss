@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:string";
 // Return vendor-prefixed property names if appropriate
 // Example: transition-property-names((transform, color, background), moz) -> -moz-transform, color, background
 //************************************************************************//
@@ -5,7 +7,7 @@
 	$new-props: ();
 	
 	@each $prop in $props {
-		$new-props: append($new-props, transition-property-name($prop, $vendor), comma);
+		$new-props: list.append($new-props, transition-property-name($prop, $vendor), comma);
 	}
 
 	@return $new-props;
@@ -14,7 +16,7 @@
 @function transition-property-name($prop, $vendor: false) {
 	// put other properties that need to be prefixed here aswell
 	@if $vendor and $prop == transform {
-		@return unquote('-'+$vendor+'-'+$prop);
+		@return string.unquote('-'+$vendor+'-'+$prop);
 	}
 	@else {
 		@return $prop;

@@ -1,3 +1,7 @@
+@use "../base/variables";
+@use "../colors";
+@use "../responsive/utilities/variables" as utilities-variables;
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -21,7 +25,7 @@
   position: relative;
 
   p {
-    font-size: 1.2 * $base-font-size;
+    font-size: 1.2 * utilities-variables.$base-font-size;
   }
 
   h2,
@@ -30,7 +34,7 @@
     font-weight: 600;
 
     a {
-      color: $base-font-color;
+      color: variables.$base-font-color;
 
       &:hover {
         text-decoration: underline;
@@ -58,56 +62,56 @@
 }
 
 .bigbox--lightblue {
-  background-color: $lightblue;
-  color: $white;
+  background-color: colors.$lightblue;
+  color: colors.$white;
 }
 
 .bigbox--blue {
-  background-color: $bigbox--blue;
-  color: $white;
+  background-color: colors.$bigbox--blue;
+  color: colors.$white;
 }
 
 .bigbox--dark-blue {
-  background-color: $bigbox--blue;
-  color: $white;
+  background-color: colors.$bigbox--blue;
+  color: colors.$white;
 }
 
 .bigbox--green {
-  background-color: $bigbox--green;
-  color: $white;
+  background-color: colors.$bigbox--green;
+  color: colors.$white;
 }
 
 .bigbox--dark-green {
-  background-color: $bigbox--darkgreen;
-  color: $white;
+  background-color: colors.$bigbox--darkgreen;
+  color: colors.$white;
 }
 
 .bigbox--orange {
-  background-color: $orange;
-  color: $white;
+  background-color: colors.$orange;
+  color: colors.$white;
 }
 
 .bigbox--red {
-  background-color: $red;
-  color: $white;
+  background-color: colors.$red;
+  color: colors.$white;
 }
 
 .bigbox--dark-red {
-  background-color: $dark-red;
-  color: $white;
+  background-color: colors.$dark-red;
+  color: colors.$white;
 }
 
 .bigbox--lightgray {
-  background-color: $gray-04;
+  background-color: colors.$gray-04;
 }
 
 .bigbox--gray {
-  background-color: $gray-05;
+  background-color: colors.$gray-05;
 }
 
 .bigbox--darkgray {
-  background-color: $gray-02;
-  color: $white;
+  background-color: colors.$gray-02;
+  color: colors.$white;
 }
 
 
@@ -118,8 +122,8 @@
 }
 
 .bigbox--android {
-  color: $white;
-  background-color: $android-green;
+  color: colors.$white;
+  background-color: colors.$android-green;
 
   i {
     font-size: 6em;
@@ -129,8 +133,8 @@
 
 
 .bigbox--ios {
-  color: $black;
-  background-color: $white;
+  color: colors.$black;
+  background-color: colors.$white;
 
   i {
     font-size: 6em;
@@ -143,12 +147,12 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: $green;
-  color: $white;
+  background-color: colors.$green;
+  color: colors.$white;
   padding: 0.50rem;
 
   &:hover {
-    color: $white;
+    color: colors.$white;
     text-decoration: underline;
   }
 }
@@ -164,25 +168,25 @@
 }
 
 .bigbox__guides-beautiful {
-  background-color: $blue;
-  color: $breakfast-room-white;
+  background-color: colors.$blue;
+  color: colors.$breakfast-room-white;
   background-image: url('/assets/images/landing-page/first_time_bg.png');
 }
 
 .bigbox__guides-building {
-  background-color: $gray-02;
-  color: $breakfast-room-white;
+  background-color: colors.$gray-02;
+  color: colors.$breakfast-room-white;
   background-image: url('/assets/images/landing-page/back_for_more_bg.png');
 }
 
 .bigbox__guides-publishing {
-  background-color: $blue;
-  color: $breakfast-room-white;
+  background-color: colors.$blue;
+  color: colors.$breakfast-room-white;
   background-image: url('/assets/images/landing-page/meta_bg.png');
 }
 
 .bigbox__guides-interactive {
-  background-color: $gray-02;
-  color: $breakfast-room-white;
+  background-color: colors.$gray-02;
+  color: colors.$breakfast-room-white;
   background-image: url('/assets/images/landing-page/interactive_bg.png');
 }

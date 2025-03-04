@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../colors";
+@use "../responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,8 +19,8 @@
  */
 
 .blog__meta {
-  border-bottom: 1px solid $gray-09;
-  border-top: 1px solid $gray-09;
+  border-bottom: 1px solid colors.$gray-09;
+  border-top: 1px solid colors.$gray-09;
   padding: 0.5em;
   margin-bottom: 1em;
 }
@@ -51,7 +55,7 @@
     font-size: 0.9em;
 
     a {
-      color: darken($gray-09, 20);
+      color: color.adjust(colors.$gray-09, $lightness: -20%);
     }
   }
 
@@ -63,7 +67,7 @@
     }
 
     p {
-      color: $gray-09;
+      color: colors.$gray-09;
       font-size: 0.85em;
       text-align: center;
     }
@@ -73,7 +77,7 @@
     float: left;
     max-width: 43em;
 
-    @include bp-min (m) {
+    @include breakpoints.bp-min (m) {
       width: 83%;
     }
   }

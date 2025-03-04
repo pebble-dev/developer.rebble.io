@@ -1,3 +1,5 @@
+@use "responsive/utilities/variables";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -14,5 +16,5 @@
  * limitations under the License.
  */
 
-$header-height: 3 * $base-line-height;
+$header-height: 3 * variables.$base-line-height;
 $header-logo-width: 226px;

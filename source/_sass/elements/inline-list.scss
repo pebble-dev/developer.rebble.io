@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -30,7 +34,7 @@ ul.inline-list {
 }
 
 .inline-list--piped li::after {
-  color: lighten($base-font-color, 30);
+  color: color.adjust(variables.$base-font-color, $lightness: 30%);
   content: ' | ';
   display: inline;
 }
@@ -40,7 +44,7 @@ ul.inline-list {
 }
 
 .inline-list--dashed li::after {
-  color: lighten($base-font-color, 40);
+  color: color.adjust(variables.$base-font-color, $lightness: 40%);
   content: ' — ';
   display: inline;
 }
@@ -54,7 +58,7 @@ ul.inline-list {
   li {
     background-color: #444;
     border-radius: 2px;
-    color: $white;
+    color: colors.$white;
     display: inline-block;
     font-size: 0.65em;
     font-weight: bold;

@@ -1,3 +1,9 @@
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables" as utilities-variables;
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -13,33 +19,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use "sidebar";
+@use "mobile-nav";
+@use "sectionmenu";
 
 .search {
-  background-color: $white;
-  border-bottom: 1px solid $gray-10;
-  height: $header-height;
-  left: $sidebar-width;
-  padding: $base-font-size / 1.2;
+  background-color: colors.$white;
+  border-bottom: 1px solid colors.$gray-10;
+  height: header.$header-height;
+  left: sidebar.$sidebar-width;
+  padding: calc(utilities-variables.$base-font-size / 1.2);
   position: fixed;
   right: 0;
   top: 0;
   z-index: 100;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
-    padding-left: $hamburger-width;
+    padding-left: mobile-nav.$hamburger-width;
   }
 
   input {
     -webkit-appearance: textfield;
     border: 0;
     box-shadow: none;
-    font-size: $base-font-size * 1.2;
-    padding: $base-font-size / 2;
+    font-size: utilities-variables.$base-font-size * 1.2;
+    padding: calc(utilities-variables.$base-font-size / 2);
     padding-left: 2em;
     width: 100%;
 
-    @include bp-max ($sidebar-hide-at) {
+    @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
       padding-left: 0;
     }
 
@@ -56,28 +65,28 @@
 }
 
 .search__icon {
-  font-size: $base-font-size * 1.2;
-  left: $base-font-size / 0.6;
+  font-size: utilities-variables.$base-font-size * 1.2;
+  left: calc(utilities-variables.$base-font-size / 0.6);
   position: absolute;
-  top: $base-font-size / 0.6;
+  top: calc(utilities-variables.$base-font-size / 0.6);
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     display: none;
   }
 }
 
 .content--narrow .search {
-  left: $sidebar--wide-width;
+  left: sidebar.$sidebar--wide-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }
 
 .content--section-menu .search {
-  left: $sidebar-width + $section-menu-width;
+  left: sidebar.$sidebar-width + sectionmenu.$section-menu-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }
@@ -86,20 +95,20 @@
   background-color: #fff;
   border-bottom: 1px solid #d9d9d9;
   bottom: 10%;
-  left: $sidebar-width;
+  left: sidebar.$sidebar-width;
   overflow-y: scroll;
   padding: 0 1em 1em;
   position: fixed;
   right: 0;
-  top: $header-height - 2;
+  top: header.$header-height - 2;
   z-index: 200;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 
   h3 {
-    font-size: 1.2 * $base-font-size;
+    font-size: 1.2 * utilities-variables.$base-font-size;
     margin: 0.5em 0;
     text-transform: uppercase;
   }
@@ -111,54 +120,54 @@
 
 .quicksearch__block {
   h3 {
-    color: $white;
+    color: colors.$white;
     padding: 0 0.25rem;
   }
 }
 
 .quicksearch__block--guides {
   h3 {
-    background-color: $color-guides;
-    color: $base-font-color;
+    background-color: colors.$color-guides;
+    color: variables.$base-font-color;
   }
 }
 
 .quicksearch__block--docs {
   h3 {
-    background-color: $color-docs;
+    background-color: colors.$color-docs;
   }
 }
 
 .quicksearch__block--community {
   h3 {
-    background-color: $color-community;
+    background-color: colors.$color-community;
   }
 }
 
 .quicksearch__block--more{
   h3 {
-    background-color: $color-more;
+    background-color: colors.$color-more;
   }
 }
 
 .quicksearch__block--other {
   h3 {
-    background-color: $color-other;
+    background-color: colors.$color-other;
   }
 }
 
 .quicksearch__result {
-  margin-bottom: 0.5 * $base-font-size;
+  margin-bottom: 0.5 * utilities-variables.$base-font-size;
   overflow: hidden;
   text-overflow: ellipsis;
 
 }
 
 .quicksearch__summary {
-  font-size: 0.9 * $base-font-size;
-  line-height: 0.9 * $base-line-height;
+  font-size: 0.9 * utilities-variables.$base-font-size;
+  line-height: 0.9 * utilities-variables.$base-line-height;
   margin: 0;
-  max-height: 0.9 * $base-line-height;
+  max-height: 0.9 * utilities-variables.$base-line-height;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -169,7 +178,7 @@
 }
 
 .quicksearch__result__tag {
-  background-color: $color-docs;
+  background-color: colors.$color-docs;
   border-radius: 2px;
   color: #fff;
   display: inline-block;
@@ -183,16 +192,16 @@
   margin: 0;
   font-size: 0.75em;
   text-transform: uppercase;
-  color: $gray-11;
+  color: colors.$gray-11;
   font-weight: bold;
   width: auto;
   display: table;
 }
 
 .quicksearch__result--active {
-  background-color: $gray-01;
-  border-left: 2px solid $gray-03;
-  border-right: 2px solid $gray-03;
+  background-color: colors.$gray-01;
+  border-left: 2px solid colors.$gray-03;
+  border-right: 2px solid colors.$gray-03;
   margin: -5px -5px 2.5px;
   padding: 5px;
 }
@@ -202,21 +211,21 @@
   font-weight: 300;
   text-align: center;
   padding: 1em;
-  color: $gray-09;
+  color: colors.$gray-09;
 }
 
 .content--narrow .quicksearch {
-  left: $sidebar--wide-width;
+  left: sidebar.$sidebar--wide-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }
 
 .content--section-menu .quicksearch {
-  left: $sidebar-width + $section-menu-width;
+  left: sidebar.$sidebar-width + sectionmenu.$section-menu-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }
@@ -224,25 +233,25 @@
 #search__blackout {
   background-color: rgba(0, 0, 0, 0.7);
   bottom: 0;
-  left: $sidebar-width;
+  left: sidebar.$sidebar-width;
   position: fixed;
   right: 0;
-  top: $header-height;
+  top: header.$header-height;
   z-index: 150;
 }
 
 .content--narrow #search__blackout {
-  left: $sidebar--wide-width;
+  left: sidebar.$sidebar--wide-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }
 
 .content--section-menu #search__blackout {
-  left: $sidebar-width + $section-menu-width;
+  left: sidebar.$sidebar-width + sectionmenu.$section-menu-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
   }
 }

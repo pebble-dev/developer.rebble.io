@@ -2,7 +2,8 @@
 	jQuery.mmenu offcanvas addon CSS
 */
 
-@import "../inc/variables";
+@use "../inc/variables";
+@use "../inc/sizing";
 
 
 //	Animations
@@ -11,9 +12,9 @@
 	box-sizing: border-box;
 	position: relative;
 
-	-webkit-transition: -webkit-transform $mm_transitionDuration $mm_transitionFunction;
-	-ms-transition: -ms-transform $mm_transitionDuration $mm_transitionFunction;
-	transition: transform $mm_transitionDuration $mm_transitionFunction;
+	-webkit-transition: -webkit-transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
+	-ms-transition: -ms-transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
+	transition: transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
 }
 
 //	Container, Page, Blocker
@@ -67,4 +68,4 @@ html.mm-blocking
 }
 
 
-@include mm_sizing;
+@include sizing.mm_sizing;

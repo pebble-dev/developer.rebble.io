@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use "../helpers/linear-positions-parser";
+
 @mixin linear-gradient($pos, $G1, $G2: null,
                        $G3: null, $G4: null,
                        $G5: null, $G6: null,
@@ -5,34 +10,34 @@
                        $G9: null, $G10: null,
                        $fallback: null) {
   // Detect what type of value exists in $pos
-  $pos-type: type-of(nth($pos, 1));
+  $pos-type: meta.type-of(list.nth($pos, 1));
   $pos-spec: null;
   $pos-degree: null;
 
   // If $pos is missing from mixin, reassign vars and add default position
-  @if ($pos-type == color) or (nth($pos, 1) == "transparent")  {
+  @if ($pos-type == color) or (list.nth($pos, 1) == "transparent")  {
     $G10: $G9; $G9: $G8; $G8: $G7; $G7: $G6; $G6: $G5;
      $G5: $G4; $G4: $G3; $G3: $G2; $G2: $G1; $G1: $pos;
      $pos: null;
   }
 
   @if $pos {
-    $positions: _linear-positions-parser($pos);
-    $pos-degree: nth($positions, 1);
-    $pos-spec:   nth($positions, 2);
+    $positions: linear-positions-parser.linear-positions-parser($pos);
+    $pos-degree: list.nth($positions, 1);
+    $pos-spec:   list.nth($positions, 2);
   }
 
   $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
 
   // Set $G1 as the default fallback color
-  $fallback-color: nth($G1, 1);
+  $fallback-color: list.nth($G1, 1);
 
   // If $fallback is a color use that color as the fallback color
-  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+  @if (meta.type-of($fallback) == color) or ($fallback == "transparent") {
     $fallback-color: $fallback;
   }
 
   background-color: $fallback-color;
   background-image: -webkit-linear-gradient($pos-degree $full); // Safari 5.1+, Chrome
-  background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
+  background-image: string.unquote("linear-gradient(#{$pos-spec}#{$full})");
 }

@@ -1,3 +1,4 @@
+@use "sass:list";
 // directional-property mixins are shorthands
 // for writing properties like the following
 //
@@ -21,10 +22,10 @@
 @function collapse-directionals($vals) {
   $output: null;
 
-  $A: nth( $vals, 1 );
-  $B: if( length($vals) < 2, $A, nth($vals, 2));
-  $C: if( length($vals) < 3, $A, nth($vals, 3));
-  $D: if( length($vals) < 2, $A, nth($vals, if( length($vals) < 4, 2, 4) ));
+  $A: list.nth( $vals, 1 );
+  $B: if( list.length($vals) < 2, $A, list.nth($vals, 2));
+  $C: if( list.length($vals) < 3, $A, list.nth($vals, 3));
+  $D: if( list.length($vals) < 2, $A, list.nth($vals, if( list.length($vals) < 4, 2, 4) ));
 
   @if $A == 0 { $A: 0 }
   @if $B == 0 { $B: 0 }
@@ -60,28 +61,28 @@
   $vals: collapse-directionals($vals);
 
   @if contains-falsy($vals) {
-    @if nth($vals, 1) { #{$top}: nth($vals, 1); }
+    @if list.nth($vals, 1) { #{$top}: list.nth($vals, 1); }
 
-    @if length($vals) == 1 {
-      @if nth($vals, 1) { #{$right}: nth($vals, 1); }
+    @if list.length($vals) == 1 {
+      @if list.nth($vals, 1) { #{$right}: list.nth($vals, 1); }
     } @else {
-      @if nth($vals, 2) { #{$right}: nth($vals, 2); }
+      @if list.nth($vals, 2) { #{$right}: list.nth($vals, 2); }
     }
 
     // prop: top/bottom right/left
-    @if length($vals) == 2 {
-      @if nth($vals, 1) { #{$bottom}: nth($vals, 1); }
-      @if nth($vals, 2) { #{$left}:   nth($vals, 2); }
+    @if list.length($vals) == 2 {
+      @if list.nth($vals, 1) { #{$bottom}: list.nth($vals, 1); }
+      @if list.nth($vals, 2) { #{$left}:   list.nth($vals, 2); }
 
     // prop: top right/left bottom
-    } @else if length($vals) == 3 {
-      @if nth($vals, 3) { #{$bottom}: nth($vals, 3); }
-      @if nth($vals, 2) { #{$left}:   nth($vals, 2); }
+    } @else if list.length($vals) == 3 {
+      @if list.nth($vals, 3) { #{$bottom}: list.nth($vals, 3); }
+      @if list.nth($vals, 2) { #{$left}:   list.nth($vals, 2); }
 
     // prop: top right bottom left
-    } @else if length($vals) == 4 {
-      @if nth($vals, 3) { #{$bottom}: nth($vals, 3); }
-      @if nth($vals, 4) { #{$left}:   nth($vals, 4); }
+    } @else if list.length($vals) == 4 {
+      @if list.nth($vals, 3) { #{$bottom}: list.nth($vals, 3); }
+      @if list.nth($vals, 4) { #{$left}:   list.nth($vals, 4); }
     }
 
   // prop: top/right/bottom/left

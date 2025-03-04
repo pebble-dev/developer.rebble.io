@@ -1,157 +1,168 @@
+@use "../variables";
+@use "breakpoints";
+
 //==
 // Grid System - Base
 //##
 
 @mixin grid-base($bp) {
-    // Large doesn't need an "only" since it operates on min width.
-    @if $bp != l {
-        @include bp-max($bp) {
 
-            [class*=col-] {
-                // Reset classes for each level.
-                &.reset-#{$bp}-only {
-                    clear: both;
-                    margin-left: 0 !important;
+  // Large doesn't need an "only" since it operates on min width.
+  @if $bp !=l {
+    @include breakpoints.bp-max($bp) {
 
-                    [dir="rtl"] & {
-                        margin-right: 0 !important;
-                    }
-                }
-            }
+      [class*=col-] {
+
+        // Reset classes for each level.
+        &.reset-#{$bp}-only {
+          clear: both;
+          margin-left: 0 !important;
+
+          [dir="rtl"] & {
+            margin-right: 0 !important;
+          }
         }
+      }
     }
-    // Set the margin for each following column.
-    [class*=col-#{$bp}] + [class*=col-#{$bp}] {
-        margin-left: $grid-column-gutter;
+  }
 
-        [dir="rtl"] & {
-            margin-left: 0;
-            margin-right: $grid-column-gutter;
-        }
+  // Set the margin for each following column.
+  [class*=col-#{$bp}]+[class*=col-#{$bp}] {
+    margin-left: variables.$grid-column-gutter;
+
+    [dir="rtl"] & {
+      margin-left: 0;
+      margin-right: variables.$grid-column-gutter;
     }
+  }
 
-    .no-gutter > [class*=col-#{$bp}] {
-        margin-left: 0;
+  .no-gutter>[class*=col-#{$bp}] {
+    margin-left: 0;
 
-        [dir="rtl"] & {
-            margin-left: 0;
-            margin-right: 0;
-        }
+    [dir="rtl"] & {
+      margin-left: 0;
+      margin-right: 0;
     }
+  }
 
-    [class*=col-] {
-        // Global reset classes.
-        &.reset-#{$bp} {
-            clear: both;
-            margin-left: 0 !important;
+  [class*=col-] {
 
-            [dir="rtl"] & {
-                margin-right: 0 !important;
-            }
-        }
+    // Global reset classes.
+    &.reset-#{$bp} {
+      clear: both;
+      margin-left: 0 !important;
+
+      [dir="rtl"] & {
+        margin-right: 0 !important;
+      }
     }
+  }
 }
 
 //==
 // Grid System - Columns
 //##
 @mixin grid-columns($bp) {
-    // Calculate column width and width with gutter.
-    $column-width: (100% / $grid-column-count);
-    $column-width-with-gutter: (100% - ($grid-column-gutter * ($grid-column-count - 1 ))) / $grid-column-count;
+  // Calculate column width and width with gutter.
+  $column-width: calc(100% / variables.$grid-column-count);
+  $column-width-with-gutter: calc((100% - (variables.$grid-column-gutter * (variables.$grid-column-count - 1))) / variables.$grid-column-count);
 
-    // Loop through and set width.
-    @for $i from 1 to ($grid-column-count + 1) {
-        $temp-width: $column-width-with-gutter * $i + ($grid-column-gutter * $i);
+  // Loop through and set width.
+  @for $i from 1 to (variables.$grid-column-count + 1) {
+    $temp-width: $column-width-with-gutter * $i + (variables.$grid-column-gutter * $i);
 
-        .col-#{$bp}-#{$i} {
-            width: $temp-width - $grid-column-gutter;
-        }
-        // We don't want add offsets etc to full width columns.
-        @if $i != $grid-column-count {
-            .offset-#{$bp}-#{$i} {
-                margin-left: $temp-width;
-
-                [dir="rtl"] & {
-                    margin-left: 0;
-                    margin-right: $temp-width;
-                }
-            }
-
-            [class*=col-] + .offset-#{$bp}-#{$i} {
-                margin-left: $temp-width + $grid-column-gutter;
-
-                [dir="rtl"] & {
-                    margin-left: 0;
-                    margin-right: $temp-width + $grid-column-gutter;
-                }
-            }
-
-            .push-#{$bp}-#{$i} {
-                left: $temp-width;
-
-                [dir="rtl"] & {
-                    left: auto;
-                    right: $temp-width;
-                }
-            }
-
-            .pull-#{$bp}-#{$i} {
-                right: $temp-width;
-
-                [dir="rtl"] & {
-                    right: auto;
-                    left: $temp-width;
-                }
-            }
-        }
-        @else {
-            // Ensure that the gutter is reset on full width columns.
-            .col-#{$bp}-#{$i},
-            [class*=col-] + [class*=col-#{$bp}-#{$i}] {
-                margin-left: 0;
-
-                [dir="rtl"] & {
-                    margin-right: 0;
-                }
-            }
-        }
+    .col-#{$bp}-#{$i} {
+      width: $temp-width - variables.$grid-column-gutter;
     }
-    // Loop through and build the "no-gutter" columns.
-    .no-gutter {
-        @for $i from 1 to ($grid-column-count + 1) {
-            $temp-width: $column-width * $i;
 
-            > .col-#{$bp}-#{$i} {
-                width: $temp-width;
-            }
+    // We don't want add offsets etc to full width columns.
+    @if $i !=variables.$grid-column-count {
+      .offset-#{$bp}-#{$i} {
+        margin-left: $temp-width;
 
-            > .offset-#{$bp}-#{$i} {
-                margin-left: $temp-width;
-
-                [dir="rtl"] & {
-                    margin-left: 0;
-                    margin-right: $temp-width;
-                }
-            }
-
-            > .push-#{$bp}-#{$i} {
-                left: $temp-width;
-
-                [dir="rtl"] & {
-                    left: auto;
-                    right: $temp-width;
-                }
-            }
-
-            > .pull-#{$bp}-#{$i} {
-                right: $temp-width;
-
-                [dir="rtl"] & {
-                    right: auto;
-                    left: $temp-width;
-                }
-            }
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: $temp-width;
         }
+      }
+
+      [class*=col-]+.offset-#{$bp}-#{$i} {
+        margin-left: $temp-width + variables.$grid-column-gutter;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: $temp-width + variables.$grid-column-gutter;
+        }
+      }
+
+      .push-#{$bp}-#{$i} {
+        left: $temp-width;
+
+        [dir="rtl"] & {
+          left: auto;
+          right: $temp-width;
+        }
+      }
+
+      .pull-#{$bp}-#{$i} {
+        right: $temp-width;
+
+        [dir="rtl"] & {
+          right: auto;
+          left: $temp-width;
+        }
+      }
     }
+
+    @else {
+
+      // Ensure that the gutter is reset on full width columns.
+      .col-#{$bp}-#{$i},
+      [class*=col-]+[class*=col-#{$bp}-#{$i}] {
+        margin-left: 0;
+
+        [dir="rtl"] & {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  // Loop through and build the "no-gutter" columns.
+  .no-gutter {
+    @for $i from 1 to (variables.$grid-column-count + 1) {
+      $temp-width: $column-width * $i;
+
+      >.col-#{$bp}-#{$i} {
+        width: $temp-width;
+      }
+
+      >.offset-#{$bp}-#{$i} {
+        margin-left: $temp-width;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: $temp-width;
+        }
+      }
+
+      >.push-#{$bp}-#{$i} {
+        left: $temp-width;
+
+        [dir="rtl"] & {
+          left: auto;
+          right: $temp-width;
+        }
+      }
+
+      >.pull-#{$bp}-#{$i} {
+        right: $temp-width;
+
+        [dir="rtl"] & {
+          right: auto;
+          left: $temp-width;
+        }
+      }
+    }
+  }
 }

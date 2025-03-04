@@ -1,12 +1,12 @@
 ﻿// Utilities
-@import "utilities/variables";
-@import "utilities/mixins/breakpoints";
-@import "utilities/mixins/grid";
-@import "utilities/mixins/push-pull";
-@import "utilities/mixins/grid-state";
-@import "utilities/mixins/layout";
-@import "utilities/mixins/text-align";
-@import "utilities/mixins/visibility";
+@use "utilities/variables";
+@use "utilities/mixins/breakpoints";
+@use "utilities/mixins/grid";
+@use "utilities/mixins/push-pull";
+@use "utilities/mixins/grid-state";
+@use "utilities/mixins/layout";
+@use "utilities/mixins/text-align";
+@use "utilities/mixins/visibility";
 
 // Base Styles
 // @import "partials/copyright";
@@ -14,7 +14,7 @@
 // @import "partials/base";
 
 // Grid System
-@import "partials/grid";
+@use "partials/grid" as grid2;
 
 // CSS Components
 // @import	"partials/alerts";
@@ -29,13 +29,13 @@
 // @import	"partials/autosize";
 // @import	"partials/carousel";
 // @import	"partials/dropdown";
-@import	"partials/modal";
+@use "partials/modal";
 // @import	"partials/tablelist";
 // @import	"partials/tabs";
 
 // Helpers
-@import "partials/helpers-layout";
-@import "partials/helpers-visibility";
+@use "partials/helpers-layout";
+@use "partials/helpers-visibility";
 
 // Print Styles
-@import "partials/print";
+@use "partials/print";

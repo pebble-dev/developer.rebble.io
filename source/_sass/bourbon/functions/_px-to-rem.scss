@@ -1,15 +1,21 @@
+@use "sass:math";
+@use "../settings/px-to-em";
+@use "strip-units";
+
 // Convert pixels to rems
 // eg. for a relational value of 12px write rem(12)
 // Assumes $em-base is the font-size of <html>
 
 @function rem($pxval) {
-  @if not unitless($pxval) {
-      $pxval: strip-units($pxval);
+  @if not math.is-unitless($pxval) {
+    $pxval: strip-units.strip-units($pxval);
   }
 
-  $base: $em-base;
-  @if not unitless($base) {
-      $base: strip-units($base);
+  $base: px-to-em.$em-base;
+
+  @if not math.is-unitless($base) {
+    $base: strip-units.strip-units($base);
   }
-  @return ($pxval / $base) * 1rem;
+
+  @return calc($pxval / $base) * 1rem;
 }

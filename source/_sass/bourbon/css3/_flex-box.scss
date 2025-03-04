@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "../addons/prefixer";
+
 // CSS3 Flexible Box Model and property defaults
 
 // Custom shorthand notation for flexbox
@@ -17,44 +20,44 @@
 
 @mixin box-orient($orient: inline-axis) {
 // horizontal|vertical|inline-axis|block-axis|inherit
-  @include prefixer(box-orient, $orient, webkit moz spec);
+  @include prefixer.prefixer(box-orient, $orient, webkit moz spec);
 }
 
 @mixin box-pack($pack: start) {
 // start|end|center|justify
-  @include prefixer(box-pack, $pack, webkit moz spec);
+  @include prefixer.prefixer(box-pack, $pack, webkit moz spec);
   -ms-flex-pack: $pack; // IE 10
 }
 
 @mixin box-align($align: stretch) {
 // start|end|center|baseline|stretch
-  @include prefixer(box-align, $align, webkit moz spec);
+  @include prefixer.prefixer(box-align, $align, webkit moz spec);
   -ms-flex-align: $align; // IE 10
 }
 
 @mixin box-direction($direction: normal) {
 // normal|reverse|inherit
-  @include prefixer(box-direction, $direction, webkit moz spec);
+  @include prefixer.prefixer(box-direction, $direction, webkit moz spec);
   -ms-flex-direction: $direction; // IE 10
 }
 
 @mixin box-lines($lines: single) {
 // single|multiple
-  @include prefixer(box-lines, $lines, webkit moz spec);
+  @include prefixer.prefixer(box-lines, $lines, webkit moz spec);
 }
 
 @mixin box-ordinal-group($int: 1) {
-  @include prefixer(box-ordinal-group, $int, webkit moz spec);
+  @include prefixer.prefixer(box-ordinal-group, $int, webkit moz spec);
   -ms-flex-order: $int; // IE 10
 }
 
 @mixin box-flex($value: 0.0) {
-  @include prefixer(box-flex, $value, webkit moz spec);
+  @include prefixer.prefixer(box-flex, $value, webkit moz spec);
   -ms-flex: $value; // IE 10
 }
 
 @mixin box-flex-group($int: 1) {
-  @include prefixer(box-flex-group, $int, webkit moz spec);
+  @include prefixer.prefixer(box-flex-group, $int, webkit moz spec);
 }
 
 // CSS3 Flexible Box Model and property defaults
@@ -78,7 +81,7 @@
         display: flex;
     }
 
-    @elseif $value == "inline-flex" {
+    @else if $value == "inline-flex" {
         display: -webkit-inline-box;
         display: -moz-inline-box;
         display: inline-box;
@@ -100,13 +103,13 @@
 @mixin flex($value) {
 
     // Grab flex-grow for older browsers.
-    $flex-grow: nth($value, 1);
+    $flex-grow: list.nth($value, 1);
 
     // 2009
-    @include prefixer(box-flex, $flex-grow, webkit moz spec);
+    @include prefixer.prefixer(box-flex, $flex-grow, webkit moz spec);
 
     // 2011 (IE 10), 2012
-    @include prefixer(flex, $value, webkit moz ms spec);
+    @include prefixer.prefixer(flex, $value, webkit moz ms spec);
 }
 
 // 2009 - box-orient ( horizontal | vertical | inline-axis | block-axis)
@@ -124,28 +127,28 @@
         $value-2009: horizontal;
     }
 
-    @elseif $value == "row-reverse" {
+    @else if $value == "row-reverse" {
         $value-2009: horizontal;
         $direction: reverse;
     }
 
-    @elseif $value == column {
+    @else if $value == column {
         $value-2009: vertical;
     }
 
-    @elseif $value == "column-reverse" {
+    @else if $value == "column-reverse" {
         $value-2009: vertical;
         $direction: reverse;
     }
 
     // 2009
-    @include prefixer(box-orient, $value-2009, webkit moz spec);
+    @include prefixer.prefixer(box-orient, $value-2009, webkit moz spec);
     @if $direction == "reverse" {
-        @include prefixer(box-direction, $direction, webkit moz spec);
+        @include prefixer.prefixer(box-direction, $direction, webkit moz spec);
     }
 
     // 2012
-    @include prefixer(flex-direction, $value, webkit moz spec);
+    @include prefixer.prefixer(flex-direction, $value, webkit moz spec);
 
     // 2011 (IE 10)
     -ms-flex-direction: $value;
@@ -162,23 +165,23 @@
         $alt-value: single;
     }
 
-    @elseif $value == wrap {
+    @else if $value == wrap {
         $alt-value: multiple;
     }
 
-    @elseif $value == "wrap-reverse" {
+    @else if $value == "wrap-reverse" {
         $alt-value: multiple;
     }
 
-    @include prefixer(box-lines, $alt-value, webkit moz spec);
-    @include prefixer(flex-wrap, $value, webkit moz ms spec);
+    @include prefixer.prefixer(box-lines, $alt-value, webkit moz spec);
+    @include prefixer.prefixer(flex-wrap, $value, webkit moz ms spec);
 }
 
 // 2009 - TODO: parse values into flex-direction/flex-wrap
 // 2011 - TODO: parse values into flex-direction/flex-wrap
 // 2012 - flex-flow (flex-direction || flex-wrap)
 @mixin flex-flow($value) {
-    @include prefixer(flex-flow, $value, webkit moz spec);
+    @include prefixer.prefixer(flex-flow, $value, webkit moz spec);
 }
 
 // 2009 - box-ordinal-group (integer)
@@ -186,10 +189,10 @@
 // 2012 - order (integer)
 @mixin order($int: 0) {
     // 2009
-    @include prefixer(box-ordinal-group, $int, webkit moz spec);
+    @include prefixer.prefixer(box-ordinal-group, $int, webkit moz spec);
 
     // 2012
-    @include prefixer(order, $int, webkit moz spec);
+    @include prefixer.prefixer(order, $int, webkit moz spec);
 
     // 2011 (IE 10)
     -ms-flex-order: $int;
@@ -197,19 +200,19 @@
 
 // 2012 - flex-grow (number)
 @mixin flex-grow($number: 0) {
-    @include prefixer(flex-grow, $number, webkit moz spec);
+    @include prefixer.prefixer(flex-grow, $number, webkit moz spec);
     -ms-flex-positive: $number;
 }
 
 // 2012 - flex-shrink (number)
 @mixin flex-shrink($number: 1) {
-    @include prefixer(flex-shrink, $number, webkit moz spec);
+    @include prefixer.prefixer(flex-shrink, $number, webkit moz spec);
     -ms-flex-negative: $number;
 }
 
 // 2012 - flex-basis (number)
 @mixin flex-basis($width: auto) {
-    @include prefixer(flex-basis, $width, webkit moz spec);
+    @include prefixer.prefixer(flex-basis, $width, webkit moz spec);
     -ms-flex-preferred-size: $width;
 }
 
@@ -224,23 +227,23 @@
         $alt-value: start;
     }
 
-    @elseif $value == "flex-end" {
+    @else if $value == "flex-end" {
         $alt-value: end;
     }
 
-    @elseif $value == "space-between" {
+    @else if $value == "space-between" {
         $alt-value: justify;
     }
 
-    @elseif $value == "space-around" {
+    @else if $value == "space-around" {
         $alt-value: center;
     }
 
     // 2009
-    @include prefixer(box-pack, $alt-value, webkit moz spec);
+    @include prefixer.prefixer(box-pack, $alt-value, webkit moz spec);
 
     // 2012
-    @include prefixer(justify-content, $value, webkit moz ms o spec);
+    @include prefixer.prefixer(justify-content, $value, webkit moz ms o spec);
 
     // 2011 (IE 10)
     -ms-flex-pack: $alt-value;
@@ -257,15 +260,15 @@
         $alt-value: start;
     }    
 
-    @elseif $value == "flex-end" {
+    @else if $value == "flex-end" {
         $alt-value: end;
     }
 
     // 2009
-    @include prefixer(box-align, $alt-value, webkit moz spec);
+    @include prefixer.prefixer(box-align, $alt-value, webkit moz spec);
 
     // 2012
-    @include prefixer(align-items, $value, webkit moz ms o spec);
+    @include prefixer.prefixer(align-items, $value, webkit moz ms o spec);
     
     // 2011 (IE 10)
     -ms-flex-align: $alt-value;    
@@ -280,12 +283,12 @@
         $value-2011: start;
     }    
 
-    @elseif $value == "flex-end" {
+    @else if $value == "flex-end" {
         $value-2011: end;
     }
 
     // 2012
-    @include prefixer(align-self, $value, webkit moz spec);
+    @include prefixer.prefixer(align-self, $value, webkit moz spec);
 
     // 2011 (IE 10)
     -ms-flex-item-align: $value-2011;
@@ -300,20 +303,20 @@
         $value-2011: start;
     }    
 
-    @elseif $value == "flex-end" {
+    @else if $value == "flex-end" {
         $value-2011: end;
     }
 
-    @elseif $value == "space-between" {
+    @else if $value == "space-between" {
         $value-2011: justify;
     }
 
-    @elseif $value == "space-around" {
+    @else if $value == "space-around" {
         $value-2011: distribute;
     }
 
     // 2012
-    @include prefixer(align-content, $value, webkit moz spec);
+    @include prefixer.prefixer(align-content, $value, webkit moz spec);
 
     // 2011 (IE 10)
     -ms-flex-line-pack: $value-2011;

@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -23,12 +27,12 @@
   select,
   textarea {
     background-color: white;
-    border: 1px solid $gray-06;
+    border: 1px solid colors.$gray-06;
     border-left: none;
     border-radius: 0 5px 5px 0;
-    color: $gray-02;
+    color: colors.$gray-02;
     display: table-cell;
-    font-family: $sans-serif;
+    font-family: variables.$sans-serif;
     font-size: 15px;
     margin: 0;
     padding: 7px;
@@ -57,11 +61,11 @@
   .select-style {
     background-color: white;
     border-radius: 0 5px 5px 0;
-    border: 1px solid $gray-06;
+    border: 1px solid colors.$gray-06;
     border-left-width: 0;
-    color: transparentize(#444, 0.5);
+    color: color.adjust(#444, $alpha: -0.5);
     display: table-cell;
-    font-family: $sans-serif;
+    font-family: variables.$sans-serif;
     font-size: 15px;
     margin: 0;
     overflow: hidden;
@@ -90,7 +94,7 @@
 
   label {
     background-color: #fff;
-    border: 1px solid $gray-06;
+    border: 1px solid colors.$gray-06;
     border-right: none;
     border-radius: 5px 0 0 5px;
     color: #111;
@@ -105,8 +109,8 @@
   }
 
   input.mce_inline_error {
-    background-color: lighten($dark-red, 40);
-    border: 1px solid $dark-red;
+    background-color: color.adjust(colors.$dark-red, $lightness: 40%);
+    border: 1px solid colors.$dark-red;
   }
 }
 

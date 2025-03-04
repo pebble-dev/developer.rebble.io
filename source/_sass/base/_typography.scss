@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../bourbon/css3/transition";
+@use "variables";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -16,69 +20,75 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  background-color: $base-background-color;
-  color: $base-font-color;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: $unitless-line-height;
+  background-color: variables.$base-background-color;
+  color: variables.$base-font-color;
+  font-family: variables.$base-font-family;
+  font-size: variables.$base-font-size;
+  line-height: variables.$unitless-line-height;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font-family;
-  line-height: $header-line-height;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: variables.$header-font-family;
+  line-height: variables.$header-line-height;
   margin: 0 0 0.5em 0;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
 }
 
 h1 {
-  font-size: $base-font-size * 2.25; // 16 * 2.25 = 36px
+  font-size: variables.$base-font-size * 2.25; // 16 * 2.25 = 36px
 }
 
 h2 {
-  font-size: $base-font-size * 2; // 16 * 2 = 32px
+  font-size: variables.$base-font-size * 2; // 16 * 2 = 32px
 }
 
 h3 {
-  font-size: $base-font-size * 1.75; // 16 * 1.75 = 28px
+  font-size: variables.$base-font-size * 1.75; // 16 * 1.75 = 28px
 }
 
 h4 {
-  font-size: $base-font-size * 1.5; // 16 * 1.5 = 24px
+  font-size: variables.$base-font-size * 1.5; // 16 * 1.5 = 24px
 }
 
 h5 {
-  font-size: $base-font-size * 1.25; // 16 * 1.25 = 20px
+  font-size: variables.$base-font-size * 1.25; // 16 * 1.25 = 20px
 }
 
 h6 {
-  font-size: $base-font-size;
+  font-size: variables.$base-font-size;
 }
 
 p {
-  margin: 0 0 ($base-line-height * .5);
+  margin: 0 0 (variables.$base-line-height * .5);
 }
 
 a {
-  @include transition(color 0.1s linear);
-  color: $base-link-color;
+  @include transition.transition(color 0.1s linear);
+  color: variables.$base-link-color;
   text-decoration: none;
 
   &:hover {
-    color: $hover-link-color;
+    color: variables.$hover-link-color;
   }
 
-  &:active, &:focus {
-    color: $hover-link-color;
+  &:active,
+  &:focus {
+    color: variables.$hover-link-color;
     outline: none;
   }
 }
 
 hr {
-  border-bottom: 1px solid $base-border-color;
+  border-bottom: 1px solid variables.$base-border-color;
   border-left: none;
   border-right: none;
   border-top: none;
-  margin: $base-line-height 0;
+  margin: variables.$base-line-height 0;
 }
 
 img {
@@ -87,14 +97,14 @@ img {
 }
 
 blockquote {
-  border-left: 2px solid $base-border-color;
-  color: lighten($base-font-color, 15);
-  margin: $base-line-height 0;
-  padding-left: $base-line-height / 2;
+  border-left: 2px solid variables.$base-border-color;
+  color: color.adjust(variables.$base-font-color, $lightness: 15%);
+  margin: variables.$base-line-height 0;
+  padding-left: calc(variables.$base-line-height / 2);
 }
 
 cite {
-  color: lighten($base-font-color, 25);
+  color: color.adjust(variables.$base-font-color, $lightness: 25%);
   font-style: italic;
 
   &:before {

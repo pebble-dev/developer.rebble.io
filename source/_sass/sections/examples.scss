@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -27,9 +30,9 @@
 }
 
 .examples__tag {
-  background-color: $color-examples;
+  background-color: colors.$color-examples;
   border-radius: 3px;
-  color: $white;
+  color: colors.$white;
   display: inline-block;
   font-size: 0.75em;
   line-height: 1;
@@ -42,17 +45,17 @@
   &:hover,
   &:active,
   &:focus {
-    color: $white;
-    background-color: darken($color-examples, 20);
+    color: colors.$white;
+    background-color: color.adjust(colors.$color-examples, $lightness: -20%);
   }
 }
 
 .examples__filters--selected {
   .examples__tag {
-    background-color: lighten($color-examples, 20);
+    background-color: color.adjust(colors.$color-examples, $lightness: 20%);
 
     &.selected {
-      background-color: $color-examples;
+      background-color: colors.$color-examples;
     }
   }
 }
@@ -62,5 +65,5 @@
   margin-bottom: 0.5em;
   font-size: 0.8em;
   text-transform: uppercase;
-  color: $gray-09;
+  color: colors.$gray-09;
 }

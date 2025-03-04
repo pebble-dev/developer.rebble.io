@@ -1,3 +1,6 @@
+@use "../bourbon/css3/animation";
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -32,7 +35,7 @@
 //   zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement
 
 .spinner {
-  @include animation(0.5s spinner linear infinite);
+  @include animation.animation(0.5s spinner linear infinite);
   border-bottom: 1px solid; // 4
   display: inline-block;
   font-size: 32px; // 3
@@ -69,7 +72,7 @@
 .spinner--large { font-size: 64px; }
 
 // Color overrides.
-.spinner--light { color: $white; }
+.spinner--light { color: colors.$white; }
 .spinner--dark { color: #333; }
 
 .spinner--center {

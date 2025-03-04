@@ -1,3 +1,5 @@
+@use "../responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -20,7 +22,7 @@
   background-position: center bottom;
   background-size: cover;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     height: 120%;
   }
 }

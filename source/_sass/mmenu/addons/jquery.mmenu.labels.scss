@@ -2,39 +2,34 @@
 	jQuery.mmenu labels addon CSS
 */
 
-@import "../inc/variables";
+@use "../inc/variables";
+@use "../inc/colors";
+@use "../inc/mixins";
 
-.mm-list
-{
-	li.mm-label
-	{
-		> span
-		{
-			@include mm_ellipsis;
-			padding: 0;
-			line-height: $mm_labelHeight;
-		}
+.mm-list {
+  li.mm-label {
+    >span {
+      @include mixins.mm_ellipsis;
+      padding: 0;
+      line-height: variables.$mm_labelHeight;
+    }
 
-		&.mm-opened a.mm-subopen:after
-		{
-			@include mm_webkit-prefix( "transform", rotate( 45deg ) );
-		}
-	}
-	li.mm-collapsed:not( .mm-uncollapsed )
-	{
-		display: none;
-	}
+    &.mm-opened a.mm-subopen:after {
+      @include mixins.mm_webkit-prefix("transform", rotate(45deg));
+    }
+  }
+
+  li.mm-collapsed:not(.mm-uncollapsed) {
+    display: none;
+  }
 }
 
-.mm-menu.mm-vertical .mm-list
-{
-	> li.mm-label
-	{
-		> a.mm-subopen:after
-		{
-			top: ( $mm_labelHeight / 2 ) - 4;
-		}
-	}
+.mm-menu.mm-vertical .mm-list {
+  >li.mm-label {
+    >a.mm-subopen:after {
+      top: calc(variables.$mm_labelHeight / 2) - 4;
+    }
+  }
 }
 
-@include mm_colors_labels;
+@include colors.mm_colors_labels;

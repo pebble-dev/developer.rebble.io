@@ -1,3 +1,9 @@
+@use "sass:color";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -14,15 +20,15 @@
  * limitations under the License.
  */
 
-$hamburger-width: $header-height;
+$hamburger-width: header.$header-height;
 
 .mobile-nav {
-  background-color: $gray-03;
+  background-color: colors.$gray-03;
   bottom: 0;
   left: 0;
   overflow-y: auto;
   position: fixed;
-  top: $header-height;
+  top: header.$header-height;
   width: 90%;
   z-index: 200;
 
@@ -42,36 +48,36 @@ $hamburger-width: $header-height;
     text-transform: uppercase;
 
     &:hover {
-      background-color: lighten($gray-03, 10);
+      background-color: color.adjust(colors.$gray-03, $lightness: 10%);
     }
   }
 
   .mainmenu__item.active a {
-    background-color: $gray-06;
-    color: $gray-03;
+    background-color: colors.$gray-06;
+    color: colors.$gray-03;
   }
 }
 
 .mobile-nav__hamburger {
   display: none;
 
-  @include bp-max (xs) {
-    border-bottom: 1px solid $gray-10;
+  @include breakpoints.bp-max (xs) {
+    border-bottom: 1px solid colors.$gray-10;
     display: block;
     position: fixed;
-    background-color: $white;
+    background-color: colors.$white;
     left: 0;
     width: $hamburger-width;
     top: 0;
-    height: $header-height;
-    padding: $base-font-size / 1.5 0;
-    font-size: $base-font-size * 2;
+    height: header.$header-height;
+    padding: calc(variables.$base-font-size / 1.5) 0;
+    font-size: variables.$base-font-size * 2;
     text-align: center;
-    color: $gray-03;
+    color: colors.$gray-03;
 
     &:hover,
     &:active {
-      color: $gray-03;
+      color: colors.$gray-03;
     }
   }
 }
@@ -81,33 +87,33 @@ $hamburger-width: $header-height;
 }
 
 .mobile-nav--tutorials {
-  border-left: 5px solid $color-getting-started;
+  border-left: 5px solid colors.$color-getting-started;
 }
 
 .mobile-nav--sdk {
-  border-left: 5px solid $color-sdk;
+  border-left: 5px solid colors.$color-sdk;
 }
 
 .mobile-nav--guides {
-  border-left: 5px solid $color-guides;
+  border-left: 5px solid colors.$color-guides;
 }
 
 .mobile-nav--docs {
-  border-left: 5px solid $color-docs;
+  border-left: 5px solid colors.$color-docs;
 }
 
 .mobile-nav--examples {
-  border-left: 5px solid $color-examples;
+  border-left: 5px solid colors.$color-examples;
 }
 
 .mobile-nav--community {
-  border-left: 5px solid $color-community;
+  border-left: 5px solid colors.$color-community;
 }
 
 .mobile-nav--blog {
-  border-left: 5px solid $color-blog;
+  border-left: 5px solid colors.$color-blog;
 }
 
 .mobile-nav--more {
-  border-left: 5px solid $color-more;
+  border-left: 5px solid colors.$color-more;
 }

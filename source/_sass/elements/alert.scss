@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "../colors";
+@use "../base/lists";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -16,7 +20,7 @@
 
 .alert {
   background-color: #ddd;
-  color: $white;
+  color: colors.$white;
   margin-bottom: 1em;
   padding: 0.5em;
 
@@ -48,13 +52,13 @@
   padding: 0.7em;
 }
 
-$alert-colors: $white     $green   $blue   $red   $purple   $yellow   $orange   $lightblue   $dark-red   $color-blog;
+$alert-colors: colors.$white     colors.$green   colors.$blue   colors.$red   colors.$purple   colors.$yellow   colors.$orange   colors.$lightblue   colors.$dark-red   colors.$color-blog;
 $alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'blog';
 
 @each $color in $alert-colors {
-  $i: index($alert-colors, $color);
+  $i: list.index($alert-colors, $color);
 
-  .alert--fg-#{nth($alert-names, $i)} {
+  .alert--fg-#{list.nth($alert-names, $i)} {
     color: $color;
 
     a {
@@ -63,17 +67,17 @@ $alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'l
     }
   }
 
-  .alert--bg-#{nth($alert-names, $i)} {
+  .alert--bg-#{list.nth($alert-names, $i)} {
     background-color: $color;
   }
 }
 
 .alert--error {
-  background-color: $dark-red;
+  background-color: colors.$dark-red;
   color: #fff;
 }
 
 .alert--success {
-  background-color: $green;
+  background-color: colors.$green;
   color: #fff;
 }

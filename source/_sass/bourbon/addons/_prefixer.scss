@@ -1,3 +1,5 @@
+@use "../settings/prefixer";
+
 //************************************************************************//
 // Example: @include prefixer(border-radius, $radii, webkit ms spec);
 //************************************************************************//
@@ -6,27 +8,27 @@
 @mixin prefixer ($property, $value, $prefixes) {
   @each $prefix in $prefixes {
     @if $prefix == webkit {
-      @if $prefix-for-webkit {
+      @if prefixer.$prefix-for-webkit {
         -webkit-#{$property}: $value;
       }
     }
     @else if $prefix == moz {
-      @if $prefix-for-mozilla {
+      @if prefixer.$prefix-for-mozilla {
         -moz-#{$property}: $value;
       }
     }
     @else if $prefix == ms {
-      @if $prefix-for-microsoft {
+      @if prefixer.$prefix-for-microsoft {
         -ms-#{$property}: $value;
       }
     }
     @else if $prefix == o {
-      @if $prefix-for-opera {
+      @if prefixer.$prefix-for-opera {
         -o-#{$property}: $value;
       }
     }
     @else if $prefix == spec {
-      @if $prefix-for-spec {
+      @if prefixer.$prefix-for-spec {
         #{$property}: $value;
       }
     }
@@ -37,9 +39,9 @@
 }
 
 @mixin disable-prefix-for-all() {
-  $prefix-for-webkit:    false !global;
-  $prefix-for-mozilla:   false !global;
-  $prefix-for-microsoft: false !global;
-  $prefix-for-opera:     false !global;
-  $prefix-for-spec:      false !global;
+  prefixer.$prefix-for-webkit:    false;
+  prefixer.$prefix-for-mozilla:   false;
+  prefixer.$prefix-for-microsoft: false;
+  prefixer.$prefix-for-opera:     false;
+  prefixer.$prefix-for-spec:      false;
 }

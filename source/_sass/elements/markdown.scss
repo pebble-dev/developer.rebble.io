@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../colors";
+@use "../base/lists";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -21,17 +25,17 @@
   }
 
   ol {
-    @extend %default-ol;
+    @extend %default-ol; 
   }
 
-  $table-border-color: $gray-06;
+  $table-border-color: colors.$gray-06;
   $table-border: 1px solid $table-border-color;
-  $table-background: $white;
-  $table-header-background: $gray-02;
-  $table-header-color: $white;
-  $table-hover-color: darken($table-background, 5);
-  $table-stripe-color: darken($table-background, 4);
-  $table-stripe-color-hover: darken($table-stripe-color, 5);
+  $table-background: colors.$white;
+  $table-header-background: colors.$gray-02;
+  $table-header-color: colors.$white;
+  $table-hover-color: color.adjust($table-background, $lightness: -5%);
+  $table-stripe-color: color.adjust($table-background, $lightness: -4%);
+  $table-stripe-color-hover: color.adjust($table-stripe-color, $lightness: -5%);
   $table-padding: 0.5em;
 
   table {

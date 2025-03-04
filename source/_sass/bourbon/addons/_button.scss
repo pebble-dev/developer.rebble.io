@@ -1,10 +1,15 @@
+@use "sass:color";
+@use "sass:meta";
+@use "../css3/linear-gradient";
+@use "../functions/color-lightness";
+
 @mixin button ($style: simple, $base-color: #4294f0, $text-size: inherit, $padding: 7px 18px) {
 
-  @if type-of($style) == string and type-of($base-color) == color {
+  @if meta.type-of($style) == string and meta.type-of($base-color) == color {
     @include buttonstyle($style, $base-color, $text-size, $padding);
   }
 
-  @if type-of($style) == string and type-of($base-color) == number {
+  @if meta.type-of($style) == string and meta.type-of($base-color) == number {
     $padding: $text-size;
     $text-size: $base-color;
     $base-color: #4294f0;
@@ -16,13 +21,13 @@
     @include buttonstyle($style, $base-color, $text-size, $padding);
   }
 
-  @if type-of($style) == color and type-of($base-color) == color {
+  @if meta.type-of($style) == color and meta.type-of($base-color) == color {
     $base-color: $style;
     $style: simple;
     @include buttonstyle($style, $base-color, $text-size, $padding);
   }
 
-  @if type-of($style) == color and type-of($base-color) == number {
+  @if meta.type-of($style) == color and meta.type-of($base-color) == number {
     $padding: $text-size;
     $text-size: $base-color;
     $base-color: $style;
@@ -35,7 +40,7 @@
     @include buttonstyle($style, $base-color, $text-size, $padding);
   }
 
-  @if type-of($style) == number {
+  @if meta.type-of($style) == number {
     $padding: $base-color;
     $text-size: $style;
     $base-color: #4294f0;
@@ -59,19 +64,19 @@
 //************************************************************************//
 @mixin buttonstyle($type, $b-color, $t-size, $pad) {
   // Grayscale button
-  @if $type == simple and $b-color == grayscale($b-color) {
+  @if $type == simple and $b-color == color.grayscale($b-color) {
     @include simple($b-color, true, $t-size, $pad);
   }
 
-  @if $type == shiny and $b-color == grayscale($b-color) {
+  @if $type == shiny and $b-color == color.grayscale($b-color) {
     @include shiny($b-color, true, $t-size, $pad);
   }
 
-  @if $type == pill and $b-color == grayscale($b-color) {
+  @if $type == pill and $b-color == color.grayscale($b-color) {
     @include pill($b-color, true, $t-size, $pad);
   }
 
-  @if $type == flat and $b-color == grayscale($b-color) {
+  @if $type == flat and $b-color == color.grayscale($b-color) {
     @include flat($b-color, true, $t-size, $pad);
   }
 
@@ -98,21 +103,21 @@
 //************************************************************************//
 @mixin simple($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
-  $border:        adjust-color($base-color, $saturation:  9%,  $lightness: -14%);
-  $inset-shadow:  adjust-color($base-color, $saturation: -8%,  $lightness:  15%);
-  $stop-gradient: adjust-color($base-color, $saturation:  9%,  $lightness: -11%);
-  $text-shadow:   adjust-color($base-color, $saturation:  15%, $lightness: -18%);
+  $border:        color.adjust($base-color, $saturation:  9%,  $lightness: -14%);
+  $inset-shadow:  color.adjust($base-color, $saturation: -8%,  $lightness:  15%);
+  $stop-gradient: color.adjust($base-color, $saturation:  9%,  $lightness: -11%);
+  $text-shadow:   color.adjust($base-color, $saturation:  15%, $lightness: -18%);
 
-  @if is-light($base-color) {
+  @if color-lightness.is-light($base-color) {
     $color:       hsl(0, 0, 20%);
-    $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
+    $text-shadow: color.adjust($base-color, $saturation: 10%, $lightness: 4%);
   }
 
   @if $grayscale == true {
-    $border:        grayscale($border);
-    $inset-shadow:  grayscale($inset-shadow);
-    $stop-gradient: grayscale($stop-gradient);
-    $text-shadow:   grayscale($text-shadow);
+    $border:        color.grayscale($border);
+    $inset-shadow:  color.grayscale($inset-shadow);
+    $stop-gradient: color.grayscale($stop-gradient);
+    $text-shadow:   color.grayscale($text-shadow);
   }
 
   border: 1px solid $border;
@@ -122,36 +127,36 @@
   display: inline-block;
   font-size: $textsize;
   font-weight: bold;
-  @include linear-gradient ($base-color, $stop-gradient);
+  @include linear-gradient.linear-gradient ($base-color, $stop-gradient);
   padding: $padding;
   text-decoration: none;
   text-shadow: 0 1px 0 $text-shadow;
   background-clip: padding-box;
 
   &:hover:not(:disabled) {
-    $base-color-hover:    adjust-color($base-color, $saturation: -4%, $lightness: -5%);
-    $inset-shadow-hover:  adjust-color($base-color, $saturation: -7%, $lightness:  5%);
-    $stop-gradient-hover: adjust-color($base-color, $saturation:  8%, $lightness: -14%);
+    $base-color-hover:    color.adjust($base-color, $saturation: -4%, $lightness: -5%);
+    $inset-shadow-hover:  color.adjust($base-color, $saturation: -7%, $lightness:  5%);
+    $stop-gradient-hover: color.adjust($base-color, $saturation:  8%, $lightness: -14%);
 
     @if $grayscale == true {
-      $base-color-hover:    grayscale($base-color-hover);
-      $inset-shadow-hover:  grayscale($inset-shadow-hover);
-      $stop-gradient-hover: grayscale($stop-gradient-hover);
+      $base-color-hover:    color.grayscale($base-color-hover);
+      $inset-shadow-hover:  color.grayscale($inset-shadow-hover);
+      $stop-gradient-hover: color.grayscale($stop-gradient-hover);
     }
 
     box-shadow: inset 0 1px 0 0 $inset-shadow-hover;
     cursor: pointer;
-    @include linear-gradient ($base-color-hover, $stop-gradient-hover);
+    @include linear-gradient.linear-gradient ($base-color-hover, $stop-gradient-hover);
   }
 
   &:active:not(:disabled),
   &:focus:not(:disabled) {
-    $border-active:       adjust-color($base-color, $saturation: 9%, $lightness: -14%);
-    $inset-shadow-active: adjust-color($base-color, $saturation: 7%, $lightness: -17%);
+    $border-active:       color.adjust($base-color, $saturation: 9%, $lightness: -14%);
+    $inset-shadow-active: color.adjust($base-color, $saturation: 7%, $lightness: -17%);
 
     @if $grayscale == true {
-      $border-active:       grayscale($border-active);
-      $inset-shadow-active: grayscale($inset-shadow-active);
+      $border-active:       color.grayscale($border-active);
+      $inset-shadow-active: color.grayscale($inset-shadow-active);
     }
 
     border: 1px solid $border-active;
@@ -164,27 +169,27 @@
 //************************************************************************//
 @mixin shiny($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
-  $border:        adjust-color($base-color, $red: -117, $green: -111, $blue: -81);
-  $border-bottom: adjust-color($base-color, $red: -126, $green: -127, $blue: -122);
-  $fourth-stop:   adjust-color($base-color, $red: -79,  $green: -70,  $blue: -46);
-  $inset-shadow:  adjust-color($base-color, $red:  37,  $green:  29,  $blue:  12);
-  $second-stop:   adjust-color($base-color, $red: -56,  $green: -50,  $blue: -33);
-  $text-shadow:   adjust-color($base-color, $red: -140, $green: -141, $blue: -114);
-  $third-stop:    adjust-color($base-color, $red: -86,  $green: -75,  $blue: -48);
+  $border:        color.adjust($base-color, $red: -117, $green: -111, $blue: -81);
+  $border-bottom: color.adjust($base-color, $red: -126, $green: -127, $blue: -122);
+  $fourth-stop:   color.adjust($base-color, $red: -79,  $green: -70,  $blue: -46);
+  $inset-shadow:  color.adjust($base-color, $red:  37,  $green:  29,  $blue:  12);
+  $second-stop:   color.adjust($base-color, $red: -56,  $green: -50,  $blue: -33);
+  $text-shadow:   color.adjust($base-color, $red: -140, $green: -141, $blue: -114);
+  $third-stop:    color.adjust($base-color, $red: -86,  $green: -75,  $blue: -48);
 
-  @if is-light($base-color) {
+  @if color-lightness.is-light($base-color) {
     $color:       hsl(0, 0, 20%);
-    $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
+    $text-shadow: color.adjust($base-color, $saturation: 10%, $lightness: 4%);
   }
 
   @if $grayscale == true {
-    $border:        grayscale($border);
-    $border-bottom: grayscale($border-bottom);
-    $fourth-stop:   grayscale($fourth-stop);
-    $inset-shadow:  grayscale($inset-shadow);
-    $second-stop:   grayscale($second-stop);
-    $text-shadow:   grayscale($text-shadow);
-    $third-stop:    grayscale($third-stop);
+    $border:        color.grayscale($border);
+    $border-bottom: color.grayscale($border-bottom);
+    $fourth-stop:   color.grayscale($fourth-stop);
+    $inset-shadow:  color.grayscale($inset-shadow);
+    $second-stop:   color.grayscale($second-stop);
+    $text-shadow:   color.grayscale($text-shadow);
+    $third-stop:    color.grayscale($third-stop);
   }
 
   border: 1px solid $border;
@@ -195,27 +200,27 @@
   display: inline-block;
   font-size: $textsize;
   font-weight: bold;
-  @include linear-gradient(top, $base-color 0%, $second-stop 50%, $third-stop 50%, $fourth-stop 100%);
+  @include linear-gradient.linear-gradient(top, $base-color 0%, $second-stop 50%, $third-stop 50%, $fourth-stop 100%);
   padding: $padding;
   text-align: center;
   text-decoration: none;
   text-shadow: 0 -1px 1px $text-shadow;
 
   &:hover:not(:disabled) {
-    $first-stop-hover:  adjust-color($base-color, $red: -13, $green: -15, $blue: -18);
-    $second-stop-hover: adjust-color($base-color, $red: -66, $green: -62, $blue: -51);
-    $third-stop-hover:  adjust-color($base-color, $red: -93, $green: -85, $blue: -66);
-    $fourth-stop-hover: adjust-color($base-color, $red: -86, $green: -80, $blue: -63);
+    $first-stop-hover:  color.adjust($base-color, $red: -13, $green: -15, $blue: -18);
+    $second-stop-hover: color.adjust($base-color, $red: -66, $green: -62, $blue: -51);
+    $third-stop-hover:  color.adjust($base-color, $red: -93, $green: -85, $blue: -66);
+    $fourth-stop-hover: color.adjust($base-color, $red: -86, $green: -80, $blue: -63);
 
     @if $grayscale == true {
-      $first-stop-hover:  grayscale($first-stop-hover);
-      $second-stop-hover: grayscale($second-stop-hover);
-      $third-stop-hover:  grayscale($third-stop-hover);
-      $fourth-stop-hover: grayscale($fourth-stop-hover);
+      $first-stop-hover:  color.grayscale($first-stop-hover);
+      $second-stop-hover: color.grayscale($second-stop-hover);
+      $third-stop-hover:  color.grayscale($third-stop-hover);
+      $fourth-stop-hover: color.grayscale($fourth-stop-hover);
     }
 
     cursor: pointer;
-    @include linear-gradient(top, $first-stop-hover  0%,
+    @include linear-gradient.linear-gradient(top, $first-stop-hover  0%,
                                   $second-stop-hover 50%,
                                   $third-stop-hover  50%,
                                   $fourth-stop-hover 100%);
@@ -223,10 +228,10 @@
 
   &:active:not(:disabled),
   &:focus:not(:disabled) {
-    $inset-shadow-active: adjust-color($base-color, $red: -111, $green: -116, $blue: -122);
+    $inset-shadow-active: color.adjust($base-color, $red: -111, $green: -116, $blue: -122);
 
     @if $grayscale == true {
-      $inset-shadow-active: grayscale($inset-shadow-active);
+      $inset-shadow-active: color.grayscale($inset-shadow-active);
     }
 
     box-shadow: inset 0 0 20px 0 $inset-shadow-active;
@@ -238,25 +243,25 @@
 //************************************************************************//
 @mixin pill($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
-  $border-bottom: adjust-color($base-color, $hue:  8, $saturation: -11%, $lightness: -26%);
-  $border-sides:  adjust-color($base-color, $hue:  4, $saturation: -21%, $lightness: -21%);
-  $border-top:    adjust-color($base-color, $hue: -1, $saturation: -30%, $lightness: -15%);
-  $inset-shadow:  adjust-color($base-color, $hue: -1, $saturation: -1%,  $lightness:  7%);
-  $stop-gradient: adjust-color($base-color, $hue:  8, $saturation:  14%, $lightness: -10%);
-  $text-shadow:   adjust-color($base-color, $hue:  5, $saturation: -19%, $lightness: -15%);
+  $border-bottom: color.adjust($base-color, $hue:  8, $saturation: -11%, $lightness: -26%);
+  $border-sides:  color.adjust($base-color, $hue:  4, $saturation: -21%, $lightness: -21%);
+  $border-top:    color.adjust($base-color, $hue: -1, $saturation: -30%, $lightness: -15%);
+  $inset-shadow:  color.adjust($base-color, $hue: -1, $saturation: -1%,  $lightness:  7%);
+  $stop-gradient: color.adjust($base-color, $hue:  8, $saturation:  14%, $lightness: -10%);
+  $text-shadow:   color.adjust($base-color, $hue:  5, $saturation: -19%, $lightness: -15%);
 
-  @if is-light($base-color) {
+  @if color-lightness.is-light($base-color) {
     $color:       hsl(0, 0, 20%);
-    $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
+    $text-shadow: color.adjust($base-color, $saturation: 10%, $lightness: 4%);
   }
 
   @if $grayscale == true {
-    $border-bottom: grayscale($border-bottom);
-    $border-sides:  grayscale($border-sides);
-    $border-top:    grayscale($border-top);
-    $inset-shadow:  grayscale($inset-shadow);
-    $stop-gradient: grayscale($stop-gradient);
-    $text-shadow:   grayscale($text-shadow);
+    $border-bottom: color.grayscale($border-bottom);
+    $border-sides:  color.grayscale($border-sides);
+    $border-top:    color.grayscale($border-top);
+    $inset-shadow:  color.grayscale($inset-shadow);
+    $stop-gradient: color.grayscale($stop-gradient);
+    $text-shadow:   color.grayscale($text-shadow);
   }
 
   border: 1px solid $border-top;
@@ -268,7 +273,7 @@
   font-size: $textsize;
   font-weight: normal;
   line-height: 1;
-  @include linear-gradient ($base-color, $stop-gradient);
+  @include linear-gradient.linear-gradient ($base-color, $stop-gradient);
   padding: $padding;
   text-align: center;
   text-decoration: none;
@@ -276,47 +281,47 @@
   background-clip: padding-box;
 
   &:hover:not(:disabled) {
-    $base-color-hover:    adjust-color($base-color,                                $lightness: -4.5%);
-    $border-bottom:       adjust-color($base-color, $hue:  8, $saturation:  13.5%, $lightness: -32%);
-    $border-sides:        adjust-color($base-color, $hue:  4, $saturation: -2%,    $lightness: -27%);
-    $border-top:          adjust-color($base-color, $hue: -1, $saturation: -17%,   $lightness: -21%);
-    $inset-shadow-hover:  adjust-color($base-color,           $saturation: -1%,    $lightness:  3%);
-    $stop-gradient-hover: adjust-color($base-color, $hue:  8, $saturation: -4%,    $lightness: -15.5%);
-    $text-shadow-hover:   adjust-color($base-color, $hue:  5, $saturation: -5%,    $lightness: -22%);
+    $base-color-hover:    color.adjust($base-color,                                $lightness: -4.5%);
+    $border-bottom:       color.adjust($base-color, $hue:  8, $saturation:  13.5%, $lightness: -32%);
+    $border-sides:        color.adjust($base-color, $hue:  4, $saturation: -2%,    $lightness: -27%);
+    $border-top:          color.adjust($base-color, $hue: -1, $saturation: -17%,   $lightness: -21%);
+    $inset-shadow-hover:  color.adjust($base-color,           $saturation: -1%,    $lightness:  3%);
+    $stop-gradient-hover: color.adjust($base-color, $hue:  8, $saturation: -4%,    $lightness: -15.5%);
+    $text-shadow-hover:   color.adjust($base-color, $hue:  5, $saturation: -5%,    $lightness: -22%);
 
     @if $grayscale == true {
-      $base-color-hover:    grayscale($base-color-hover);
-      $border-bottom:       grayscale($border-bottom);
-      $border-sides:        grayscale($border-sides);
-      $border-top:          grayscale($border-top);
-      $inset-shadow-hover:  grayscale($inset-shadow-hover);
-      $stop-gradient-hover: grayscale($stop-gradient-hover);
-      $text-shadow-hover:   grayscale($text-shadow-hover);
+      $base-color-hover:    color.grayscale($base-color-hover);
+      $border-bottom:       color.grayscale($border-bottom);
+      $border-sides:        color.grayscale($border-sides);
+      $border-top:          color.grayscale($border-top);
+      $inset-shadow-hover:  color.grayscale($inset-shadow-hover);
+      $stop-gradient-hover: color.grayscale($stop-gradient-hover);
+      $text-shadow-hover:   color.grayscale($text-shadow-hover);
     }
 
     border: 1px solid $border-top;
     border-color: $border-top $border-sides $border-bottom;
     box-shadow: inset 0 1px 0 0 $inset-shadow-hover;
     cursor: pointer;
-    @include linear-gradient ($base-color-hover, $stop-gradient-hover);
+    @include linear-gradient.linear-gradient ($base-color-hover, $stop-gradient-hover);
     text-shadow: 0 -1px 1px $text-shadow-hover;
     background-clip: padding-box;
   }
 
   &:active:not(:disabled),
   &:focus:not(:disabled) {
-    $active-color:         adjust-color($base-color, $hue: 4,  $saturation: -12%,  $lightness: -10%);
-    $border-active:        adjust-color($base-color, $hue: 6,  $saturation: -2.5%, $lightness: -30%);
-    $border-bottom-active: adjust-color($base-color, $hue: 11, $saturation:  6%,   $lightness: -31%);
-    $inset-shadow-active:  adjust-color($base-color, $hue: 9,  $saturation:  2%,   $lightness: -21.5%);
-    $text-shadow-active:   adjust-color($base-color, $hue: 5,  $saturation: -12%,  $lightness: -21.5%);
+    $active-color:         color.adjust($base-color, $hue: 4,  $saturation: -12%,  $lightness: -10%);
+    $border-active:        color.adjust($base-color, $hue: 6,  $saturation: -2.5%, $lightness: -30%);
+    $border-bottom-active: color.adjust($base-color, $hue: 11, $saturation:  6%,   $lightness: -31%);
+    $inset-shadow-active:  color.adjust($base-color, $hue: 9,  $saturation:  2%,   $lightness: -21.5%);
+    $text-shadow-active:   color.adjust($base-color, $hue: 5,  $saturation: -12%,  $lightness: -21.5%);
 
     @if $grayscale == true {
-      $active-color:         grayscale($active-color);
-      $border-active:        grayscale($border-active);
-      $border-bottom-active: grayscale($border-bottom-active);
-      $inset-shadow-active:  grayscale($inset-shadow-active);
-      $text-shadow-active:   grayscale($text-shadow-active);
+      $active-color:         color.grayscale($active-color);
+      $border-active:        color.grayscale($border-active);
+      $border-bottom-active: color.grayscale($border-bottom-active);
+      $inset-shadow-active:  color.grayscale($inset-shadow-active);
+      $text-shadow-active:   color.grayscale($text-shadow-active);
     }
 
     background: $active-color;
@@ -334,7 +339,7 @@
 @mixin flat($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
 
-  @if is-light($base-color) {
+  @if color-lightness.is-light($base-color) {
     $color:       hsl(0, 0, 20%);
   }
 
@@ -350,10 +355,10 @@
   background-clip: padding-box;
 
   &:hover:not(:disabled){
-    $base-color-hover:    adjust-color($base-color, $saturation: 4%, $lightness: 5%);
+    $base-color-hover:    color.adjust($base-color, $saturation: 4%, $lightness: 5%);
 
     @if $grayscale == true {
-      $base-color-hover: grayscale($base-color-hover);
+      $base-color-hover: color.grayscale($base-color-hover);
     }
 
     background-color: $base-color-hover;
@@ -362,10 +367,10 @@
 
   &:active:not(:disabled),
   &:focus:not(:disabled) {
-    $base-color-active: adjust-color($base-color, $saturation: -4%, $lightness: -5%);
+    $base-color-active: color.adjust($base-color, $saturation: -4%, $lightness: -5%);
 
     @if $grayscale == true {
-      $base-color-active: grayscale($base-color-active);
+      $base-color-active: color.grayscale($base-color-active);
     }
 
     background-color: $base-color-active;

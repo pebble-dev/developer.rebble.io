@@ -1,3 +1,10 @@
+@use "sass:color";
+@use "../base/variables";
+@use "../bourbon/css3/flex-box";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -13,6 +20,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use "../elements/sidebar";
+@use "../elements/sectionmenu";
 
 $banner-blue: #066AC4;
 
@@ -34,8 +43,8 @@ $banner-blue: #066AC4;
     &::before {
       content: ' ';
       display: block;
-      height: $header-height + 60px;
-      margin-top: -1 * ($header-height + 60px);
+      height: header.$header-height + 60px;
+      margin-top: -1 * (header.$header-height + 60px);
       visibility: hidden;
     }
   }
@@ -52,7 +61,7 @@ $banner-blue: #066AC4;
   width: 100%;
   max-height: 620px;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     padding-top: 3rem;
   }
 
@@ -66,15 +75,15 @@ $banner-blue: #066AC4;
 }
 
 .retreat-nav {
-  background-color: transparentize(#222, 0.3);
-  left: $sidebar-width + $section-menu-width;
+  background-color: color.adjust(#222, $alpha: -0.3);
+  left: sidebar.$sidebar-width + sectionmenu.$section-menu-width;
   position: fixed;
   text-align: center;
-  top: $header-height;
+  top: header.$header-height;
   right: 0;
   z-index: 100;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
     width: 100%;
   }
@@ -85,11 +94,11 @@ $banner-blue: #066AC4;
   }
 
   ul {
-    @include display(flex);
+    @include flex-box.display(flex);
   }
 
   li {
-    @include flex(1 0 auto);
+    @include flex-box.flex(1 0 auto);
     display: block;
 
     &:last-child > a {
@@ -103,7 +112,7 @@ $banner-blue: #066AC4;
 
       &:hover,
       &:focus {
-        background-color: transparentize(darken($banner-blue, 30), 0.3);
+        background-color: color.adjust(color.adjust($banner-blue, $lightness: -30%), $alpha: -0.3);
       }
     }
   }
@@ -127,7 +136,7 @@ $banner-blue: #066AC4;
     font-size: 1.2rem;
     margin-top: 5vw;
 
-    @include bp-min(s) {
+    @include breakpoints.bp-min(s) {
       padding: 2em 0;
       margin-top: 20vw;
       font-size: 1.3em;
@@ -146,8 +155,8 @@ $banner-blue: #066AC4;
     position: relative;
 
     &::before {
-      border-radius: $base-border-radius;
-      color: $white;
+      border-radius: variables.$base-border-radius;
+      color: colors.$white;
       font-size: 1.4em;
       font-weight: normal;
       left: 0;
@@ -163,7 +172,7 @@ $banner-blue: #066AC4;
   dt {
 
     &::before {
-      background-color: $pebble-pink;
+      background-color: colors.$pebble-pink;
       content: 'Q';
     }
   }
@@ -171,7 +180,7 @@ $banner-blue: #066AC4;
   dd {
 
     &::before {
-      background-color: $pebble-green;
+      background-color: colors.$pebble-green;
       content: 'A';
     }
   }

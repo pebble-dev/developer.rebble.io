@@ -1,3 +1,6 @@
+@use "../bourbon/css3/transform";
+@use "../colors";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,8 +18,8 @@
  */
 
 .ribbon {
-  @include transform(rotate(45deg));
-  background-color: $pebble-green;
+  @include transform.transform(rotate(45deg));
+  background-color: colors.$pebble-green;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   color: #fff;
   font-size: 19px;
@@ -44,22 +47,22 @@
 }
 
 .ribbon--bg-white {
-  background-color: $white;
+  background-color: colors.$white;
 }
 
 .ribbon--fg-dark-grey {
-  color: $dark-grey;
+  color: colors.$dark-grey;
 }
 
 .ribbon--bg-dark-red {
-  background-color: $dark-red;
+  background-color: colors.$dark-red;
 }
 
 .ribbon--fg-dark-red {
-  color: $dark-red;
+  color: colors.$dark-red;
 }
 
 .ribbon--fg-white {
-  color: $white;
+  color: colors.$white;
 }
 

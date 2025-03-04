@@ -1,3 +1,5 @@
+@use "../../bourbon/addons/clearfix";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,5 +17,5 @@
  */
 
 %clearfix {
-  @include clearfix;
+  @include clearfix.clearfix;
 }

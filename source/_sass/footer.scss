@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "bourbon/addons/clearfix";
+@use "bourbon/css3/transition";
+@use "responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -24,9 +29,9 @@ $footer-bp: s;
   height: auto !important;
   margin: 0 auto -1 * $footer-height-mobile;
   min-height: 100%;
-  @include clearfix;
+  @include clearfix.clearfix;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     margin: 0 auto -1 * $footer-height;
   }
 }
@@ -34,7 +39,7 @@ $footer-bp: s;
 .push {
   height: $footer-height-mobile;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     height: $footer-height;
   }
 }
@@ -47,7 +52,7 @@ $footer-bp: s;
   width: 100%;
   z-index: 100;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     height: $footer-height;
   }
 
@@ -56,14 +61,14 @@ $footer-bp: s;
   }
 
   li {
-    @include bp-min ($footer-bp) {
+    @include breakpoints.bp-min ($footer-bp) {
       display: table-cell;
       width: 2%;
     }
   }
 
   a {
-    @include transition (all 0.2s ease-in-out);
+    @include transition.transition (all 0.2s ease-in-out);
     background-color: $footer-background-color;
     color: $footer-text-color;
     display: block;
@@ -74,7 +79,7 @@ $footer-bp: s;
     text-transform: uppercase;
 
     &:hover {
-      background-color: darken($footer-background-color, 20);
+      background-color: color.adjust($footer-background-color, $lightness: -20%);
     }
   }
 }

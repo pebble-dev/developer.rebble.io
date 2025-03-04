@@ -1,3 +1,5 @@
+@use "../../bourbon/addons/hide-text";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,5 +17,5 @@
  */
 
 %hide-text {
-  @include hide-text;
+  @include hide-text.hide-text;
 }

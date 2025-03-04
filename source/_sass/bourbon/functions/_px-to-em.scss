@@ -1,13 +1,19 @@
+@use "sass:math";
+@use "../settings/px-to-em";
+@use "strip-units";
+
 // Convert pixels to ems
 // eg. for a relational value of 12px write em(12) when the parent is 16px
 // if the parent is another value say 24px write em(12, 24)
 
-@function em($pxval, $base: $em-base) {
-  @if not unitless($pxval) {
-      $pxval: strip-units($pxval);
+@function em($pxval, $base: px-to-em.$em-base) {
+  @if not math.is-unitless($pxval) {
+    $pxval: strip-units.strip-units($pxval);
   }
-  @if not unitless($base) {
-      $base: strip-units($base);
+
+  @if not math.is-unitless($base) {
+    $base: strip-units.strip-units($base);
   }
-  @return ($pxval / $base) * 1em;
+
+  @return calc($pxval / $base) * 1em;
 }

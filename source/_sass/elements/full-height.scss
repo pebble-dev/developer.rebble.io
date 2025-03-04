@@ -1,3 +1,5 @@
+@use "../responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -18,25 +20,25 @@
   height: 100%;
 }
 
-@include bp(xs) {
+@include breakpoints.bp(xs) {
   .full-height--xs {
     height: 100%;
   }
 }
 
-@include bp(s) {
+@include breakpoints.bp(s) {
   .full-height--s {
     height: 100%;
   }
 }
 
-@include bp(m) {
+@include breakpoints.bp(m) {
   .full-height--m {
     height: 100%;
   }
 }
 
-@include bp(l) {
+@include breakpoints.bp(l) {
   .full-height--l {
     height: 100%;
   }

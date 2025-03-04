@@ -1,13 +1,17 @@
+@use "sass:meta";
+@use "linear-positions-parser";
+@use "radial-positions-parser";
+
 @function _gradient-positions-parser($gradient-type, $gradient-positions) {
   @if $gradient-positions
   and ($gradient-type == linear)
-  and (type-of($gradient-positions) != color) {
-    $gradient-positions: _linear-positions-parser($gradient-positions);
+  and (meta.type-of($gradient-positions) != color) {
+    $gradient-positions: linear-positions-parser.linear-positions-parser($gradient-positions);
   }
   @else if $gradient-positions
   and ($gradient-type == radial)
-  and (type-of($gradient-positions) != color) {
-    $gradient-positions: _radial-positions-parser($gradient-positions);
+  and (meta.type-of($gradient-positions) != color) {
+    $gradient-positions: radial-positions-parser.radial-positions-parser($gradient-positions);
   }
   @return $gradient-positions;
 }

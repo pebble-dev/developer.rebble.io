@@ -2,7 +2,9 @@
 	jQuery.mmenu searchfield addon CSS
 */
 
-@import "../inc/variables";
+@use "sass:math";
+@use "../inc/variables";
+@use "../inc/colors";
 
 .mm-search,
 .mm-search input
@@ -13,8 +15,8 @@
 {
 	> li.mm-search
 	{
-		padding: $mm_padding;
-		margin-top: -( $mm_padding * 2 );
+		padding: variables.$mm_padding;
+		margin-top: -( variables.$mm_padding * 2 );
 	}
 	> li.mm-subtitle + li.mm-search
 	{
@@ -23,7 +25,7 @@
 }
 div.mm-panel > div.mm-search
 {
-	padding: 0 0 $mm_padding 0;
+	padding: 0 0 variables.$mm_padding 0;
 }
 .mm-menu.mm-hasheader .mm-list > li.mm-search
 {
@@ -40,21 +42,21 @@ div.mm-panel > div.mm-search
 }
 .mm-search
 {
-	padding: $mm_padding;
+	padding: variables.$mm_padding;
 
 	input
 	{		
 		border: none;
-		border-radius: $mm_searchfieldHeight;
+		border-radius: variables.$mm_searchfieldHeight;
 		font: inherit;
-		font-size: $mm_fontSize;
-		line-height: $mm_searchfieldHeight;
+		font-size: variables.$mm_fontSize;
+		line-height: variables.$mm_searchfieldHeight;
 		outline: none;
 		display: block;
 		width: 100%;
-		height: $mm_searchfieldHeight;
+		height: variables.$mm_searchfieldHeight;
 		margin: 0;
-		padding: 0 $mm_padding;
+		padding: 0 variables.$mm_padding;
 	}
 	input::-ms-clear
 	{
@@ -65,9 +67,9 @@ div.mm-panel > div.mm-search
 .mm-menu .mm-noresultsmsg
 {
 	text-align: center;
-	font-size: round( $mm_fontSize * 1.5 );
+	font-size: math.round( variables.$mm_fontSize * 1.5 );
 	display: none;
-	padding: ( $mm_btnSize * 1.5 ) 0;
+	padding: ( variables.$mm_btnSize * 1.5 ) 0;
 	
 	&:after
 	{
@@ -79,7 +81,7 @@ div.mm-panel > div.mm-search
 	display: block;
 }
 
-$mm_paddingBeneathHeader: $mm_padding * 2 !default;
+$mm_paddingBeneathHeader: variables.$mm_padding * 2 !default;
 .mm-menu
 {
 	li.mm-nosubresults > a.mm-subopen
@@ -96,7 +98,7 @@ $mm_paddingBeneathHeader: $mm_padding * 2 !default;
 	{
 		> .mm-panel
 		{
-			padding-top: $mm_searchHeight + $mm_paddingBeneathHeader;
+			padding-top: variables.$mm_searchHeight + $mm_paddingBeneathHeader;
 			
 			> .mm-list:first-child
 			{
@@ -110,7 +112,7 @@ $mm_paddingBeneathHeader: $mm_padding * 2 !default;
 		{
 			> div.mm-search:first-child
 			{
-				margin-top: -$mm_padding;
+				margin-top: -(variables.$mm_padding);
 				
 				+ .mm-list
 				{
@@ -122,4 +124,4 @@ $mm_paddingBeneathHeader: $mm_padding * 2 !default;
 }
 
 
-@include mm_colors_searchfield;
+@include colors.mm_colors_searchfield;

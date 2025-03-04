@@ -1,3 +1,6 @@
+@use "mixins/flash";
+@use "variables";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,17 +18,17 @@
  */
 
 %flash-alert {
-  @include flash($alert-color);
+  @include flash.flash(variables.$alert-color);
 }
 
 %flash-error {
-  @include flash($error-color);
+  @include flash.flash(variables.$error-color);
 }
 
 %flash-notice {
-  @include flash($notice-color);
+  @include flash.flash(variables.$notice-color);
 }
 
 %flash-success {
-  @include flash($success-color);
+  @include flash.flash(variables.$success-color);
 }

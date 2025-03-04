@@ -1,6 +1,8 @@
+@use "variables";
+
 // Fixed Width Icons
 // -------------------------
-.#{$fa-css-prefix}-fw {
-  width: (18em / 14);
+.#{variables.$fa-css-prefix}-fw {
+  width: calc(18em / 14);
   text-align: center;
 }
