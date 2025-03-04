@@ -1,0 +1,66 @@
+@use "../responsive/utilities/mixins/breakpoints";
+
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.full-height {
+  height: 100%;
+}
+
+@include breakpoints.bp(xs) {
+  .full-height--xs {
+    height: 100%;
+  }
+}
+
+@include breakpoints.bp(s) {
+  .full-height--s {
+    height: 100%;
+  }
+}
+
+@include breakpoints.bp(m) {
+  .full-height--m {
+    height: 100%;
+  }
+}
+
+@include breakpoints.bp(l) {
+  .full-height--l {
+    height: 100%;
+  }
+}
+
+.half-height {
+  height: 50%;
+}
+
+.half-height--bottom {
+  height: 50%;
+  padding-top: 50%;
+}
+
+.one-third-height {
+  height: 33%;
+}
+
+.two-thirds-height {
+  height: 67%;
+}
+
+.quarter-height {
+  height: 25%;
+}

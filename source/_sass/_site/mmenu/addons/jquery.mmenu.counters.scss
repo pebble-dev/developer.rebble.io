@@ -1,0 +1,48 @@
+/*
+	jQuery.mmenu counters addon CSS
+*/
+
+@use "../inc/variables";
+@use "../inc/colors";
+
+
+em.mm-counter {
+  font: inherit;
+  font-size: variables.$mm_fontSize;
+  font-style: normal;
+  text-indent: 0;
+  line-height: calc(variables.$mm_btnSize / 2);
+  display: block;
+  margin-top: - calc(variables.$mm_btnSize / 4);
+  position: absolute;
+  right: variables.$mm_subopenWidth;
+  top: 50%;
+
+  +a.mm-subopen {
+    padding-left: variables.$mm_counterWidth;
+
+    +a,
+    +span {
+      margin-right: variables.$mm_counterWidth + variables.$mm_subopenWidth;
+    }
+  }
+
+  +a.mm-fullsubopen {
+    padding-left: 0;
+  }
+}
+
+// vertical submenu
+.mm-vertical {
+  em.mm-counter {
+    top: calc((variables.$mm_btnSize / 4) + 2px);
+    margin-top: 0;
+  }
+}
+
+// Search
+.mm-nosubresults>em.mm-counter {
+  display: none;
+}
+
+@include colors.mm_colors_counters;

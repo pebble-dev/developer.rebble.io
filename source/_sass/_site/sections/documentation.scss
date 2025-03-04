@@ -1,0 +1,220 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@use 'documentation/c';
+@use 'documentation/android';
+@use 'documentation/ios';
+@use 'documentation/js';
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+
+$docs-header-color: colors.$gray-06;
+
+.documentation {
+  max-width: 43em;
+
+  a,
+  a code {
+    color: color.scale(variables.$base-link-color, $lightness: -33.7748344371%);
+    font-weight: 600;
+  }
+
+  a:hover,
+  a:active {
+    color: color.scale(variables.$base-link-color, $lightness: -67.5496688742%);
+  }
+}
+
+.docs_tree {
+  ul {
+    @extend %default-ul;
+  }
+}
+
+.docs__item {
+  ul {
+    @extend %default-ul;
+  }
+}
+
+
+.docs__item__param {
+  white-space: nowrap;
+
+  a {
+    text-decoration: underline;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: colors.$gray-02;
+    }
+  }
+}
+
+.docs__module {
+  h4 {
+    margin: 0;
+  }
+
+  a {
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
+
+.docs__item {
+  margin-bottom: 2em;
+
+  &:last-child {
+    margin-bottom: 1em;
+  }
+
+  &::before {
+    content: ' ';
+    display: block;
+    height: header.$header-height;
+    margin-top: -1 * header.$header-height;
+    visibility: hidden;
+  }
+
+  section {
+    display: none;
+
+    &[data-platform="aplite"] {
+      display: block;
+    }
+  }
+}
+
+.docs__item__tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    background-color: color.scale($docs-header-color, $lightness:  49.756097561%);
+    border-radius: 4px 4px 0 0;
+    color: color.scale(colors.$gray-02, $lightness: 13.9344262295%);
+    display: block;
+    padding: 0.4em 0.8em;
+    text-transform: uppercase;
+
+    &.active {
+      background-color: $docs-header-color;
+      color: colors.$gray-02;
+    }
+  }
+}
+
+.docs__item__header {
+  background-color: $docs-header-color;
+  color: colors.$gray-02;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 0.5em;
+
+  a,
+  a:hover,
+  a:active {
+    color: colors.$gray-02;
+  }
+}
+
+.docs__item__name {
+  color: colors.$gray-02;
+  font-weight: bold;
+}
+
+.docs__item__summary,
+.docs__item__description {
+  margin-bottom: 0.5em;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.docs__item__body {
+  border: 1px solid $docs-header-color;
+  border-top: 0;
+  padding: 0.5em;
+
+  h4 {
+    border-bottom: 1px solid colors.$color-docs;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+
+  dl {
+    margin-top: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  dd {
+    margin-left: 1em;
+  }
+
+  dt {
+    margin: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.docs__item--missing {
+  border: 1px solid colors.$gray-09;
+  padding: 0.5em;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.alert--docs-notes {
+  background-color: colors.$gray-05;
+  border-bottom: 2px solid colors.$color-docs;
+  border-top: 2px solid colors.$color-docs;
+  color: colors.$gray-03;
+  margin: 0 -0.5em 1em;
+
+  h5 {
+    font-size: 1.1em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.docs__item__anchor {
+  &::before {
+    content: ' ';
+    display: block;
+    height: header.$header-height;
+    margin-top: -1 * header.$header-height;
+    visibility: hidden;
+  }
+}
+

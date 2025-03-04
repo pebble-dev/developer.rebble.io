@@ -1,0 +1,97 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+$pebble-black: #111;
+$pebble-blue: #16b5d8;
+$pebble-blue-alt: color.scale(#16b5d8, $lightness: -33.7748344371%);
+$pebble-gray: #959fa0;
+$pebble-green: #aed70d;
+$pebble-orange: #f57216;
+$pebble-pink: #ff568a;
+$pebble-red: #b93231;
+$pebble-silver: #bdc3c7;
+
+$header-orange: #ef6725;
+
+$white: #fff;
+$breakfast-room-white: #FFFFF0;
+$black: #000;
+$green: #00a94b;
+$blue: #16aee5;
+$red: #ff1200;
+$dark-grey: #444;
+$darker-grey: #333;
+$pink: #d84ba1;
+$yellow: #e5e327;
+$mustard-yellow: #f5d04c;
+$purple: #9d49d5;
+$orange: #e59a25;
+$orange-02: #e27c3f;
+$lightblue: #4cafe2;
+$darkerlightblue: #4c96e2;
+$dark-red: #d55248;
+$dark-blue: #3f94c0;
+$turquoise: #35a2b2;
+$android-green: #A4C739;
+
+$bigbox--blue: $lightblue;
+$bigbox--green: #22a048;
+$bigbox--darkgreen: color.scale($bigbox--green, $lightness: -33.7748344371%);
+$bigbox--dark-blue: color.scale($darkerlightblue, $lightness: -33.7748344371%);
+
+$color-guides: $yellow;
+$color-docs: $pink;
+$color-community: $purple;
+$color-more: $green;
+$color-getting-started: $dark-red;
+$color-sdk: $lightblue;
+$color-appstore: $orange;
+$color-other: $dark-grey;
+
+$gray-01: #f4f4f4;
+$gray-02: #444;
+$gray-03: #484848;
+$gray-04: #eee;
+$gray-05: #e5e4e4;
+$gray-06: #d6d6d6;
+$gray-07: #272822;
+$gray-08: #ddd;
+$gray-09: #bebebe;
+$gray-10: #d9d9d9;
+$gray-11: #666;
+$gray-12: #ccc;
+
+$bigbox--blue: $lightblue;
+$bigbox--green: #22a048;
+
+$color-guides: $yellow;
+$color-docs: $pink;
+$color-community: $purple;
+$color-more: $green;
+$color-getting-started: $dark-red;
+$color-sdk: $lightblue;
+$color-appstore: $gray-03;
+$color-blog: $orange-02;
+$color-examples: #2c67ce;
+
+$modifier-color-names: 'guides', 'docs', 'community', 'more', 'getting-started',
+                       'sdk', 'appstore', 'blog';
+
+$modifier-colors: $color-guides, $color-docs, $color-community, $color-more,
+                  $color-getting-started, $color-sdk, $color-appstore,
+                  $color-blog;
+
+$modifier-colors-fg: $white $white $white $white $white $white $white $white;

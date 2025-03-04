@@ -1,0 +1,91 @@
+@use "../base/variables";
+@use "../colors";
+
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.platform-choice {
+  padding: 0.5em;
+  border-radius: variables.$base-border-radius;
+}
+
+.platform-choice--large {
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.platform-choice--small {
+
+  p {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    float: left;
+    height: variables.$unitless-line-height * 1em;
+    margin-right: 0.5em;
+  }
+
+  a {
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.platform-choice--hidden {
+  display: none;
+}
+
+.platform-choice--link {
+  display: inline-block;
+  margin: 0 1em;
+
+  img {
+    display: block;
+    height: 3em;
+    margin: 0 auto;
+  }
+
+  h4 {
+    color: colors.$white;
+    font-size: 0.9em;
+    margin: 0.5em 0 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  &:hover {
+    h4 {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Hide all of the platform specific instructions by default.
+.platform-specific {
+  display: none;
+}
+
+// Unhide CloudPebble instructions to handle lack of JS support / JS failures.
+.platform-specific[data-sdk-platform="cloudpebble"] {
+  display: inherit;
+}

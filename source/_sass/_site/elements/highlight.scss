@@ -1,0 +1,302 @@
+@use "../base/variables";
+@use "../bourbon/addons/font-family";
+@use "../colors";
+@use "../responsive/utilities/mixins/breakpoints";
+
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.highlight {
+  background-color: colors.$gray-07;
+  border-radius: variables.$base-border-radius;
+  color: #f8f8f2;
+  font: 13px/1.3em font-family.$monospace;
+  margin: 0 0 0.75em;
+  padding: 10px;
+  position: relative;
+
+  @include breakpoints.bp-max (xs) {
+    font-size: 12px;
+  }
+
+  &.squished {
+    border-radius: 0;
+    margin: 0;
+  }
+
+  pre {
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .code-copy-link {
+    background-color: colors.$turquoise;
+    border-radius: variables.$base-border-radius;
+    color: colors.$white;
+    opacity: 0.1;
+    padding: 0.3em 0.3em 0.3em 0.35em;
+    position: absolute;
+    right: 0.4em;
+    top: 0.4em;
+    transition: opacity 0.2s;
+
+    &.zeroclipboard-is-hover {
+      opacity: 1;
+    }
+    
+    span {
+      display: inline-block;
+      margin-right: 0.5em;
+    }
+  }
+
+  &:hover {
+    .code-copy-link {
+      opacity: 1;
+    }
+  }
+
+  // Error
+  .err {
+    background-color: #1e0010;
+    color: #960050;
+  }
+
+  // Keyword
+  .k {
+    color: #66d9ef;
+  }
+
+  // Literal
+  .l {
+    color: #ae81ff;
+  }
+
+  // Name
+  .n {
+    color: #f8f8f2;
+  }
+
+  // Operator
+  .o {
+    color: #f92672;
+  }
+
+  // Punctuation
+  .p {
+    color: #f8f8f2;
+  }
+
+  // Comment.Multiline
+  // Comment.Preproc
+  // Comment.Single
+  // Comment.Special
+  // Comment
+  .c,
+  .cm,
+  .cp,
+  .c1,
+  .cs {
+    color: #e4b21f;
+    font-weight: 600;
+  }
+
+  // Generic.Emph
+  .ge {
+    font-style: italic;
+  }
+
+  // Generic.Strong
+  .gs {
+    font-weight: bold;
+  }
+
+  // Keyword.Constant
+  // Keyword.Declaration
+  .kc,
+  .kd {
+    color: #66d9ef;
+  }
+
+  // Keyword.Namespace
+  .kn {
+    color: #f92672;
+  }
+
+  // Keyword.Pseudo
+  // Keyword.Reserved
+  // Keyword.Type
+  .kp,
+  .kr,
+  .kt {
+    color: #66d9ef;
+  }
+
+  // Literal.Date
+  .ld {
+    color: #e6db74;
+  }
+
+  // Literal.Number
+  .m {
+    color: #ae81ff;
+  }
+
+  // Literal.String
+  .s {
+    color: #e6db74;
+  }
+
+  // Name.Attribute
+  .na {
+    color: #a6e22e;
+  }
+
+  // Name.Builtin
+  .nb {
+    color: #f8f8f2;
+  }
+
+  // Name.Class
+  .nc {
+    color: #a6e22e;
+  }
+
+  // Name.Constant
+  .no {
+    color: #66d9ef;
+  }
+
+  // Name.Decorator
+  .nd {
+    color: #a6e22e;
+  }
+
+  // Name.Entity
+  .ni {
+    color: #f8f8f2;
+  }
+
+  // Name.Exception
+  // Name.Function
+  .ne,
+  .nf {
+    color: #a6e22e;
+  }
+
+  // Name.Label
+  // Name.Namespace
+  .nl,
+  .nn {
+    color: #f8f8f2;
+  }
+
+  // Name.Other
+  .nx {
+    color: #a6e22e;
+  }
+
+  // Name.Property
+  .py {
+    color: #f8f8f2;
+  }
+
+  // Name.Tag
+  .nt {
+    color: #f92672;
+  }
+
+  // Name.Variable
+  .nv {
+    color: #f8f8f2;
+  }
+
+  // Operator.Word
+  .ow {
+    color: #f92672;
+  }
+
+  // Text.Whitespace
+  .w {
+    color: #f8f8f2;
+  }
+
+  // Literal.Number.Float
+  // Literal.Number.Hex
+  // Literal.Number.Integer
+  // Literal.Number.Oct
+  .mf,
+  .mh,
+  .mi,
+  .mo {
+    color: #ae81ff;
+  }
+
+  // Literal.String.Backtick
+  // Literal.String.Char
+  // Literal.String.Doc
+  // Literal.String.Double
+  .sb,
+  .sc,
+  .sd,
+  .s2 {
+    color: #e6db74;
+  }
+
+  // Literal.String.Escape
+  .se {
+    color: #ae81ff;
+  }
+
+  // Literal.String.Heredoc
+  // Literal.String.Interpol
+  // Literal.String.Other
+  // Literal.String.Regex
+  // Literal.String.Single
+  // Literal.String.Symbol
+  .sh,
+  .si,
+  .sx,
+  .sr,
+  .s1,
+  .ss {
+    color: #e6db74;
+  }
+
+  // Name.Builtin.Pseudo
+  // Name.Variable.Class
+  // Name.Variable.Global
+  // Name.Variable.Instance
+  .bp,
+  .vc,
+  .vg,
+  .vi {
+    color: #f8f8f2;
+  }
+
+  // Literal.Number.Integer.Long
+  .il {
+    color: #ae81ff;
+  }
+}
+
+.modal-content .highlight {
+  position: relative;
+}
+
+.highlight--large {
+  font: 15px/1.3em font-family.$monospace;
+}

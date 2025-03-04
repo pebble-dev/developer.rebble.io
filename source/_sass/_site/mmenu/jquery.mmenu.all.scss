@@ -1,0 +1,15 @@
+@use "jquery.mmenu";
+
+@use "addons/jquery.mmenu.buttonbars" as jquery2;
+@use "addons/jquery.mmenu.counters" as jquery3;
+@use "addons/jquery.mmenu.dragopen" as jquery4;
+@use "addons/jquery.mmenu.footer" as jquery5;
+@use "addons/jquery.mmenu.header" as jquery6;
+@use "addons/jquery.mmenu.labels" as jquery7;
+@use "addons/jquery.mmenu.searchfield" as jquery8;
+@use "addons/jquery.mmenu.toggles" as jquery9;
+
+@use "extensions/jquery.mmenu.effects" as jquery10;
+@use "extensions/jquery.mmenu.fullscreen" as jquery11;
+@use "extensions/jquery.mmenu.positioning" as jquery12;
+@use "extensions/jquery.mmenu.themes" as jquery13;

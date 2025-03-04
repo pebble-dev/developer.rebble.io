@@ -30,7 +30,7 @@ $section-menu-width: 240px;
   width: $section-menu-width;
   overflow-y: auto;
 
-  >ul {
+  > ul {
     padding: 1em;
   }
 
@@ -55,11 +55,11 @@ $section-menu-width: 240px;
   width: $section-menu-width;
 
   h3 {
-    border-bottom: 1px solid rgba(68, 68, 68, 0.2);
+    border-bottom: 1px solid rgba(68,68,68,0.2);
     font-size: $base-font-size * 1.2;
     font-weight: 400;
     margin-top: 3px;
-    padding: calc($base-line-height / 1.2) 0;
+    padding: $base-line-height / 1.2 0;
     text-transform: uppercase;
     width: 100%;
   }
@@ -93,27 +93,27 @@ $section-menu-width: 240px;
 
 .section-menu__item {
 
-  >a {
+  > a {
     color: $gray-02;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
-    margin: calc($base-line-height / 4) 0;
+    margin: $base-line-height / 4 0;
     padding: 0.5em;
   }
 
-  >ul {
+  > ul {
     display: none;
   }
 
-  &.open>ul {
+  &.open > ul {
     display: block;
   }
 }
 
 .section-menu__subitem {
 
-  >a {
+  > a {
     color: $gray-02;
     display: block;
     font-size: 13px;
@@ -138,7 +138,7 @@ $section-menu-width: 240px;
 
 .section-menu__subsubitem {
 
-  >a {
+  > a {
     color: $gray-02;
     display: block;
     font-size: 12px;
@@ -161,9 +161,9 @@ $section-menu-width: 240px;
     color: $white;
   }
 
-  .section-menu__item.active>a,
-  .section-menu__subitem.active>a,
-  .section-menu__subsubitem.active>a span {
+  .section-menu__item.active > a,
+  .section-menu__subitem.active > a,
+  .section-menu__subsubitem.active > a span {
     background-color: $white;
     border-radius: $base-border-radius;
     color: $gray-02;
@@ -178,9 +178,9 @@ $section-menu-width: 240px;
     color: $gray-02;
   }
 
-  .section-menu__item.active>a,
-  .section-menu__subitem.active>a,
-  .section-menu__subsubitem.active>a span {
+  .section-menu__item.active > a,
+  .section-menu__subitem.active > a,
+  .section-menu__subsubitem.active > a span {
     background-color: $gray-02;
     border-radius: $base-border-radius;
     color: $white;

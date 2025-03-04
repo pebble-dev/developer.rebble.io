@@ -1,0 +1,84 @@
+@use "bourbon/addons/clearfix";
+@use "bourbon/css3/transition";
+@use "responsive/utilities/mixins/breakpoints";
+
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+$footer-height: 2rem;
+$footer-height-mobile: 9.95rem;
+$footer-background-color: #333;
+$footer-text-color: #bbb;
+$footer-bp: s;
+
+.wrapper {
+  height: auto !important;
+  margin: 0 auto -1 * $footer-height-mobile;
+  min-height: 100%;
+  @include clearfix.clearfix;
+
+  @include breakpoints.bp-min ($footer-bp) {
+    margin: 0 auto -1 * $footer-height;
+  }
+}
+
+.push {
+  height: $footer-height-mobile;
+
+  @include breakpoints.bp-min ($footer-bp) {
+    height: $footer-height;
+  }
+}
+
+.footer {
+  background-color: $footer-background-color;
+  display: table;
+  height: $footer-height-mobile;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  @include breakpoints.bp-min ($footer-bp) {
+    height: $footer-height;
+  }
+
+  ul {
+    display: table-row;
+  }
+
+  li {
+    @include breakpoints.bp-min ($footer-bp) {
+      display: table-cell;
+      width: 2%;
+    }
+  }
+
+  a {
+    @include transition.transition (all 0.2s ease-in-out);
+    background-color: $footer-background-color;
+    color: $footer-text-color;
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.65rem 0 0.4rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: color.scale($footer-background-color, $lightness: -33.7748344371%);
+    }
+  }
+}

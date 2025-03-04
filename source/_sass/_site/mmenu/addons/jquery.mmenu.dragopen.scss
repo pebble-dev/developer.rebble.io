@@ -1,0 +1,18 @@
+/*
+	jQuery.mmenu dragOpen addon CSS
+*/
+
+@use "../inc/variables";
+@use "../inc/mixins";
+
+html.mm-opened.mm-dragging
+{
+	.mm-menu,
+	.mm-page,
+	.mm-fixed-top,
+	.mm-fixed-bottom,
+	#mm-blocker
+	{
+		@include mixins.mm_webkit-prefix( "transition-duration", 0s );
+	}
+}
