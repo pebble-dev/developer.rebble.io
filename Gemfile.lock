@@ -117,7 +117,7 @@ GEM
     public_suffix (6.0.1)
     pygments.rb (3.0.0)
     racc (1.8.1)
-    rack (1.5.5)
+    rack (3.1.10)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-host-redirect (1.3.0)
@@ -212,33 +212,33 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  algoliasearch (>= 1.6.1)
-  bundler (>= 1.7.9)
-  dotenv (>= 0.11.1)
-  googlestaticmap (>= 1.2.2)
-  htmlentities (>= 4.3.2)
-  jekyll (>= 3.0.3)
+  algoliasearch
+  bundler
+  dotenv
+  googlestaticmap
+  htmlentities
+  jekyll
   jekyll-paginate
-  newrelic_rpm (>= 3.9.8.273)
-  nokogiri (>= 1.6.3.1)
+  newrelic_rpm
+  nokogiri
   pygments.rb
-  rack (< 1.6.0)
-  rack-contrib (>= 1.2.0)
+  rack
+  rack-contrib
   rack-host-redirect
-  rack-rewrite (>= 1.5.0)
-  rack-ssl-enforcer (>= 0.2.9)
-  rack-wwwhisper (>= 1.0)
-  rack-xframe-options (>= 0.1.2)
+  rack-rewrite
+  rack-ssl-enforcer
+  rack-wwwhisper
+  rack-xframe-options
   redcarpet
-  rspec (>= 3.1.0)
-  rubocop (>= 0.28.0)
-  rubyzip (>= 1.1.6)
-  simplecov (>= 0.9.1)
-  slugize (>= 0.0.3)
-  uglifier (>= 2.7.0)
+  rspec
+  rubocop
+  rubyzip
+  simplecov
+  slugize
+  uglifier
 
 RUBY VERSION
    ruby 3.3.7p123
 
 BUNDLED WITH
-   2.6.0
+   2.6.5

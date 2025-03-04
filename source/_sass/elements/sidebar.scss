@@ -56,7 +56,7 @@ $sidebar-hide-at: xs;
   font-size: $base-font-size * 1.2;
   height: $header-height;
   left: 0;
-  padding: $base-line-height / 1.2 0;
+  padding: calc($base-line-height / 1.2) 0;
   position: absolute;
   text-align: center;
   top: 0;
@@ -81,7 +81,7 @@ $sidebar-hide-at: xs;
       display: block;
     }
 
-    > a {
+    >a {
       background-color: lighten($base-link-color, 30);
       color: #fff;
     }
@@ -201,7 +201,7 @@ $sidebar-hide-at: xs;
     position: relative;
     text-transform: uppercase;
 
-    @media screen and ( max-height: 640px ){
+    @media screen and (max-height: 640px) {
       margin: 0;
     }
 

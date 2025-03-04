@@ -1,17 +1,17 @@
 {% comment %}
- Copyright 2025 Google LLC
+Copyright 2025 Google LLC
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 {% endcomment %}
 
 {% comment %}
@@ -19,10 +19,12 @@ This layout file is used for generating permanent redirects from old URLs to
 new ones.
 {% endcomment %}
 
-{% capture redirect_url %}{{ page.redirect_to | prepend: site.baseurl | prepend: site.url }}{% endcapture %}
+{% assign redirect_url = page.redirect_to | prepend: site.baseurl | prepend: site.url %}
+{% assign http = page.redirect_to | downcase | slice: 0, 7 %}
+{% assign https = page.redirect_to | downcase | slice: 0, 8 %}
 
-{% if page.redirect_to | downcase | slice: 0, 6 == "http://" or page.redirect_to | downcase | slice: 0, 7 == "https://" %}
-{% capture redirect_url %}{{ page.redirect_to }}{% endcapture %}
+{% if http == "http://" or https == "https://" %}
+{% assign redirect_url = page.redirect_to %}
 {% endif %}
 
 <meta http-equiv="refresh" content="0; url={{ redirect_url }}">

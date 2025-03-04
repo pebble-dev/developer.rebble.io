@@ -20,14 +20,16 @@ table {
 
 th {
   font-weight: bold;
-  padding: ($base-line-height / 2) 0;
+  padding: calc($base-line-height / 2) 0;
   text-align: left;
 }
 
 td {
-  padding: ($base-line-height / 2) 0;
+  padding: calc($base-line-height / 2) 0;
 }
 
-tr, td, th {
+tr,
+td,
+th {
   vertical-align: middle;
 }

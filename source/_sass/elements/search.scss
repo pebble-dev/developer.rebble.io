@@ -19,7 +19,7 @@
   border-bottom: 1px solid $gray-10;
   height: $header-height;
   left: $sidebar-width;
-  padding: $base-font-size / 1.2;
+  padding: calc($base-font-size / 1.2);
   position: fixed;
   right: 0;
   top: 0;
@@ -35,7 +35,7 @@
     border: 0;
     box-shadow: none;
     font-size: $base-font-size * 1.2;
-    padding: $base-font-size / 2;
+    padding: calc($base-font-size / 2);
     padding-left: 2em;
     width: 100%;
 
@@ -57,9 +57,9 @@
 
 .search__icon {
   font-size: $base-font-size * 1.2;
-  left: $base-font-size / 0.6;
+  left: calc($base-font-size / 0.6);
   position: absolute;
-  top: $base-font-size / 0.6;
+  top: calc($base-font-size / 0.6);
 
   @include bp-max ($sidebar-hide-at) {
     display: none;
@@ -135,7 +135,7 @@
   }
 }
 
-.quicksearch__block--more{
+.quicksearch__block--more {
   h3 {
     background-color: $color-more;
   }

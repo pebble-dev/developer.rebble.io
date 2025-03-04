@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@use 'sass:color';
 
 // Typography
 $sans-serif: 'Open Sans';
@@ -52,10 +53,10 @@ $success-color: $green;
 
 // Forms
 $form-border-color: $base-border-color;
-$form-border-color-hover: darken($base-border-color, 10);
+$form-border-color-hover: color.adjust($base-border-color, lighten, -10);
 $form-border-color-focus: $base-accent-color;
 $form-border-radius: $base-border-radius;
-$form-box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+$form-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
 $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;
