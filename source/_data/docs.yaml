@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-c: /PebbleSDK-4.3_docs.zip
+c: PebbleSDK-4.3_docs.zip
 # c_preview: PebbleSDK-4.2-beta4_docs.zip
-pebblekit_ios: /pebblekit_ios_4.0.0.zip
-pebblekit_android: /pebblekit_android_4.0.1.zip
-pebblekit_js: /jsdocs-pkjs
-rocky_js: /jsdocs-rocky
+pebblekit_ios: pebblekit_ios_4.0.0.zip
+pebblekit_android: pebblekit_android_4.0.1.zip
+pebblekit_js: jsdocs-pkjs
+rocky_js: jsdocs-rocky
