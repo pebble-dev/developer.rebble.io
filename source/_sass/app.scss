@@ -20,9 +20,9 @@
 
 @use 'colors';
 
-@use 'base/base';
-@use 'responsive/responsive';
-@use 'font-awesome/font-awesome';
+@forward 'base/base';
+@forward 'responsive/responsive';
+@forward 'font-awesome/font-awesome';
 
 @use 'header';
 @use 'footer';

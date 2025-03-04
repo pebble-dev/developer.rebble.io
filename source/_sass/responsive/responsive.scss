@@ -1,12 +1,12 @@
 ﻿// Utilities
-@use "utilities/variables";
-@use "utilities/mixins/breakpoints";
-@use "utilities/mixins/grid";
-@use "utilities/mixins/push-pull";
-@use "utilities/mixins/grid-state";
-@use "utilities/mixins/layout";
-@use "utilities/mixins/text-align";
-@use "utilities/mixins/visibility";
+@forward "utilities/variables";
+@forward "utilities/mixins/breakpoints";
+@forward "utilities/mixins/grid";
+@forward "utilities/mixins/push-pull";
+@forward "utilities/mixins/grid-state";
+@forward "utilities/mixins/layout";
+@forward "utilities/mixins/text-align";
+@forward "utilities/mixins/visibility";
 
 // Base Styles
 // @import "partials/copyright";
@@ -29,13 +29,13 @@
 // @import	"partials/autosize";
 // @import	"partials/carousel";
 // @import	"partials/dropdown";
-@use "partials/modal";
+@forward "partials/modal";
 // @import	"partials/tablelist";
 // @import	"partials/tabs";
 
 // Helpers
-@use "partials/helpers-layout";
-@use "partials/helpers-visibility";
+@forward "partials/helpers-layout";
+@forward "partials/helpers-visibility";
 
 // Print Styles
-@use "partials/print";
+@forward "partials/print";

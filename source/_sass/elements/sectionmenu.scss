@@ -48,10 +48,10 @@ $section-menu-width: 240px;
 }
 
 .content--section-menu {
-  margin-left: sidebar.$sidebar-width + $section-menu-width;
+  padding-left: $section-menu-width;
 
   @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
-    margin-left: 0;
+    padding-left: 0;
   }
 }
 
