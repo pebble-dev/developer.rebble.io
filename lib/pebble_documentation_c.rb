@@ -55,6 +55,8 @@ module Pebble
     def download_and_extract(zip, folder)
       open(zip) do | zf |
         Zip::File.open(zf.path) do | zipfile |
+          print("extracted from ", zf.path)
+          print("\n")
           zipfile.each do | entry |
             path = File.join(folder, entry.name).sub('/doxygen_sdk/', '/')
             FileUtils.mkdir_p(File.dirname(path))

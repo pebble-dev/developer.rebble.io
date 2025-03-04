@@ -63,7 +63,7 @@ module Pebble
             :properties => member['properties'],
             :url => url,
             :kind => kind,
-            :summary => member['summary']
+            :summary => member['memberof']
           }
           add_symbol(symbol)
           js_module[:children].push(symbol)

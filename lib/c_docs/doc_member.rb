@@ -95,7 +95,12 @@ module Pebble
 
     def process_typedef(node, mapping, platform)
       process_return_type(node, mapping, platform)
-      @data[platform]['argsstring'] = node.at_css('argsstring').content.to_s
+      argsstring = node.at_css('argsstring')
+      if argsstring == nil then
+        @data[platform]['argsstring'] = ""
+      else
+        @data[platform]['argsstring'] = argsstring.content.to_s
+      end
       process_parameter_list(node, mapping, platform)
     end
 

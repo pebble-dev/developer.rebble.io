@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,65 +17,71 @@ layout: sidebar_narrow
 menu_section: docs
 search_primary: docs
 ---
-  <div class="section-menu section-menu--docs section-menu--dark">
-    <div class="section-menu__header">
-      {% case page.docs_language %}
-      {% when 'c' %}
-      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'c_preview' %}
-      <h3><a href="/docs/c/preview/">Pebble C API (SDK 4 Preview)</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'rockyjs' %}
-      <h3><a href="/docs/rockyjs/">Pebble JavaScript API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'pebblekit_js' %}
-      <h3><a href="/docs/pebblekit-js/">PebbleKit JS</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'pebblekit_ios' %}
-      <h3><a href="/docs/pebblekit-ios/">PebbleKit iOS</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'pebblekit_android' %}
-      <h3><a href="/docs/pebblekit-android/">PebbleKit Android</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% else %}
-      <h3><a href="/docs/">Documentation</a></h3>
-      {% endcase %}
-      <ul class="documentation-menu js-doc-menu">
-        <li><a href="/docs/c/">Pebble C API</a></li>
-        {% if site.data.docs_tree.c_preview %}
-        <li><a href="/docs/c/preview/">Pebble C API (preview)</a></li>
-        {% endif %}
-        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
-        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
-        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
-        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
-      </ul>
-    </div>
+<div class="section-menu section-menu--docs section-menu--dark">
+  <div class="section-menu__header">
     {% case page.docs_language %}
     {% when 'c' %}
-    {% include docs/menu.html tree=site.data.docs_tree.c group=page.group %}
+    <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% when 'c_preview' %}
-    {% include docs/menu.html tree=site.data.docs_tree.c_preview group=page.group %}
+    <h3><a href="/docs/c/preview/">Pebble C API (SDK 4 Preview)</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% when 'rockyjs' %}
-    {% include docs/menu.html tree=site.data.docs_tree.rockyjs group=page.js_module %}
+    <h3><a href="/docs/rockyjs/">Pebble JavaScript API</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% when 'pebblekit_js' %}
-    {% include docs/menu.html tree=site.data.docs_tree.pebblekit_js group=page.js_module %}
+    <h3><a href="/docs/pebblekit-js/">PebbleKit JS</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% when 'pebblekit_ios' %}
-    {% include docs/menu.html tree=site.data.docs_tree.pebblekit_ios group=page.group %}
+    <h3><a href="/docs/pebblekit-ios/">PebbleKit iOS</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% when 'pebblekit_android' %}
-    {% include docs/menu.html tree=site.data.docs_tree.pebblekit_android group=page.group %}
+    <h3><a href="/docs/pebblekit-android/">PebbleKit Android</a><a href="#"><i
+          class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
     {% else %}
-      <ul>
-        <li class="section-menu__item"><a href="/docs/c/">Pebble C API</a></li>
-        {% if site.data.docs_tree.c_preview %}
-        <li class="section-menu__item"><a href="/docs/c/preview/">Pebble C API (preview)</a></li>
-        {% endif %}
-        <li class="section-menu__item"><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
-        <li class="section-menu__item"><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
-        <li class="section-menu__item"><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
-        <li class="section-menu__item"><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
-        <!--
+    <h3><a href="/docs/">Documentation</a></h3>
+    {% endcase %}
+    <ul class="documentation-menu js-doc-menu">
+      <li><a href="/docs/c/">Pebble C API</a></li>
+      {% if site.data.docs_tree.c_preview %}
+      <li><a href="/docs/c/preview/">Pebble C API (preview)</a></li>
+      {% endif %}
+      <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+      <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+      <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+      <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+    </ul>
+  </div>
+  {% case page.docs_language %}
+  {% when 'c' %}
+  {% include docs/menu.html tree=site.data.docs_tree.c group=page.group %}
+  {% when 'c_preview' %}
+  {% include docs/menu.html tree=site.data.docs_tree.c_preview group=page.group %}
+  {% when 'rockyjs' %}
+  {% include docs/menu.html tree=site.data.docs_tree.rockyjs group=page.group %}
+  {% when 'pebblekit_js' %}
+  {% include docs/menu.html tree=site.data.docs_tree.pebblekit_js group=page.js_module %}
+  {% when 'pebblekit_ios' %}
+  {% include docs/menu.html tree=site.data.docs_tree.pebblekit_ios group=page.group %}
+  {% when 'pebblekit_android' %}
+  {% include docs/menu.html tree=site.data.docs_tree.pebblekit_android group=page.group %}
+  {% else %}
+  <ul>
+    <li class="section-menu__item"><a href="/docs/c/">Pebble C API</a></li>
+    {% if site.data.docs_tree.c_preview %}
+    <li class="section-menu__item"><a href="/docs/c/preview/">Pebble C API (preview)</a></li>
+    {% endif %}
+    <li class="section-menu__item"><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+    <li class="section-menu__item"><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+    <li class="section-menu__item"><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+    <li class="section-menu__item"><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+    <!--
         <li class="section-menu__item"><a href="/docs/web-timeline/">Timeline Web API</a></li>
         <li class="section-menu__item"><a href="/docs/web-appglance/">AppGlance Web API</a></li>
         -->
-      </ul>
-    {% endcase %}
-  </div>
+  </ul>
+  {% endcase %}
+</div>
 </div><!-- sidebar__wrapper -->
 <div class="content content--section-menu">
   {% include search.html %}
