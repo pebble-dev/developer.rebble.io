@@ -29,7 +29,7 @@ module Pebble
       @path = '/docs/pebblekit-android/'
       open(source) do | zf |
         Zip::File.open(zf.path) do | zipfile |
-          entry = zipfile.glob('javadoc/overview-summary.html').first
+          entry = zipfile.glob('javadoc/index.html').first
           summary = Nokogiri::HTML(entry.get_input_stream.read)
           process_summary(zipfile, summary)
 
@@ -47,7 +47,8 @@ module Pebble
 
     def process_summary(zipfile, summary)
       summary.css('tbody tr').each do | row |
-        name = row.at_css('td.colFirst').content
+        print(row)
+        name = row.at_css('th.colFirst').content
         package = {
           name: name,
           url: "#{@path}#{name_to_url(name)}/",

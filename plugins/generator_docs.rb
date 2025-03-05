@@ -77,11 +77,11 @@ module Jekyll
       # The order of these functions will determine the order of preference
       # when looking up symbols e.g. double backticks
       # DO NOT CHANGE THE ORDER UNLESS YOU KNOW WHAT YOU ARE DOING
-      generate_docs_c
+      # generate_docs_c
       generate_docs_c_preview unless @site.data['docs']['c_preview'].nil?
       generate_docs_rocky_js
       generate_docs_pebblekit_js
-      # generate_docs_pebblekit_android
+      generate_docs_pebblekit_android
       # generate_docs_pebblekit_ios
     end
 

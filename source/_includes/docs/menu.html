@@ -23,10 +23,10 @@ limitations under the License.
   {% else %}
   {% assign open = false %}
   {% endif %}
-  {% if group.children.size > 0 %}
   <li
     class="section-menu__item{% if open == true %} open{% if include.group.path.last == group.name %} active{% endif %}{% endif %}">
     <a href="{{ group.url }}">{{ group.name }}</a>
+    {% if group.children.size > 0 %}
     <ul>
       {% for item in group.children %}
       <li
