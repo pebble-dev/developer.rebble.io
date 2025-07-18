@@ -22,15 +22,7 @@ menu_section: sdk
       <h3><a href="/sdk/">SDK</a></h3>
     </div>
     <ul>
-      <li class="section-menu__item{% if page.menu_subsection == 'download' %} active{% endif %}"><a href="/sdk/download/">Download</a></li>
-      <li class="section-menu__item{% if page.menu_subsection == 'install' %} open{% if page.menu_platform == nil %} active{% endif %}{% endif %}">
-        <a href="/sdk/install/">Installation</a>
-        <ul>
-          <li class="section-menu__subitem{% if page.menu_platform == 'mac' %} active{% endif %}"><a href="/sdk/install/mac/"><span>Mac OS X</span></a></li>
-          <li class="section-menu__subitem{% if page.menu_platform == 'linux' %} active{% endif %}"><a href="/sdk/install/linux/"><span>Linux</span></a></li>
-          <li class="section-menu__subitem{% if page.menu_platform == 'windows' %} active{% endif %}"><a href="/sdk/install/windows/"><span>Windows</span></a></li>
-        </ul>
-      </li>
+      <li class="section-menu__item{% if page.menu_subsection == 'install' %} active{% endif %}"><a href="/sdk">Installation</a></li>
       <li class="section-menu__item{% if page.collection == 'changelogs' %} open{% endif %}">
         <a href="/sdk/changelogs/{{ site.data.sdk.c.version }}/">Changelog</a>
         <ul>
