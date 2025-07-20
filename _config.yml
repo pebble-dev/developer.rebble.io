@@ -56,8 +56,8 @@ links:
   twitter: https://twitter.com/pebbledev/
   cloudpebble: https://cloudpebble.net/
   cloudpebble_beta: https://beta.cloudpebble.net/
-  devportal: https://dev-portal.getpebble.com/
-  site_repo: https://github.com/pebble/developer.getpebble.com/
+  devportal: https://dev-portal.rebble.io/
+  site_repo: https://github.com/pebble-dev/developer.rebble.io
   community_resources_repo: https://github.com/pebble/community-resources/
   github: https://github.com/pebble/
   forums: https://forums.pebble.com
@@ -67,7 +67,7 @@ links:
   examples_org: https://github.com/pebble-examples
   pebblekit_android_jar: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0-eclipse.jar
   legal:
-    privacy: https://www.pebble.com/legal/privacy/
+    privacy: https://rebble.io/privacy/
     cookies: https://www.pebble.com/legal/cookies/
   s3_assets: https://developer-assets.getpebble.com
   pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
@@ -109,3 +109,4 @@ defaults:
     values:
       layout: sdk/changelog
       generate_toc: true
+
