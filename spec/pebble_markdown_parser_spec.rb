@@ -22,7 +22,7 @@ require_relative '../plugins/pebble_markdown_parser'
 describe Jekyll::Converters::Markdown::PebbleMarkdownParser, '#convert' do
   it 'renders normal markdown properly' do
     expect(parser.convert('**Bold Text**').strip)
-      .to eql('<p><strong>Bold Text</strong></p>')
+      .to eql('<p><strong>Bold Text</strong></p> beebo babo')
   end
 
   it 'adds anchors to headers' do
