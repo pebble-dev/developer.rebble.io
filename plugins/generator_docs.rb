@@ -81,7 +81,8 @@ module Jekyll
       generate_docs_c_preview unless @site.data['docs']['c_preview'].nil?
       generate_docs_rocky_js
       generate_docs_pebblekit_js
-      generate_docs_pebblekit_android
+      # TODO: probably remove these, we don't have the source for these docs :(
+      # generate_docs_pebblekit_android
       # generate_docs_pebblekit_ios
     end
 

@@ -1,94 +1,94 @@
 {
   "guides": {
     "settings": {
-      "attributesToIndex": [
+      "searchable_attributes": [
         "unordered(title)",
         "unordered(content)",
         "unordered(type)"
       ],
-      "attributesToSnippet": [
+      "attributes_to_snippet": [
         "content:30"
       ],
-      "attributesForFaceting": [
+      "attributes_for_faceting": [
       ],
-      "attributeForDistinct": "urlDisplay",
-      "highlightPreTag": "<span class=\"search__result__highlight\">",
-      "highlightPostTag": "</span>"
+      "attribute_for_distinct": "urlDisplay",
+      "highlight_pre_tag": "<span class=\"search__result__highlight\">",
+      "highlight_post_tag": "</span>"
     }
   },
   "blog-posts": {
     "settings": {
-      "attributesToIndex": [
+      "searchable_attributes": [
         "unordered(title)",
         "unordered(content)",
         "unordered(type)"
       ],
-      "attributesToSnippet": [
+      "attributes_to_snippet": [
         "content:30"
       ],
-      "attributesForFaceting": [
+      "attributes_for_faceting": [
       ],
-      "customRanking": [
+      "custom_ranking": [
         "asc(age)"
       ],
-      "attributeForDistinct": "urlDisplay",
-      "highlightPreTag": "<span class=\"search__result__highlight\">",
-      "highlightPostTag": "</span>"
+      "attribute_for_distinct": "urlDisplay",
+      "highlight_pre_tag": "<span class=\"search__result__highlight\">",
+      "highlight_post_tag": "</span>"
     }
   },
   "documentation": {
     "settings": {
-      "attributesToIndex": [
+      "searchable_attributes": [
         "title",
         "splitTitle",
         "unordered(summary)",
         "unordered(type)"
       ],
-      "attributesToSnippet": [
+      "attributes_to_snippet": [
         "summary:30"
       ],
-      "attributesForFaceting": [
+      "attributes_for_faceting": [
         "language"
       ],
-      "customRanking": [
+      "custom_ranking": [
         "desc(ranking)"
       ],
-      "attributeForDistinct": null,
-      "highlightPreTag": "<span class=\"search__result__highlight\">",
-      "highlightPostTag": "</span>"
+      "attribute_for_distinct": null,
+      "highlight_pre_tag": "<span class=\"search__result__highlight\">",
+      "highlight_post_tag": "</span>"
     }
   },
   "examples": {
     "settings": {
-      "attributesToIndex": [
+      "searchable_attributes": [
         "unordered(title)",
         "unordered(summary)",
         "unordered(type)"
       ],
-      "attributesToSnippet": [
+      "attributes_to_snippet": [
         "summary:30"
       ],
-      "attributesForFaceting": [
+      "attributes_for_faceting": [
       ],
-      "attributeForDistinct": null,
-      "highlightPreTag": "<span class=\"search__result__highlight\">",
-      "highlightPostTag": "</span>"
+      "attribute_for_distinct": null,
+      "highlight_pre_tag": "<span class=\"search__result__highlight\">",
+      "highlight_post_tag": "</span>"
     }
   },
   "other": {
     "settings": {
-      "attributesToIndex": [
+      "searchable_attributes": [
         "unordered(title)",
         "unordered(content)"
       ],
-      "attributesToSnippet": [
+      "attributes_to_snippet": [
         "content:30"
       ],
-      "attributesForFaceting": [
+      "attributes_for_faceting": [
       ],
-      "attributeForDistinct": null,
-      "highlightPreTag": "<span class=\"search__result__highlight\">",
-      "highlightPostTag": "</span>"
+      "attribute_for_distinct": null,
+      "highlight_pre_tag": "<span class=\"search__result__highlight\">",
+      "highlight_post_tag": "</span>"
     }
   }
 }

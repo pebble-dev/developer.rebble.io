@@ -32,7 +32,7 @@
 	{
 		> a.mm-subopen:after
 		{
-			top: ( $mm_labelHeight / 2 ) - 4;
+			top: ( $mm_labelHeight * 0.5 ) - 4;
 		}
 	}
 }

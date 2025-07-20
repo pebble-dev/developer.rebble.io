@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 @mixin flash($color) {
   background: $color;
-  color: darken($color, 60);
+  color: color.adjust($color, $lightness: -60%, $space: hsl);
   font-weight: bold;
-  margin-bottom: $base-line-height / 2;
-  padding: $base-line-height / 2;
+  margin-bottom: $base-line-height * 0.5;
+  padding: $base-line-height * 0.5;
 
   a {
-    color: darken($color, 70);
+    color: color.adjust($color, $lightness: -70%, $space: hsl);
 
     &:hover {
-      color: darken($color, 90);
+      color: color.adjust($color, $lightness: -90%, $space: hsl);
     }
   }
 }

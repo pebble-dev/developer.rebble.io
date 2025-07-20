@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 .toc__item {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -41,6 +43,6 @@
 .toc__item--active {
   font-weight: 600;
   a {
-    color: darken($base-link-color, 20);
+    color: color.adjust($base-link-color, $lightness: -20%, $space: hsl);
   }
 }

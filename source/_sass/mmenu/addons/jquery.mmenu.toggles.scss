@@ -33,7 +33,7 @@ label.mm-toggle
 	border-radius: $mm_toggleHeight;
 	width: $mm_toggleWidth;
 	height: $mm_toggleHeight;
-	margin-bottom: -( $mm_toggleHeight / 2 );
+	margin-bottom: -( $mm_toggleHeight * 0.5 );
 
 	&:before
 	{
@@ -52,7 +52,7 @@ label.mm-check
 {
 	width: $mm_checkWidth;
 	height: $mm_checkHeight;
-	margin-bottom: -( $mm_checkHeight / 2 );
+	margin-bottom: -( $mm_checkHeight * 0.5 );
 
 	&:before
 	{
@@ -85,12 +85,12 @@ input.mm-check:checked ~ label.mm-check:before
 		}
 		&.mm-toggle
 		{
-			top: ( $mm_btnSize - $mm_toggleHeight ) / 2;
+			top: ( $mm_btnSize - $mm_toggleHeight ) * 0.5;
 
 		}
 		&.mm-check
 		{
-			top: ( $mm_btnSize - $mm_checkHeight ) / 2;
+			top: ( $mm_btnSize - $mm_checkHeight ) * 0.5;
 		}
 	}
 }

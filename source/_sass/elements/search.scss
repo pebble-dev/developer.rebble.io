@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
+@use "sass:math";
+
 .search {
   background-color: $white;
   border-bottom: 1px solid $gray-10;
   height: $header-height;
   left: $sidebar-width;
-  padding: $base-font-size / 1.2;
+  padding: math.div($base-font-size, 1.2);
   position: fixed;
   right: 0;
   top: 0;
@@ -35,7 +37,7 @@
     border: 0;
     box-shadow: none;
     font-size: $base-font-size * 1.2;
-    padding: $base-font-size / 2;
+    padding: $base-font-size * 0.5;
     padding-left: 2em;
     width: 100%;
 
@@ -57,9 +59,9 @@
 
 .search__icon {
   font-size: $base-font-size * 1.2;
-  left: $base-font-size / 0.6;
+  left: math.div($base-font-size, 0.6);
   position: absolute;
-  top: $base-font-size / 0.6;
+  top: math.div($base-font-size, 0.6);
 
   @include bp-max ($sidebar-hide-at) {
     display: none;

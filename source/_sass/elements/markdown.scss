@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 .markdown {
 
   ul {
@@ -29,9 +31,9 @@
   $table-background: $white;
   $table-header-background: $gray-02;
   $table-header-color: $white;
-  $table-hover-color: darken($table-background, 5);
-  $table-stripe-color: darken($table-background, 4);
-  $table-stripe-color-hover: darken($table-stripe-color, 5);
+  $table-hover-color: color.adjust($table-background, $lightness: -5%, $space: hsl);
+  $table-stripe-color: color.adjust($table-background, $lightness: -4%, $space: hsl);
+  $table-stripe-color-hover: color.adjust($table-stripe-color, $lightness: -5%, $space: hsl);
   $table-padding: 0.5em;
 
   table {

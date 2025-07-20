@@ -94,7 +94,7 @@ has crashed, or was stopped/killed by iOS because it used too much memory.
 3. See the [Breaking API Changes](#breaking-api-changes) section below.
 
 4. When submitting the iOS companion to the
-  [Pebble appstore](https://dev-portal.getpebble.com/), make sure to check the
+  [Pebble appstore]({{ site.links.devportal }}), make sure to check the
   checkbox shown below.
 
 ![](/images/guides/migration/companion-checkbox.png)
@@ -137,7 +137,7 @@ into users' faces when they launch the iOS app, `PBPebbleCentral` will start in
 a "cold" state.
 
 This gives developers the option to explain to app users that this pop-up will
-appear, in order to provide a smoother onboarding experience. As soon as a 
+appear, in order to provide a smoother onboarding experience. As soon as a
 pop-up would be appropriate to show (e.g.: during the app's onboarding flow),
  call `[central run]`, and the pop-up will be shown to the user.
 
@@ -290,7 +290,7 @@ out to all Pebble watches. However, this will not happen overnight. Therefore,
 both *LE* and *Classic* PebbleKit connections have to be supported for some
 period of time. This has several implications for apps:
 
-* Apps still need to be whitelisted. Read 
+* Apps still need to be whitelisted. Read
   {% guide_link appstore-publishing/whitelisting %} for more information and to
   whitelist a new app.
 

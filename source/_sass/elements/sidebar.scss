@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "sass:math";
+
 $sidebar-width: 105px;
 $sidebar--wide-width: $header-logo-width;
 $sidebar-hide-at: xs;
@@ -56,7 +59,7 @@ $sidebar-hide-at: xs;
   font-size: $base-font-size * 1.2;
   height: $header-height;
   left: 0;
-  padding: $base-line-height / 1.2 0;
+  padding: math.div($base-line-height, 1.2) 0;
   position: absolute;
   text-align: center;
   top: 0;
@@ -82,7 +85,7 @@ $sidebar-hide-at: xs;
     }
 
     > a {
-      background-color: lighten($base-link-color, 30);
+      background-color: color.adjust($base-link-color, $lightness: 30%, $space: hsl);
       color: #fff;
     }
   }
@@ -129,7 +132,7 @@ $sidebar-hide-at: xs;
 
 .sidebar__footer {
   background-color: $color-appstore;
-  border-right: 1px solid darken($color-appstore, 10);
+  border-right: 1px solid color.adjust($color-appstore, $lightness: -10%, $space: hsl);
   bottom: 0;
   color: $white;
   font-weight: bold;
@@ -143,8 +146,8 @@ $sidebar-hide-at: xs;
 
   &:hover,
   &.active {
-    background-color: darken($color-appstore, 10);
-    border-color: darken($color-appstore, 20);
+    background-color: color.adjust($color-appstore, $lightness: -10%, $space: hsl);
+    border-color: color.adjust($color-appstore, $lightness: -20%, $space: hsl);
     color: $white;
   }
 }

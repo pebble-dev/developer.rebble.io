@@ -20,12 +20,12 @@ table {
 
 th {
   font-weight: bold;
-  padding: ($base-line-height / 2) 0;
+  padding: ($base-line-height * 0.5) 0;
   text-align: left;
 }
 
 td {
-  padding: ($base-line-height / 2) 0;
+  padding: ($base-line-height * 0.5) 0;
 }
 
 tr, td, th {

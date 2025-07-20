@@ -49,7 +49,12 @@ function processResult(result) {
 }
 
 function Search(config) {
-  this.client = new AlgoliaSearch(config.appId, config.apiKey);
+  if (!config.appId || !config.apiKey || !config.prefix) {
+    console.warn("Algolia environment variables not configured - search disabled");
+    return;
+  }
+
+  this.client = new AlgoliaSearch(config.appId, config.apiKey, { method: 'https' });
   this.prefix = config.prefix;
   this.searchNumber = 0;
   this.lastQuery = null;
@@ -91,21 +96,6 @@ Search.indexes = {
     title: 'Examples',
     cssClass: 'more',
   },
-  'community-resources': {
-    title: 'Community Resources',
-    cssClass: 'community',
-    section: function (hit) {
-      switch(hit.resourceType) {
-        case 'community_tools':
-          return ['Tool'];
-        case 'community_apps':
-          return ['App'];
-        case 'community_libraries':
-          return ['Library']
-      }
-      return [];
-    }
-  },
   'other': {
     title: 'Other',
     cssClass: 'other'
@@ -113,6 +103,8 @@ Search.indexes = {
 };
 
 Search.prototype.search = function (query) {
+  if (!this.client) return;
+
   if (query === this.lastQuery) {
     return;
   }

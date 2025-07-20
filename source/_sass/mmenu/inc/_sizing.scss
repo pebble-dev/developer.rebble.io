@@ -1,10 +1,12 @@
 //	Sizing left (default)
+@use "sass:math";
+
 @mixin mm_sizing( $cls: "",
 	$width: $mm_width, $minWidth: $mm_minWidth, $maxWidth: $mm_maxWidth
 ) {
 	.mm-menu#{$cls}
 	{
-		width: percentage( $width );
+		width: math.percentage( $width );
 		min-width: $minWidth;
 		max-width: $maxWidth;
 	}
@@ -13,10 +15,10 @@
 		.mm-page,
 		#mm-blocker
 		{
-			@include mm-webkit-prefix( 'transform', translate( percentage( $width ), 0 ) );
+			@include mm-webkit-prefix( 'transform', translate( math.percentage( $width ), 0 ) );
 		}
 	}
-	@media all and (max-width: $minWidth / $width ) {
+	@media all and (max-width: math.div($minWidth, $width) ) {
 		html.mm-opening#{$cls}
 		{
 			.mm-page,
@@ -26,7 +28,7 @@
 			}
 		}
 	}
-	@media all and (min-width: $maxWidth / $width ) {
+	@media all and (min-width: math.div($maxWidth, $width) ) {
 		html.mm-opening#{$cls}
 		{
 			.mm-page,
@@ -47,10 +49,10 @@
 		.mm-page,
 		#mm-blocker
 		{
-			@include mm-webkit-prefix( 'transform', translate( -( percentage( $width ) ), 0 ) );
+			@include mm-webkit-prefix( 'transform', translate( -( math.percentage( $width ) ), 0 ) );
 		}
 	}
-	@media all and ( max-width: $minWidth / $width ) {
+	@media all and ( max-width: math.div($minWidth, $width) ) {
 		html.mm-right.mm-opening#{$cls}
 		{
 			.mm-page,
@@ -60,7 +62,7 @@
 			}
 		}
 	}
-	@media all and ( min-width: $maxWidth / $width ) {
+	@media all and ( min-width: math.div($maxWidth, $width) ) {
 		html.mm-right.mm-opening#{$cls}
 		{
 			.mm-page,
@@ -84,7 +86,7 @@
 		&.mm-top,
 		&.mm-bottom
 		{
-			height: percentage( $height );
+			height: math.percentage( $height );
 			min-height: $minHeight;
 			max-height: $maxHeight;
 		}

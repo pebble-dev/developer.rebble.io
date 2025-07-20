@@ -107,7 +107,7 @@ module Pebble
       images = Dir.glob("#{@tmp_dir}/assets/images/**/*.png")
       images.each do |img|
         source = File.join(@site.source, '../tmp/docs/c/')
-        if File.exists?(img)
+        if File.exist?(img)
           img.sub!('tmp/docs/c', '')
           @site.static_files << Jekyll::StaticFile.new(@site, source, '', img)
         end

@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+@use 'sass:color';
+@use 'sass:list';
+
 .btn {
   background-color: $white;
   border-radius: 4px;
@@ -39,9 +42,9 @@ $btn-colors: $white  $gray-02   $green   $blue   $red   $purple   $yellow   $ora
 $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'orange-02' 'android-green';
 
 @each $color in $btn-colors {
-  $i: index($btn-colors, $color);
+  $i: list.index($btn-colors, $color);
 
-  .btn--fg-#{nth($btn-names, $i)} {
+  .btn--fg-#{list.nth($btn-names, $i)} {
     color: $color;
 
     &:hover,
@@ -51,13 +54,13 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
     }
   }
 
-  .btn--bg-#{nth($btn-names, $i)} {
+  .btn--bg-#{list.nth($btn-names, $i)} {
     background-color: $color;
 
     &:hover,
     &:active,
     &:focus {
-      background-color: darken($color, 10);
+      background-color: color.adjust($color, $lightness: -10%, $space: hsl);
     }
   }
 }
@@ -66,35 +69,35 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
 // This should be used when adding buttons in each section, in case we change
 // the colours in the future.
 @each $color in $modifier-colors {
-  $i: index($modifier-colors, $color);
+  $i: list.index($modifier-colors, $color);
 
-  .btn--#{nth($modifier-color-names, $i)} {
+  .btn--#{list.nth($modifier-color-names, $i)} {
     background-color: $color;
-    color: nth($modifier-colors-fg, $i);
+    color: list.nth($modifier-colors-fg, $i);
 
     &:hover,
     &:focus {
-      color: nth($modifier-colors-fg, $i);
-      background-color: darken($color, 10);
+      color: list.nth($modifier-colors-fg, $i);
+      background-color: color.adjust($color, $lightness: -10%, $space: hsl);
     }
 
     a {
-      color: nth($modifier-colors-fg, $i);
+      color: list.nth($modifier-colors-fg, $i);
     }
   }
 
-  .btn--#{nth($modifier-color-names, $i)}--alt {
-    background-color: complement($color);
-    color: nth($modifier-colors-fg, $i);
+  .btn--#{list.nth($modifier-color-names, $i)}--alt {
+    background-color: color.complement($color);
+    color: list.nth($modifier-colors-fg, $i);
 
     &:hover,
     &:focus {
-      color: nth($modifier-colors-fg, $i);
-      background-color: darken(complement($color), 10);
+      color: list.nth($modifier-colors-fg, $i);
+      background-color: color.adjust(color.complement($color), $lightness: -10%, $space: hsl);
     }
 
     a {
-      color: nth($modifier-colors-fg, $i);
+      color: list.nth($modifier-colors-fg, $i);
     }
   }
 }

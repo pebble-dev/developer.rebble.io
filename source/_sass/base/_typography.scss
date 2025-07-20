@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;
@@ -88,13 +90,13 @@ img {
 
 blockquote {
   border-left: 2px solid $base-border-color;
-  color: lighten($base-font-color, 15);
+  color: color.adjust($base-font-color, $lightness: 15%, $space: hsl);
   margin: $base-line-height 0;
-  padding-left: $base-line-height / 2;
+  padding-left: $base-line-height * 0.5;
 }
 
 cite {
-  color: lighten($base-font-color, 25);
+  color: color.adjust($base-font-color, $lightness: 25%, $space: hsl);
   font-style: italic;
 
   &:before {

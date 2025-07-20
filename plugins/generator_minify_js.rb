@@ -24,7 +24,8 @@ module Jekyll
     end
 
     def generate(site)
-      return if site.config['rack_env'] == 'development'
+      return if Jekyll.env == 'development'
+
       @site = site
       @tmp_dir = File.join(site.source, '../tmp/')
       @js_dir = 'assets/js/'

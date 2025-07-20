@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use 'sass:list';
+
 .alert {
   background-color: #ddd;
   color: $white;
@@ -52,9 +54,9 @@ $alert-colors: $white     $green   $blue   $red   $purple   $yellow   $orange   
 $alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'blog';
 
 @each $color in $alert-colors {
-  $i: index($alert-colors, $color);
+  $i: list.index($alert-colors, $color);
 
-  .alert--fg-#{nth($alert-names, $i)} {
+  .alert--fg-#{list.nth($alert-names, $i)} {
     color: $color;
 
     a {
@@ -63,7 +65,7 @@ $alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'l
     }
   }
 
-  .alert--bg-#{nth($alert-names, $i)} {
+  .alert--bg-#{list.nth($alert-names, $i)} {
     background-color: $color;
   }
 }

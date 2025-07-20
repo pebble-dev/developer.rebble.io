@@ -11,9 +11,9 @@ em.mm-counter
 	font-size: $mm_fontSize;
 	font-style: normal;
 	text-indent: 0;
-	line-height: $mm_btnSize / 2;
+	line-height: $mm_btnSize * 0.5;
 	display: block;
-	margin-top: -( $mm_btnSize / 4 );
+	margin-top: -( $mm_btnSize * 0.25 );
 	position: absolute;
 	right: $mm_subopenWidth;
 	top: 50%;
@@ -39,7 +39,7 @@ em.mm-counter
 {
 	em.mm-counter
 	{
-		top: ( $mm_btnSize / 4 ) + 2;
+		top: ( $mm_btnSize * 0.25 ) + 2;
 		margin-top: 0;
 	}
 }

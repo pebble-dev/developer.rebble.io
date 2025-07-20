@@ -8,7 +8,7 @@
 .mm-buttonbar
 {
 	border: 1px solid transparent;
-	border-radius: $mm_padding / 2;
+	border-radius: $mm_padding * 0.5;
 	text-align: center;
 	line-height: $mm_buttonbarHeight;
 	overflow: hidden;

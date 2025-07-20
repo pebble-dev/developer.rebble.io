@@ -41,7 +41,7 @@ apps are discussed in this guide, alongside suggestions to help avoid them.
 
 ## Battery Ratings
 
-Any app published in the [Developer Portal](https://dev-portal.getpebble.com)
+Any app published in the [Developer Portal]({{ site.links.devportal }})
 will have a battery grade associated with it, once a minimum threshold of data
 has been collected. This can be used to get a rough idea of how much battery
 power the app consumes. For watchfaces and apps that will be launched for long
@@ -64,7 +64,7 @@ A common cause of such a drain are long-running animations that cause frequent
 display updates. For example, a watchface that plays a half-second ``Animation``
 for every second that ticks by will drain the battery faster than one that does
 so only once per minute. The latter approach will allow a lot more time for the
-watch to sleep. 
+watch to sleep.
 
 ```c
 static void tick_handler(struct tm *tick_time, TimeUnits changed) {
@@ -106,7 +106,7 @@ accel_tap_service_subscribe(tap_handler);
 Many watchfaces unecessarily tick once a second by using the ``SECOND_UNIT``
 constant value with the ``TickTimerService``, when they only update the display
 once a minute. By using the ``MINUTE_UNIT`` instead, the amount of times the
-watch is woken up per minute is reduced. 
+watch is woken up per minute is reduced.
 
 ```c
 // Only tick once a minute, much more time asleep
@@ -131,7 +131,7 @@ sensors will also prevent the watch from going to sleep and consume more battery
 power. The ``AccelerometerService`` API features the ability to configure the
 sampling rate and number of samples received per update, allowing batching of
 data into less frequent updates. By receiving updates less frequently, the
-battery will last longer. 
+battery will last longer.
 
 ```c
 // Batch samples into sets of 10 per callback
@@ -160,11 +160,11 @@ instead present a list of previous inputs if appropriate to reduce usage of this
 API.
 
 ```c
-static void dictation_session_callback(DictationSession *session, DictationSessionStatus status, 
+static void dictation_session_callback(DictationSession *session, DictationSessionStatus status,
                                        char *transcription, void *context) {
   if(status == DictationSessionStatusSuccess) {
     // Display the dictated text
-    snprintf(s_last_text, sizeof(s_last_text), "Transcription:\n\n%s", 
+    snprintf(s_last_text, sizeof(s_last_text), "Transcription:\n\n%s",
                                                                 transcription);
     text_layer_set_text(s_output_layer, s_last_text);
 
@@ -181,7 +181,7 @@ static void dictation_session_callback(DictationSession *session, DictationSessi
 Hinted at above, frequent use of the ``AppMessage`` API to send and recieve data
 will cause the Bluetooth connection to enter a more responsive state, which
 consumes much more power. A small time after a message is sent, the connection
-will return back to a low-power state. 
+will return back to a low-power state.
 
 The 'sniff interval' determines how often the API checks for new messages from
 the phone, and should be let in the default ``SNIFF_INTERVAL_NORMAL`` state as

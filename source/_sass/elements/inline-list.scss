@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+@use "sass:color";
 @charset "UTF-8";
 
 ul.inline-list {
@@ -30,7 +31,7 @@ ul.inline-list {
 }
 
 .inline-list--piped li::after {
-  color: lighten($base-font-color, 30);
+  color: color.adjust($base-font-color, $lightness: 30%, $space: hsl);
   content: ' | ';
   display: inline;
 }
@@ -40,7 +41,7 @@ ul.inline-list {
 }
 
 .inline-list--dashed li::after {
-  color: lighten($base-font-color, 40);
+  color: color.adjust($base-font-color, $lightness: 40%, $space: hsl);
   content: ' — ';
   display: inline;
 }

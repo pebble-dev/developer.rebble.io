@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $pebble-black: #111;
 $pebble-blue: #16b5d8;
-$pebble-blue-alt: darken(#16b5d8, 20);
+$pebble-blue-alt: color.adjust(#16b5d8, $lightness: -20%, $space: hsl);
 $pebble-gray: #959fa0;
 $pebble-green: #aed70d;
 $pebble-orange: #f57216;
@@ -49,8 +51,8 @@ $android-green: #A4C739;
 
 $bigbox--blue: $lightblue;
 $bigbox--green: #22a048;
-$bigbox--darkgreen: darken($bigbox--green, 20);
-$bigbox--dark-blue: darken($darkerlightblue, 20);
+$bigbox--darkgreen: color.adjust($bigbox--green, $lightness: -20%, $space: hsl);
+$bigbox--dark-blue: color.adjust($darkerlightblue, $lightness: -20%, $space: hsl);
 
 $color-guides: $yellow;
 $color-docs: $pink;

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 .inspiration-page {
   h2 {
     color: $purple;
@@ -26,7 +28,7 @@
   blockquote {
     font-size: 1.3rem;
     border: 0;
-    color: lighten($base-font-color, 20);
+    color: color.adjust($base-font-color, $lightness: 20%, $space: hsl);
     margin: 0;
     padding: 0;
 

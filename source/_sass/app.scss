@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 @import 'bourbon/bourbon';
 
 @import 'colors';
@@ -59,7 +61,7 @@ body {
 code {
   background-color: $white;
   border-radius: 2px;
-  color: darken($base-font-color, 20);
+  color: color.adjust($base-font-color, $lightness: -20%, $space: hsl);
   font-family: $monospace;
   font-size: $base-font-size;
   padding: 2px 4px;
@@ -67,7 +69,7 @@ code {
 }
 
 a code {
-  color: darken($base-link-color, 10);
+  color: color.adjust($base-link-color, $lightness: -10%, $space: hsl);
 }
 
 .container {

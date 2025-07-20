@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 .examples__filters {
   margin-bottom: 1em;
 
@@ -43,13 +45,13 @@
   &:active,
   &:focus {
     color: $white;
-    background-color: darken($color-examples, 20);
+    background-color: color.adjust($color-examples, $lightness: -20%, $space: hsl);
   }
 }
 
 .examples__filters--selected {
   .examples__tag {
-    background-color: lighten($color-examples, 20);
+    background-color: color.adjust($color-examples, $lightness: 20%, $space: hsl);
 
     &.selected {
       background-color: $color-examples;

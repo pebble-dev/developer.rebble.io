@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "sass:math";
+
 $section-menu-width: 240px;
 
 .sidebar__wrapper--sectionmenu {
@@ -59,7 +62,7 @@ $section-menu-width: 240px;
     font-size: $base-font-size * 1.2;
     font-weight: 400;
     margin-top: 3px;
-    padding: $base-line-height / 1.2 0;
+    padding: math.div($base-line-height, 1.2) 0;
     text-transform: uppercase;
     width: 100%;
   }
@@ -68,7 +71,7 @@ $section-menu-width: 240px;
 .documentation-menu {
   background-color: $color-docs;
   border-bottom: 1px solid rgba(68, 68, 68, 0.3);
-  border-right: 1px solid darken($color-docs, 10);
+  border-right: 1px solid color.adjust($color-docs, $lightness: -10%, $space: hsl);
   box-shadow: rgba(68, 68, 68, 0.3) 0 5px 5px -5px;
   display: none;
   margin: -1em;
@@ -78,7 +81,7 @@ $section-menu-width: 240px;
     padding: 0.5em 1em;
 
     &:hover {
-      background-color: darken($color-docs, 5);
+      background-color: color.adjust($color-docs, $lightness: -5%, $space: hsl);
     }
   }
 }
@@ -98,7 +101,7 @@ $section-menu-width: 240px;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
-    margin: $base-line-height / 4 0;
+    margin: $base-line-height * 0.25 0;
     padding: 0.5em;
   }
 
@@ -189,7 +192,7 @@ $section-menu-width: 240px;
 
 .section-menu--guides {
   background-color: $color-guides;
-  border-right-color: darken($color-guides, 10);
+  border-right-color: color.adjust($color-guides, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-guides;
@@ -198,7 +201,7 @@ $section-menu-width: 240px;
 
 .section-menu--docs {
   background-color: $color-docs;
-  border-right-color: darken($color-docs, 10);
+  border-right-color: color.adjust($color-docs, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-docs;
@@ -207,7 +210,7 @@ $section-menu-width: 240px;
 
 .section-menu--community {
   background-color: $color-community;
-  border-right-color: darken($color-community, 10);
+  border-right-color: color.adjust($color-community, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-community;
@@ -216,7 +219,7 @@ $section-menu-width: 240px;
 
 .section-menu--sdk {
   background-color: $color-sdk;
-  border-right-color: darken($color-sdk, 10);
+  border-right-color: color.adjust($color-sdk, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-sdk;
@@ -225,7 +228,7 @@ $section-menu-width: 240px;
 
 .section-menu--more {
   background-color: $color-more;
-  border-right-color: darken($color-more, 10);
+  border-right-color: color.adjust($color-more, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-more;
@@ -234,7 +237,7 @@ $section-menu-width: 240px;
 
 .section-menu--getting-started {
   background-color: $color-getting-started;
-  border-right-color: darken($color-getting-started, 10);
+  border-right-color: color.adjust($color-getting-started, $lightness: -10%, $space: hsl);
 
   .section-menu__header {
     background-color: $color-getting-started;

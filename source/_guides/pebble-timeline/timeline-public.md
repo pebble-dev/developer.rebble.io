@@ -178,7 +178,7 @@ OK
 It is possible to send a pin (and updates) to multiple users at once by
 modifying the `PUT` header to include `X-Pin-Topics` (the topics a user must be
 subscribed to in order to receive this pin) and `X-API-Key` (issued by the
-[Developer Portal](https://dev-portal.getpebble.com/)). In this case, the URL is
+[Developer Portal]({{ site.links.devportal }})). In this case, the URL is
 also modified:
 
 ```text

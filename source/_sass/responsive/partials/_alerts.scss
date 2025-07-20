@@ -1,11 +1,13 @@
+@use "sass:color";
+
 .alert {
     @extend .clearfix;
     position: relative;
     margin: 1em 0;
     padding: 0 1em;
     background-color: $alert-color-scheme;
-    border: 1px solid darken($alert-color-scheme, 20);
-    color: darken($alert-color-scheme, 70);
+    border: 1px solid color.adjust($alert-color-scheme, $lightness: -20, $space: hsl);
+    color: color.adjust($alert-color-scheme, $lightness: -70, $space: hsl);
 
     .close {
         position: relative;

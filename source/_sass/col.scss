@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $pebble-black: #111;
 $pebble-blue: #16b5d8;
-$pebble-blue-alt: darken(#16b5d8, 20);
+$pebble-blue-alt: color.adjust(#16b5d8, $lightness: -20, $space: hsl);
 $pebble-gray: #959fa0;
 $pebble-green: #aed70d;
 $pebble-orange: #f57216;

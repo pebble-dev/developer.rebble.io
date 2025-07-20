@@ -2,6 +2,8 @@
 // Grid System - Base
 //##
 
+@use "sass:math";
+
 @mixin grid-base($bp) {
     // Large doesn't need an "only" since it operates on min width.
     @if $bp != l {
@@ -57,8 +59,8 @@
 //##
 @mixin grid-columns($bp) {
     // Calculate column width and width with gutter.
-    $column-width: (100% / $grid-column-count);
-    $column-width-with-gutter: (100% - ($grid-column-gutter * ($grid-column-count - 1 ))) / $grid-column-count;
+    $column-width: math.div(100%, $grid-column-count);
+    $column-width-with-gutter: math.div(100% - ($grid-column-gutter * ($grid-column-count - 1 )), $grid-column-count);
 
     // Loop through and set width.
     @for $i from 1 to ($grid-column-count + 1) {

@@ -2,6 +2,8 @@
 	jQuery.mmenu searchfield addon CSS
 */
 
+@use "sass:math";
+
 @import "../inc/variables";
 
 .mm-search,
@@ -9,7 +11,7 @@
 {
 	box-sizing: border-box;
 }
-.mm-list 
+.mm-list
 {
 	> li.mm-search
 	{
@@ -43,7 +45,7 @@ div.mm-panel > div.mm-search
 	padding: $mm_padding;
 
 	input
-	{		
+	{
 		border: none;
 		border-radius: $mm_searchfieldHeight;
 		font: inherit;
@@ -65,10 +67,10 @@ div.mm-panel > div.mm-search
 .mm-menu .mm-noresultsmsg
 {
 	text-align: center;
-	font-size: round( $mm_fontSize * 1.5 );
+	font-size: math.round( $mm_fontSize * 1.5 );
 	display: none;
 	padding: ( $mm_btnSize * 1.5 ) 0;
-	
+
 	&:after
 	{
 		border: none !important;
@@ -85,19 +87,19 @@ $mm_paddingBeneathHeader: $mm_padding * 2 !default;
 	li.mm-nosubresults > a.mm-subopen
 	{
 		display: none;
-	
-		+ a, 
+
+		+ a,
 		+ span
 		{
 			padding-right: 10px;
 		}
 	}
-	&.mm-hassearch 
+	&.mm-hassearch
 	{
 		> .mm-panel
 		{
 			padding-top: $mm_searchHeight + $mm_paddingBeneathHeader;
-			
+
 			> .mm-list:first-child
 			{
 				margin-top: -$mm_paddingBeneathHeader;
@@ -111,7 +113,7 @@ $mm_paddingBeneathHeader: $mm_padding * 2 !default;
 			> div.mm-search:first-child
 			{
 				margin-top: -$mm_padding;
-				
+
 				+ .mm-list
 				{
 					padding-top: 0;

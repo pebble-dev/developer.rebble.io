@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $banner-blue: #066AC4;
 
 .retreat-page {
@@ -66,7 +68,7 @@ $banner-blue: #066AC4;
 }
 
 .retreat-nav {
-  background-color: transparentize(#222, 0.3);
+  background-color: color.adjust(#222, $alpha: -0.3);
   left: $sidebar-width + $section-menu-width;
   position: fixed;
   text-align: center;
@@ -103,7 +105,7 @@ $banner-blue: #066AC4;
 
       &:hover,
       &:focus {
-        background-color: transparentize(darken($banner-blue, 30), 0.3);
+        background-color: color.adjust(color.adjust($banner-blue, $lightness: -30%, $space: hsl), $alpha: -0.3);
       }
     }
   }

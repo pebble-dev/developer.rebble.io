@@ -75,7 +75,7 @@
 	//	Lists
 	.mm-list
 	{
-		padding: ( $mm_btnSize / 2 ) 0;
+		padding: ( $mm_btnSize * 0.5 ) 0;
 	}
 	> .mm-list
 	{
@@ -176,7 +176,7 @@
 		+ a,
 		+ span
 		{
-			padding-right: ( $mm_padding / 2 );
+			padding-right: ( $mm_padding * 0.5 );
 			margin-right: $mm_subopenWidth;
 		}
 	}
@@ -192,7 +192,7 @@
 			+ a,
 			+ span
 			{
-				padding-right: $mm_btnSize + ( $mm_padding / 2 );
+				padding-right: $mm_btnSize + ( $mm_padding * 0.5 );
 				margin-right: 0;
 			}
 		}
@@ -201,8 +201,8 @@
 	a.mm-subclose
 	{
 		text-indent: $mm_btnSize - ( $mm_padding * 2 );
-		padding-top: ( $mm_btnSize / 2 ) + $mm_padding;
-		margin-top: -( $mm_btnSize / 2 );
+		padding-top: ( $mm_btnSize * 0.5 ) + $mm_padding;
+		margin-top: -( $mm_btnSize * 0.5 );
 	}
 
 	// Labels
@@ -214,7 +214,7 @@
 		text-transform: uppercase;
 		text-indent: $mm_padding * 2;
 		line-height: $mm_labelHeight;
-		padding-right: $mm_padding / 2;
+		padding-right: $mm_padding * 0.5;
 	}
 
 	// Spacers
@@ -277,7 +277,7 @@
 			height: $mm_btnSize;
 			&:after
 			{
-				top: ( $mm_btnSize / 2 ) - 4;
+				top: ( $mm_btnSize * 0.5 ) - 4;
 				bottom: auto;
 			}
 		}

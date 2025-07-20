@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-permalink: /feed.xml
 layout: docs/markdown
 title: PebbleKit iOS Documentation
 docs_language: pebblekit_ios
@@ -43,4 +42,3 @@ is also available on
 {% endfor %}
 <p/>
 {% endfor %}
-

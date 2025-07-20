@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "sass:math";
+
 $hamburger-width: $header-height;
 
 .mobile-nav {
@@ -42,7 +45,7 @@ $hamburger-width: $header-height;
     text-transform: uppercase;
 
     &:hover {
-      background-color: lighten($gray-03, 10);
+      background-color: color.adjust($gray-03, $lightness: 10%, $space: hsl);
     }
   }
 
@@ -64,7 +67,7 @@ $hamburger-width: $header-height;
     width: $hamburger-width;
     top: 0;
     height: $header-height;
-    padding: $base-font-size / 1.5 0;
+    padding: math.div($base-font-size, 1.5) 0;
     font-size: $base-font-size * 2;
     text-align: center;
     color: $gray-03;

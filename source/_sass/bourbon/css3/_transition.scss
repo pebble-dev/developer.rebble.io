@@ -3,6 +3,8 @@
 //          @include transition (opacity 1s ease-in 2s, width 2s ease-out);
 //          @include transition-property (transform, opacity);
 
+@use 'sass:list';
+
 @mixin transition ($properties...) {
   // Fix for vendor-prefix transform property
   $needs-prefixes: false;
@@ -12,7 +14,7 @@
 
   // Create lists for vendor-prefixed transform
   @each $list in $properties {
-    @if nth($list, 1) == "transform" {
+    @if list.nth($list, 1) == "transform" {
       $needs-prefixes: true;
       $list1: -webkit-transform;
       $list2: -moz-transform;
@@ -27,16 +29,16 @@
         }
       }
 
-      $webkit: append($webkit, $list1);
-         $moz: append($moz,    $list2);
-        $spec: append($spec,   $list3);
+      $webkit: list.append($webkit, $list1);
+         $moz: list.append($moz,    $list2);
+        $spec: list.append($spec,   $list3);
     }
 
     // Create lists for non-prefixed transition properties
     @else {
-      $webkit:  append($webkit, $list, comma);
-      $moz:     append($moz,    $list, comma);
-      $spec:    append($spec,   $list, comma);
+      $webkit:  list.append($webkit, $list, comma);
+      $moz:     list.append($moz,    $list, comma);
+      $spec:    list.append($spec,   $list, comma);
     }
   }
 
@@ -46,7 +48,7 @@
             transition: $spec;
   }
   @else {
-    @if length($properties) >= 1 {
+    @if list.length($properties) >= 1 {
       @include prefixer(transition, $properties, webkit moz spec);
     }
 

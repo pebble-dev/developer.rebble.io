@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $footer-height: 2rem;
 $footer-height-mobile: 9.95rem;
 $footer-background-color: #333;
@@ -74,7 +76,7 @@ $footer-bp: s;
     text-transform: uppercase;
 
     &:hover {
-      background-color: darken($footer-background-color, 20);
+      background-color: color.adjust($footer-background-color, $lightness: -20%, $space: hsl);
     }
   }
 }

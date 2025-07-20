@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $docs-header-color: $gray-06;
 
 .documentation {
@@ -21,13 +23,13 @@ $docs-header-color: $gray-06;
 
   a,
   a code {
-    color: darken($base-link-color, 20);
+    color: color.adjust($base-link-color, $lightness: -20%, $space: hsl);
     font-weight: 600;
   }
 
   a:hover,
   a:active {
-    color: darken($base-link-color, 40);
+    color: color.adjust($base-link-color, $lightness: -40%, $space: hsl);
   }
 }
 
@@ -103,9 +105,9 @@ $docs-header-color: $gray-06;
   }
 
   a {
-    background-color: lighten($docs-header-color, 8);
+    background-color: color.adjust($docs-header-color, $lightness: 8%, $space: hsl);
     border-radius: 4px 4px 0 0;
-    color: lighten($gray-02, 10);
+    color: color.adjust($gray-02, $lightness: 10%, $space: hsl);
     display: block;
     padding: 0.4em 0.8em;
     text-transform: uppercase;
@@ -211,7 +213,7 @@ $docs-header-color: $gray-06;
   }
 }
 
-@import 'sections/documentation/c';
-@import 'sections/documentation/android';
-@import 'sections/documentation/ios';
-@import 'sections/documentation/js';
+@import 'documentation/c';
+@import 'documentation/android';
+@import 'documentation/ios';
+@import 'documentation/js';

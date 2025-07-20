@@ -13,7 +13,7 @@
 # limitations under the License.
 
 require 'htmlentities'
-require 'algoliasearch'
+require 'algolia'
 require 'slugize'
 require 'dotenv'
 require 'securerandom'
@@ -27,47 +27,65 @@ module Jekyll
       Dotenv.load
     end
 
-    # TODO: figure out how to skip generation if there are no Algolia environment variables set
     def generate(site)
-    end
+      @site = site
+      config = get_config
+      return unless config
 
-    # def generate(site)
-    #   @site = site
-    #   return unless check_config?
-    #   @prefix = site.config['algolia_prefix'] || ''
-    #   @random_code = random_code
-    #   Algolia.init(application_id: site.config['algolia_app_id'],
-    #                api_key: site.config['algolia_api_key'])
-    #   @indexes = setup_indexes
-    #   generate_all
-    # end
+      @prefix = config['prefix']
+      @random_code = random_code
+      @client = Algolia::SearchClient.create(config['app_id'], config['api_key'])
+
+      setup_indexes
+      generate_all
+    end
 
     private
 
-    def check_config?
-      if @site.config['algolia_app_id'].nil? || @site.config['algolia_app_id'].empty?
+    def env_var_defined?(var)
+      @site.config[var].nil? || @site.config[var].empty?
+    end
+
+    def get_config
+      if env_var_defined?('algolia_app_id')
         Jekyll.logger.warn(
           'Config Warning:',
-          'You did not provide a ALGOLIA_APP_ID environment variable.'
+          'You did not provide a ALGOLIA_APP_ID environment variable. Skipping search index generation.'
         )
-        return false
+        return nil
       end
-      if @site.config['algolia_api_key'].nil? || @site.config['algolia_api_key'].empty?
+      if env_var_defined?('algolia_api_key')
         Jekyll.logger.warn(
           'Config Warning:',
-          'You did not provide a ALGOLIA_API_KEY environment variable.'
+          'You did not provide a ALGOLIA_API_KEY environment variable. Skipping search index generation.'
         )
-        return false
+        return nil
       end
-      true
+      if env_var_defined?('algolia_prefix')
+        Jekyll.logger.warn(
+          'Config Warning:',
+          'You did not provide a ALGOLIA_PREFIX environment variable. Skipping search index generation.'
+        )
+        return nil
+      end
+
+      {
+        'app_id' => @site.config['algolia_app_id'],
+        'api_key' => @site.config['algolia_api_key'],
+        'prefix' => @site.config['algolia_prefix']
+      }
     end
 
     def generate_all
-      generate_blog_posts
-      generate_guides
-      generate_documentation
-      generate_none_guide_guides
-      generate_other
+      requests = [].concat(generate_blog_posts,
+                           generate_guides,
+                           generate_documentation,
+                           generate_none_guide_guides,
+                           generate_other).compact
+
+      @client.multiple_batch(
+        Algolia::Search::BatchParams.new(requests: requests)
+      )
     end
 
     def random_code
@@ -75,165 +93,162 @@ module Jekyll
     end
 
     def setup_indexes
-      indexes = {}
       @site.data['search_indexes'].each do |name, properties|
-        index = Algolia::Index.new(@prefix + name)
         unless properties['settings'].nil?
-          index.set_settings(properties['settings'])
+          @client.set_settings("#{@prefix}#{name}", Algolia::Search::IndexSettings.new(properties['settings']))
         end
-        indexes[name] = index
       end
-      indexes
     end
 
     def generate_documentation
-      return if @site.data['docs'].nil?
+      return [] if @site.data['docs'].nil?
 
-      documents = @site.data['docs'][:symbols].map do |item|
+      @site.data['docs'][:symbols].map do |item|
         next if item[:language] == 'c_preview'
 
-        if item[:summary].nil? || item[:summary].strip.length == 0
+        if item[:summary].nil? || item[:summary].strip.empty?
           Jekyll.logger.warn(
             'Search Warning:',
             "There was no summary for the symbol '#{item[:name]}' in #{item[:language]}."
           )
         end
-        {
-          'objectID'   => item[:url],
-          'title'      => item[:name],
-          'splitTitle' => item[:name].split(/(?=[A-Z])/).join(' '),
-          'url'        => item[:url],
-          'summary'    => item[:summary],
-          'kind'       => item[:kind],
-          'language'   => item[:language],
-          'type'       => 'documentation',
-          'ranking'    => doc_language_rank[item[:language]] * 1000,
-          'randomCode' => @random_code
-        }
+
+        Algolia::Search::MultipleBatchRequest.new(
+          action: 'addObject',
+          index_name: "#{@prefix}documentation",
+          body: {
+            'objectID' => item[:url],
+            'title' => item[:name],
+            'splitTitle' => item[:name].split(/(?=[A-Z])/).join(' '),
+            'url' => item[:url],
+            'summary' => item[:summary],
+            'kind' => item[:kind],
+            'language' => item[:language],
+            'type' => 'documentation',
+            'ranking' => doc_language_rank[item[:language]] * 1000,
+            'randomCode' => @random_code
+          }
+        )
       end.compact
-      @indexes['documentation'].save_objects(documents)
     end
 
     def generate_blog_posts
-      documents = []
-      @site.posts.docs.each do | post |
+      @site.posts.docs.flat_map do |post|
         # Calculate the age of the post so we can prioritise newer posts
         # over older ones.
         # NOTE: post.date is actually a Time object, despite its name
         age = (Time.now - post.date).round
         author = post.data['author']
 
-        post.get_sections.each do | section |
+        post.get_sections.map do |section|
           # Ignore sections without any contents.
-          if section[:contents].strip.size == 0
-            next
-          end
+          next if section[:contents].strip.empty?
 
-          if section[:title].nil?
-            url = post.url
-          else
-            url = post.url + '#' + section[:title].slugize
-          end
+          url = section[:title].nil? ? post.url : "#{post.url}##{section[:title].slugize}"
 
-          document = {
-            'objectID'     => url,
-            'title'        => post.data['title'],
-            'sectionTitle' => section[:title],
-            'url'          => url,
-            'urlDisplay'   => post.url,
-            'author'       => author,
-            'content'      => HTMLEntities.new.decode(section[:contents]),
-            'posted'       => post.date,
-            'age'          => age,
-            'type'         => 'blog post',
-            'randomCode'   => @random_code
-          }
-          documents << document
+          Algolia::Search::MultipleBatchRequest.new(
+            action: 'addObject',
+            index_name: "#{@prefix}blog-posts",
+            body: {
+              'objectID' => url,
+              'title' => post.data['title'],
+              'sectionTitle' => section[:title],
+              'url' => url,
+              'urlDisplay' => post.url,
+              'author' => author,
+              'content' => HTMLEntities.new.decode(section[:contents]),
+              'posted' => post.date,
+              'age' => age,
+              'type' => 'blog post',
+              'randomCode' => @random_code
+            }
+          )
         end
       end
-      @indexes['blog-posts'].save_objects(documents)
     end
 
     def generate_guides
-      documents = []
-      return if @site.collections['guides'].nil?
+      return [] if @site.collections['guides'].nil?
 
-      @site.collections['guides'].docs.each do | guide |
+      @site.collections['guides'].docs.flat_map do |guide|
         group = @site.data['guides'][guide.data['guide_group']]
         unless group.nil? || group['subgroups'].nil? || guide.data['guide_subgroup'].nil?
           subgroup = group.nil? ? '' : group['subgroups'][guide.data['guide_subgroup']]
         end
 
-        guide.get_sections.each do | section |
-          url = guide.url
-          unless section[:title].nil?
-            url = url + '#' + section[:title].slugize
-          end
+        guide.get_sections.map do |section|
+          url = section[:title].nil? ? guide.url : "#{guide.url}##{section[:title].slugize}"
 
-          document = {
-            'objectID'     => url,
-            'title'        => guide.data['title'],
-            'sectionTitle' => section[:title],
-            'url'          => url,
-            'urlDisplay'   => guide.url,
-            'content'      => HTMLEntities.new.decode(section[:contents]),
-            'group'        => group.nil? ? '' : group['title'],
-            'subgroup'     => subgroup.nil? ? '' : subgroup['title'],
-            'type'         => 'guide',
-            'randomCode'   => @random_code
-          }
-          documents << document
+          Algolia::Search::MultipleBatchRequest.new(
+            action: 'addObject',
+            index_name: "#{@prefix}guides",
+            body: {
+              'objectID' => url,
+              'title' => guide.data['title'],
+              'sectionTitle' => section[:title],
+              'url' => url,
+              'urlDisplay' => guide.url,
+              'content' => HTMLEntities.new.decode(section[:contents]),
+              'group' => group.nil? ? '' : group['title'],
+              'subgroup' => subgroup.nil? ? '' : subgroup['title'],
+              'type' => 'guide',
+              'randomCode' => @random_code
+            }
+          )
         end
       end
-
-      @indexes['guides'].save_objects(documents)
     end
 
     def generate_none_guide_guides
-      documents = []
       gs_pages = @site.pages.select { |page| page.data['search_index'] }
-      gs_pages.each do |page|
-        page.get_sections.each do |section|
-          url = page.url
-          url = url + '#' + section[:title].slugize unless section[:title].nil?
-          document = {
-            'objectID'     => url,
-            'title'        => page.data['title'],
-            'sectionTitle' => section[:title],
-            'url'          => url,
-            'urlDisplay'   => page.url,
-            'content'      => HTMLEntities.new.decode(section[:contents]),
-            'group'        => page.data['search_group'],
-            'subgroup'     => page.data['sub_group'],
-            'type'         => 'not-guide',
-            'randomCode'   => @random_code
-          }
-          documents << document
+
+      gs_pages.flat_map do |page|
+        page.get_sections.map do |section|
+          url = section[:title].nil? ? page.url : "#{page.url}##{section[:title].slugize}"
+
+          Algolia::Search::MultipleBatchRequest.new(
+            action: 'addObject',
+            index_name: "#{@prefix}guides",
+            body: {
+              'objectID' => url,
+              'title' => page.data['title'],
+              'sectionTitle' => section[:title],
+              'url' => url,
+              'urlDisplay' => page.url,
+              'content' => HTMLEntities.new.decode(section[:contents]),
+              'group' => page.data['search_group'],
+              'subgroup' => page.data['sub_group'],
+              'type' => 'not-guide',
+              'randomCode' => @random_code
+            }
+          )
         end
       end
-      @indexes['guides'].save_objects(documents)
     end
 
     def generate_other
-      documents = @site.data['search-other'].map do |other|
-        {
+      @site.data['search-other'].map do |other|
+        Algolia::Search::MultipleBatchRequest.new(
+          action: 'addObject',
+          index_name: "#{@prefix}other",
+          body: {
             'objectID' => other['id'],
             'title' => other['title'],
             'url' => other['url'],
             'content' => other['description'],
             'randomCode' => @random_code
-        }
+          }
+        )
       end
-      @indexes['other'].save_objects(documents)
     end
 
     def doc_language_rank
       {
-          'c' => 10,
-          'rockyjs' => 9,
-          'pebblekit_js' => 8,
-          'pebblekit_android' => 6,
-          'pebblekit_ios' => 4
+        'c' => 10,
+        'rockyjs' => 9,
+        'pebblekit_js' => 8,
+        'pebblekit_android' => 6,
+        'pebblekit_ios' => 4
       }
     end
   end

@@ -43,7 +43,7 @@
 }
 
 .no-gutter.pad-gutter > [class*=col-] {
-    padding: 0 $grid-column-gutter/2;
+    padding: 0 $grid-column-gutter*0.5;
 }
 
 /*

@@ -20,8 +20,8 @@ guide_group: appstore-publishing
 order: 0
 ---
 
-Once a new Pebble watchface or watchapp has been created, the 
-[Pebble Developer Portal](https://dev-portal.getpebble.com/) allows the
+Once a new Pebble watchface or watchapp has been created, the
+[Pebble Developer Portal]({{ site.links.devportal }}) allows the
 developer to publish their creation to the appstore either publicly, or
 privately. The appstore is built into the official mobile apps and means that
 every new app can be found and also featured for increased exposure and
@@ -33,7 +33,7 @@ publicity.
 
 To build the appstore listing for a new app, the following resources are
 required from the developer. Some may not be required, depending on the type of
-app being listed. Read 
+app being listed. Read
 {% guide_link appstore-publishing/publishing-an-app#listing-resources "Listing Resources" %}
 for a comparison.
 
@@ -89,16 +89,16 @@ also download the companion app automatically.
 ## Timeline
 
 Developers that require the user of the timeline API will need to click 'Enable
-timeline' to obtain API keys used for pushing pins. See the 
+timeline' to obtain API keys used for pushing pins. See the
 {% guide_link pebble-timeline %} guides for more information.
 
 
 ## Promotion
 
 Once published, the key to growth in an app is through promotion. Aside from
-users recommending the app to each other, posting on websites such as the 
-[Pebble Forums](https://forums.getpebble.com/categories/watchapp-directory), 
-[Reddit](https://www.reddit.com/r/pebble), and [Twitter](https://twitter.com) 
+users recommending the app to each other, posting on websites such as the
+[Pebble Forums](https://forums.getpebble.com/categories/watchapp-directory),
+[Reddit](https://www.reddit.com/r/pebble), and [Twitter](https://twitter.com)
 can help increase exposure.
 
 

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 .blog__meta {
   border-bottom: 1px solid $gray-09;
   border-top: 1px solid $gray-09;
@@ -51,7 +53,7 @@
     font-size: 0.9em;
 
     a {
-      color: darken($gray-09, 20);
+      color: color.adjust($gray-09, $lightness: -20%, $space: hsl);
     }
   }
 
