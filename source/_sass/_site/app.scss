@@ -19,59 +19,56 @@
 @use 'colors';
 
 @use 'base/base';
-@use 'responsive/responsive';
 @use 'font-awesome/font-awesome';
+@use 'responsive/responsive';
 
 @use 'header';
 @use 'footer';
 
 
+
 @use 'elements/alert';
+@use 'elements/bigbox';
 @use 'elements/buttons';
+@use 'elements/dual-image';
 @use 'elements/form';
-@use 'elements/mobile-nav';
+@use 'elements/full-height';
+@use 'elements/gray-box';
 @use 'elements/highlight';
 @use 'elements/inline-list';
+@use 'elements/landing-slider';
 @use 'elements/markdown';
+@use 'elements/mobile-nav';
+@use 'elements/pagination';
+@use 'elements/platform-choice';
+@use 'elements/ribbon';
 @use 'elements/screenshot';
+@use 'elements/search';
+@use 'elements/sectionmenu';
 @use 'elements/sidebar';
 @use 'elements/spinner';
 @use 'elements/table';
-// @import 'elements/terminal';
 @use 'elements/toc';
-// @import 'elements/typeahead';
-// @import 'elements/video';
-@use 'elements/bigbox';
-@use 'elements/full-height';
-@use 'elements/sectionmenu';
-@use 'elements/search';
-@use 'elements/gray-box';
-@use 'elements/ribbon';
-@use 'elements/pagination';
-@use 'elements/landing-slider';
-@use 'elements/platform-choice';
-@use 'elements/dual-image';
-
 @use 'sections/getting-started';
 
 @use 'libs/slick';
 @use 'mmenu/jquery.mmenu.all.scss';
 
-@use 'sections/events';
 @use 'sections/blog';
 @use 'sections/documentation';
+@use 'sections/events';
 @use 'sections/examples';
 @use 'sections/guides';
-@use 'sections/retreat';
 @use 'sections/inspiration';
+@use 'sections/retreat';
 @use 'sections/round';
 @use 'sections/sdk';
 
-@use 'debug';
 @use "base/variables";
 @use "bourbon/addons/font-family";
 @use "bourbon/css3/box-sizing";
 @use "responsive/utilities/variables" as utilities-variables;
+@use 'debug';
 
 .mm-page {
   height: 100%;

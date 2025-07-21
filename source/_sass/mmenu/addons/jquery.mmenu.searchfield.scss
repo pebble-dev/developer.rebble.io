@@ -2,9 +2,9 @@
 	jQuery.mmenu searchfield addon CSS
 */
 
-@use "sass:math";
-@use "../inc/variables";
 @use "../inc/colors";
+@use "../inc/variables";
+@use "sass:math";
 
 .mm-search,
 .mm-search input {

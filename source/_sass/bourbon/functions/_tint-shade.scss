@@ -1,4 +1,5 @@
 @use "sass:color";
+
 // Add percentage of white to a color
 @function tint($color, $percent){
   @return color.mix(white, $color, $percent);

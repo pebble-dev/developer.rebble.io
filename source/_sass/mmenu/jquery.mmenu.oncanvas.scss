@@ -1,11 +1,11 @@
 /*
 	jQuery.mmenu panels CSS
 */
-@use "inc/variables";
-@use "inc/sizing";
+
 @use "inc/colors";
 @use "inc/mixins";
-
+@use "inc/sizing";
+@use "inc/variables";
 
 //	Animations
 .mm-menu.mm-horizontal>.mm-panel {

@@ -2,9 +2,10 @@
 // Example: @include transition (all 2s ease-in-out);
 //          @include transition (opacity 1s ease-in 2s, width 2s ease-out);
 //          @include transition-property (transform, opacity);
-@use "sass:list";
+
 @use "../addons/prefixer";
 @use "../functions/transition-property-name";
+@use "sass:list";
 
 @mixin transition ($properties...) {
   // Fix for vendor-prefix transform property

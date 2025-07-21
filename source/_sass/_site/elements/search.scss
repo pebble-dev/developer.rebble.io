@@ -1,12 +1,3 @@
-@use "../base/variables";
-@use "../colors";
-@use "../header";
-@use "../responsive/utilities/mixins/breakpoints";
-@use "../responsive/utilities/variables" as utilities-variables;
-@use "mobile-nav";
-@use "sectionmenu";
-@use "sidebar";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -22,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables" as utilities-variables;
+@use "mobile-nav";
+@use "sectionmenu";
+@use "sidebar";
 
 .search {
   background-color: colors.$white;

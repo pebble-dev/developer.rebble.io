@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-@use "sass:color";
 @use "../colors";
 @use "../responsive/utilities/mixins/breakpoints";
+@use "sass:color";
 
 .blog__meta {
   border-bottom: 1px solid colors.$gray-09;

@@ -2,8 +2,8 @@
 	jQuery.mmenu fullscreen extension CSS
 */
 
-@use "../inc/variables";
 @use "../inc/sizing";
+@use "../inc/variables";
 
 $mm_fs_class	: ".mm-fullscreen";
 $mm_fs_full		: 1 !default;

@@ -1,6 +1,7 @@
+// User for linear and radial gradients within background-image or border-image properties
+
 @use "sass:list";
 @use "sass:string";
-// User for linear and radial gradients within background-image or border-image properties
 
 @function _render-gradients($gradient-positions, $gradients, $gradient-type, $vendor: false) {
   $pre-spec: null;

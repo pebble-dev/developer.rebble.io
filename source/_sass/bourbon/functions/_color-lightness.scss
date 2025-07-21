@@ -1,8 +1,8 @@
-@use "sass:color";
-
 // Programatically determines whether a color is light or dark
 // Returns a boolean
 // More details here http://robots.thoughtbot.com/closer-look-color-lightness
+
+@use "sass:color";
 
 @function is-light($hex-color) {
   $-local-red: color.red(rgba($hex-color, 1.0));

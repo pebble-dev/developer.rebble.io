@@ -1,8 +1,8 @@
-@use "sass:string";
 @use "is-num";
 @use "linear-angle-parser";
 @use "linear-positions-parser";
 @use "linear-side-corner-parser";
+@use "sass:string";
 
 @function linear-gradient-parser($image) {
   $image: string.unquote($image);

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-@use "sass:color";
 @use "bourbon/addons/clearfix";
 @use "bourbon/css3/transition";
 @use "responsive/utilities/mixins/breakpoints";
+@use "sass:color";
 
 
 $footer-height: 2rem;

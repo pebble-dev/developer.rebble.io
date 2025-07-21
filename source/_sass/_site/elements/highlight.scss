@@ -1,8 +1,3 @@
-@use "../base/variables";
-@use "../bourbon/addons/font-family";
-@use "../colors";
-@use "../responsive/utilities/mixins/breakpoints";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -18,6 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "../base/variables";
+@use "../bourbon/addons/font-family";
+@use "../colors";
+@use "../responsive/utilities/mixins/breakpoints";
 
 .highlight {
   background-color: colors.$gray-07;

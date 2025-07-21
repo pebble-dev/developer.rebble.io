@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-@use "sass:color";
 @use "../colors";
 @use "../header";
 @use "../responsive/utilities/mixins/breakpoints";
 @use "../responsive/utilities/variables";
+@use "sass:color";
 @use "sass:math";
 
 $hamburger-width: header.$header-height;

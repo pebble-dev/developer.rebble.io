@@ -2,8 +2,8 @@
 	jQuery.mmenu dragOpen addon CSS
 */
 
-@use "../inc/variables";
 @use "../inc/mixins";
+@use "../inc/variables";
 
 html.mm-opened.mm-dragging
 {

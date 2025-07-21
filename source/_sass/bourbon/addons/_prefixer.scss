@@ -1,9 +1,9 @@
-@use "../settings/prefixer";
-
 //************************************************************************//
 // Example: @include prefixer(border-radius, $radii, webkit ms spec);
 //************************************************************************//
 // Variables located in /settings/_prefixer.scss
+
+@use "../settings/prefixer";
 
 @mixin prefixer ($property, $value, $prefixes) {
   @each $prefix in $prefixes {

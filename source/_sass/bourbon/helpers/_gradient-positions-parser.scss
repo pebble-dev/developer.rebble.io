@@ -1,6 +1,6 @@
-@use "sass:meta";
 @use "linear-positions-parser";
 @use "radial-positions-parser";
+@use "sass:meta";
 
 @function _gradient-positions-parser($gradient-type, $gradient-positions) {
   @if $gradient-positions

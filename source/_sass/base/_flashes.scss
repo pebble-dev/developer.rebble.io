@@ -1,6 +1,3 @@
-@use "mixins/flash";
-@use "variables";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -16,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "mixins/flash";
+@use "variables";
 
 %flash-alert {
   @include flash.flash(variables.$alert-color);

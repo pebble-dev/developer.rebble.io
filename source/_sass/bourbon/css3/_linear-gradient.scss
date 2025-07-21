@@ -1,7 +1,7 @@
+@use "../helpers/linear-positions-parser";
 @use "sass:list";
 @use "sass:meta";
 @use "sass:string";
-@use "../helpers/linear-positions-parser";
 
 @mixin linear-gradient($pos, $G1, $G2: null,
                        $G3: null, $G4: null,

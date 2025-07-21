@@ -1,8 +1,9 @@
 /**Manages width in a single place */
+
+@use "../../base/extends/clearfix";
 @use "../utilities/mixins/breakpoints";
 @use "../utilities/mixins/grid";
 @use "../utilities/variables";
-@use "../../base/extends/clearfix";
 
 .container {
   margin: 0 auto;

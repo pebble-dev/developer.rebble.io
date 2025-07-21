@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "sass:meta";
+
 @function radial-arg-parser($G1, $G2, $pos, $shape-size) {
   @each $value in $G1, $G2 {
     $first-val: list.nth($value, 1);

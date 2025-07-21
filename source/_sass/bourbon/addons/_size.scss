@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:math";
 @use "sass:meta";
+
 @mixin size($size) {
   $height: list.nth($size, 1);
   $width: $height;

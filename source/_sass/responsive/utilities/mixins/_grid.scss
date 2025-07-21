@@ -1,10 +1,9 @@
 //==
 // Grid System - Base
 //##
+
 @use "../variables";
 @use "breakpoints";
-
-
 @use "sass:math";
 
 @mixin grid-base($bp) {

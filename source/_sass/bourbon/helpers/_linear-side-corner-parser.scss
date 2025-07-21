@@ -1,5 +1,5 @@
-@use "sass:string";
 @use "linear-positions-parser";
+@use "sass:string";
 
 // Private function for linear-gradient-parser
 @function linear-side-corner-parser($image, $first-val, $prefix, $suffix, $has-multiple-vals) {

@@ -3,15 +3,15 @@
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-@use "variables";
+@use "bordered-pulled";
+@use "core";
+@use "fixed-width";
+@use "larger";
+@use "list";
 @use "mixins";
 @use "path";
-@use "core";
-@use "larger";
-@use "fixed-width";
-@use "list";
-@use "bordered-pulled";
-@use "spinning";
 @use "rotated-flipped";
+@use "spinning";
 @use "stacked";
+@use "variables";
 @use "icons";

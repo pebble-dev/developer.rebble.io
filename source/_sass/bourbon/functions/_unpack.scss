@@ -1,5 +1,6 @@
-@use "sass:list";
 // Convert shorthand to the 4-value syntax
+
+@use "sass:list";
 
 @function unpack($shorthand) {
   @if list.length($shorthand) == 1 {

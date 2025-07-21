@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:meta";
 @use "sass:string";
+
 @function linear-positions-parser($pos) {
   $type: meta.type-of(list.nth($pos, 1));
   $spec: null;

@@ -24,12 +24,12 @@
 @forward 'responsive/responsive';
 @forward 'font-awesome/font-awesome';
 
-@use 'header';
-@use 'footer';
 @use "base/variables";
 @use "bourbon/addons/font-family";
 @use "bourbon/css3/box-sizing";
 @use "responsive/utilities/variables" as utilities-variables;
+@use 'footer';
+@use 'header';
 
 * {
   @include box-sizing.box-sizing(border-box);

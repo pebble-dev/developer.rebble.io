@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-@use "sass:list";
-@use "../colors";
 @use "../base/lists";
-
+@use "../colors";
+@use "sass:list";
 
 .alert {
   background-color: #ddd;

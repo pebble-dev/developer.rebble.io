@@ -1,12 +1,12 @@
-@use "sass:list";
-@use "sass:string";
-@use "convert-units";
-
 //************************************************************************//
 // Helper function for linear/radial-gradient-parsers.
 // Source: http://sassmeister.com/gist/9647408
 //************************************************************************//
+
+@use "convert-units";
+@use "sass:list";
 @use "sass:math";
+@use "sass:string";
 
 @function _str-to-num($string) {
   // Matrices

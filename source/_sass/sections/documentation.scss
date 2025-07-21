@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-@use "sass:color";
-@use "sass:meta";
-@use "../base/variables";
 @use "../base/lists";
+@use "../base/variables";
 @use "../colors";
 @use "../header";
-
+@use "sass:color";
+@use "sass:meta";
 
 $docs-header-color: colors.$gray-06;
 

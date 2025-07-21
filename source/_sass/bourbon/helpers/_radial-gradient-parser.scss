@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "sass:string";
+
 @function radial-gradient-parser($image) {
   $image: string.unquote($image);
   $gradients: ();

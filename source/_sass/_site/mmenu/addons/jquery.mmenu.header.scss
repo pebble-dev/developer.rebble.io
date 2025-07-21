@@ -2,10 +2,9 @@
 	jQuery.mmenu header addon CSS
 */
 
-@use "../inc/variables";
 @use "../inc/colors";
 @use "../inc/mixins";
-
+@use "../inc/variables";
 
 .mm-header {
   background: inherit;

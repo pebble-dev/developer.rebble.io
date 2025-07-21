@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@use "sidebar";
-@use "sass:color";
-@use "sass:math";
+
 @use "../base/variables";
 @use "../colors";
 @use "../header";
 @use "../responsive/utilities/mixins/breakpoints";
 @use "../responsive/utilities/variables" as utilities-variables;
+@use "sass:color";
+@use "sass:math";
+@use "sidebar";
 
 $section-menu-width: 240px;
 

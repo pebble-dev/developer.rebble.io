@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@use "../elements/sidebar";
-@use "../elements/sectionmenu";
-@use "sass:color";
+
 @use "../base/variables";
 @use "../bourbon/css3/flex-box";
 @use "../colors";
+@use "../elements/sectionmenu";
+@use "../elements/sidebar";
 @use "../header";
 @use "../responsive/utilities/mixins/breakpoints";
-
+@use "sass:color";
 
 $banner-blue: #066AC4;
 

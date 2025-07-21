@@ -1,8 +1,9 @@
-@use "../addons/prefixer";
-
 //************************************************************************//
 // Shorthand Border-radius mixins
 //************************************************************************//
+
+@use "../addons/prefixer";
+
 @mixin border-top-radius($radii) {
   @include prefixer.prefixer(border-top-left-radius, $radii, spec);
   @include prefixer.prefixer(border-top-right-radius, $radii, spec);

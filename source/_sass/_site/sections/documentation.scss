@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@use 'documentation/c';
-@use 'documentation/android';
-@use 'documentation/ios';
-@use 'documentation/js';
+
 @use "../base/variables";
 @use "../colors";
 @use "../header";
+@use 'documentation/android';
+@use 'documentation/c';
+@use 'documentation/ios';
+@use 'documentation/js';
 
 $docs-header-color: colors.$gray-06;
 

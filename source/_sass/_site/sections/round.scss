@@ -1,7 +1,3 @@
-@use "../colors";
-@use "../elements/sidebar";
-@use "../responsive/utilities/mixins/breakpoints";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "../colors";
+@use "../elements/sidebar";
+@use "../responsive/utilities/mixins/breakpoints";
 
 .round-landing {
   background-image: url('../images/round/splash.jpg');

@@ -1,8 +1,8 @@
+@use "../helpers/radial-arg-parser";
+@use "../helpers/shape-size-stripper";
 @use "sass:list";
 @use "sass:meta";
 @use "sass:string";
-@use "../helpers/radial-arg-parser";
-@use "../helpers/shape-size-stripper";
 
 // Requires Sass 3.1+
 @mixin radial-gradient($G1,        $G2,

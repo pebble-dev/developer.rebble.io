@@ -2,10 +2,9 @@
 	jQuery.mmenu buttonbars addon CSS
 */
 
-@use "../inc/variables";
 @use "../inc/colors";
 @use "../inc/mixins";
-
+@use "../inc/variables";
 
 .mm-buttonbar {
   border: 1px solid transparent;

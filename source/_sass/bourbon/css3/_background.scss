@@ -1,9 +1,9 @@
+@use "../helpers/linear-gradient-parser";
+@use "../helpers/radial-gradient-parser";
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use "../helpers/linear-gradient-parser";
-@use "../helpers/radial-gradient-parser";
 
 //************************************************************************//
 // Background property for adding multiple backgrounds using shorthand

@@ -1,14 +1,14 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:meta";
-@use "sass:string";
-@use "../helpers/linear-gradient-parser";
-@use "../helpers/radial-gradient-parser";
-
 //************************************************************************//
 // Background-image property for adding multiple background images with
 // gradients, or for stringing multiple gradients together.
 //************************************************************************//
+
+@use "../helpers/linear-gradient-parser";
+@use "../helpers/radial-gradient-parser";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
 
 @mixin background-image($images...) {
   $webkit-images: ();

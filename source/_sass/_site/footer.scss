@@ -1,7 +1,3 @@
-@use "bourbon/addons/clearfix";
-@use "bourbon/css3/transition";
-@use "responsive/utilities/mixins/breakpoints";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "bourbon/addons/clearfix";
+@use "bourbon/css3/transition";
+@use "responsive/utilities/mixins/breakpoints";
 
 $footer-height: 2rem;
 $footer-height-mobile: 9.95rem;

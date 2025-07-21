@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@use "sidebar";
+
 @use "mobile-nav";
 @use "sectionmenu";
+@use "sidebar";
 
-@use "sass:math";
 @use "../base/variables";
 @use "../colors";
 @use "../header";
 @use "../responsive/utilities/mixins/breakpoints";
 @use "../responsive/utilities/variables" as utilities-variables;
+@use "sass:math";
 
 // THIS IS A HACK I DON'T KNOW HOW TO FIX IT PROPERLY
 $font-size: 15px;
