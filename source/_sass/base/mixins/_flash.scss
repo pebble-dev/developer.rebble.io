@@ -17,7 +17,6 @@
 @use "sass:color";
 @use "../variables";
 
-
 @mixin flash($color) {
   background: $color;
   color: color.adjust($color, $lightness: -60%, $space: hsl);
