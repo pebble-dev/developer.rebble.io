@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,25 +36,25 @@ docs_language: rockyjs
 
       {% for module in site.data.docs_tree.rockyjs %}
 
-      {% if module['kind'] == "member" or module['kind'] == "namespace" %}
-      <div class="docs__module">
-        <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
-        <p>{{ module.summary | markdownify }}</p>
-      </div>
-      {% endif %}
+        {% if module['kind'] == "member" or module['kind'] == "namespace" %}
+        <div class="docs__module">
+          <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
+          <p>{{ module.summary | markdownify }}</p>
+        </div>
+        {% endif %}
       {% endfor %}
 
       <hr>
       <p>The JavaScript API also includes the following global functions:</p>
 
       {% for module in site.data.docs_tree.rockyjs %}
-      {% if module.kind == "function" %}
-      <div class="docs__module">
-        <div id="{{ module.name }}">
-          {% include docs/js/function.html child=module global=true %}
+        {% if module.kind == "function" %}
+        <div class="docs__module">
+          <div id="{{ module.name }}">
+            {% include docs/js/function.html child=module global=true %}
+          </div>
         </div>
-      </div>
-      {% endif %}
+        {% endif %}
       {% endfor %}
 
       <hr>

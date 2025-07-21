@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,19 +25,19 @@ regenerate: true
 
 <div class="blog-index">
   {% for post in paginator.posts %}
-  {% include blog/index-post.html post=post %}
+    {% include blog/index-post.html post=post %}
   {% endfor %}
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Prev</a></li>
       {% for page in (1..paginator.total_pages) %}
-      <li class="{% if page == paginator.page %}active{% endif %}">
-        {% if page == 1 %}
-        <a href="{{ site.baseurl }}/blog/">{{page}}</a>
-        {% else %}
-        <a href="{{ site.baseurl }}/blog/{{page}}">{{page}}</a>
-        {% endif %}
-      </li>
+        <li class="{% if page == paginator.page %}active{% endif %}" >
+          {% if page == 1 %}
+          <a href="{{ site.baseurl }}/blog/">{{page}}</a>
+          {% else %}
+          <a href="{{ site.baseurl }}/blog/{{page}}">{{page}}</a>
+          {% endif %}
+        </li>
       {% endfor %}
       <li><a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a></li>
     </ul>
@@ -45,28 +45,26 @@ regenerate: true
   <div class="visible-s visible-xs">
     <div class="row">
       <div class="col-xs-2">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}"
-          class="btn btn--wide btn--fg-white btn--bg-lightblue">Prev</a>
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="btn btn--wide btn--fg-white btn--bg-lightblue">Prev</a>
       </div>
       <div class="col-xs-8">
         <div class="form__group">
           <div class="select-style no-label">
             <select class="js-toc-select">
-              <option>JUMP TO PAGE</option>
+            <option>JUMP TO PAGE</option>
               {% for page in (1..paginator.total_pages) %}
-              {% if page == 1 %}
-              <option value="{{ site.baseurl }}/blog/">{{page}}</option>
-              {% else %}
-              <option value="{{ site.baseurl }}/blog/{{page}}">{{page}}</option>
-              {% endif %}
+                {% if page == 1 %}
+                <option value="{{ site.baseurl }}/blog/">{{page}}</option>
+                {% else %}
+                <option value="{{ site.baseurl }}/blog/{{page}}">{{page}}</option>
+                {% endif %}
               {% endfor %}
             </select>
           </div>
         </div>
       </div>
       <div class="col-xs-2">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}"
-          class="btn btn--wide btn--fg-white btn--bg-lightblue">Next</a>
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="btn btn--wide btn--fg-white btn--bg-lightblue">Next</a>
       </div>
     </div>
   </div>
