@@ -1,8 +1,9 @@
+//	Sizing left (default)
 @use "sass:math";
 @use "mixins";
 @use "variables";
 
-//	Sizing left (default)
+
 @mixin mm_sizing($cls: "",
   $width: variables.$mm_width, $minWidth: variables.$mm_minWidth, $maxWidth: variables.$mm_maxWidth) {
   .mm-menu#{$cls} {
@@ -19,7 +20,7 @@
     }
   }
 
-  @media all and (max-width: calc($minWidth / $width)) {
+  @media all and (max-width: math.div($minWidth, $width)) {
     html.mm-opening#{$cls} {
 
       .mm-page,
@@ -29,7 +30,7 @@
     }
   }
 
-  @media all and (min-width: calc($maxWidth / $width)) {
+  @media all and (min-width: math.div($maxWidth, $width)) {
     html.mm-opening#{$cls} {
 
       .mm-page,
@@ -51,7 +52,7 @@
     }
   }
 
-  @media all and (max-width: calc($minWidth / $width)) {
+  @media all and (max-width: math.div($minWidth, $width)) {
     html.mm-right.mm-opening#{$cls} {
 
       .mm-page,
@@ -61,7 +62,7 @@
     }
   }
 
-  @media all and (min-width: calc($maxWidth / $width)) {
+  @media all and (min-width: math.div($maxWidth, $width)) {
     html.mm-right.mm-opening#{$cls} {
 
       .mm-page,

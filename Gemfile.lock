@@ -3,53 +3,77 @@ GEM
   specs:
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    algoliasearch (1.27.5)
-      httpclient (~> 2.8, >= 2.8.3)
-      json (>= 1.5.1)
-    ast (2.4.2)
-    base64 (0.2.0)
-    bigdecimal (3.1.9)
+    algolia (3.22.0)
+      base64 (>= 0.2.0, < 1)
+      faraday (>= 1.0.1, < 3.0)
+      faraday-net_http_persistent (>= 0.15, < 3)
+      net-http-persistent
+    ast (2.4.3)
+    base64 (0.3.0)
+    bigdecimal (3.2.2)
     colorator (1.1.0)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.0)
-    csv (3.3.2)
-    diff-lcs (1.6.0)
+    connection_pool (2.5.3)
+    csv (3.3.5)
+    diff-lcs (1.6.2)
     docile (1.4.1)
-    dotenv (3.1.7)
+    dotenv (3.1.8)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
     execjs (2.10.0)
-    ffi (1.17.1-aarch64-linux-gnu)
-    ffi (1.17.1-aarch64-linux-musl)
-    ffi (1.17.1-arm-linux-gnu)
-    ffi (1.17.1-arm-linux-musl)
-    ffi (1.17.1-arm64-darwin)
-    ffi (1.17.1-x86_64-darwin)
-    ffi (1.17.1-x86_64-linux-gnu)
-    ffi (1.17.1-x86_64-linux-musl)
+    faraday (2.13.2)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-net_http (3.4.1)
+      net-http (>= 0.5.0)
+    faraday-net_http_persistent (2.3.1)
+      faraday (~> 2.5)
+      net-http-persistent (>= 4.0.4, < 5)
+    ffi (1.17.2)
+    ffi (1.17.2-aarch64-linux-gnu)
+    ffi (1.17.2-aarch64-linux-musl)
+    ffi (1.17.2-arm-linux-gnu)
+    ffi (1.17.2-arm-linux-musl)
+    ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-x86-linux-gnu)
+    ffi (1.17.2-x86-linux-musl)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-musl)
     forwardable-extended (2.6.0)
-    google-protobuf (4.29.3)
+    google-protobuf (4.31.1)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-aarch64-linux)
+    google-protobuf (4.31.1-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-arm64-darwin)
+    google-protobuf (4.31.1-aarch64-linux-musl)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-x86_64-darwin)
+    google-protobuf (4.31.1-arm64-darwin)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-x86_64-linux)
+    google-protobuf (4.31.1-x86-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86-linux-musl)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.31.1-x86_64-linux-musl)
       bigdecimal
       rake (>= 13)
     googlestaticmap (1.2.6)
     htmlentities (4.3.4)
     http_parser.rb (0.8.0)
-    httpclient (2.9.0)
-      mutex_m
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     jekyll (4.4.1)
@@ -76,83 +100,77 @@ GEM
       sass-embedded (~> 1.75)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.10.1)
+    json (2.13.0)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    language_server-protocol (3.17.0.4)
+    language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     liquid (4.0.4)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     mercenary (0.4.0)
-    mutex_m (0.3.0)
-    net-http-persistent (4.0.5)
-      connection_pool (~> 2.2)
-    newrelic_rpm (9.17.0)
-    nokogiri (1.18.3-aarch64-linux-gnu)
+    mini_portile2 (2.8.9)
+    net-http (0.6.0)
+      uri
+    net-http-persistent (4.0.6)
+      connection_pool (~> 2.2, >= 2.2.4)
+    newrelic_rpm (9.19.0)
+    nokogiri (1.18.8)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.3-aarch64-linux-musl)
+    nokogiri (1.18.8-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm-linux-gnu)
+    nokogiri (1.18.8-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm-linux-musl)
+    nokogiri (1.18.8-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm64-darwin)
+    nokogiri (1.18.8-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-darwin)
+    nokogiri (1.18.8-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-linux-gnu)
+    nokogiri (1.18.8-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-linux-musl)
+    nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
-    parallel (1.26.3)
-    parser (3.3.7.1)
+    nokogiri (1.18.8-x86_64-linux-musl)
+      racc (~> 1.4)
+    parallel (1.27.0)
+    parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (6.0.1)
-    pygments.rb (3.0.0)
+    prism (1.4.0)
+    public_suffix (6.0.2)
+    pygments.rb (4.0.0)
     racc (1.8.1)
-    rack (3.1.10)
-    rack-contrib (2.5.0)
-      rack (< 4)
-    rack-host-redirect (1.3.0)
-      rack
-    rack-rewrite (1.5.1)
-    rack-ssl-enforcer (0.2.9)
-    rack-wwwhisper (1.1.16)
-      addressable (~> 2.0)
-      net-http-persistent (< 5.0)
-      rack (>= 1.0)
-    rack-xframe-options (0.1.2)
-      rack (>= 0.9.1)
     rainbow (3.1.1)
-    rake (13.2.1)
+    rake (13.3.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     redcarpet (3.6.1)
     regexp_parser (2.10.0)
     rexml (3.4.1)
-    rouge (4.5.1)
-    rspec (3.13.0)
+    rouge (4.5.2)
+    rspec (3.13.1)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.3)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.3)
+    rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.2)
+    rspec-mocks (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-support (3.13.2)
-    rubocop (1.73.1)
+    rspec-support (3.13.4)
+    rubocop (1.78.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -160,35 +178,51 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.1)
-      parser (>= 3.3.1.0)
+    rubocop-ast (1.46.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.4)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     safe_yaml (1.0.5)
-    sass-embedded (1.85.1-aarch64-linux-gnu)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-aarch64-linux-musl)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-arm-linux-gnueabihf)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-arm-linux-musleabihf)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-arm64-darwin)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-x86_64-darwin)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-x86_64-linux-gnu)
-      google-protobuf (~> 4.29)
-    sass-embedded (1.85.1-x86_64-linux-musl)
-      google-protobuf (~> 4.29)
+    sass-embedded (1.89.2)
+      google-protobuf (~> 4.31)
+      rake (>= 13)
+    sass-embedded (1.89.2-aarch64-linux-android)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-aarch64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-aarch64-linux-musl)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-arm-linux-androideabi)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-arm-linux-gnueabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-arm-linux-musleabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-arm64-darwin)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-riscv64-linux-android)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-riscv64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-riscv64-linux-musl)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-x86_64-darwin)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-x86_64-linux-android)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.89.2-x86_64-linux-musl)
+      google-protobuf (~> 4.31)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.13.1)
+    simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
     slugize (0.0.3)
     terminal-table (3.0.2)
@@ -196,49 +230,51 @@ GEM
     uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.6.0)
+    uri (1.0.3)
     webrick (1.9.1)
 
 PLATFORMS
-  aarch64-linux
+  aarch64-linux-android
   aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux-androideabi
   arm-linux-gnu
   arm-linux-gnueabihf
   arm-linux-musl
   arm-linux-musleabihf
   arm64-darwin
+  riscv64-linux-android
+  riscv64-linux-gnu
+  riscv64-linux-musl
+  ruby
+  x86-linux-gnu
+  x86-linux-musl
   x86_64-darwin
+  x86_64-linux-android
   x86_64-linux-gnu
   x86_64-linux-musl
 
 DEPENDENCIES
-  algoliasearch
-  bundler
-  dotenv
-  googlestaticmap
-  htmlentities
-  jekyll
+  algolia (>= 3.22.0)
+  bundler (>= 1.7.9)
+  dotenv (>= 0.11.1)
+  googlestaticmap (>= 1.2.2)
+  htmlentities (>= 4.3.2)
+  jekyll (>= 3.0.3)
   jekyll-paginate
-  newrelic_rpm
-  nokogiri
+  newrelic_rpm (>= 3.9.8.273)
+  nokogiri (>= 1.6.3.1)
   pygments.rb
-  rack
-  rack-contrib
-  rack-host-redirect
-  rack-rewrite
-  rack-ssl-enforcer
-  rack-wwwhisper
-  rack-xframe-options
   redcarpet
-  rspec
-  rubocop
-  rubyzip
-  simplecov
-  slugize
-  uglifier
+  rspec (>= 3.1.0)
+  rubocop (>= 0.28.0)
+  rubyzip (>= 1.1.6)
+  simplecov (>= 0.9.1)
+  slugize (>= 0.0.3)
+  uglifier (>= 2.7.0)
 
 RUBY VERSION
-   ruby 3.3.7p123
+   ruby 3.3.8p144
 
 BUNDLED WITH
-   2.6.5
+   2.6.9

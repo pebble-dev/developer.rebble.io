@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "sass:math";
+
 .calendar {
 
   td,
@@ -24,7 +27,7 @@
 
   tbody {
     td {
-      width: calc(1 / 7) * 100%;
+      width: math.div(1, 7) * 100%;
     }
   }
 }
@@ -34,7 +37,7 @@
 }
 
 .calendar__day--off {
-  color: lighten($base-text-color, 50);
+  color: color.adjust($base-text-color, $lightness: 50, $space: hsl);
 }
 
 .calendar__day--today {

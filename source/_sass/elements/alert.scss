@@ -1,7 +1,3 @@
-@use "sass:list";
-@use "../colors";
-@use "../base/lists";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:list";
+@use "../colors";
+@use "../base/lists";
+
 
 .alert {
   background-color: #ddd;
@@ -52,8 +53,8 @@
   padding: 0.7em;
 }
 
-$alert-colors: colors.$white     colors.$green   colors.$blue   colors.$red   colors.$purple   colors.$yellow   colors.$orange   colors.$lightblue   colors.$dark-red   colors.$color-blog;
-$alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'blog';
+$alert-colors: colors.$white colors.$green colors.$blue colors.$red colors.$purple colors.$yellow colors.$orange colors.$lightblue colors.$dark-red colors.$color-blog;
+$alert-names: 'white' 'green' 'blue' 'red' 'purple' 'yellow' 'orange' 'lightblue' 'dark-red' 'blog';
 
 @each $color in $alert-colors {
   $i: list.index($alert-colors, $color);

@@ -21,7 +21,8 @@ module Jekyll
 
     def generate(site)
       @site = site
-      map = GoogleStaticMap.new(:api_key => site.config['google_maps'], :width => 700, :height => 500)
+      # TODO: replace dummy api key
+      map = GoogleStaticMap.new(:width => 700, :height => 500, :api_key => "dummy")
       site.data['meetups'].each do |meetup|
         map.markers << MapMarker.new(:color => "0x9D49D5FF",
                                      :location => MapLocation.new(:latitude => meetup['pin']['latitude'],

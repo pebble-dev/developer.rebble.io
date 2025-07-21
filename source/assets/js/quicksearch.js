@@ -86,9 +86,8 @@
   }
 
   function isEmpty(obj) {
-      var hasOwn = object.prototype.hasOwnProperty;
       for(var x in obj) {
-        if (hasOwn.call(obj, x)) {
+        if (Object.hasOwn(obj, x)) {
           return false;
         }
       }

@@ -8,7 +8,6 @@ log/
 coverage/
 node_modules/
 vendor/
-.ruby-version
 .jekyll-metadata
 .envrc
 .direnv/

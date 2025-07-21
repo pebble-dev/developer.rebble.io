@@ -89,11 +89,10 @@ text to the dialog with `NSBluetoothPeripheralUsageDescription` to your
 ```
 
 ### Specify that your app is built with PebbleKit 3.0 in the Developer Portal
-Go to edit the companion app listing in your [developer portal](https://dev-portal.getpebble.com/developer) page and check the box for "Was this iOS app compiled with PebbleKit iOS 3.0 or newer?" This way, users on Pebble Time Round will be able to see your app in the appstore.
+Go to edit the companion app listing in your [developer portal]({{ site.links.devportal }}) page and check the box for "Was this iOS app compiled with PebbleKit iOS 3.0 or newer?" This way, users on Pebble Time Round will be able to see your app in the appstore.
 
 ![](/images/blog/checkbox.png)
 
 ### Final thoughts
 
 With a few quick steps, you can bring compatability for the BLE connection to your app. In the coming months, we'll be rolling out updates for users of Pebble and Pebble Time to take advantage of BLE-only connection as well. In the short term, if you intend to support Pebble Time Round, these steps are mandatory. For the complete details on migrating to PebbleKit 3.0, take a look at our [migration guide](/guides/migration/pebblekit-ios-3/). If you have any issues in migrating or have any questions concerning PebbleKit 3.0, feel free to [contact](/contact/) us anytime!
-

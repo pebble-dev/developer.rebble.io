@@ -23,8 +23,10 @@ new ones.
 {% assign http = page.redirect_to | downcase | slice: 0, 7 %}
 {% assign https = page.redirect_to | downcase | slice: 0, 8 %}
 
-{% if http == "http://" or https == "https://" %}
-{% assign redirect_url = page.redirect_to %}
+{% assign proto_http = page.redirect_to | downcase | slice: 0, 6 %}
+{% assign proto_https = page.redirect_to | downcase | slice: 0, 7 %}
+{% if proto_http == "http://" or proto_https == "https://" %}
+{% capture redirect_url %}{{ page.redirect_to }}{% endcapture %}
 {% endif %}
 
 <meta http-equiv="refresh" content="0; url={{ redirect_url }}">

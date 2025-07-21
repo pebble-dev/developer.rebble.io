@@ -65,15 +65,15 @@ body {
 code {
   background-color: colors.$white;
   border-radius: 2px;
-  color: color.adjust(variables.$base-font-color, $lightness: -20%);
+  color: color.adjust(variables.$base-font-color, $lightness: -20%, $space: hsl);
   font-family: font-family.$monospace;
-  font-size: utilities-variables.$base-font-size;
+  font-size: variables.$base-font-size;
   padding: 2px 4px;
   box-shadow: inset 0 0 2px #bbb;
 }
 
 a code {
-  color: color.adjust(variables.$base-link-color, $lightness: -10%);
+  color: color.adjust(variables.$base-link-color, $lightness: -10%, $space: hsl);
 }
 
 .container {
@@ -83,8 +83,8 @@ a code {
 }
 
 .vcenter {
-   display: table-cell;
-   vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .vcenter--wrapper {
@@ -131,8 +131,7 @@ a code {
   margin-bottom: 1em;
 }
 
-.noscript--hide {
-}
+.noscript--hide {}
 
 .noscript--show {
   display: none;
@@ -208,7 +207,7 @@ a code {
   height: 100%;
   position: inherit;
 
-  > div {
+  >div {
     height: 100%;
   }
 }

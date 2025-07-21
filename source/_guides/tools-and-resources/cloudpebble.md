@@ -20,7 +20,7 @@ guide_group: tools-and-resources
 order: 1
 ---
 
-[CloudPebble]({{ site.data.links.cloudpebble }}) is an online-only IDE
+[CloudPebble]({{ site.links.cloudpebble }}) is an online-only IDE
 (Integrated Development Environment) for easy creation of Pebble apps.
 It can be used as an alternative to the local SDK on Mac OSX and Linux, and is
 the recommended app development option for Windows users. Features include:
@@ -63,7 +63,7 @@ The left-hand menu contains links to other useful screens:
 * Settings - Manage the metadata and behavior of the project as an analogue to
   the local SDK's `package.json` file.
 
-* Timeline - Test inserting and deleting 
+* Timeline - Test inserting and deleting
   {% guide_link pebble-timeline "Pebble timeline" %} pins.
 
 * Compilation - Compile and install the project, view app logs and screenshots.
@@ -95,11 +95,11 @@ can be constructed:
 
 ```c
 void init() {
-  
+
 }
 
 void deinit() {
-  
+
 }
 
 int main() {
@@ -132,9 +132,9 @@ Depending on the chosen 'Resource Type', the remaining fields will vary:
 
 * If a bitmap, the options pertaining to storage and optimization will be
   displayed. It is recommended to use the 'Best' settings, but more information
-  on specific optimization options can be found in the 
-  [*Bitmap Resources*](/blog/2015/12/02/Bitmap-Resources/#quot-bitmap-quot-to-the-rescue) 
-  blog post. 
+  on specific optimization options can be found in the
+  [*Bitmap Resources*](/blog/2015/12/02/Bitmap-Resources/#quot-bitmap-quot-to-the-rescue)
+  blog post.
 
 * If a font, the specific characters to include (in regex form) and tracking
   adjust options are available to adjust the font, as well as a compatibility
@@ -166,7 +166,7 @@ Pebble account.
 In addition to running apps, the 'Compilation' screen also offers the ability to
 view app log output and capture screenshots with the appropriate buttons.
 Lastly, the `.pbw` bundle can also be obtained for testing and distribution in
-the [Developer Portal](https://dev-portal.getpebble.com/).
+the [Developer Portal]({{ site.links.devportal }}).
 
 
 ### Interacting with the Emulator
@@ -191,7 +191,7 @@ From this panel, muliple forms of input can be simulated:
   the '24-hour' checkbox.
 
 * Open the app's configuration page (if applicable) with the 'App Config'
-  button. This will use the URL passed to `Pebble.openURL()`. See 
+  button. This will use the URL passed to `Pebble.openURL()`. See
   {% guide_link user-interfaces/app-configuration %} for more information.
 
 * Emulate live input of the accelerometer and compass using a mobile device by
@@ -249,7 +249,7 @@ static TextLayer *s_textlayer_1;
 static void initialise_ui(void) {
   s_window = window_create();
   window_set_fullscreen(s_window, false);
-  
+
   s_res_gothic_24_bold = fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD);
   // s_textlayer_1
   s_textlayer_1 = text_layer_create(GRect(0, 0, 144, 40));

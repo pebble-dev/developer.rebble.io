@@ -1,0 +1,32 @@
+name: Build static site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          URL: http://developer.rebble.io
+          HTTPS_URL: https://developer.rebble.io
+          JEKYLL_ENV: production
+          SKIP_DOCS: true # TODO: setup docs generation
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: __public__

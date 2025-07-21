@@ -1,70 +1,74 @@
-@use "sass:list";
-@use "../addons/prefixer";
-@use "../functions/transition-property-name";
-
 // Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.
 // Example: @include transition (all 2s ease-in-out);
 //          @include transition (opacity 1s ease-in 2s, width 2s ease-out);
 //          @include transition-property (transform, opacity);
+@use "sass:list";
+@use "../addons/prefixer";
+@use "../functions/transition-property-name";
 
 @mixin transition ($properties...) {
   // Fix for vendor-prefix transform property
   $needs-prefixes: false;
-  $webkit: ();
-  $moz: ();
-  $spec: ();
+  $webkit: (
+  );
+$moz: (
+);
+$spec: (
+);
 
-  // Create lists for vendor-prefixed transform
-  @each $list in $properties {
-    @if list.nth($list, 1) == "transform" {
-      $needs-prefixes: true;
-      $list1: -webkit-transform;
-      $list2: -moz-transform;
-      $list3: ();
+// Create lists for vendor-prefixed transform
+@each $list in $properties {
+  @if list.nth($list, 1)=="transform" {
+    $needs-prefixes: true;
+    $list1: -webkit-transform;
+    $list2: -moz-transform;
+    $list3: (
+    );
 
-      @each $var in $list {
-        $list3: list.join($list3, $var);
+  @each $var in $list {
+    $list3: list.join($list3, $var);
 
-        @if $var != "transform" {
-          $list1: list.join($list1, $var);
-          $list2: list.join($list2, $var);
-        }
-      }
-
-      $webkit: list.append($webkit, $list1);
-         $moz: list.append($moz,    $list2);
-        $spec: list.append($spec,   $list3);
-    }
-
-    // Create lists for non-prefixed transition properties
-    @else {
-      $webkit:  list.append($webkit, $list, comma);
-      $moz:     list.append($moz,    $list, comma);
-      $spec:    list.append($spec,   $list, comma);
+    @if $var !="transform" {
+      $list1: list.join($list1, $var);
+      $list2: list.join($list2, $var);
     }
   }
 
-  @if $needs-prefixes {
-    -webkit-transition: $webkit;
-       -moz-transition: $moz;
-            transition: $spec;
+  $webkit: list.append($webkit, $list1);
+  $moz: list.append($moz, $list2);
+  $spec: list.append($spec, $list3);
+}
+
+// Create lists for non-prefixed transition properties
+@else {
+  $webkit: list.append($webkit, $list, comma);
+  $moz: list.append($moz, $list, comma);
+  $spec: list.append($spec, $list, comma);
+}
+}
+
+@if $needs-prefixes {
+  -webkit-transition: $webkit;
+  -moz-transition: $moz;
+  transition: $spec;
+}
+
+@else {
+  @if list.length($properties)>=1 {
+    @include prefixer.prefixer(transition, $properties, webkit moz spec);
   }
+
   @else {
-    @if list.length($properties) >= 1 {
-      @include prefixer.prefixer(transition, $properties, webkit moz spec);
-    }
-
-    @else {
-      $properties: all 0.15s ease-out 0s;
-      @include prefixer.prefixer(transition, $properties, webkit moz spec);
-    }
+    $properties: all 0.15s ease-out 0s;
+    @include prefixer.prefixer(transition, $properties, webkit moz spec);
   }
+}
 }
 
 @mixin transition-property ($properties...) {
-   -webkit-transition-property: transition-property-name.transition-property-names($properties, 'webkit');
-      -moz-transition-property: transition-property-name.transition-property-names($properties, 'moz');
-           transition-property: transition-property-name.transition-property-names($properties, false);
+  -webkit-transition-property: transition-property-name.transition-property-names($properties, 'webkit');
+  -moz-transition-property: transition-property-name.transition-property-names($properties, 'moz');
+  transition-property: transition-property-name.transition-property-names($properties, false);
 }
 
 @mixin transition-duration ($times...) {
@@ -72,7 +76,7 @@
 }
 
 @mixin transition-timing-function ($motions...) {
-// ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+  // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
   @include prefixer.prefixer(transition-timing-function, $motions, webkit moz spec);
 }
 

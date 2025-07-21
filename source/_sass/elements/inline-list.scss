@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-@use "../colors";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
 
 @charset "UTF-8";
 
@@ -34,7 +34,7 @@ ul.inline-list {
 }
 
 .inline-list--piped li::after {
-  color: color.adjust(variables.$base-font-color, $lightness: 30%);
+  color: color.adjust(variables.$base-font-color, $lightness: 30%, $space: hsl);
   content: ' | ';
   display: inline;
 }
@@ -44,7 +44,7 @@ ul.inline-list {
 }
 
 .inline-list--dashed li::after {
-  color: color.adjust(variables.$base-font-color, $lightness: 40%);
+  color: color.adjust(variables.$base-font-color, $lightness: 40%, $space: hsl);
   content: ' — ';
   display: inline;
 }

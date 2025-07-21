@@ -35,7 +35,7 @@ module Jekyll
                                 tables: true,
                                 no_intra_emphasis: true,
                                 strikethrough: true,
-                                highlight: true).render(content)
+                                highlight: true).render(+content)
       end
 
       # Redcarpet HTML render class to handle the extra functionality.

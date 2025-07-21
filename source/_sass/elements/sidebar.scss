@@ -1,10 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-@use "../colors";
-@use "../header";
-@use "../responsive/utilities/mixins/breakpoints";
-@use "../responsive/utilities/variables" as utilities-variables;
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -20,6 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "sass:math";
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables" as utilities-variables;
 
 $sidebar-width: 105px;
 $sidebar--wide-width: header.$header-logo-width;
@@ -63,7 +64,7 @@ $sidebar-hide-at: xs;
   font-size: utilities-variables.$base-font-size * 1.2;
   height: header.$header-height;
   left: 0;
-  padding: calc(utilities-variables.$base-line-height / 1.2) 0;
+  padding: math.div(variables.$base-line-height, 1.2) 0;
   position: absolute;
   text-align: center;
   top: 0;
@@ -89,7 +90,7 @@ $sidebar-hide-at: xs;
     }
 
     >a {
-      background-color: color.adjust(variables.$base-link-color, $lightness: 30%);
+      background-color: color.adjust(variables.$base-link-color, $lightness: 30%, $space: hsl);
       color: #fff;
     }
   }
@@ -136,7 +137,7 @@ $sidebar-hide-at: xs;
 
 .sidebar__footer {
   background-color: colors.$color-appstore;
-  border-right: 1px solid color.adjust(colors.$color-appstore, $lightness: -10%);
+  border-right: 1px solid color.adjust(colors.$color-appstore, $lightness: -10%, $space: hsl);
   bottom: 0;
   color: colors.$white;
   font-weight: bold;
@@ -150,8 +151,8 @@ $sidebar-hide-at: xs;
 
   &:hover,
   &.active {
-    background-color: color.adjust(colors.$color-appstore, $lightness: -10%);
-    border-color: color.adjust(colors.$color-appstore, $lightness: -20%);
+    background-color: color.adjust(colors.$color-appstore, $lightness: -10%, $space: hsl);
+    border-color: color.adjust(colors.$color-appstore, $lightness: -20%, $space: hsl);
     color: colors.$white;
   }
 }

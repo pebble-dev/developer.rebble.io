@@ -46,8 +46,8 @@ Pebble mobile app. If this is not enabled health data will not be available to
 apps, and API calls will return values to reflect this.
 
 In addition, any app using the ``HealthService`` API must declare the 'health'
-capability in order to be accepted by the 
-[developer portal](https://dev-portal.getpebble.com/). This can be done in
+capability in order to be accepted by the
+[developer portal]({{ site.links.devportal }}). This can be done in
 CloudPebble 'Settings', or in `package.json` in the local SDK:
 
 ```js
@@ -80,7 +80,7 @@ read using the API. These are described below:
 ## Subscribing to HealthService Events
 
 Like other Event Services, an app can subscribe a handler function to receive a
-callback when new health data is available. This is useful for showing 
+callback when new health data is available. This is useful for showing
 near-realtime activity updates. The handler must be a suitable implementation of
 ``HealthEventHandler``. The `event` parameter describes the type of each update,
 and is one of the following from the ``HealthEventType`` `enum`:
@@ -100,15 +100,15 @@ static void health_handler(HealthEventType event, void *context) {
   // Which type of event occurred?
   switch(event) {
     case HealthEventSignificantUpdate:
-      APP_LOG(APP_LOG_LEVEL_INFO, 
+      APP_LOG(APP_LOG_LEVEL_INFO,
               "New HealthService HealthEventSignificantUpdate event");
       break;
     case HealthEventMovementUpdate:
-      APP_LOG(APP_LOG_LEVEL_INFO, 
+      APP_LOG(APP_LOG_LEVEL_INFO,
               "New HealthService HealthEventMovementUpdate event");
       break;
     case HealthEventSleepUpdate:
-      APP_LOG(APP_LOG_LEVEL_INFO, 
+      APP_LOG(APP_LOG_LEVEL_INFO,
               "New HealthService HealthEventSleepUpdate event");
       break;
     case HealthEventHeartRateUpdate:
@@ -125,7 +125,7 @@ should be used to determine whether the subscription was successful:
 
 ```c
 #if defined(PBL_HEALTH)
-// Attempt to subscribe 
+// Attempt to subscribe
 if(!health_service_events_subscribe(health_handler, NULL)) {
   APP_LOG(APP_LOG_LEVEL_ERROR, "Health not available!");
 }
@@ -144,7 +144,7 @@ apps through various ``HealthService`` API functions.
 Before reading any health data, it is recommended to check that data is
 available for the desired time range, if applicable. In addition to the
 ``HealthServiceAccessibilityMask`` value, health-related code can be
-conditionally compiled using `PBL_HEALTH`. For example, to check whether 
+conditionally compiled using `PBL_HEALTH`. For example, to check whether
 any data is available for a given time range:
 
 ```c
@@ -157,7 +157,7 @@ time_t start = time_start_of_today();
 time_t end = time(NULL);
 
 // Check step data is available
-HealthServiceAccessibilityMask mask = health_service_metric_accessible(metric, 
+HealthServiceAccessibilityMask mask = health_service_metric_accessible(metric,
                                                                     start, end);
 bool any_data_available = mask & HealthServiceAccessibilityMaskAvailable;
 #else
@@ -176,12 +176,12 @@ time_t start = time_start_of_today();
 time_t end = time(NULL);
 
 // Check the metric has data available for today
-HealthServiceAccessibilityMask mask = health_service_metric_accessible(metric, 
+HealthServiceAccessibilityMask mask = health_service_metric_accessible(metric,
   start, end);
 
 if(mask & HealthServiceAccessibilityMaskAvailable) {
   // Data is available!
-  APP_LOG(APP_LOG_LEVEL_INFO, "Steps today: %d", 
+  APP_LOG(APP_LOG_LEVEL_INFO, "Steps today: %d",
           (int)health_service_sum_today(metric));
 } else {
   // No data recorded yet today
@@ -208,7 +208,7 @@ time_t end = time(NULL);
 time_t start = end - SECONDS_PER_HOUR;
 
 // Check data is available
-HealthServiceAccessibilityMask result = 
+HealthServiceAccessibilityMask result =
     health_service_metric_accessible(HealthMetricStepCount, start, end);
 if(result & HealthServiceAccessibilityMaskAvailable) {
   // Data is available! Read it
@@ -244,7 +244,7 @@ MeasurementSystem system = health_service_get_measurement_system_for_display(
 static char s_buffer[32];
 switch(system) {
   case MeasurementSystemMetric:
-    snprintf(s_buffer, sizeof(s_buffer), "Walked %d meters", (int)distance);    
+    snprintf(s_buffer, sizeof(s_buffer), "Walked %d meters", (int)distance);
     break;
   case MeasurementSystemImperial: {
     // Convert to imperial first
@@ -266,7 +266,7 @@ text_layer_set_text(s_some_layer, s_buffer);
 The ``HealthService`` also allows developers to read average values of a
 particular ``HealthMetric`` with varying degrees of scope. This is useful for
 apps that wish to display an average value (e.g.: as a goal for the user)
-alongside a summed value. 
+alongside a summed value.
 
 In this context, the `start` and `end` parameters specify the time period to be
 used for the daily average calculation. For example, a start time of midnight
@@ -304,7 +304,7 @@ const time_t start = time_start_of_today();
 const time_t end = time(NULL);
 
 // Check that an averaged value is accessible
-HealthServiceAccessibilityMask mask = 
+HealthServiceAccessibilityMask mask =
           health_service_metric_averaged_accessible(metric, start, end, scope);
 if(mask & HealthServiceAccessibilityMaskAvailable) {
   // Average is available, read it
@@ -343,7 +343,7 @@ The ``HealthMinuteData`` structure contains multiple types of activity-related
 data that are recorded in a minute-by-minute fashion. This style of data access
 is best suited to those applications requiring more granular detail (such as
 creating a new fitness algorithm). Up to seven days worth of data is available
-with this API. 
+with this API.
 
 > See [*Notes on Minute-level Data*](#notes-on-minute-level-data) below for more
 > information on minute-level data.
@@ -360,7 +360,7 @@ below:
 | `heart_rate_bpm` | `uint8_t` | Heart rate in beats per minute (if available). |
 
 These data items can be obtained in the following manner, similar to obtaining a
-sum. 
+sum.
 
 ```c
 // Create an array to store data
@@ -368,18 +368,18 @@ const uint32_t max_records = 60;
 HealthMinuteData *minute_data = (HealthMinuteData*)
                               malloc(max_records * sizeof(HealthMinuteData));
 
-// Make a timestamp for 15 minutes ago and an hour before that 
+// Make a timestamp for 15 minutes ago and an hour before that
 time_t end = time(NULL) - (15 * SECONDS_PER_MINUTE);
 time_t start = end - SECONDS_PER_HOUR;
 
 // Obtain the minute-by-minute records
-uint32_t num_records = health_service_get_minute_history(minute_data, 
+uint32_t num_records = health_service_get_minute_history(minute_data,
                                                   max_records, &start, &end);
 APP_LOG(APP_LOG_LEVEL_INFO, "num_records: %d", (int)num_records);
 
 // Print the number of steps for each minute
 for(uint32_t i = 0; i < num_records; i++) {
-  APP_LOG(APP_LOG_LEVEL_INFO, "Item %d steps: %d", (int)i, 
+  APP_LOG(APP_LOG_LEVEL_INFO, "Item %d steps: %d", (int)i,
           (int)minute_data[i].steps);
 }
 ```
@@ -393,19 +393,19 @@ free(minute_data);
 
 ### Notes on Minute-level Data
 
-Missing minute-level records can occur if the watch is reset, goes into low 
-power (watch-only) mode due to critically low battery, or Pebble Health is 
+Missing minute-level records can occur if the watch is reset, goes into low
+power (watch-only) mode due to critically low battery, or Pebble Health is
 disabled during the time period requested.
 
 ``health_service_get_minute_history()`` will return as many **consecutive**
-minute-level records that are available after the provided `start` timestamp, 
-skipping any missing records until one is found. This API behavior enables one 
-to easily continue reading data after a previous query encountered a missing 
-minute. If there are some minutes with missing data, the API will return all 
-available records up to the last available minute, and no further. Conversely, 
-records returned will begin with the first available record after the provided 
-`start` timestamp, skipping any missing records until one is found. This can 
-be used to continue reading data after a previous query encountered a missing 
+minute-level records that are available after the provided `start` timestamp,
+skipping any missing records until one is found. This API behavior enables one
+to easily continue reading data after a previous query encountered a missing
+minute. If there are some minutes with missing data, the API will return all
+available records up to the last available minute, and no further. Conversely,
+records returned will begin with the first available record after the provided
+`start` timestamp, skipping any missing records until one is found. This can
+be used to continue reading data after a previous query encountered a missing
 minute.
 
 The code snippet below shows an example function that packs a provided
@@ -419,7 +419,7 @@ requested.
 > the query.
 
 ```c
-static uint32_t get_available_records(HealthMinuteData *array, time_t query_start, 
+static uint32_t get_available_records(HealthMinuteData *array, time_t query_start,
                                       time_t query_end, uint32_t max_records) {
   time_t next_start = query_start;
   time_t next_end = query_end;
@@ -428,7 +428,7 @@ static uint32_t get_available_records(HealthMinuteData *array, time_t query_star
   // Find more records until no more are returned
   while (num_records_found < max_records) {
     int ask_num_records = max_records - num_records_found;
-    uint32_t ret_val = health_service_get_minute_history(&array[num_records_found], 
+    uint32_t ret_val = health_service_get_minute_history(&array[num_records_found],
                                         ask_num_records, &next_start, &next_end);
     if (ret_val == 0) {
       // a 0 return value means no more data is available
@@ -437,18 +437,18 @@ static uint32_t get_available_records(HealthMinuteData *array, time_t query_star
     num_records_found += ret_val;
     next_start = next_end;
     next_end = query_end;
-  } 
+  }
 
   return num_records_found;
 }
 
 static void print_last_hours_steps() {
-  // Query for the last hour, max 60 minute-level records 
+  // Query for the last hour, max 60 minute-level records
   // (except the last 15 minutes)
   const time_t query_end = time(NULL) - (15 * SECONDS_PER_MINUTE);
   const time_t query_start = query_end - SECONDS_PER_HOUR;
   const uint32_t max_records = (query_end - query_start) / SECONDS_PER_MINUTE;
-  HealthMinuteData *data = 
+  HealthMinuteData *data =
               (HealthMinuteData*)malloc(max_records * sizeof(HealthMinuteData));
 
   // Populate the array
@@ -457,7 +457,7 @@ static void print_last_hours_steps() {
   // Print the results
   for(uint32_t i = 0; i < max_records; i++) {
     if(!data[i].is_invalid) {
-      APP_LOG(APP_LOG_LEVEL_INFO, "Record %d contains %d steps.", (int)i, 
+      APP_LOG(APP_LOG_LEVEL_INFO, "Record %d contains %d steps.", (int)i,
                                                             (int)data[i].steps);
     } else {
       APP_LOG(APP_LOG_LEVEL_INFO, "Record %d was not valid.", (int)i);

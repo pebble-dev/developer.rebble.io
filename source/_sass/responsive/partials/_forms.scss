@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /**
  * Normalize  
  */
@@ -79,7 +81,7 @@ input[type="file"]::-ms-browse {
     color: $form-input-color;
 
     &:active {
-        background-color: lighten($button-background, 5);
+        background-color: color.adjust($button-background, $lightness: 5, $space: hsl);
     }
 }
 

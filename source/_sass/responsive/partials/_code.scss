@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /*
  * Colors and padding.
  */
@@ -12,7 +14,7 @@ kbd {
 }
 
 code > kbd {
-    background-color: darken($code-background-color, 5);
+    background-color: color.adjust($code-background-color, $lightness: -5, $space: hsl);
 }
 
 /*

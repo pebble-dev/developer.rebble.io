@@ -24,7 +24,7 @@ I've been desperate to write a blog post about the Pebble [HealthService API]
 since it's initial release last month, and now I can finally share its
 awesomeness with you. I'm also going to show you how you can use this exciting
 new API to build an ultra-cool clone of the [Stride watchface]
-(https://apps.getpebble.com/en_US/application/56b15c5c9c4b20ed5300006c) by
+(https://apps.rebble.io/en_US/application/56b15c5c9c4b20ed5300006c) by
 Pebble.
 
 

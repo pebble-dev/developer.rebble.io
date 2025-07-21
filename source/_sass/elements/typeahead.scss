@@ -16,21 +16,23 @@
 
 // Styles for the primary site search, powered by Twitter's Typeahead.js
 
+@use "sass:color";
+
 .twitter-typeahead {
   width: 100%;
 }
 
 .tt-dropdown-menu {
   background-color: $white;
-  border-bottom: 1px solid lighten($base-border-color, 60);
-  border-left: 1px solid lighten($base-border-color, 60);
-  border-right: 1px solid lighten($base-border-color, 60);
+  border-bottom: 1px solid color.adjust($base-border-color, $lightness: 60, $space: hsl);
+  border-left: 1px solid color.adjust($base-border-color, $lightness: 60, $space: hsl);
+  border-right: 1px solid color.adjust($base-border-color, $lightness: 60, $space: hsl);
   margin-top: -0.75rem;
   width: 100%;
 }
 
 .tt-group-header {
-  background-color: lighten($base-border-color, 30);
+  background-color: color.adjust($base-border-color, $lightness: 30, $space: hsl);
   color: $white;
   font-size: 1rem;
   font-weight: normal;
@@ -39,12 +41,12 @@
 }
 
 .tt-suggestion {
-  border-bottom: 1px solid lighten($base-border-color, 60);
+  border-bottom: 1px solid color.adjust($base-border-color, $lightness: 60, $space: hsl);
   cursor: pointer;
   padding: 0.2rem 0.5rem;
 
   .tt-suggestion-highlight {
-    color: lighten($base-font-color, 30);
+    color: color.adjust($base-font-color, $lightness: 30, $space: hsl);
     font-size: 0.8rem;
     height: 1em;
     line-height: 0.8rem;

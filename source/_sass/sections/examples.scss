@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../colors";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -16,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../colors";
+
 
 .examples__filters {
   margin-bottom: 1em;
@@ -46,13 +47,13 @@
   &:active,
   &:focus {
     color: colors.$white;
-    background-color: color.adjust(colors.$color-examples, $lightness: -20%);
+    background-color: color.adjust(colors.$color-examples, $lightness: -20%, $space: hsl);
   }
 }
 
 .examples__filters--selected {
   .examples__tag {
-    background-color: color.adjust(colors.$color-examples, $lightness: 20%);
+    background-color: color.adjust(colors.$color-examples, $lightness: 20%, $space: hsl);
 
     &.selected {
       background-color: colors.$color-examples;

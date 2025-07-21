@@ -31,7 +31,7 @@ label.mm-toggle {
   border-radius: variables.$mm_toggleHeight;
   width: variables.$mm_toggleWidth;
   height: variables.$mm_toggleHeight;
-  margin-bottom: - calc(variables.$mm_toggleHeight / 2);
+  margin-bottom: -(variables.$mm_toggleHeight * 0.5);
 
   &:before {
     border-radius: variables.$mm_toggleHeight;
@@ -41,8 +41,21 @@ label.mm-toggle {
   }
 }
 
-input.mm-toggle:checked~label.mm-toggle:before {
-  float: right;
+label.mm-check {
+  width: variables.$mm_checkWidth;
+  height: variables.$mm_checkHeight;
+  margin-bottom: -(variables.$mm_checkHeight * 0.5);
+
+  &:before {
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+    width: 40%;
+    height: 20%;
+    margin: 25% 0 0 20%;
+    opacity: 0.1;
+
+    @include mixins.mm-webkit-prefix('transform', rotate(-45deg));
+  }
 }
 
 label.mm-check {
@@ -78,12 +91,12 @@ input.mm-check:checked~label.mm-check:before {
     }
 
     &.mm-toggle {
-      top: calc((variables.$mm_btnSize - variables.$mm_toggleHeight ) / 2);
+      top: (variables.$mm_btnSize - variables.$mm_toggleHeight ) * 0.5;
 
     }
 
     &.mm-check {
-      top: calc((variables.$mm_btnSize - variables.$mm_checkHeight ) / 2);
+      top: (variables.$mm_btnSize - variables.$mm_checkHeight ) * 0.5;
     }
   }
 }

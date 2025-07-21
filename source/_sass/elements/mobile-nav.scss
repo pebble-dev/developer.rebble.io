@@ -1,9 +1,3 @@
-@use "sass:color";
-@use "../colors";
-@use "../header";
-@use "../responsive/utilities/mixins/breakpoints";
-@use "../responsive/utilities/variables";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -19,6 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables";
+@use "sass:math";
 
 $hamburger-width: header.$header-height;
 
@@ -48,7 +49,7 @@ $hamburger-width: header.$header-height;
     text-transform: uppercase;
 
     &:hover {
-      background-color: color.adjust(colors.$gray-03, $lightness: 10%);
+      background-color: color.adjust(colors.$gray-03, $lightness: 10%, $space: hsl);
     }
   }
 
@@ -70,7 +71,7 @@ $hamburger-width: header.$header-height;
     width: $hamburger-width;
     top: 0;
     height: header.$header-height;
-    padding: calc(variables.$base-font-size / 1.5) 0;
+    padding: math.div(variables.$base-font-size, 1.5) 0;
     font-size: variables.$base-font-size * 2;
     text-align: center;
     color: colors.$gray-03;

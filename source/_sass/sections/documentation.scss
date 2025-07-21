@@ -1,10 +1,3 @@
-@use "sass:color";
-@use "sass:meta";
-@use "../base/variables";
-@use "../base/lists";
-@use "../colors";
-@use "../header";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -21,6 +14,14 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "sass:meta";
+@use "../base/variables";
+@use "../base/lists";
+@use "../colors";
+@use "../header";
+
+
 $docs-header-color: colors.$gray-06;
 
 .documentation {
@@ -28,13 +29,13 @@ $docs-header-color: colors.$gray-06;
 
   a,
   a code {
-    color: color.adjust(variables.$base-link-color, $lightness: -20%);
+    color: color.adjust(variables.$base-link-color, $lightness: -20%, $space: hsl);
     font-weight: 600;
   }
 
   a:hover,
   a:active {
-    color: color.adjust(variables.$base-link-color, $lightness: -40%);
+    color: color.adjust(variables.$base-link-color, $lightness: -40%, $space: hsl);
   }
 }
 
@@ -110,9 +111,9 @@ $docs-header-color: colors.$gray-06;
   }
 
   a {
-    background-color: color.adjust($docs-header-color, $lightness: 8%);
+    background-color: color.adjust($docs-header-color, $lightness: 8%, $space: hsl);
     border-radius: 4px 4px 0 0;
-    color: color.adjust(colors.$gray-02, $lightness: 10%);
+    color: color.adjust(colors.$gray-02, $lightness: 10%, $space: hsl);
     display: block;
     padding: 0.4em 0.8em;
     text-transform: uppercase;

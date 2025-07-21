@@ -62,7 +62,7 @@ need to add `heath` to the `capabilities` array in your applications
 
 ^CP^ Before your application is able to access heart rate information, you will
 need to enable the `USES HEALTH` option in your project settings on
-[CloudPebble]({{ site.data.links.cloudpebble }}).
+[CloudPebble]({{ site.links.cloudpebble }}).
 
 
 ## Data Quality

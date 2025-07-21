@@ -8,7 +8,7 @@ This overrides the `url` configuration parameter of Jeyll. Set this to the root
 of where the site will be hosted.
 
 ```
-URL=http://developer.pebble.com
+URL=https://developer.rebble.io
 ```
 
 ## HTTPS_URL
@@ -17,7 +17,7 @@ This overrides the `https_url` configuration parameter of Jeyll. Set this to
 the secure root of where the site will be hosted.
 
 ```
-HTTPS_URL=https://developer.pebble.com
+HTTPS_URL=https://developer.rebble.io
 ```
 
 ## PORT

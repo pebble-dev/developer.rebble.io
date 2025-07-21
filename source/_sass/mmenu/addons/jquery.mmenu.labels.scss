@@ -27,7 +27,7 @@
 .mm-menu.mm-vertical .mm-list {
   >li.mm-label {
     >a.mm-subopen:after {
-      top: calc(variables.$mm_labelHeight / 2) - 4;
+      top: (variables.$mm_labelHeight * 0.5) - 4;
     }
   }
 }

@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "sass:list";
-@use "../colors";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "sass:list";
+@use "../colors";
 
 .btn {
   background-color: colors.$white;
@@ -39,8 +39,8 @@ submit.btn {
   font-size: inherit;
 }
 
-$btn-colors: colors.$white  colors.$gray-02   colors.$green   colors.$blue   colors.$red   colors.$purple   colors.$yellow   colors.$orange   colors.$lightblue   colors.$dark-red colors.$orange-02 colors.$android-green;
-$btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'orange-02' 'android-green';
+$btn-colors: colors.$white colors.$gray-02 colors.$green colors.$blue colors.$red colors.$purple colors.$yellow colors.$orange colors.$lightblue colors.$dark-red colors.$orange-02 colors.$android-green;
+$btn-names: 'white' gray-02 'green' 'blue' 'red' 'purple' 'yellow' 'orange' 'lightblue' 'dark-red' 'orange-02' 'android-green';
 
 @each $color in $btn-colors {
   $i: list.index($btn-colors, $color);
@@ -61,7 +61,7 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
     &:hover,
     &:active,
     &:focus {
-      background-color: color.adjust($color, $lightness: -10%);
+      background-color: color.adjust($color, $lightness: -10%, $space: hsl);
     }
   }
 }
@@ -79,7 +79,7 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
     &:hover,
     &:focus {
       color: list.nth(colors.$modifier-colors-fg, $i);
-      background-color: color.adjust($color, $lightness: -10%);
+      background-color: color.adjust($color, $lightness: -10%, $space: hsl);
     }
 
     a {
@@ -94,7 +94,7 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
     &:hover,
     &:focus {
       color: list.nth(colors.$modifier-colors-fg, $i);
-      background-color: color.adjust(color.complement($color), $lightness: -10%);
+      background-color: color.adjust(color.complement($color), $lightness: -10%, $space: hsl);
     }
 
     a {
@@ -104,7 +104,7 @@ $btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orang
 }
 
 
-.btn + .btn {
+.btn+.btn {
   margin-left: 1em;
 }
 

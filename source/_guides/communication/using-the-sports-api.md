@@ -32,8 +32,8 @@ Both are designed to be generic apps that display sports-related data in common
 formats. The goal is to allow fitness and golf mobile apps to integrate with
 Pebble to show the wearer data about their activity without needing to create
 and maintain an additional app for Pebble. An example of a popular app that uses
-this approach is the 
-[Runkeeper](http://apps.getpebble.com/en_US/application/52e05bd5d8561de307000039) 
+this approach is the
+[Runkeeper](http://apps.rebble.io/application/52e05bd5d8561de307000039)
 app.
 
 The Sports and Golf apps are launched, closed, and controlled by PebbleKit in an
@@ -91,7 +91,7 @@ events which the companion should handle as appropriate.
 
 ## With PebbleKit Android
 
-Once an Android app has set up 
+Once an Android app has set up
 {% guide_link communication/using-pebblekit-android %}, the Sports and Golf apps
 can be launched and customized as appropriate.
 
@@ -202,9 +202,9 @@ Once an iOS app has set up {% guide_link communication/using-pebblekit-ios %},
 the Sports and Golf apps can be launched and customized as appropriate. The
 companion app should set itself as a delegate of `PBPebbleCentralDelegate`, and
 assign a `PBWatch` property once `watchDidConnect:` has fired. This `PBWatch`
-object will then be used to manipulate the Sports API apps. 
+object will then be used to manipulate the Sports API apps.
 
-Read *Becoming a Delegate* in the 
+Read *Becoming a Delegate* in the
 {% guide_link communication/using-pebblekit-ios %} guide to see how this is
 done.
 

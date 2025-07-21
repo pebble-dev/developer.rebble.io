@@ -9,7 +9,7 @@
 
 .mm-buttonbar {
   border: 1px solid transparent;
-  border-radius: calc(variables.$mm_padding / 2);
+  border-radius: variables.$mm_padding * 0.5;
   text-align: center;
   line-height: variables.$mm_buttonbarHeight;
   overflow: hidden;
@@ -78,7 +78,7 @@
   border: none;
   border-radius: none;
   line-height: variables.$mm_footerHeight;
-  margin: (-(variables.$mm_padding) ) (-(variables.$mm_padding) ) 0 (-(variables.$mm_padding * 2));
+  margin: (-(variables.$mm_padding)) (-(variables.$mm_padding)) 0 (-(variables.$mm_padding * 2));
 
   >* {
     border-left: none;

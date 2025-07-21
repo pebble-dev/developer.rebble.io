@@ -148,18 +148,18 @@ the code needs to be in order to use the API.
 Here’s a small sample of some of the watchapps which are already available in
 the Pebble appstore which utilise the Dictation API.
 
-* [Voice2Timeline](http://apps.getpebble.com/en_US/application/561f9188bcb7ac903a00005b)
+* [Voice2Timeline](http://apps.rebble.io/en_US/application/561f9188bcb7ac903a00005b)
   is a handy tool for quickly creating pins on your timeline by using your
   voice. It already works in 6 different languages. You can leave notes in the
   past, or even create reminders for the future (e.g. “Don’t forget the milk in
   1 hour”).
 
-* [Translate (Vox Populi)](http://apps.getpebble.com/en_US/application/561ff3cbbcb7aca6250000a3)
+* [Translate (Vox Populi)](http://apps.rebble.io/en_US/application/561ff3cbbcb7aca6250000a3)
   allows a user to translate short phrases and words into a different language.
   It uses the [Yandex](https://translate.yandex.com/) machine translator API
   which supports more than 60 different languages.
 
-* [Checklist](http://apps.getpebble.com/en_US/application/5620e876768e7ada4e00007a)
+* [Checklist](http://apps.rebble.io/en_US/application/5620e876768e7ada4e00007a)
   is a really simple tool which generates a list of items using your voice. It
   even allows you to enter multiple items at once, by specifying a comma or
   period. You can easily mark them as completed by pressing the ‘select’ button

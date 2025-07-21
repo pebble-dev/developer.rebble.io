@@ -1,5 +1,6 @@
-@use "sass:list";
-@use "sass:string";
+@use 'sass:list';
+@use 'sass:string';
+
 @function assign-inputs($inputs, $pseudo: null) {
   $list : ();
 

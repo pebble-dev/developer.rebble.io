@@ -1,10 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-@use "../bourbon/css3/flex-box";
-@use "../colors";
-@use "../header";
-@use "../responsive/utilities/mixins/breakpoints";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -22,6 +15,13 @@
  */
 @use "../elements/sidebar";
 @use "../elements/sectionmenu";
+@use "sass:color";
+@use "../base/variables";
+@use "../bourbon/css3/flex-box";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+
 
 $banner-blue: #066AC4;
 
@@ -101,18 +101,18 @@ $banner-blue: #066AC4;
     @include flex-box.flex(1 0 auto);
     display: block;
 
-    &:last-child > a {
+    &:last-child>a {
       margin-right: 0 !important;
     }
 
-    > a {
+    >a {
       color: #fff;
       display: block;
       padding: 1rem 0;
 
       &:hover,
       &:focus {
-        background-color: color.adjust(color.adjust($banner-blue, $lightness: -30%), $alpha: -0.3);
+        background-color: color.adjust(color.adjust($banner-blue, $lightness: -30%, $space: hsl), $alpha: -0.3);
       }
     }
   }

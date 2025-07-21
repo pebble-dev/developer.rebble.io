@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -16,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../base/variables";
 
 .toc__item {
   overflow: hidden;
@@ -43,7 +43,8 @@
 
 .toc__item--active {
   font-weight: 600;
+
   a {
-    color: color.adjust(variables.$base-link-color, $lightness: -20%);
+    color: color.adjust(variables.$base-link-color, $lightness: -20%, $space: hsl);
   }
 }

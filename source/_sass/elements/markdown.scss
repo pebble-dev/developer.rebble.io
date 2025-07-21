@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../colors";
-@use "../base/lists";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -18,6 +14,11 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "../colors";
+@use "../base/lists";
+
+
 .markdown {
 
   ul {
@@ -25,7 +26,7 @@
   }
 
   ol {
-    @extend %default-ol; 
+    @extend %default-ol;
   }
 
   $table-border-color: colors.$gray-06;
@@ -33,9 +34,9 @@
   $table-background: colors.$white;
   $table-header-background: colors.$gray-02;
   $table-header-color: colors.$white;
-  $table-hover-color: color.adjust($table-background, $lightness: -5%);
-  $table-stripe-color: color.adjust($table-background, $lightness: -4%);
-  $table-stripe-color-hover: color.adjust($table-stripe-color, $lightness: -5%);
+  $table-hover-color: color.adjust($table-background, $lightness: -5%, $space: hsl);
+  $table-stripe-color: color.adjust($table-background, $lightness: -4%, $space: hsl);
+  $table-stripe-color-hover: color.adjust($table-stripe-color, $lightness: -5%, $space: hsl);
   $table-padding: 0.5em;
 
   table {
@@ -57,15 +58,15 @@
       padding: $table-padding;
     }
 
-    tr:hover > td,
-    tr:hover > th {
+    tr:hover>td,
+    tr:hover>th {
       background-color: $table-hover-color;
     }
 
     tr:nth-child(even) {
       background-color: $table-stripe-color;
 
-      &:hover > td {
+      &:hover>td {
         background-color: $table-stripe-color-hover;
       }
     }

@@ -1,9 +1,11 @@
-@use "../variables";
-@use "breakpoints";
-
 //==
 // Grid System - Base
 //##
+@use "../variables";
+@use "breakpoints";
+
+
+@use "sass:math";
 
 @mixin grid-base($bp) {
 
@@ -64,8 +66,8 @@
 //##
 @mixin grid-columns($bp) {
   // Calculate column width and width with gutter.
-  $column-width: calc(100% / variables.$grid-column-count);
-  $column-width-with-gutter: calc((100% - (variables.$grid-column-gutter * (variables.$grid-column-count - 1))) / variables.$grid-column-count);
+  $column-width: math.div(100%, variables.$grid-column-count);
+  $column-width-with-gutter: math.div(100% - (variables.$grid-column-gutter * (variables.$grid-column-count - 1)), variables.$grid-column-count);
 
   // Loop through and set width.
   @for $i from 1 to (variables.$grid-column-count + 1) {

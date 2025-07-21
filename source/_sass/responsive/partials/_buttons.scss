@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /**
  * Normalize button borders, color, and padding.
  * 1: Remove rounded corners on iPhone.
@@ -21,12 +23,12 @@ input[type="reset"] {
     text-decoration: none;
 
     &:hover {
-        background-color: darken($button-background, 5);
+        background-color: color.adjust($button-background, $lightness: -5, $space: hsl);
         border: $button-border;
     }
 
     &:active {
-        background-color: lighten($button-background, 5);
+        background-color: color.adjust($button-background, $lightness: 5, $space: hsl);
         outline: none;
     }
     /**
@@ -51,7 +53,7 @@ button[disabled],
 input[type="submit"][disabled],
 input[type="button"][disabled],
 input[type="reset"][disabled] {
-    background-color: lighten($button-background, 5);
+    background-color: color.adjust($button-background, $lightness: 5, $space: hsl);
     color: $button-color-disabled;
     cursor: not-allowed;
     opacity: 1; /* 1 */

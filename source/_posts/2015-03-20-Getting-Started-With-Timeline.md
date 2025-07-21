@@ -37,7 +37,7 @@ to get information about our packages. We'll go over the specifics of how to:
 - Use the [PebbleKit JS timeline APIs](/guides/pebble-timeline/timeline-js/)
 - Setup a server that utilizes the [pebble-api](https://www.npmjs.com/package/pebble-api)
 npm module
-- Enable timeline for the app through the [Developer Portal](https://dev-portal.getpebble.com)
+- Enable timeline for the app through the [Developer Portal]({{ site.links.devportal }})
 
 ## Setup
 
@@ -271,7 +271,7 @@ and enable timeline.
 In order to enable timeline, perform the following steps:
 
 0. Make sure you have a new and unique uuid. If you used the example from GitHub you will have to change it in your `appinfo.json`. To generate a new UUID, [you can use this tool](https://www.uuidgenerator.net/version4)
-1. Login to the [Developer Portal](https://dev-portal.getpebble.com)
+1. Login to the [Developer Portal]({{ site.links.devportal }})
 2. Click the Add Watchapp button on the portal (you don't need to upload any image assets)
 3. Upload your pbw by adding a release (located in the build folder of your project)
 4. Click the Enable Timeline button

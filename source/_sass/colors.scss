@@ -1,4 +1,3 @@
-@use "sass:color";
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,9 +14,11 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+
 $pebble-black: #111;
 $pebble-blue: #16b5d8;
-$pebble-blue-alt: color.adjust(#16b5d8, $lightness: -20%);
+$pebble-blue-alt: color.adjust(#16b5d8, $lightness: -20%, $space: hsl);
 $pebble-gray: #959fa0;
 $pebble-green: #aed70d;
 $pebble-orange: #f57216;
@@ -50,8 +51,8 @@ $android-green: #A4C739;
 
 $bigbox--blue: $lightblue;
 $bigbox--green: #22a048;
-$bigbox--darkgreen: color.adjust($bigbox--green, $lightness: -20%);
-$bigbox--dark-blue: color.adjust($darkerlightblue, $lightness: -20%);
+$bigbox--darkgreen: color.adjust($bigbox--green, $lightness: -20%, $space: hsl);
+$bigbox--dark-blue: color.adjust($darkerlightblue, $lightness: -20%, $space: hsl);
 
 $color-guides: $yellow;
 $color-docs: $pink;
@@ -89,10 +90,10 @@ $color-blog: $orange-02;
 $color-examples: #2c67ce;
 
 $modifier-color-names: 'guides', 'docs', 'community', 'more', 'getting-started',
-                       'sdk', 'appstore', 'blog';
+  'sdk', 'appstore', 'blog';
 
 $modifier-colors: $color-guides, $color-docs, $color-community, $color-more,
-                  $color-getting-started, $color-sdk, $color-appstore,
-                  $color-blog;
+  $color-getting-started, $color-sdk, $color-appstore,
+  $color-blog;
 
 $modifier-colors-fg: $white $white $white $white $white $white $white $white;

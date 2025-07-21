@@ -1,0 +1,51 @@
+name: Run tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run tests
+        run: bundle exec rspec -f json -o /tmp/rspec_report.json -f progress
+        env:
+          SKIP_DOCS: true # TODO: remove once we can get docs artifacts in here easily
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-report
+          path: /tmp/rspec_report.json
+          if-no-files-found: error
+
+  report:
+    runs-on: ubuntu-24.04
+    needs: test
+    if: always()
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Download report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: test-report
+
+      - name: Report results
+        uses: SonicGarden/rspec-report-action@v6
+        with:
+          json-path: rspec_report.json

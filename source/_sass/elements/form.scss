@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-@use "../colors";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
+
 
 .form__group {
   display: table;
@@ -86,7 +87,7 @@
     select:focus {
       outline: none;
     }
-    
+
     &.no-label {
       border-left-width: 1px;
     }
@@ -109,7 +110,7 @@
   }
 
   input.mce_inline_error {
-    background-color: color.adjust(colors.$dark-red, $lightness: 40%);
+    background-color: color.adjust(colors.$dark-red, $lightness: 40%, $space: hsl);
     border: 1px solid colors.$dark-red;
   }
 }

@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../base/variables";
-@use "../colors";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -18,6 +14,11 @@
  * limitations under the License.
  */
 
+@use "sass:color";
+@use "../base/variables";
+@use "../colors";
+
+
 .inspiration-page {
   h2 {
     color: colors.$purple;
@@ -30,7 +31,7 @@
   blockquote {
     font-size: 1.3rem;
     border: 0;
-    color: color.adjust(variables.$base-font-color, $lightness: 20%);
+    color: color.adjust(variables.$base-font-color, $lightness: 20%, $space: hsl);
     margin: 0;
     padding: 0;
 

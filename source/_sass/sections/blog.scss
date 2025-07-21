@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../colors";
-@use "../responsive/utilities/mixins/breakpoints";
-
 /**
  * Copyright 2025 Google LLC
  *
@@ -17,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+@use "sass:color";
+@use "../colors";
+@use "../responsive/utilities/mixins/breakpoints";
 
 .blog__meta {
   border-bottom: 1px solid colors.$gray-09;
@@ -55,7 +55,7 @@
     font-size: 0.9em;
 
     a {
-      color: color.adjust(colors.$gray-09, $lightness: -20%);
+      color: color.adjust(colors.$gray-09, $lightness: -20%, $space: hsl);
     }
   }
 
