@@ -27,14 +27,37 @@ module Pebble
     def initialize(site, source)
       super(site)
       @path = '/docs/pebblekit-android/'
-      open(source) do | zf |
-        Zip::File.open(zf.path) do | zipfile |
-          entry = zipfile.glob('javadoc/overview-summary.html').first
+      File.open(source) do |zf|
+        Zip::File.open(zf.path) do |zipfile|
+          entry = zipfile.glob('javadoc/index.html').first
           summary = Nokogiri::HTML(entry.get_input_stream.read)
           process_summary(zipfile, summary)
 
-          @pages << PageDocPebbleKitAndroid.new(@site, @site.source, 'docs/pebblekit-android/com/constant-values/', 'Constant Values', process_html(Nokogiri::HTML(zipfile.glob('javadoc/constant-values.html').first.get_input_stream.read).at_css('.constantValuesContainer').to_html, '/docs/pebblekit-android/'), nil)
-          @pages << PageDocPebbleKitAndroid.new(@site, @site.source, 'docs/pebblekit-android/com/serialized-form/', 'Serialized Form', process_html(Nokogiri::HTML(zipfile.glob('javadoc/serialized-form.html').first.get_input_stream.read).at_css('.serializedFormContainer').to_html, '/docs/pebblekit-android/'), nil)
+          @pages << PageDocPebbleKitAndroid.new(
+            @site,
+            'docs/pebblekit-android/com/constant-values/',
+            'Constant Values',
+            process_html(
+              Nokogiri::HTML(zipfile.glob('javadoc/constant-values.html').first.get_input_stream.read)
+                .at_css('.constants-summary')
+                .to_html,
+              '/docs/pebblekit-android/'
+            ),
+            nil
+          )
+
+          @pages << PageDocPebbleKitAndroid.new(
+            @site,
+            'docs/pebblekit-android/com/serialized-form/',
+            'Serialized Form',
+            process_html(
+              Nokogiri::HTML(zipfile.glob('javadoc/serialized-form.html').first.get_input_stream.read)
+                .at_css('.serialized-package-container')
+                .to_html,
+              '/docs/pebblekit-android/'
+            ),
+            nil
+          )
         end
       end
     end
@@ -46,8 +69,8 @@ module Pebble
     end
 
     def process_summary(zipfile, summary)
-      summary.css('tbody tr').each do | row |
-        name = row.at_css('td.colFirst').content
+      summary.css('.summary-table .col-first.all-packages-table').each do |row|
+        name = row.content
         package = {
           name: name,
           url: "#{@path}#{name_to_url(name)}/",
@@ -61,27 +84,34 @@ module Pebble
         @tree << package
       end
 
-      @tree.each do | package |
+      @tree.each do |package|
         entry = zipfile.glob("javadoc/#{name_to_url(package[:name])}/package-summary.html").first
         summary = Nokogiri::HTML(entry.get_input_stream.read)
         process_package(zipfile, package, summary)
       end
     end
 
+    def find_table(html, name)
+      button = html.at_xpath("//button[text()=\"#{name}\"]")
+      return [] unless button
+
+      selector = button['id']
+      html.css(".col-first.#{selector}").zip(html.css(".col-last.#{selector}"))
+    end
+
     def process_package(zipfile, package, summary)
       url = "#{@path}#{name_to_url(package[:name])}"
 
-      html = summary.at_css('.contentContainer').to_html
-      html = process_html(html, url)
+      html = summary.at_css('#class-summary').to_html
+      html = process_html(html, url, is_package: true)
 
-      @pages << PageDocPebbleKitAndroid.new(@site, @site.source, url, package[:name], html, package)
+      @pages << PageDocPebbleKitAndroid.new(@site, url, package[:name], html, package)
 
-      class_table = summary.css('table[summary~="Class Summary"]')
-      class_table.css('tbody tr').each do | row |
-        name = row.at_css('td.colFirst').content
+      find_table(summary, 'Classes').each do |row|
+        name = row[0].content
         package[:children] << {
           name: name,
-          summary: row.at_css('.colLast').content,
+          summary: row[1].content,
           url: "#{url}/#{name}",
           path: package[:path].clone << name,
           type: 'class',
@@ -93,12 +123,11 @@ module Pebble
         add_symbol(name: "#{package[:name]}.#{name}", url: "#{url}/#{name}")
       end
 
-      enum_table = summary.css('table[summary~="Enum Summary"]')
-      enum_table.css('tbody tr').each do | row |
-        name = row.at_css('.colFirst').content
+      find_table(summary, 'Enum Classes').each do |row|
+        name = row[0].content
         package[:children] << {
           name: name,
-          summary: row.at_css('.colLast').content,
+          summary: row[1].content,
           path: package[:path].clone << name,
           url: "#{url}/#{name}",
           type: 'enum',
@@ -110,11 +139,11 @@ module Pebble
         add_symbol(name: "#{package[:name]}.#{name}", url: "#{url}/#{name}")
       end
 
-      summary.css('table[summary~="Exception Summary"]').css('tbody tr').each do | row |
-        name = row.at_css('td.colFirst').content
+      find_table(summary, 'Exceptions').each do |row|
+        name = row[0].content
         package[:children] << {
           name: name,
-          summary: row.at_css('.colLast').content,
+          summary: row[1].content,
           path: package[:path].clone << name,
           url: "#{url}/#{name}",
           type: 'exception',
@@ -126,28 +155,38 @@ module Pebble
         add_symbol(name: "#{package[:name]}.#{name}", url: "#{url}/#{name}")
       end
 
-      package[:children].each do | child |
-        filename = "javadoc/#{name_to_url(package[:name])}/#{child[:name]}.html"
-        child_url = '/docs/pebblekit-android/' + package[:name].split('.').join('/') + '/' + child[:name] + '/'
+      package[:children].each do |child|
+        child_path = "#{name_to_url(package[:name])}/#{child[:name]}"
+        filename = "javadoc/#{child_path}.html"
+        child_url = "/docs/pebblekit-android/#{child_path}/"
 
         entry = zipfile.glob(filename).first
         summary = Nokogiri::HTML(entry.get_input_stream.read)
 
-        method_table = summary.css('table[summary~="Method Summary"]')
-        method_table.css('tr').each do | row |
-          next unless row.at_css('.memberNameLink')
-          name = row.at_css('.memberNameLink').content
+        method_rows = summary.css('#method-summary-table .summary-table')
+        method_table =
+          method_rows.css('.col-second:not(.table-header)').zip(method_rows.css('.col-last:not(.table-header)'))
+
+        method_table.each do |row|
+          link = row[0].at_css('.member-name-link')
+          next unless link
+
+          name = link.content
+          description = row[1].at_css('.block')
           child[:methods] << {
             name: name,
-            summary: row.at_css('.block') ? row.at_css('.block').content : '',
-            url: child_url + '#' + name,
+            summary: description ? description.content : '',
+            url: "#{child_url}##{name}",
             type: 'method'
           }
-          add_symbol(name: [package[:name], child[:name], name].join('.'), url: child_url + '#' + name)
+          add_symbol(name: "#{package[:name]}.#{child[:name]}.#{name}", url: "#{child_url}##{name}")
         end
-        html = summary.at_css('.contentContainer').to_html
-        html = process_html(html, child_url)
-        @pages << PageDocPebbleKitAndroid.new(@site, @site.source, child_url, child[:name], html, child)
+        html = summary.at_css('main')
+        html.children.each do |node|
+          node.remove if node.classes.include?('header')
+        end
+        html = process_html(html.to_html, child_url)
+        @pages << PageDocPebbleKitAndroid.new(@site, child_url, child[:name], html, child)
       end
     end
 
@@ -155,13 +194,18 @@ module Pebble
       name.split('.').join('/')
     end
 
-    def process_html(html, root)
+    def process_html(html, root, is_package: false)
       contents = Nokogiri::HTML(html)
-      contents.css('a').each do | link |
-        next if link['href'].nil?
-        href =  File.expand_path(link['href'], root)
-        href = href.sub('/com/com/', '/com/')
-        href = href.sub('.html', '/')
+      contents.css('a').each do |link|
+        href = link['href']
+        next if href.nil?
+
+        unless href.start_with?('https://')
+          href = "../#{href}" unless is_package or href.start_with?('#')
+          href = File.expand_path(href, root)
+                     .sub('/com/com/', '/com/')
+                     .sub('.html', '/')
+        end
         link['href'] = href
       end
       contents.css('.memberSummary caption').remove
@@ -170,24 +214,24 @@ module Pebble
   end
 
   class PageDocPebbleKitAndroid < Jekyll::Page
-    def initialize(site, base, dir, title, contents, group)
+    def initialize(site, dir, title, contents, group)
       @site = site
-      @base = base
+      @base = site.source
       @dir = dir
       @name = 'index.html'
       @contents = contents
       @group = group
 
       process(@name)
-      read_yaml(File.join(base, '_layouts', 'docs'), 'pebblekit-android.html')
+      read_yaml(File.join(@base, '_layouts', 'docs'), 'pebblekit-android.html')
       data['title'] = title.to_s
     end
 
     def to_liquid(attrs = ATTRIBUTES_FOR_LIQUID)
-      super(attrs + %w(
+      super(attrs + %w[
         contents
         group
-      ))
+      ])
     end
 
     attr_reader :contents

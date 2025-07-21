@@ -36,11 +36,11 @@ describe Pebble::DocumentationPebbleKitAndroid do
       @doc.load_symbols(@symbols)
     end
 
-    xit 'should add symbols to the list' do
+    it 'should add symbols to the list' do
       expect(@symbols.size).to be > 0
     end
 
-    xit 'should contain some known symbols' do
+    it 'should contain some known symbols' do
       symbols = %w(
         com.getpebble.android.kit.Constants
         com.getpebble.android.kit.PebbleKit.registerReceivedDataHandler
@@ -49,19 +49,19 @@ describe Pebble::DocumentationPebbleKitAndroid do
       symbols.each { |name| expect(find_symbol(@symbols, name)).to_not be(nil) }
     end
 
-    xit 'should tag all symbols with the correct language' do
+    it 'should tag all symbols with the correct language' do
       expect(@symbols.any? { |symbol| symbol[:language] != 'pebblekit_android' })
         .to be(false)
     end
 
-    xit 'should create symbols with correct URLS' do
+    it 'should create symbols with correct URLS' do
       wrong_prefix = @symbols.any? do |symbol|
         !symbol[:url].start_with?('/docs/pebblekit-android/')
       end
       expect(wrong_prefix).to be(false)
     end
 
-    xit 'should not create two symbols that clash' do
+    it 'should not create two symbols that clash' do
       expect(clashing_symbols(@symbols)).to be false
     end
   end
@@ -72,11 +72,11 @@ describe Pebble::DocumentationPebbleKitAndroid do
       @doc.create_pages(@pages)
     end
 
-    xit 'should add some pages to the list' do
+    it 'should add some pages to the list' do
       expect(@pages.size).to be > 0
     end
 
-    xit 'should create pages with contents and group exposed' do
+    it 'should create pages with contents and group exposed' do
       page = @pages[0]
       expect(page.contents).to_not be(nil)
       expect(page.group).to_not be(nil)
@@ -89,11 +89,11 @@ describe Pebble::DocumentationPebbleKitAndroid do
       @doc.build_tree(@tree)
     end
 
-    xit 'should populate the tree' do
+    it 'should populate the tree' do
       expect(@tree.size).to be > 0
     end
 
-    xit 'should create tree objects formatted properly' do
+    it 'should create tree objects formatted properly' do
       @tree.each { |branch| valid_branch(branch) }
     end
   end
@@ -108,7 +108,7 @@ describe Pebble::DocumentationPebbleKitAndroid do
       @doc.load_symbols(@symbols)
     end
 
-    xit 'should have a page for every symbol' do
+    it 'should have a page for every symbol' do
       symbol_to_page_completeness(@symbols, @pages)
     end
   end
