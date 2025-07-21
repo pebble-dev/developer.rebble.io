@@ -66,7 +66,7 @@ $section-menu-width: 240px;
     font-size: utilities-variables.$base-font-size * 1.2;
     font-weight: 400;
     margin-top: 3px;
-    padding: calc(utilities-variables.$base-line-height / 1.2) 0;
+    padding: math.div(utilities-variables.$base-line-height, 1.2) 0;
     text-transform: uppercase;
     width: 100%;
   }
@@ -105,7 +105,7 @@ $section-menu-width: 240px;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
-    margin: calc(utilities-variables.$base-line-height / 4) 0;
+    margin: utilities-variables.$base-line-height * 0.25 0;
     padding: 0.5em;
   }
 

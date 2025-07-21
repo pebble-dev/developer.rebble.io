@@ -69,7 +69,7 @@ $hamburger-width: header.$header-height;
     width: $hamburger-width;
     top: 0;
     height: header.$header-height;
-    padding: calc(variables.$base-font-size / 1.5) 0;
+    padding: math.div(variables.$base-font-size, 1.5) 0;
     font-size: variables.$base-font-size * 2;
     text-align: center;
     color: colors.$gray-03;

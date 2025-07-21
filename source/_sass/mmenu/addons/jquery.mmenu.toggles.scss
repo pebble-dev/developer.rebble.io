@@ -60,7 +60,7 @@ label.mm-check {
 label.mm-check {
   width: variables.$mm_checkWidth;
   height: variables.$mm_checkHeight;
-  margin-bottom: - calc(variables.$mm_checkHeight / 2);
+  margin-bottom: - variables.$mm_checkHeight * 0.5;
 
   &:before {
     border-left: 3px solid;

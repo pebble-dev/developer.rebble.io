@@ -10,9 +10,9 @@ em.mm-counter {
   font-size: variables.$mm_fontSize;
   font-style: normal;
   text-indent: 0;
-  line-height: calc(variables.$mm_btnSize / 2);
+  line-height: variables.$mm_btnSize * 0.5;
   display: block;
-  margin-top: - calc(variables.$mm_btnSize / 4);
+  margin-top: - variables.$mm_btnSize * 0.25;
   position: absolute;
   right: variables.$mm_subopenWidth;
   top: 50%;
@@ -34,7 +34,7 @@ em.mm-counter {
 // vertical submenu
 .mm-vertical {
   em.mm-counter {
-    top: calc((variables.$mm_btnSize / 4) + 2px);
+    top: (variables.$mm_btnSize * 0.25) + 2px;
     margin-top: 0;
   }
 }

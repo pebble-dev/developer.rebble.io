@@ -62,7 +62,7 @@ $sidebar-hide-at: xs;
   font-size: utilities-variables.$base-font-size * 1.2;
   height: header.$header-height;
   left: 0;
-  padding: calc(utilities-variables.$base-line-height / 1.2) 0;
+  padding: math.div(utilities-variables.$base-line-height, 1.2) 0;
   position: absolute;
   text-align: center;
   top: 0;

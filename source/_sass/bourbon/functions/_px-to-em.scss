@@ -15,5 +15,5 @@
     $base: strip-units.strip-units($base);
   }
 
-  @return calc($pxval / $base) * 1em;
+  @return math.div($pxval, $base) * 1em;
 }
