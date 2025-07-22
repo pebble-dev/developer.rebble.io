@@ -2,52 +2,46 @@
 	jQuery.mmenu counters addon CSS
 */
 
-@import "../inc/variables";
+@use "../inc/colors";
+@use "../inc/variables";
 
+em.mm-counter {
+  font: inherit;
+  font-size: variables.$mm_fontSize;
+  font-style: normal;
+  text-indent: 0;
+  line-height: variables.$mm_btnSize * 0.5;
+  display: block;
+  margin-top: -(variables.$mm_btnSize * 0.25);
+  position: absolute;
+  right: variables.$mm_subopenWidth;
+  top: 50%;
 
-em.mm-counter
-{
-	font: inherit;
-	font-size: $mm_fontSize;
-	font-style: normal;
-	text-indent: 0;
-	line-height: $mm_btnSize * 0.5;
-	display: block;
-	margin-top: -( $mm_btnSize * 0.25 );
-	position: absolute;
-	right: $mm_subopenWidth;
-	top: 50%;
+  +a.mm-subopen {
+    padding-left: variables.$mm_counterWidth;
 
-	+ a.mm-subopen
-	{
-		padding-left: $mm_counterWidth;
+    +a,
+    +span {
+      margin-right: variables.$mm_counterWidth + variables.$mm_subopenWidth;
+    }
+  }
 
-		+ a,
-		+ span
-		{
-			margin-right: $mm_counterWidth + $mm_subopenWidth;
-		}
-	}
-	+ a.mm-fullsubopen
-	{
-		padding-left: 0;
-	}
+  +a.mm-fullsubopen {
+    padding-left: 0;
+  }
 }
 
 // vertical submenu
-.mm-vertical
-{
-	em.mm-counter
-	{
-		top: ( $mm_btnSize * 0.25 ) + 2;
-		margin-top: 0;
-	}
+.mm-vertical {
+  em.mm-counter {
+    top: (variables.$mm_btnSize * 0.25) + 2;
+    margin-top: 0;
+  }
 }
 
 // Search
-.mm-nosubresults > em.mm-counter
-{
-	display: none;
+.mm-nosubresults>em.mm-counter {
+  display: none;
 }
 
-@include mm_colors_counters;
+@include colors.mm_colors_counters;

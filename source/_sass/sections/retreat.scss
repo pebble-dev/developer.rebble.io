@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+@use "../base/variables";
+@use "../bourbon/css3/flex-box";
+@use "../colors";
+@use "../elements/sectionmenu";
+@use "../elements/sidebar";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
 @use "sass:color";
 
 $banner-blue: #066AC4;
@@ -36,8 +43,8 @@ $banner-blue: #066AC4;
     &::before {
       content: ' ';
       display: block;
-      height: $header-height + 60px;
-      margin-top: -1 * ($header-height + 60px);
+      height: header.$header-height + 60px;
+      margin-top: -1 * (header.$header-height + 60px);
       visibility: hidden;
     }
   }
@@ -54,7 +61,7 @@ $banner-blue: #066AC4;
   width: 100%;
   max-height: 620px;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     padding-top: 3rem;
   }
 
@@ -69,14 +76,14 @@ $banner-blue: #066AC4;
 
 .retreat-nav {
   background-color: color.adjust(#222, $alpha: -0.3);
-  left: $sidebar-width + $section-menu-width;
+  left: sidebar.$sidebar-width + sectionmenu.$section-menu-width;
   position: fixed;
   text-align: center;
-  top: $header-height;
+  top: header.$header-height;
   right: 0;
   z-index: 100;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max (sidebar.$sidebar-hide-at) {
     left: 0;
     width: 100%;
   }
@@ -87,18 +94,18 @@ $banner-blue: #066AC4;
   }
 
   ul {
-    @include display(flex);
+    @include flex-box.display(flex);
   }
 
   li {
-    @include flex(1 0 auto);
+    @include flex-box.flex(1 0 auto);
     display: block;
 
-    &:last-child > a {
+    &:last-child>a {
       margin-right: 0 !important;
     }
 
-    > a {
+    >a {
       color: #fff;
       display: block;
       padding: 1rem 0;
@@ -129,7 +136,7 @@ $banner-blue: #066AC4;
     font-size: 1.2rem;
     margin-top: 5vw;
 
-    @include bp-min(s) {
+    @include breakpoints.bp-min(s) {
       padding: 2em 0;
       margin-top: 20vw;
       font-size: 1.3em;
@@ -148,8 +155,8 @@ $banner-blue: #066AC4;
     position: relative;
 
     &::before {
-      border-radius: $base-border-radius;
-      color: $white;
+      border-radius: variables.$base-border-radius;
+      color: colors.$white;
       font-size: 1.4em;
       font-weight: normal;
       left: 0;
@@ -165,7 +172,7 @@ $banner-blue: #066AC4;
   dt {
 
     &::before {
-      background-color: $pebble-pink;
+      background-color: colors.$pebble-pink;
       content: 'Q';
     }
   }
@@ -173,7 +180,7 @@ $banner-blue: #066AC4;
   dd {
 
     &::before {
-      background-color: $pebble-green;
+      background-color: colors.$pebble-green;
       content: 'A';
     }
   }

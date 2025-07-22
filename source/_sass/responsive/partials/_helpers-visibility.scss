@@ -1,3 +1,5 @@
+@use "../utilities/mixins/visibility";
+
 /*
  * Image replacement
  */
@@ -87,7 +89,7 @@
 }
 
 // XS, S, M, L viewports.
-@include visibility(xs);
-@include visibility(s);
-@include visibility(m);
-@include visibility(l);
+@include visibility.visibility(xs);
+@include visibility.visibility(s);
+@include visibility.visibility(m);
+@include visibility.visibility(l);

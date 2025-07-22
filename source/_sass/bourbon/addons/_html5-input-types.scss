@@ -3,6 +3,9 @@
 // input types that have a text-based input, excluding textarea.
 // http://diveintohtml5.org/forms.html
 //************************************************************************//
+
+@use "../functions/assign";
+
 $inputs-list: 'input[type="email"]',
               'input[type="number"]',
               'input[type="password"]',
@@ -22,15 +25,15 @@ $inputs-list: 'input[type="email"]',
 
 // Bare inputs
 //************************************************************************//
-$all-text-inputs: assign-inputs($inputs-list);
+$all-text-inputs: assign.assign-inputs($inputs-list);
 
 // Hover Pseudo-class
 //************************************************************************//
-$all-text-inputs-hover: assign-inputs($inputs-list, hover);
+$all-text-inputs-hover: assign.assign-inputs($inputs-list, hover);
 
 // Focus Pseudo-class
 //************************************************************************//
-$all-text-inputs-focus: assign-inputs($inputs-list, focus);
+$all-text-inputs-focus: assign.assign-inputs($inputs-list, focus);
 
 
 
@@ -57,19 +60,19 @@ $inputs-button-list: 'input[type="button"]',
 
 // Bare inputs
 //************************************************************************//
-$all-button-inputs: assign-inputs($inputs-button-list);
+$all-button-inputs: assign.assign-inputs($inputs-button-list);
 
 // Hover Pseudo-class
 //************************************************************************//
-$all-button-inputs-hover: assign-inputs($inputs-button-list, hover);
+$all-button-inputs-hover: assign.assign-inputs($inputs-button-list, hover);
 
 // Focus Pseudo-class
 //************************************************************************//
-$all-button-inputs-focus: assign-inputs($inputs-button-list, focus);
+$all-button-inputs-focus: assign.assign-inputs($inputs-button-list, focus);
 
 // Active Pseudo-class
 //************************************************************************//
-$all-button-inputs-active: assign-inputs($inputs-button-list, active);
+$all-button-inputs-active: assign.assign-inputs($inputs-button-list, active);
 
 
 

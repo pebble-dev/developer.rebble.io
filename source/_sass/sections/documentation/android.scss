@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+@use "../../../_sass/base/variables";
+@use "../../../_sass/bourbon/addons/font-family";
+@use "../../../_sass/colors";
+
 .documentation__android {
   ul {
     list-style-type:disc;
@@ -27,12 +31,12 @@
   }
 
   .detail, .serialized-class-details {
-    border: 1px solid $gray-06;
+    border: 1px solid colors.$gray-06;
 
     h3 {
       font-size: 0.9em;
       padding: 8px;
-      background-color: $gray-06;
+      background-color: colors.$gray-06;
     }
 
     & > :not(h3) {
@@ -116,7 +120,7 @@
   }
   dl.notes > dt {
     text-transform: uppercase;
-    border-bottom: 1px solid $pink;
+    border-bottom: 1px solid colors.$pink;
     font-weight:600;
     font-size: 1.2em;
     margin:10px 0 0 0;
@@ -189,7 +193,7 @@
   .summary-table, .details-table {
     width:100%;
     border-spacing:0;
-    border:1px solid $gray-06;
+    border:1px solid colors.$gray-06;
     padding:0;
   }
   .caption {
@@ -207,7 +211,7 @@
     white-space:pre;
   }
   .caption a:link, .caption a:visited {
-    color:$lightblue;
+    color:colors.$lightblue;
   }
   .caption a:hover,
   .caption a:active {
@@ -221,7 +225,7 @@
     padding-right:12px;
     padding-bottom:7px;
     float:left;
-    background-color:$pink;
+    background-color:colors.$pink;
     color:#FFFFFF;
     border: none;
   }
@@ -276,7 +280,7 @@
     padding-bottom:3px;
   }
   .table-header {
-    background:$gray-06;
+    background:colors.$gray-06;
     font-weight: bold;
     font-size:0.9em;
   }
@@ -305,7 +309,7 @@
     background-color:#FFFFFF;
   }
   .odd-row-color, .odd-row-color .table-header {
-    background-color:$gray-01;
+    background-color:colors.$gray-01;
   }
   /*
    * Styles for contents.
@@ -325,7 +329,7 @@
   .package-signature,
   .type-signature,
   .member-signature {
-    font-family:$monospace;
+    font-family:font-family.$monospace;
     margin:14px 0;
   }
   .member-signature .type-parameters-long,
@@ -342,7 +346,7 @@
    * Styles for formatting effect.
    */
   .source-line-no {
-    color:$green;
+    color:colors.$green;
     padding:0 30px 0 0;
   }
   h1.hidden {
@@ -353,7 +357,7 @@
   .block {
     display:block;
     margin:0 10px 5px 0;
-    color: $base-font-color;
+    color: variables.$base-font-color;
   }
   .deprecated-label, .descfrm-type-label, .implementation-label, .member-name-label, .member-name-link,
   .module-label-in-package, .module-label-in-type, .override-specify-label, .package-label-in-type,

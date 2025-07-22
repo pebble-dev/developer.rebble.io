@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+@use "bourbon/addons/clearfix";
+@use "bourbon/css3/transition";
+@use "responsive/utilities/mixins/breakpoints";
 @use "sass:color";
+
 
 $footer-height: 2rem;
 $footer-height-mobile: 9.95rem;
@@ -26,9 +30,9 @@ $footer-bp: s;
   height: auto !important;
   margin: 0 auto -1 * $footer-height-mobile;
   min-height: 100%;
-  @include clearfix;
+  @include clearfix.clearfix;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     margin: 0 auto -1 * $footer-height;
   }
 }
@@ -36,7 +40,7 @@ $footer-bp: s;
 .push {
   height: $footer-height-mobile;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     height: $footer-height;
   }
 }
@@ -49,7 +53,7 @@ $footer-bp: s;
   width: 100%;
   z-index: 100;
 
-  @include bp-min ($footer-bp) {
+  @include breakpoints.bp-min ($footer-bp) {
     height: $footer-height;
   }
 
@@ -58,14 +62,14 @@ $footer-bp: s;
   }
 
   li {
-    @include bp-min ($footer-bp) {
+    @include breakpoints.bp-min ($footer-bp) {
       display: table-cell;
       width: 2%;
     }
   }
 
   a {
-    @include transition (all 0.2s ease-in-out);
+    @include transition.transition (all 0.2s ease-in-out);
     background-color: $footer-background-color;
     color: $footer-text-color;
     display: block;

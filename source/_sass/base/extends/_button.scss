@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
+@use "../variables";
+
 %button {
   -webkit-font-smoothing: antialiased;
-  background-color: $base-button-color;
-  border-radius: $base-border-radius;
+  background-color: variables.$base-button-color;
+  border-radius: variables.$base-border-radius;
   color: white;
   display: inline-block;
-  font-size: $base-font-size;
+  font-size: variables.$base-font-size;
   font-weight: bold;
   line-height: 1;
   padding: .75em 1em;
   text-decoration: none;
 
   &:hover {
-    background-color: $hover-button-color;
+    background-color: variables.$hover-button-color;
     color: white;
   }
 }

@@ -1,8 +1,10 @@
+@use "../addons/prefixer";
+
 @mixin perspective($depth: none) {
   // none | <length>
-  @include prefixer(perspective, $depth, webkit moz spec);
+  @include prefixer.prefixer(perspective, $depth, webkit moz spec);
 }
 
 @mixin perspective-origin($value: 50% 50%) {
-  @include prefixer(perspective-origin, $value, webkit moz spec);
+  @include prefixer.prefixer(perspective-origin, $value, webkit moz spec);
 }

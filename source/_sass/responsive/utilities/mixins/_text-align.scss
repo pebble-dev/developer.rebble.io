@@ -1,4 +1,6 @@
-﻿//==
+@use "breakpoints";
+
+//==
 // Creates text align classes for each breakpoint.
 //##
 @mixin text-align($bp) {
@@ -17,7 +19,7 @@
             text-align: center !important;
         }
 
-        @include bp-max($bp) {
+        @include breakpoints.bp-max($bp) {
             .text-#{$bp}-left-only {
                 text-align: left !important;
             }
@@ -33,7 +35,7 @@
     }
     @else {
 
-        @include bp-min($bp) {
+        @include breakpoints.bp-min($bp) {
 
             .text-#{$bp}-left {
                 text-align: left !important;
@@ -48,7 +50,7 @@
             }
             // Large doesn't need an "only" since it operates on min width.
             @if $bp != l {
-                @include bp-max($bp) {
+                @include breakpoints.bp-max($bp) {
                     .text-#{$bp}-left {
                         text-align: left !important;
                     }
