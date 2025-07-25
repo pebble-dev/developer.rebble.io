@@ -17,6 +17,7 @@ title: Migrating to Pebblekit iOS 3.0
 author: alex
 tags:
 - Freshly Baked
+banner: /images/blog/ios-migration-banner.png
 ---
 
 Starting with Pebble Time Round, we are moving towards communicating with Bluetooth

@@ -38,7 +38,7 @@ In order to be successfully listed in the Pebble appstore the developer must:
 
 * Build their app with a non-beta SDK.
 
-* Ensure their app complies with the various legal agreements.
+* Ensure their app complies with the various [legal agreements](/legal/).
 
 Information on how to meet these requirements is given in this group of guides,
 as well as details about available analytical data for published apps and

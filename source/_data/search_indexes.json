@@ -75,6 +75,23 @@
       "highlight_post_tag": "</span>"
     }
   },
+  "community-resources": {
+    "settings": {
+      "attributesToIndex": [
+        "unordered(title)",
+        "unordered(content)",
+        "unordered(type)"
+      ],
+      "attributesToSnippet": [
+        "content:30"
+      ],
+      "attributesForFaceting": [
+      ],
+      "attributeForDistinct": null,
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  },
   "other": {
     "settings": {
       "searchable_attributes": [

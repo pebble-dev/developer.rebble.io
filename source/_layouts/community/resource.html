@@ -1,0 +1,33 @@
+---
+layout: community
+---
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1>{{ page.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-l-8">
+      <div class="markdown markdown--user">
+        {{ content }}
+      </div>
+    </div>
+    <div class="col-l-4">
+      <div class="gray-box">
+        <h5>Created By:</h5>
+        <h4>{{ page.creator }}</h4>
+        {% if page.collection == 'community_apps' %}
+          <p><a href="http://apps.getpebble.com/applications/{{ page.appstore }}/" target="_blank" class="btn btn--bg-green btn--fg-white btn--wide">View on Appstore</a></p>
+          <p><a href="{{ page.link }}" target="_blank" class="btn btn--bg-green btn--fg-white btn--wide">View Source</a></p>
+        {% endif %}
+        {% if page.collection == 'community_tools' %}
+          <p><a href="{{ page.link }}" target="_blank" class="btn btn--bg-green btn--fg-white btn--wide">View Tool</a></p>
+        {% endif %}
+        {% if page.collection == 'community_libraries' %}
+          <p><a href="{{ page.link }}" target="_blank" class="btn btn--bg-green btn--fg-white btn--wide">View Library</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

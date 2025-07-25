@@ -1,0 +1,45 @@
+---
+layout: community
+title: Libraries
+menu_subsection: libraries
+---
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1 class="pagetitle">Libraries</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-s-8">
+      <table class="table--minimal">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Creator</th>
+            <th>Language</th>
+            <th>License</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for library in site.community_libraries | sort_by: 'name' %}
+          <tr>
+            <td><a href="{{ site.baseurl }}{{ library.url }}">{{ library.name }}</a></td>
+            <td>{{ library.creator }}</td>
+            <td>{{ library.language }}</td>
+            <td>{{ library.license }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-s-4 gray-box">
+      <p>Here are all of the libraries that have been submitted.</p>
+      <p>
+        If you want to submit your own library for inclusion in this site, you 
+        should take a look at the
+        <a href="/community/submission/#libraries">Submission Instructions</a> for
+        details on how to do so.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+---
+layout: community
+menu_subsection: apps
+title: Example Apps
+---
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1 class="pagetitle">Example Apps</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-l-8">
+      <table class="table--minimal">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Creator</th>
+            <th>License</th>
+            <th>Tags</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for app in site.community_apps | sort_by: 'name' %}
+          <tr>
+            <td><a href="{{ site.baseurl }}{{ app.url }}">{{ app.name }}</a></td>
+            <td>{{ app.creator }}</td>
+            <td>{{ app.license }}</td>
+            <td>{{ app.tags | join: ', ' }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-l-4 gray-box">
+      <p>
+        We have collected all of the open source Pebble apps that people have
+        built. If you are interested in taking a look at some more advanced apps
+        than the examples, you should take a look.
+      </p>
+      <p>
+        If you want to submit your own app for inclusion in this site, you should
+        take a look at the
+        <a href="/community/submission/#example-apps">Submission Instructions</a> for
+        details on how to do so.
+      </p>
+    </div>
+  </div>
+</div>

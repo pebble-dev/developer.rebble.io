@@ -1,0 +1,41 @@
+---
+layout: community
+menu_subsection: tools
+title: Developer Tools
+---
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1 class="pagetitle">Developer Tools</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-s-8">
+      <table class="table--minimal">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Creator</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for tool in site.community_tools | sort_by: 'name' %}
+          <tr>
+            <td><a href="{{ site.baseurl }}{{ tool.url }}">{{ tool.name }}</a></td>
+            <td>{{ tool.creator }}</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-s-4 gray-box">
+      <p>Here are all of the tools that have been submitted.</p>
+      <p>
+        If you want to submit your own tool for inclusion in this site, you should
+        take a look at the
+        <a href="/community/submission/">Submission Guidelines</a> for
+        details on how to do so.
+      </p>
+    </div>
+  </div>
+</div>

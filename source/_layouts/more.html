@@ -27,6 +27,15 @@ sidebar_only: false
       <li class="section-menu__item{% if layout.menu_subsection == 'examples' or page.menu_subsection == 'examples' %} active{% endif %}"><a href="/examples/">Examples</a></li>
       <li class="section-menu__item{% if page.menu_subsection == 'contact' %} active{% endif %}"><a href="/contact/">Contact</a></li>
       <li class="section-menu__item{% if page.menu_subsection == 'faqs' %} active{% endif %}"><a href="/faqs/">FAQs</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'legal' %} open{% endif %}"><a href="/legal/">Legal</a>
+        <ul>
+          <li class="section-menu__subitem{% if page.title == 'Pebble Terms of Use' %} active{% endif %}"><a href="/legal/terms-of-use/"><span>Terms of Use</span></a></li>
+          <li class="section-menu__subitem{% if page.title == 'Guidelines for Using Pebble Trademarks and Copyrights' %} active{% endif %}"><a href="/legal/pebble-trademark/"><span>Trademark Usage Guidelines</span></a></li>
+          <li class="section-menu__subitem{% if page.title == 'Pebble Developer Distribution Agreement' %} active{% endif %}"><a href="/legal/distribution/"><span>Distribution Agreement</span></a></li>
+          <li class="section-menu__subitem{% if page.title == 'Pebble Developer Program Policies' %} active{% endif %}"><a href="/legal/program-policies/"><span>Program Policies</span></a></li>
+          <li class="section-menu__subitem{% if page.title == 'Pebble SDK License Agreement' %} active{% endif %}"><a href="/legal/sdk-license/"><span>SDK License Agreement</span></a></li>
+        </ul>
+      </li>
       <li class="section-menu__item{% if page.menu_subsection == 'open-source' %} active{% endif %}"><a href="/open-source/">Open Source</a></li>
       <li class="section-menu__item{% if page.menu_subsection == 'build' %} active{% endif %}"><a href="/build/">Build Tools</a></li>
       {% comment %}

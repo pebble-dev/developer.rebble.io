@@ -132,6 +132,43 @@
       </ul>
     </li>
     <li class="mobile-nav--examples"><a href="/examples/">Examples</a></li>
+    <li class="mobile-nav--community"><a href="/community/">Community</a>
+      <!-- layouts/community -->
+      <ul>
+        <li>
+          <a href="/community/events/">Events</a>
+          <ul>
+            <li><a href="/community/events/developer-retreat-2014">Developer Retreat 2014</a></li>
+            <li><a href="/community/events/developer-retreat-2015">Developer Retreat 2015</a></li>
+          </ul>
+        </li>
+        <li><a href="/community/online/">Online Communities</a></li>
+        <li>
+          <a href="/community/apps/">Example Apps</a>
+          <ul>
+            {% for app in site.community_apps | sort_by: 'name' %}
+              <li class="section-menu__subitem{% if page.url == app.url %} active{% endif %}"><a href="{{ site.baseurl }}{{ app.url }}"><span>{{ app.name }}</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a href="/community/tools/">Tools</a>
+          <ul>
+            {% for tool in site.community_tools | sort_by: 'name' %}
+              <li class="section-menu__subitem{% if page.url == tool.url %} active{% endif %}"><a href="{{ site.baseurl }}{{ tool.url }}"><span>{{ tool.name }}</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a href="/community/libraries/">Libraries</a>
+          <ul>
+            {% for library in site.community_libraries | sort_by: 'name' %}
+              <li class="section-menu__subitem{% if page.url == library.url %} active{% endif %}"><a href="{{ site.baseurl }}{{ library.url }}"><span>{{ library.name }}</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li class="mobile-nav--blog"><a href="/blog/">Blog</a></li>
     <li class="mobile-nav--more"><a href="/more/">More</a>
       <!-- layouts/more -->

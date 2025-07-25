@@ -1,0 +1,25 @@
+---
+layout: community
+---
+{% include utils/toc_small.html toc=page.toc %}
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1>{{ page.title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-l-8">
+      <div class="markdown markdown--user">
+        {{ content }}
+      </div>
+    </div>
+    {% if page.toc %}
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        {% include utils/toc_large.html toc=page.toc %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

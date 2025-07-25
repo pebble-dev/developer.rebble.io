@@ -627,6 +627,8 @@ if(complete_t) {
 The final result is a compressed PNG image downloaded from the web displayed in
 a Pebble watchapp.
 
+![watch >{pebble-screenshot,pebble-screenshot--time-black}](/images/guides/pebble-apps/communications/html-5-watch.png)
+
 Get the complete source code for this example from the
 [`png-download-example`](https://github.com/pebble-examples/png-download-example)
 repository on GitHub.

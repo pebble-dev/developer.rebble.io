@@ -77,6 +77,15 @@ links:
 
 # Jekyll collections.
 collections:
+  community_tools:
+    output: true
+    permalink: /community/tools/:path/
+  community_apps:
+    output: true
+    permalink: /community/apps/:path/
+  community_libraries:
+    output: true
+    permalink: /community/libraries/:path/
   guides:
     output: true
     permalink: /guides/:path/
@@ -103,6 +112,27 @@ defaults:
       guide_group:
       guide_subgroup:
       menu_section: guides
+  - scope:
+      path: ""
+      type: community_tools
+    values:
+      layout: community/resource
+      menu_section: community
+      menu_subsection: tools
+  - scope:
+      path: ""
+      type: community_apps
+    values:
+      layout: community/resource
+      menu_section: community
+      menu_subsection: apps
+  - scope:
+      path: ""
+      type: community_libraries
+    values:
+      layout: community/resource
+      menu_section: community
+      menu_subsection: libraries
   - scope:
       path: ""
       type: changelogs
