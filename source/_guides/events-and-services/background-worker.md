@@ -26,7 +26,6 @@ related_examples:
     url: https://github.com/pebble-examples/feature-background-counter
   - title: Background Worker Communication
     url: https://github.com/pebble-examples/feature-worker-message
-platform_choice: true
 ---
 
 In addition to the main foreground task that every Pebble app implements, a
@@ -60,16 +59,10 @@ worker when compared to those of the foreground task:
 
 ## Adding a Worker
 
-^CP^ The background worker's behavior is determined by code written in a
-separate C file to the foreground app. Add a new source file and set the
-'Target' field to 'Background Worker'.
-
-^LC^ The background worker's behavior is determined by code written in a
+The background worker's behavior is determined by code written in a
 separate C file to the foreground app, created in the `/worker_src` project 
 directory.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 This project structure can also be generated using the 
 [`pebble` tool](/guides/tools-and-resources/pebble-tool/) with the `--worker`
 flag as shown below:
@@ -77,8 +70,6 @@ flag as shown below:
 ```bash
 $ pebble new-project --worker project_name
 ```
-{% endmarkdown %}
-</div>
 
 The worker C file itself has a basic structure similar to a regular Pebble app,
 but with a couple of minor changes, as shown below:
@@ -240,9 +231,6 @@ Background workers do not have access to the UI APIs. They also cannot use the
 ``DataLogging``, ``HealthService``, ``ConnectionService``,
 ``BatteryStateService``, ``TickTimerService`` and ``Storage``.
 
-^LC^ The compiler will throw an error if the developer attempts to use an API
+The compiler will throw an error if the developer attempts to use an API
 unsupported by the worker. For a definitive list of available APIs, check
 `pebble_worker.h` in the SDK bundle for the presence of the desired API.
-
-^CP^ CloudPebble users will be notified by the editor and compiler if they
-attempt to use an unavailable API.

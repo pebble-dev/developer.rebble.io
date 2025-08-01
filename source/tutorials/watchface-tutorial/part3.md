@@ -21,7 +21,6 @@ title: Adding Web Content
 description: A guide to adding web-based content your Pebble watchface
 permalink: /tutorials/watchface-tutorial/part3/
 generate_toc: true
-platform_choice: true
 ---
 
 In the previous tutorial parts, we created a simple watchface to tell the time
@@ -57,8 +56,6 @@ project or create a new one, using the code from that project's main `.c` file
 as a starting template. For reference, that should look 
 [something like this](https://gist.github.com/pebble-gists/d216d9e0b840ed296539). 
 
-^CP^ You can create a new CloudPebble project from this template by 
-[clicking here]({{ site.links.cloudpebble }}ide/gist/d216d9e0b840ed296539).
 
 ## Preparing the Watchface Layout
 
@@ -89,17 +86,11 @@ text_layer_set_text(s_weather_layer, "Loading...");
 
 We will be using the same font as the time display, but at a reduced font size.
 
-^CP^ To do this, we return to our uploaded font resource and click 'Another
-Font. The second font that appears below should be given an 'Identifier' with
-`_20` at the end, signifying we now want font size 20 (suitable for the example
-font provided).
-
-^LC^ You can add another font in `package.json` by duplicating the first font's
+You can add another font in `package.json` by duplicating the first font's
 entry in the `media` array and changing the font size indicated in the `name`
 field to `_20` or similar. Below is an example showing both fonts:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "media": [
   {
     "type":"font",
@@ -114,8 +105,7 @@ field to `_20` or similar. Below is an example showing both fonts:
     "compatibility": "2.7"
   },
 ]
-{% endhighlight %}
-</div>
+```
 
 Now we will load and apply that font as we did last time, beginning with a new
 ``GFont`` declared at the top of the file:
@@ -236,11 +226,7 @@ app_message_open(inbox_size, outbox_size);
 The weather data itself will be downloaded by the JavaScript component of the
 watchface, and runs on the connected phone whenever the watchface is opened. 
 
-^CP^ To begin using PebbleKit JS, click 'Add New' in the CloudPebble editor,
-next to 'Source Files'. Select 'JavaScript file' and choose a file name.
-CloudPebble allows any normally valid file name, such as `weather.js`.
-
-^LC^ To begin using PebbleKit JS, add a new file to your project at 
+To begin using PebbleKit JS, add a new file to your project at 
 `src/pkjs/index.js` to contain your JavaScript code.
 
 To get off to a quick start, we will provide a basic template for using the
@@ -269,25 +255,18 @@ Pebble.addEventListener('appmessage',
 
 After compiling and installing the watchface, open the app logs.
 
-^CP^ Click the 'View Logs' button on the confirmation dialogue or the
-'Compilation' screen if it was already dismissed.
-
-^LC^ You can listen for app logs by running `pebble logs`, supplying your
+You can listen for app logs by running `pebble logs`, supplying your
 phone's IP address with the `--phone` switch. For example: 
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```
 pebble logs --phone 192.168.1.78
-{% endhighlight %}
-</div>
+```
 
-^LC^ You can also combine these two commands into one: 
+You can also combine these two commands into one: 
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```
 pebble install --logs --phone 192.168.1.78
-{% endhighlight %}
-</div>
+```
 
 You should see a message matching that set to appear using `console.log()` in
 the JS console in the snippet above! This is where any information sent using
@@ -307,19 +286,13 @@ our JS file:
 3. Send the information we want from the XHR request response to the watch for
    display on our watchface.
 
-^CP^ Firstly, go to 'Settings' and check the 'Uses Location' box at the bottom
-of the page. This will allow the watchapp to access the phone's location
-services.
-
-^LC^ You will need to add `location` to the `capabilities` array in the
+You will need to add `location` to the `capabilities` array in the
 `package.json` file. This will allow the watchapp to access the phone's location
 services. This is shown in the code segment below:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "capabilities": ["location"]
-{% endhighlight %}
-</div>
+```
 
 The next step is simple to perform, and is shown in full below. The method we
 are using requires two other functions to use as callbacks for the success and
@@ -436,20 +409,15 @@ The final JS step is to send the weather data back to the watch. To do this we m
 pick some appmessage keys to send back. Since we want to display the temperature
 and current conditions, we'll create one key for each of those.
 
-^CP^ Firstly, go to the 'Settings' screen, find the 'PebbleKit JS Message Keys'
-section and enter some names, like "TEMPERATURE" and "CONDITIONS":
-
-^LC^ You can add your ``AppMessage`` keys in the `messageKeys` object in
+You can add your ``AppMessage`` keys in the `messageKeys` object in
 `package.json` as shown below for the example keys:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "messageKeys": [
   "TEMPERATURE",
   "CONDITIONS",
 ]
-{% endhighlight %}
-</div>
+```
 
 To send the data, we call `Pebble.sendAppMessage()` after assembling the weather
 info variables `temperature` and `conditions` into a dictionary. We can
@@ -548,11 +516,7 @@ that looks similar to the one shown below:
 }
 {% endscreenshot_viewer %}
 
-^CP^ Remember, if the text is too large for the screen, you can reduce the font
-size in the 'Resources' section of the CloudPebble editor. Don't forget to
-change the constants in the `.c` file to match the new 'Identifier'.
-
-^LC^ Remember, if the text is too large for the screen, you can reduce the font
+Remember, if the text is too large for the screen, you can reduce the font
 size in `package.json` for that resource's entry in the `media` array. Don't
 forget to change the constants in the `.c` file to match the new resource's
 `name`.
@@ -600,9 +564,7 @@ services to display data and control these services.
 As usual, you can compare your code to the example code provided using the button
 below.
 
-^CP^ [Edit in CloudPebble >{center,bg-lightblue,fg-white}]({{ site.links.cloudpebble }}ide/gist/216e6d5a0f0bd2328509)
-
-^LC^ [View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/216e6d5a0f0bd2328509)
+[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/216e6d5a0f0bd2328509)
 
 
 ## What's Next?

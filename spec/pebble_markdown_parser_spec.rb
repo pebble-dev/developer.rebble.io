@@ -149,20 +149,6 @@ describe Jekyll::Converters::Markdown::PebbleMarkdownParser, '#convert' do
     end
   end
 
-  describe 'paragraphs' do
-    it 'adds a data attribute for sdk platforms' do
-      doc = md2doc("^LC^ Local SDK instructions\n\n^CP^CloudPebble instructions\n\nRegular old paragraph")
-      expect(doc.at_css('p:nth-child(1)').attribute('data-sdk-platform').value).to eql('local')
-      expect(doc.at_css('p:nth-child(1)').content).to eql('Local SDK instructions')
-      expect(doc.at_css('p:nth-child(1)')['class']).to include('platform-specific')
-      expect(doc.at_css('p:nth-child(2)').attribute('data-sdk-platform').value).to eql('cloudpebble')
-      expect(doc.at_css('p:nth-child(2)').content).to eql('CloudPebble instructions')
-      expect(doc.at_css('p:nth-child(2)')['class']).to include('platform-specific')
-      expect(doc.at_css('p:nth-child(3)').attribute('data-sdk-platform')).to eql(nil)
-      expect(doc.at_css('p:nth-child(3)').content).to eql('Regular old paragraph')
-    end
-  end
-
   describe 'block code' do
     it 'processes code blocks with Pygments' do
       doc = md2doc("```\nvar a = 1;\n```")

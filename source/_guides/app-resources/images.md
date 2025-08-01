@@ -18,7 +18,6 @@ description: |
   How to add image resources to a project and display them in your app.
 guide_group: app-resources
 order: 4
-platform_choice: true
 ---
 
 Images can be displayed in a Pebble app by adding them as a project resource.
@@ -57,13 +56,6 @@ are available below. Use these when creating color image resources:
 
 ## Import the Image
 
-{% platform cloudpebble %}
-Add the `.png` file as a resource using the 'Add New' button next to
-'Resources'. Give the resource a suitable 'Identifier' such as 'EXAMPLE_IMAGE'
-and click 'Save'.
-{% endplatform %}
-
-{% platform local %}
 After placing the image in the project's `resources` directory, add an entry to
 the `resources` item in `package.json`. Specify the `type` as `bitmap`, choose a
 `name` (to be used in code) and supply the path relative to the project's
@@ -80,7 +72,6 @@ the `resources` item in `package.json`. Specify the `type` as `bitmap`, choose a
   ]
 },
 ```
-{% endplatform %}
 
 
 ## Specifying an Image Resource
@@ -96,13 +87,6 @@ Resources of this type can be optimized using additional attributes:
 | `storageFormat` | Optional. Determines the file format used for storage. Using `spaceOptimization` instead is preferred. | `pbi` or `png`. |
 | `spaceOptimization` | Optional. Determines whether the output resource is optimized for low runtime memory or low resource space usage. | `storage` or `memory`. |
 
-{% platform cloudpebble %}
-These attributes can be selected in CloudPebble from the resource's page:
-
-![](/images/guides/app-resources/cp-bitmap-attributes.png)
-{% endplatform %}
-
-{% platform local %}
 An example usage of these attributes in `package.json` is shown below:
 
 ```js
@@ -114,7 +98,6 @@ An example usage of these attributes in `package.json` is shown below:
   "spaceOptimization": "memory"
 }
 ```
-{% endplatform %}
 
 On all platforms `memoryFormat` will default to `Smallest`. On Aplite
 `spaceOptimization` will default to `memory`, and `storage` on all other
@@ -159,15 +142,8 @@ stored in while the app is running:
 static GBitmap *s_bitmap;
 ```
 
-{% platform cloudpebble %}
-Create the ``GBitmap``, specifying the 'Identifier' chosen earlier, prefixed
-with `RESOURCE_ID_`. This will manage the image data:
-{% endplatform %}
-
-{% platform local %}
 Create the ``GBitmap``, specifying the `name` chosen earlier, prefixed with
 `RESOURCE_ID_`. This will manage the image data:
-{% endplatform %}
 
 ```c
 s_bitmap = gbitmap_create_with_resource(RESOURCE_ID_EXAMPLE_IMAGE);

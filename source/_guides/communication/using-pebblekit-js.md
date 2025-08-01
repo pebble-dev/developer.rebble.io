@@ -19,7 +19,6 @@ description: |
   environment.
 guide_group: communication
 order: 4
-platform_choice: true
 ---
 
 PebbleKit JS allows a JavaScript component (run in a sandbox inside the official
@@ -42,13 +41,8 @@ Extra features available to an app using PebbleKit JS include:
 
 ## Setting Up
 
-^LC^ PebbleKit JS can be set up by creating the `index.js` file in the project's
+PebbleKit JS can be set up by creating the `index.js` file in the project's
 `src/pkjs/` directory. Code in this file will be executed when the associated
-watchapp is launched, and will stop once that app exits.
-
-^CP^ PebbleKit JS can be set up by clicking 'Add New' in the Source Files
-section of the sidebar. Choose the 'JavaScript file' type and choose a file name
-before clicking 'Create'. Code in this file will be executed when the associated
 watchapp is launched, and will stop once that app exits.
 
 The basic JS code required to begin using PebbleKit JS is shown below. An event
@@ -78,29 +72,21 @@ to learn how to do this.
 
 ## Defining Keys
 
-^LC^ Before any messages can be sent or received, the keys to be used to store the
+Before any messages can be sent or received, the keys to be used to store the
 data items in the dictionary must be declared. The watchapp side uses
 exclusively integer keys, whereas the JavaScript side may use the same integers
 or named string keys declared in `package.json`. Any string key not declared
 beforehand will not be transmitted to/from Pebble.
 
-^CP^ Before any messages can be sent or received, the keys to be used to store
-the data items in the dictionary must be declared. The watchapp side uses
-exclusively integer keys, whereas the JavaScript side may use the same integers
-or named string keys declared in the 'PebbleKit JS Message Keys' section of
-'Settings'. Any string key not declared beforehand will not be transmitted
-to/from Pebble.
-
 > Note: This requirement is true of PebbleKit JS **only**, and not PebbleKit
 > Android or iOS.
 
-^LC^  Keys are declared in the project's `package.json` file in the `messageKeys`
+Keys are declared in the project's `package.json` file in the `messageKeys`
 object, which is inside the `pebble` object. Example keys are shown as equivalents
 to the ones used in the hypothetical weather app example in
 {% guide_link communication/sending-and-receiving-data#choosing-key-values %}.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "messageKeys": [
   "Temperature",
   "WindSpeed",
@@ -108,12 +94,7 @@ to the ones used in the hypothetical weather app example in
   "RequestData",
   "LocationName"
 ]
-{% endhighlight %}
-</div>
-
-^CP^ Keys are declared individually in the 'PebbleKit JS Message Keys' section
-of the 'Settings' page. Enter the 'Key Name' of each key that will be used by
-the app.
+```
 
 The names chosen here will be injected into your C code prefixed with `MESSAGE_KEY_`,
 like `MESSAGE_KEY_Temperature`. As such, they must be legal C identifiers.
@@ -299,17 +280,12 @@ PebbleKit JS provides access to the location services provided by the phone
 through the
 [`navigator.geolocation`](http://dev.w3.org/geo/api/spec-source.html) object.
 
-^CP^ Declare that the app will be using the `geolocation` API by checking the
-'Uses Location' checkbox in the 'Settings' screen.
-
-^LC^ Declare that the app will be using the `geolocation` API by adding the
+Declare that the app will be using the `geolocation` API by adding the
 string `location` in the `capabilities` array in `package.json`:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "capabilities": [ "location" ]
-{% endhighlight %}
-</div>
+```
 
 Below is an example showing how to get a single position value from the
 `geolocation` API using the 
