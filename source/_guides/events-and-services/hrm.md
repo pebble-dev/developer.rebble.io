@@ -26,7 +26,6 @@ related_examples:
     url: https://github.com/pebble-examples/watchface-tutorial-hrm
   - title: HRM Activity
     url: https://github.com/pebble-examples/hrm-activity-example
-platform_choice: true
 ---
 
 The Pebble Time 2 and Pebble 2 (excluding SE model)
@@ -41,8 +40,6 @@ before proceeding.
 
 ## Enable Health Data
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 Before your application is able to access the heart rate information, you will
 need to add `heath` to the `capabilities` array in your applications
 `package.json` file.
@@ -57,12 +54,6 @@ need to add `heath` to the `capabilities` array in your applications
   }
 }
 ```
-{% endmarkdown %}
-</div>
-
-^CP^ Before your application is able to access heart rate information, you will
-need to enable the `USES HEALTH` option in your project settings on
-[CloudPebble]({{ site.links.cloudpebble }}).
 
 
 ## Data Quality

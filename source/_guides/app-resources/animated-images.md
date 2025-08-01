@@ -19,7 +19,6 @@ description: |
   display them in your app.
 guide_group: app-resources
 order: 0
-platform_choice: true
 ---
 
 The Pebble SDK allows animated images to be played inside an app using the
@@ -47,7 +46,6 @@ A `.gif` file can be converted to the APNG `.png` format with
 
 ## Adding an APNG
 
-{% platform local %}
 Include the APNG file in the `resources` array in `package.json` as a `raw`
 resource:
 
@@ -62,12 +60,6 @@ resource:
   ]
 }
 ```
-{% endplatform %}
-
-{% platform cloudpebble %}
-To add the APNG file as a raw resource, click 'Add New' in the Resources section
-of the sidebar, and set the 'Resource Type' as 'raw binary blob'.
-{% endplatform %}
 
 ## Displaying APNG Frames
 

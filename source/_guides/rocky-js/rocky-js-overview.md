@@ -19,7 +19,6 @@ description: |
   started.
 guide_group: rocky-js
 order: 1
-platform_choice: true
 related_examples:
  - title: Tutorial Part 1
    url: https://github.com/pebble-examples/rocky-watchface-tutorial-part1
@@ -73,28 +72,17 @@ services, use geolocation, and offload data processing tasks to the phone.
 
 ### Creating a Project
 
-^CP^ Go to [CloudPebble]({{ site.links.cloudpebble }}) and click 'CREATE', enter
-a project name, then select the 'Rocky.js' project type.
-
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 Once you've installed the Pebble SDK, you can create a new Rocky.js project
 using the following command:
 
 ```nc|text
 $ pebble new-project --rocky <strong><em>projectname</em></strong>
 ```
-{% endmarkdown %}
-</div>
 
 
 ### Rocky JS
 
-^CP^ In [CloudPebble]({{ site.links.cloudpebble }}), add a new App Source, the
-file type is JavaScript and the target is `Rocky JS`. `index.js` is now the main
-entry point into the application on the watch.
-
-^LC^ In the local SDK, our main entry point into the application on the watch is
+In the local SDK, our main entry point into the application on the watch is
 `/src/rocky/index.js`.
 
 This is file is where our Rocky.js JavaScript code resides. All code within this
@@ -105,11 +93,7 @@ scripts may also be added, see [below](#additional-scripts).
 
 ### PebbleKit JS
 
-^CP^ In [CloudPebble]({{ site.links.cloudpebble }}), add a new App Source, the
-file type is JavaScript and the target is [PebbleKit JS](/docs/pebblekit-js/).
-This file should be named `index.js`.
-
-^LC^ In the local SDK, our primary [PebbleKit JS](/docs/pebblekit-js/) script is
+In the local SDK, our primary [PebbleKit JS](/docs/pebblekit-js/) script is
 `/src/pkjs/index.js`.
 
 All PebbleKit JS code will execute on the mobile device connected to the
@@ -127,10 +111,7 @@ added, see [below](#additional-scripts).
 If you need to share code between Rocky.js and PebbleKit JS, you can place
 JavaScript files in a shared area.
 
-^CP^ In [CloudPebble]({{ site.links.cloudpebble }}), add a new App Source, the
-file type is JavaScript and the target is `Shared JS`.
-
-^LC^ In the local SDK, place your shared files in `/src/common/`.
+In the local SDK, place your shared files in `/src/common/`.
 
 Shared JavaScript files can be referenced using the
 [CommonJS Module](http://www.commonjs.org/specs/modules/1.0/) format.

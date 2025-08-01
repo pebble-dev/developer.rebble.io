@@ -22,7 +22,6 @@ description: A guide to making a new Pebble watchface with Rocky.js
 permalink: /tutorials/js-watchface-tutorial/part1/
 menu_section: tutorials
 generate_toc: true
-platform_choice: true
 ---
 
 {% include tutorials/rocky-js-warning.html %}
@@ -43,19 +42,6 @@ and finally create an analog clock which looks just like this:
 
 ## First Steps
 
-^CP^ Go to [CloudPebble]({{ site.links.cloudpebble }}) and click
-'Get Started' to log in using your Pebble account, or create a new one if you do
-not already have one. Once you've logged in, click 'Create' to create a new
-project. Give your project a suitable name, such as 'Tutorial 1' and set the
-'Project Type' as 'Rocky.js (beta)'. This will create a completely empty
-project, so before you continue, you will need to click the 'Add New' button in
-the left menu to create a new Rocky.js JavaScript file.
-
-^CP^ Next we need to change our project from a watchapp to a watchface. Click
-'Settings' in the left menu, then change the 'APP KIND' to 'watchface'.
-
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 If you haven't already, head over the [SDK Page](/sdk/install/) to learn how to
 download and install the latest version of the Pebble Tool, and the latest SDK.
 
@@ -68,8 +54,6 @@ $ pebble new-project --rocky helloworld
 
 This will create a new folder called `helloworld` and populate it with the basic
 structure required for a basic Rocky.js application.
-{% endmarkdown %}
-</div>
 
 
 ## Watchface Basics
@@ -79,10 +63,7 @@ a regular interval (typically once a minute, or when specific events occur). By
 minimizing the frequency that the screen is updated, we help to conserve
 battery life on the watch.
 
-^CP^ We'll start by editing the `index.js` file that we created earlier. Click
-on the filename in the left menu and it will load, ready for editing.
-
-^LC^ The main entry point for the watchface is `/src/rocky/index.js`, so we'll
+The main entry point for the watchface is `/src/rocky/index.js`, so we'll
 start by editing this file.
 
 The very first thing we must do is include the Rocky.js library, which gives us
@@ -140,10 +121,7 @@ things:
 - Display the current time, using the width and height to determine the center
 point of the screen.
 
-^CP^ To create our minimal watchface which displays the current time, let's
-replace the contents of our `index.js` file with the following code:
-
-^LC^ To create our minimal watchface which displays the current time, let's
+To create our minimal watchface which displays the current time, let's
 replace the contents of `/src/rocky/index.js` with the following code:
 
 ```js
@@ -184,14 +162,6 @@ rocky.on('minutechange', function(event) {
 
 ## First Compilation and Installation
 
-^CP^ To compile the watchface, click the 'PLAY' button on the right hand side
-of the screen. This will save your file, compile the project and launch your
-watchface in the emulator.
-
-^CP^ Click the 'VIEW LOGS' button.
-
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 To compile the watchface, make sure you have saved your project files, then
 run the following command from the project's root directory:
 
@@ -212,8 +182,6 @@ Now install the watchapp and view the logs on the emulator by running:
 ```nc|text
 $ pebble install --logs --emulator basalt
 ```
-{% endmarkdown %}
-</div>
 
 ## Congratulations!
 
@@ -443,16 +411,9 @@ rocky.on('minutechange', function(event) {
 Once you've added your logging statements, rebuild the application and view the
 logs:
 
-^CP^ Click the 'PLAY' button on the right hand side of the screen, then click
-the 'VIEW LOGS' button.
-
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 ```nc|text
 $ pebble build && pebble install --emulator basalt --logs
 ```
-{% endmarkdown %}
-</div>
 
 If you find that one of your logging statements hasn't appeared in the log
 output, it probably means there is an issue in the preceding code.

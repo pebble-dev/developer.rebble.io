@@ -22,7 +22,6 @@ description: |
   How to add bluetooth connection alerts to your watchface.
 permalink: /tutorials/watchface-tutorial/part5/
 generate_toc: true
-platform_choice: true
 ---
 
 The final popular watchface addition explored in this tutorial series
@@ -61,15 +60,6 @@ hidden when reconnected. Save the image below for use in this project:
 
 <img style="background-color: #CCCCCC;" src="/assets/images/tutorials/intermediate/bt-icon.png"</img>
 
-
-{% platform cloudpebble %}
-Add this icon to your project by clicking 'Add New' under 'Resources' in
-the left hand side of the editor. Specify the 'Resource Type' as 'Bitmap Image',
-upload the file for the 'File' field. Give it an 'Identifier' such as
-`IMAGE_BT_ICON` before clicking 'Save'.
-{% endplatform %}
-
-{% platform local %}
 Add this icon to your project by copying the above icon image to the `resources`
 project directory, and adding a new JSON object to the `media` array in
 `package.json` such as the following:
@@ -81,7 +71,6 @@ project directory, and adding a new JSON object to the `media` array in
   "file": "bt-icon.png"
 },
 ```
-{% endplatform %}
 
 This icon will be loaded into the app as a ``GBitmap`` for display in a
 ``BitmapLayer`` above the time display. Declare both of these as pointers at the
@@ -146,10 +135,7 @@ twice.
 
 ![bt >{pebble-screenshot,pebble-screenshot--steel-black}](/images/tutorials/intermediate/bt.png)
 
-^CP^ You can create a new CloudPebble project from the completed project by
-[clicking here]({{ site.links.cloudpebble }}ide/gist/ddd15cbe8b0986fda407).
-
-^LC^ You can see the finished project source code in
+You can see the finished project source code in
 [this GitHub Gist](https://gist.github.com/pebble-gists/ddd15cbe8b0986fda407).
 
 

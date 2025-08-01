@@ -22,7 +22,6 @@ description: A guide to making a new Pebble watchface with the Pebble C API
 permalink: /tutorials/watchface-tutorial/part1/
 menu_section: tutorials
 generate_toc: true
-platform_choice: true
 ---
 
 In this tutorial we'll cover the basics of writing a simple watchface with
@@ -48,41 +47,26 @@ new basic watchface looking something like this:
 
 So, let's get started!
 
-^CP^ Go to [CloudPebble]({{ site.links.cloudpebble }}) and click 'Get Started'
-to log in using your Pebble account, or create a new one if you do not already
-have one. Next, click 'Create' to create a new project. Give your project a
-suitable name, such as 'Tutorial 1' and leave the 'Project Type' as 'Pebble C
-SDK', with a 'Template' of 'Empty project', as we will be starting from scratch
-to help maximize your understanding as we go.
-
-^LC^ Before you can start the tutorial you will need to have the Pebble SDK
+Before you can start the tutorial you will need to have the Pebble SDK
 installed. If you haven't done this yet, go to our [download page](/sdk) to grab
 the SDK and follow the instructions to install it on your machine. Once you've
 done that you can come back here and carry on where you left off.
 
-^LC^ Once you have installed the SDK, navigate to a directory of your choosing
+Once you have installed the SDK, navigate to a directory of your choosing
 and run `pebble new-project watchface` (where 'watchface' is the name of your
 new project) to start a new project and set up all the relevant files.
 
-^CP^ Click 'Create' and you will see the main CloudPebble project screen. The
-left menu shows all the relevant links you will need to create your watchface.
-Click on 'Settings' and you will see the name you just supplied, along with
-several other options. As we are creating a watchface, change the 'App Kind' to
-'Watchface'.
-
-^LC^ In an SDK project, all the information about how an app is configured (its
+In an SDK project, all the information about how an app is configured (its
 name, author, capabilities and resource listings etc) is stored in a file in the
 project root directory called `package.json`. Since this project will be a
 watchface, you will need to modify the `watchapp` object in this file to reflect
 this:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "watchapp": {
   "watchface": true
 }
-{% endhighlight %}
-</div>
+```
 
 The main difference between the two kinds are that watchfaces serve as the
 default display on the watch, with the Up and Down buttons allowing use of the
@@ -91,18 +75,12 @@ behavior (Back and Select are also not available to watchfaces). In contrast,
 watchapps are launched from the Pebble system menu. These have more capabilities
 such as button clicks and menu elements, but we will come to those later.
 
-^CP^ Finally, set your 'Company Name' and we can start to write some code!
-
-^LC^ Finally, set a value for `companyName` and we can start to write some code!
+Finally, set a value for `companyName` and we can start to write some code!
 
 
 ## Watchface Basics
 
-^CP^ Create the first source file by clicking 'Add New' on the left menu,
-selecting 'C file' as the type and choosing a suitable name such as 'main.c'.
-Click 'Create' and you will be shown the main editor screen.
-
-^LC^ Our first source file is already created for you by the `pebble` command
+Our first source file is already created for you by the `pebble` command
 line tool and lives in the project's `src` directory. By default, this file
 contains sample code which you can safely remove, since we will be starting from
 scratch. Alternatively, you can avoid this by using the `--simple` flag when
@@ -123,10 +101,7 @@ make the task of managing memory allocation and deallocation as simple as
 possible. Additionally, `main()` also calls ``app_event_loop()``, which lets the
 watchapp wait for system events until it exits.
 
-^CP^ The recommended structure is shown below, and you can use it as the basis
-for your own watchface file by copying it into CloudPebble:
-
-^LC^ The recommended structure is shown below, and you can use it as the basis
+The recommended structure is shown below, and you can use it as the basis
 for your main C file:
 
 ```c
@@ -215,14 +190,7 @@ valid after each iterative change, so let's do this now.
 
 ## First Compilation and Installation
 
-^CP^ To compile the watchface, make sure you have saved your C file by clicking
-the 'Save' icon on the right of the editor screen and then proceed to the
-'Compilation' screen by clicking the appropriate link on the left of the screen.
-Click 'Run Build' to start the compilation process and wait for the result.
-Hopefully the status should become 'Succeeded', meaning the code is valid and
-can be run on the watch.
-
-^LC^ To compile the watchface, make sure you have saved your project files and
+To compile the watchface, make sure you have saved your project files and
 then run `pebble build` from the project's root directory. The installable
 `.pbw` file will be deposited in the `build` directory. After a successful
 compile you will see a message reading `'build' finished successfully`. If there
@@ -233,18 +201,12 @@ In order to install your watchface on your Pebble, first
 [setup the Pebble Developer Connection](/guides/tools-and-resources/developer-connection/).
 Make sure you are using the latest version of the Pebble app.
 
-^CP^ Click 'Install and Run' and wait for the app to install.
-
-^LC^ Install the watchapp by running `pebble install`, supplying your phone's IP
+Install the watchapp by running `pebble install`, supplying your phone's IP
 address with the `--phone` flag. For example: `pebble install
 --phone 192.168.1.78`.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 > Instead of using the --phone flag every time you install, set the PEBBLE_PHONE environment variable:
 > `export PEBBLE_PHONE=192.168.1.78` and simply use `pebble install`.
-{% endmarkdown %}
-</div>
 
 Congratulations! You should see that you have a new item in the watchface menu,
 but it is entirely blank!
@@ -266,10 +228,7 @@ Let's change that with the next stage towards a basic watchface - the
 
 ## Showing Some Text
 
-^CP^ Navigate back to the CloudPebble code editor and open your main C file to
-continue adding code.
-
-^LC^ Re-open your main C file to continue adding code.
+Re-open your main C file to continue adding code.
 
 The best way to show some text on a watchface or watchapp
 is to use a ``TextLayer`` element. The first step in doing this is to follow a
@@ -332,10 +291,7 @@ static void main_window_unload(Window *window) {
 }
 ```
 
-^CP^ This completes the setup of the basic watchface layout. If you return to
-'Compilation' and install a new build, you should now see the following:
-
-^LC^ This completes the setup of the basic watchface layout. If you run `pebble
+This completes the setup of the basic watchface layout. If you run `pebble
 build && pebble install` (with your phone's IP address) for the new build, you
 should now see the following:
 
@@ -463,9 +419,7 @@ watchface! To do this we:
 If you have problems with your code, check it against the sample source code
 provided using the button below.
 
-^CP^ [Edit in CloudPebble >{center,bg-lightblue,fg-white}]({{ site.links.cloudpebble }}ide/gist/9b9d50b990d742a3ae34)
-
-^LC^ [View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/9b9d50b990d742a3ae34)
+[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/9b9d50b990d742a3ae34)
 
 ## What's Next?
 

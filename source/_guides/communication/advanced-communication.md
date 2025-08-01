@@ -31,7 +31,6 @@ related_examples:
     url: https://github.com/pebble-examples/png-download-example
   - title: Pebble Faces
     url: https://github.com/pebble-examples/pebble-faces
-platform_choice: true
 ---
 
 Many types of connected Pebble watchapps and watchfaces perform common tasks
@@ -52,8 +51,6 @@ code implements the `appmessage` event listsner, it is ready to receive data.
 > for such an event thanks to the `Intent` system. iOS companion apps must wait
 > for `-watchDidConnect:`.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 A simple method is to define a key in `package.json` that will be interpreted by
 the watchapp to mean that the JS environment is ready for exchange data:
 
@@ -62,17 +59,6 @@ the watchapp to mean that the JS environment is ready for exchange data:
   "JSReady"
 ]
 ```
-{% endmarkdown %}
-</div>
-
-<div class="platform-specific" data-sdk-platform="cloudpebble">
-{% markdown %}
-A simple method is to define a key in Settings that will be interpreted by
-the watchapp to mean that the JS environment is ready for exchange data:
-
-* JSReady
-{% endmarkdown %}
-</div>
 
 The watchapp should implement a variable that describes if the `ready` event has
 occured. An example is shown below:
@@ -258,20 +244,9 @@ static int s_index = 0;
 
 When a message has been sent, this index is used to construct the next message:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 > Note: A useful key scheme is to use the item's array index as the key. For
 > PebbleKit JS that number of keys will have to be declared in `package.json`,
 > like so: `someArray[6]`
-{% endmarkdown %}
-</div>
-<div class="platform-specific" data-sdk-platform="cloudpebble">
-{% markdown %}
-> Note: A useful key scheme is to use the item's array index as the key. For
-> PebbleKit JS that number of keys will have to be declared in the project's
-> 'Settings' page, like so: `someArray[6]`
-{% endmarkdown %}
-</div>
 
 ```c
 static void outbox_sent_handler(DictionaryIterator *iter, void *context) {

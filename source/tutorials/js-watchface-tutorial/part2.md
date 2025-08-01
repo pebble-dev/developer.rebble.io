@@ -22,7 +22,6 @@ description: A guide to adding web content to a JavaScript watchface
 permalink: /tutorials/js-watchface-tutorial/part2/
 menu_section: tutorials
 generate_toc: true
-platform_choice: true
 ---
 
 {% include tutorials/rocky-js-warning.html %}
@@ -43,12 +42,7 @@ the Pebble.
 
 ## First Steps
 
-^CP^ The first thing we'll need to do is add a new JavaScript file to the
-project we created in [Part 1](/tutorials/js-watchface-tutorial/part1). Click
-'Add New' in the left menu, set the filename to `index.js` and the 'TARGET' to
-'PebbleKit JS'.
-
-^LC^ The first thing we'll need to do is edit a file from the project we
+The first thing we'll need to do is edit a file from the project we
 created in [Part 1](/tutorials/js-watchface-tutorial/part1). The file is
 called `/src/pkjs/index.js` and it is the entry point for the `pkjs` portion
 of the application.
@@ -126,16 +120,10 @@ Our `pkjs` component can access to the location of the user's smartphone. The
 Rocky.js component cannot access location information directly, it must request
 it from `pkjs`.
 
-^CP^ In order to use this functionality, you must change your project settings
-in CloudPebble. Click 'SETTINGS' in the left menu, then tick 'USES LOCATION'.
-
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown {} %}
 In order to use this functionality, your application must include the
 `location` flag in the
 [`pebble.capabilities`](/guides/tools-and-resources/app-metadata/)
 array of your `package.json` file.
-
 
 ```js
 // file: package.json
@@ -145,8 +133,6 @@ array of your `package.json` file.
   }
 // ...
 ```
-{% endmarkdown %}
-</div>
 
 Once we've added the `location` flag, we can access GPS coordinates using the
 [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation).
