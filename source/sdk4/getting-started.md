@@ -19,7 +19,6 @@ description: |
 layout: sdk/markdown
 permalink: /sdk4/getting-started/
 search_index: true
-platform_choice: true
 ---
 
 Pebble SDK 4 is now available for developers who are interested in using the
@@ -29,12 +28,11 @@ guides listed below to help familiarize themselves with the new functionality.
 
 ## Getting Started
 
-{% platform local %}
 #### Mac OS X (Homebrew)
+
 ```bash
 $ brew update && brew upgrade pebble-sdk && pebble sdk install latest
 ````
-
 
 #### Mac OS X (Manual)
 1. Download the
@@ -51,11 +49,6 @@ Linux users should install the SDK manually using the instructions below:
 
 2. Install the SDK by following the
    [manual installation instructions](/sdk/install/linux/).
-{% endplatform %}
-
-{% platform cloudpebble %}
-<a href="{{site.links.cloudpebble}}" class="btn btn--fg-white btn--bg-lightblue">Launch CloudPebble</a>
-{% endplatform %}
 
 ## Blog Posts
 

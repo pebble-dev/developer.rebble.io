@@ -18,7 +18,6 @@ description: |
   How to allow users to customize an app with a configuration page.
 guide_group: user-interfaces
 order: 0
-platform_choice: true
 related_examples:
   - title: Clay Example
     url: https://github.com/pebble-examples/clay-example
@@ -44,19 +43,12 @@ Internet connection.
 
 ## Enabling Configuration
 
-^LC^ For an app to be configurable, it must include the 'configurable' item in
+For an app to be configurable, it must include the 'configurable' item in
 `package.json`.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
-```js
+```json
 "capabilities": [ "configurable" ]
 ```
-{% endmarkdown %}
-</div>
-
-^CP^ For an app to be configurable, it must include the 'configurable' item in
-'Settings'.
 
 The presence of this value tells the mobile app to display the gear icon that
 is associated with the ability to launch the config page next to the app itself.
@@ -66,18 +58,11 @@ is associated with the ability to launch the config page next to the app itself.
 Clay is available as a {% guide_link pebble-packages "Pebble Package" %}, so it
 takes minimal effort to install.
 
-^LC^ Within your project folder, just type:
+Within your project folder, just type:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 ```nc|text
 $ pebble package install pebble-clay
 ```
-{% endmarkdown %}
-</div>
-
-^CP^ Go to the 'Dependencies' tab, type 'pebble-clay' into the search box and
-press 'Enter' to add the dependency.
 
 
 ## Choosing messageKeys
@@ -89,12 +74,10 @@ In this example, we're going to allow users to control the background color,
 foreground color, whether the watchface ticks on seconds and whether any
 animations are displayed.
 
-^LC^ We define `messageKeys` in the `package.json` file for each configuration
+We define `messageKeys` in the `package.json` file for each configuration
 setting in our application:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
-```js
+```json
 "messageKeys": [
   "BackgroundColor",
   "ForegroundColor",
@@ -102,28 +85,13 @@ setting in our application:
   "Animations"
 ]
 ```
-{% endmarkdown %}
-</div>
 
-^CP^ We define `messageKeys` in the 'Settings' tab for each configuration
-setting in our application. The 'Message Key Assignment Kind' should be set to
-'Automatic Assignment', then just enter each key name:
-
-<div class="platform-specific" data-sdk-platform="cloudpebble">
-{% markdown %}
-![CloudPebble Settings](/images/guides/user-interfaces/app-configuration/message-keys.png =400)
-{% endmarkdown %}
-</div>
 
 ## Creating the Clay Configuration
 
-^LC^ The Clay configuration file (`config.js`) should be created in your
+The Clay configuration file (`config.js`) should be created in your
 `src/pkjs/` folder. It allows the easy definition of each type of HTML form
 entity that is required. These types include:
-
-^CP^ The Clay configuration file (`config.js`) needs to be added to your project
-by adding a new 'Javascript' source file. It allows the easy definition of
-each type of HTML form entity that is required. These types include:
 
 * [Section](https://github.com/pebble/clay#section)
 * [Heading](https://github.com/pebble/clay#heading)
@@ -221,14 +189,10 @@ var clayConfig = require('./config');
 var clay = new Clay(clayConfig);
 ```
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 > When using the local SDK, it is possible to use a pure JSON
 > configuration file (`config.json`). If this is the case, you must not include
 > the `module.exports = []` in your configuration file, and you need to
 > `var clayConfig = require('./config.json');`
-{% endmarkdown %}
-</div>
 
 ## Receiving Config Data
 

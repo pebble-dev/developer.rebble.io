@@ -21,7 +21,6 @@ menu: false
 permalink: /guides/app-resources/
 generate_toc: false
 hide_comments: true
-platform_choice: true
 ---
 
 The Pebble SDK allows apps to include extra files as app resources. These files
@@ -37,18 +36,10 @@ Aplite platform, and **256 kB** on the Basalt and Chalk platforms. These limits
 include resources used by included Pebble Packages.
 {% endalert %}
 
-{% platform local %}
 App resources are included in a project by being listed in the `media` property
 of `package.json`, and are converted into suitable firmware-compatible formats
 at build time. Examples of this are shown in each type of resource's respective
 guide.
-{% endplatform %}
-
-{% platform cloudpebble %}
-App resources are included in a project by clicking the 'Add New' button under
-'Resources' and specifying the 'Resource Type' as appropriate. These are then
-converted into suitable firmware-compatible formats at build time.
-{% endplatform %}
 
 
 ## Contents

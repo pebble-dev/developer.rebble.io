@@ -21,7 +21,6 @@ layout: sdk/markdown
 permalink: /round/getting-started/
 generate_toc: true
 search_index: true
-platform_choice: true
 ---
 
 With the addition of Pebble Time Round to the Pebble hardware family, the Pebble
@@ -34,9 +33,7 @@ that are compatible with all hardware platforms. New graphics APIs and UI
 component behaviors assist with creating layouts ideally suited for both the
 rectangular and round display types.
 
-^LC^ [Get the SDK >{center,bg-lightblue,fg-white}](/sdk/download/?sdk={{ site.data.sdk.c.version }})
-
-^CP^ [Launch CloudPebble >{center,bg-lightblue,fg-white}]({{site.links.cloudpebble}})
+[Get the SDK >{center,bg-lightblue,fg-white}](/sdk/download/?sdk={{ site.data.sdk.c.version }})
 
 ## New Resources
 
@@ -76,9 +73,7 @@ concept. They are listed below.
 
 **Time Dots**
 
-^LC^ [![time-dots >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/time-dots.png)]({{site.links.examples_org}}/time-dots/)
-
-^CP^ [![time-dots >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/time-dots.png)]({{site.links.cloudpebble}}ide/import/github/pebble-examples/time-dots/)
+[![time-dots >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/time-dots.png)]({{site.links.examples_org}}/time-dots/)
 
 **Concentricity**
 {% screenshot_viewer %}
@@ -96,6 +91,4 @@ concept. They are listed below.
 
 **ContentIndicator Demo**
 
-^LC^ [![content-indicator-demo >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/content-indicator-demo.png)]({{site.links.examples_org}}/content-indicator-demo/)
-
-^CP^ [![content-indicator-demo >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/content-indicator-demo.png)]({{site.links.cloudpebble}}ide/import/github/pebble-examples/content-indicator-demo/)
+[![content-indicator-demo >{pebble-screenshot,pebble-screenshot--time-round-silver-14}](/images/sdk/content-indicator-demo.png)]({{site.links.examples_org}}/content-indicator-demo/)

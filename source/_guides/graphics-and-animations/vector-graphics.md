@@ -18,7 +18,6 @@ description: |
   How to draw simple images using vector images, instead of bitmaps.
 guide_group: graphics-and-animations
 order: 3
-platform_choice: true
 related_docs:
   - Draw Commands
 related_examples:
@@ -85,15 +84,10 @@ created at runtime.
 
 ## Drawing Vector Graphics
 
-^CP^ Add the PDC file as a project resource using the 'Add new' under
-'Resources' on the left-hand side of the CloudPebble editor as a 'raw binary
-blob'.
-
-^LC^ Add the PDC file to the project resources in `package.json` with the
+Add the PDC file to the project resources in `package.json` with the
 'type' field to `raw`:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "media": [
   {
     "type": "raw",
@@ -101,16 +95,10 @@ blob'.
     "file": "example_image.pdc"
   }
 ]
-{% endhighlight %}
-</div>
 
-^LC^ Drawing a Pebble Draw Command image is just as simple as drawing a normal
+Drawing a Pebble Draw Command image is just as simple as drawing a normal
 PNG image to a graphics context, requiring only one draw call. First, load the
 `.pdc` file from resources as shown below.
-
-^CP^ Drawing a Pebble Draw Command image is just as simple as drawing a normal
-PNG image to a graphics context, requiring only one draw call. First, load the
-`.pdc` file from resources, as shown below.
 
 First, declare a pointer of type ``GDrawCommandImage`` at the top of the file:
 

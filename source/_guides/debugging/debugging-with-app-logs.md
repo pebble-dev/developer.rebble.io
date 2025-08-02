@@ -21,7 +21,6 @@ guide_group: debugging
 order: 1
 related_docs:
   - Logging
-platform_choice: true
 ---
 
 
@@ -90,24 +89,16 @@ Pebble.sendAppMessage({'KEY': value}, function(e) {
 When viewing app logs, both the C and JS files' output are shown in the same
 view.
 
-^CP^ To view app logs in CloudPebble, open a project and navigate to the
-'Compilation' screen. Click 'View App Logs' and run an app that includes log
-output calls to see the output appear in this view.
-
-^LC^ The `pebble` {% guide_link tools-and-resources/pebble-tool %} will
+The `pebble` {% guide_link tools-and-resources/pebble-tool %} will
 output any logs from C and JS files after executing the `pebble logs` command
 and supplying the phone's IP address:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 ```text
 pebble logs --phone=192.168.1.25
 ```
 
 > Note: You can also use `pebble install --logs' to combine both of these
 > operations into one command.
-{% endmarkdown %}
-</div>
 
 
 ## Memory Usage Information

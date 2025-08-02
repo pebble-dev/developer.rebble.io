@@ -22,7 +22,6 @@ description: |
   How to use vector images in icons and animations.
 permalink: /tutorials/advanced/vector-animations/
 generate_toc: true
-platform_choice: true
 platforms:
   - basalt
   - chalk
@@ -152,11 +151,7 @@ weather apps.
 
 ## Getting Started
 
-^CP^ Begin a new [CloudPebble]({{ site.links.cloudpebble }}) project using the
-blank template and add code only to push an initial ``Window``, such as the
-example below:
-
-^LC^ Begin a new project using `pebble new-project` and create a simple app that
+Begin a new project using `pebble new-project` and create a simple app that
 pushes a blank ``Window``, such as the example below:
 
 ```c
@@ -200,17 +195,11 @@ int main() {
 For this tutorial, use the example
 [`weather_image.pdc`](/assets/other/weather_image.pdc) file provided.
 
-^CP^ Add the PDC file as a project resource using the 'Add new' under
-'Resources' on the left-hand side of the CloudPebble editor, with an
-'Identifier' of `WEATHER_IMAGE`, and a type of 'raw binary blob'. The file is
-assumed to be called `weather_image.pdc`.
-
-^LC^ Add the PDC file to your project resources in `package.json` as shown
+Add the PDC file to your project resources in `package.json` as shown
 below. Set the 'name' field to `WEATHER_IMAGE`, and the 'type' field to `raw`.
 The file is assumed to be called `weather_image.pdc`:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "media": [
   {
     "type": "raw",
@@ -218,19 +207,11 @@ The file is assumed to be called `weather_image.pdc`:
     "file": "weather_image.pdc"
   }
 ]
-{% endhighlight %}
-</div>
 
-^LC^ Drawing a Pebble Draw Command image is just as simple as drawing a normal PNG
+Drawing a Pebble Draw Command image is just as simple as drawing a normal PNG
 image to a graphics context, requiring only one draw call. First, load the
 `.pdc` file from resources, for example with the `name` defined as
 `WEATHER_IMAGE`, as shown below.
-
-^CP^ Drawing a Pebble Draw Command image is just as simple as drawing a normal
-PNG image to a graphics context, requiring only one draw call. First, load the
-`.pdc` file from resources, for example with the 'Identifier' defined as
-`WEATHER_IMAGE`. This will be available in code as `RESOURCE_ID_WEATHER_IMAGE`,
-as shown below.
 
 Declare a pointer of type ``GDrawCommandImage`` at the top of the file:
 
@@ -323,15 +304,11 @@ For this tutorial, use the example
 
 Begin a new app, with a C file containing the [template](#getting-started) provided above.
 
-^CP^ Next, add the file as a `raw` resource in the same way as for a PDC image,
-for example with an `Identifier` specified as `CLOCK_SEQUENCE`.
-
-^LC^ Next, add the file as a `raw` resource in the same way as for a PDC image,
+Next, add the file as a `raw` resource in the same way as for a PDC image,
 for example with the `name` field specified in `package.json` as
 `CLOCK_SEQUENCE`.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "media": [
   {
     "type": "raw",
@@ -339,8 +316,7 @@ for example with the `name` field specified in `package.json` as
     "file": "clock_sequence.pdc"
   }
 ]
-{% endhighlight %}
-</div>
+```
 
 Load the PDCS in your app by first declaring a ``GDrawCommandSequence`` pointer:
 

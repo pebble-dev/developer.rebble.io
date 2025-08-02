@@ -55,15 +55,7 @@ regenerate: true
       </p>
     </div>
     {% endif %}
-<!-- 
-    {% if page.platform_choice %}
-    {% include platform-choice.html %}
-    {% endif %}
- -->
     <div class="markdown markdown--staff">
-    {% if page.platform_choice %}
-    {% include platform-choice.html %}
-    {% endif %}
     {{ content }}
     </div>
     {% unless page.hide_comments %}

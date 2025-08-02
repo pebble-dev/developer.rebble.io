@@ -21,7 +21,6 @@ title: Customizing Your Watchface
 description: A guide to personalizing your new Pebble watchface
 permalink: /tutorials/watchface-tutorial/part2/
 generate_toc: true
-platform_choice: true
 ---
 
 In the previous page of the tutorial, you learned how to create a new Pebble
@@ -58,9 +57,6 @@ project or create a new one, using the code from that project's main `.c` file
 as a starting template. For reference, that should look
 [something like this](https://gist.github.com/pebble-gists/9b9d50b990d742a3ae34).
 
-^CP^ You can create a new CloudPebble project from this template by
-[clicking here]({{ site.links.cloudpebble }}ide/gist/9b9d50b990d742a3ae34).
-
 The result of the first part should look something like this - a basic time
 display:
 
@@ -79,22 +75,13 @@ Let's improve it!
 
 ## Adding a Custom Font
 
-^CP^ To add a custom font resource to use for the time display ``TextLayer``,
-click 'Add New' on the left of the CloudPebble editor. Set the 'Resource Type'
-to 'TrueType font' and upload a font file. Choose an 'Identifier', which is the
-value we will use to refer to the font resource in the `.c` file. This must end
-with the desired font size, which must be small enough to show a wide time such
-as '23:50' in the ``TextLayer``. If it does not fit, you can always return here
-to try another size. Click save and the font will be added to your project.
-
-^LC^ App resources (fonts and images etc.) are managed in the `package.json`
+App resources (fonts and images etc.) are managed in the `package.json`
 file in the project's root directory, as detailed in
 [*App Resources*](/guides/app-resources/). All image files and fonts must 
 reside in subfolders of the `/resources` folder of your project. Below is an 
 example entry in the `media` array:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 "media": [
   {
     "type": "font",
@@ -103,10 +90,9 @@ example entry in the `media` array:
     "compatibility":"2.7"
   }
 ]
-{% endhighlight %}
-</div>
+```
 
-^LC^ In the example above, we would place our `perfect-dos-vga.ttf` file in the
+In the example above, we would place our `perfect-dos-vga.ttf` file in the
 `/resources/fonts/` folder of our project.
 
 A custom font file must be a
@@ -152,12 +138,7 @@ void main_window_unload() {
 }
 ```
 
-^CP^ After re-compiling and re-installing (either by using the green 'Play'
-button to the top right of the CloudPebble editor, or by clicking 'Run Build'
-and 'Install and Run' on the 'Compilation' screen), the watchface should feature
-a much more interesting font.
-
-^LC^ After re-compiling and re-installing with `pebble build && pebble install`,
+After re-compiling and re-installing with `pebble build && pebble install`,
 the watchface should feature a much more interesting font.
 
 An example screenshot is shown below:
@@ -187,24 +168,17 @@ structure before being displayed using a ``BitmapLayer`` element. These two
 behave in a similar fashion to ``GFont`` and ``TextLayer``, so let's get
 started.
 
-^CP^ The first step is the same as using a custom font; import the bitmap into
-CloudPebble as a resource by clicking 'Add New' next to 'Resources' on the left
-of the CloudPebble project screen. Ensure the 'Resource Type' is 'Bitmap image',
-choose an identifier for the resource and upload your file.
-
-^LC^ You add a bitmap to the `package.json` file in the
+You add a bitmap to the `package.json` file in the
 [same way](/guides/app-resources/fonts) as a font, except the new `media` array
 object will have a `type` of `bitmap`. Below is an example:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% highlight {} %}
+```json
 {
   "type": "bitmap",
   "name": "IMAGE_BACKGROUND",
   "file": "images/background.png"
 }
-{% endhighlight %}
-</div>
+```
 
 As before, here is an example bitmap we have created for you to use, which looks
 like this:
@@ -287,9 +261,7 @@ available for `strftime()`!)
 As with last time, you can compare your own code to the example source code
 using the button below.
 
-^CP^ [Edit in CloudPebble >{center,bg-lightblue,fg-white}]({{ site.links.cloudpebble }}ide/gist/d216d9e0b840ed296539)
-
-^LC^ [View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/d216d9e0b840ed296539)
+[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/d216d9e0b840ed296539)
 
 
 ## What's Next?

@@ -225,27 +225,6 @@ release.
 {% endalert %}
 ```
 
-### SDK Platform Specific Paragraphs
-
-On pages that have the SDK Platform choice system, you can tag paragraphs as
-being only relevant for CloudPebble or local SDK users. Text, code snippets,
-images, and other markdown are all supported.
-
-First, add `platform_choice: true` to the page YAML metadata.
-
-Specify platform-specific sections of markdown using the `platform` Liquid tag:
-
-```
-{% platform local %}
-Add the resource to your project in `package.json`.
-{% endplatform %}
-
-{% platform cloudpebble %}
-Add the resource to your project by clicking 'Add New' next to 'Resources' in
-the project sidebar.
-{% endplatform %}
-```
-
 ### Formatting
 
 The following additional text formatting syntax is supported.

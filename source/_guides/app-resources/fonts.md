@@ -18,7 +18,6 @@ description: |
   How to use built-in system fonts, or add your own font resources to a project.
 guide_group: app-resources
 order: 3
-platform_choice: true
 ---
 
 
@@ -77,7 +76,6 @@ graphics_draw_text(ctx, text, fonts_get_system_font(FONT_KEY_GOTHIC_24), bounds,
 
 ## Adding a Custom Font
 
-{% platform local %}
 After placing the font file in the project's `resources` directory, the custom
 font can be added to a project as `font` `type` item in the `media` array in
 `package.json`. The `name` field's contents will be made available at compile
@@ -95,18 +93,6 @@ For example:
   ]
 }
 ```
-{% endplatform %}
-
-{% platform cloudpebble %}
-To add a custom font file to your project, click 'Add New' in the Resources
-section of the sidebar. Set the 'Resource Type' to 'TrueType font', and upload
-the file using the 'Choose file' button. Choose an 'Identifier', which will be
-made available at compile time with `RESOURCE_ID_` at the front. This must end
-with the desired font size ("EXAMPLE_FONT_20", for example).
-
-Configure the other options as appropriate, then hit 'Save' to save the
-resource.
-{% endplatform %}
 
 {% alert important %}
 The maximum recommended font size is 48.
@@ -180,13 +166,6 @@ font character sets in common watchapp scenarios:
 | `[0-9:A-Za-z° ]` | Time, date, and degree symbol for temperature gauges. |
 | `[0-9°CF ]` | Numbers and degree symbol with 'C' and 'F' for temperature gauges. |
 
-{% platform cloudpebble %}
-Open the font's configuration screen under 'Resources', then enter the desired
-regex in the 'Characters' field. Check the preview of the new set of characters,
-then choose 'Save'.
-{% endplatform %}
-
-{% platform local %}
 Add the `characterRegex` key to any font objects in `package.json`'s
 `media` array.
 
@@ -200,7 +179,6 @@ Add the `characterRegex` key to any font objects in `package.json`'s
   }
 ]
 ```
-{% endplatform %}
 
 Check out
 [regular-expressions.info](http://www.regular-expressions.info/tutorial.html)

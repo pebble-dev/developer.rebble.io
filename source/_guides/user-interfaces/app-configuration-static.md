@@ -18,7 +18,6 @@ description: |
   How to allow users to customize an app with a static configuration page.
 guide_group:
 order: 0
-platform_choice: true
 ---
 
 > This guide provides the steps to manually create an app configuration page.
@@ -44,36 +43,25 @@ PebbleKit JS,
 
 ## Adding Configuration
 
-^LC^ For an app to be configurable, it must marked as 'configurable' in the
+For an app to be configurable, it must marked as 'configurable' in the
 app's {% guide_link tools-and-resources/app-metadata "`package.json`" %}
 `capabilities` array. The presence of this value tells the mobile app to
 display a gear icon next to the app, allowing users to access the configuration
 page.
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
-```js
+```json
 "capabilities": [ "configurable" ]
 ```
-{% endmarkdown %}
-</div>
-
-^CP^ For an app to be configurable, it must include the 'configurable' item in
-'Settings'. The presence of this value tells the mobile app to display the
-gear icon that is associated with the ability to launch the config page.
-
 
 
 ## Choosing Key Values
 
-^LC^ Since the config page must transmit the user's preferred options to the
+Since the config page must transmit the user's preferred options to the
 watchapp, the first step is to decide upon the ``AppMessage`` keys defined in
 `package.json` that will be used to represent the chosen value for each option
 on the config page:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
-```js
+```json
 "messageKeys": [
   "BackgroundColor",
   "ForegroundColor",
@@ -81,25 +69,6 @@ on the config page:
   "Animations"
 ]
 ```
-{% endmarkdown %}
-</div>
-
-^CP^ Since the config page must transmit the user's preferred options to the
-watchapp, the first step is to decide upon the ``AppMessage`` keys defined in
-'Settings' that will be used to represent each option on the config page. An
-example set is shown below:
-
-<div class="platform-specific" data-sdk-platform="cloudpebble">
-{% markdown %}
-* `BackgroundColor`
-
-* `ForegroundColor`
-
-* `SecondTick`
-
-* `Animations`
-{% endmarkdown %}
-</div>
 
 These keys will automatically be available both in C on the watch and in
 PebbleKit JS on the phone.

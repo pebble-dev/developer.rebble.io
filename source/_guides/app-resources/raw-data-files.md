@@ -18,7 +18,6 @@ description: |
   How to add raw data resources to a project and read them in your app.
 guide_group: app-resources
 order: 7
-platform_choice: true
 ---
 
 Some kinds of apps will require extra data that is not a font or an image. In
@@ -34,7 +33,6 @@ dictionaries, CSV data files, etc.
 
 ## Adding Raw Data Files
 
-{% platform local %}
 To add a file as a raw resource, specify its `type` as `raw` in `package.json`.
 An example is shown below:
 
@@ -49,12 +47,6 @@ An example is shown below:
   ]
 }
 ```
-{% endplatform %}
-
-{% platform cloudpebble %}
-To add a file as a raw resource, click 'Add New' in the Resources section of the
-sidebar, and set the 'Resource Type' as 'raw binary blob'.
-{% endplatform %}
 
 
 ## Reading Bytes and Byte Ranges

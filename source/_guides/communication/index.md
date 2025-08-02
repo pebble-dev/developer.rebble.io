@@ -21,7 +21,6 @@ menu: false
 permalink: /guides/communication/
 generate_toc: false
 hide_comments: true
-platform_choice: true
 ---
 
 All Pebble watchapps and watchfaces have the ability to communicate with the
@@ -76,18 +75,8 @@ iOS.
 All messages sent from a Pebble watchapp or watchface will be delivered to the
 appropriate phone app depending on the layout of the developer's project:
 
-<div class="platform-specific" data-sdk-platform="local">
-{% markdown %}
 * If at least an `index.js` file is present in `src/pkjs/`, the message will be
   handled by PebbleKit JS.
-{% endmarkdown %}
-</div>
-<div class="platform-specific" data-sdk-platform="cloudpebble">
-{% markdown %}
-* If the project contains at least one JavaScript file, the message will be
-  handled by PebbleKit JS.
-{% endmarkdown %}
-</div>
 
 * If there is no valid JS file present (at least an `index.js`) in the project,
   the message will be delivered to the official Pebble mobile app. If there is a
