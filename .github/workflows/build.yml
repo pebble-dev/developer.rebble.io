@@ -1,16 +1,118 @@
 name: Build static site
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
 jobs:
+  # TODO: build these docs in pebble-dev/pebble-firmware, and publish in releases
+  gendocs-c:
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/pebble-dev/pebbleos-docker:main
+
+    steps:
+      - name: Checkout pebble-firmware
+        uses: actions/checkout@v4
+        with:
+          repository: pebble-dev/pebble-firmware
+          ref: main
+          submodules: true
+
+      - name: Install Python dependencies
+        run: |
+          pip install -U pip
+          pip install -r requirements.txt
+
+      - name: Build aplite SDK
+        run: |
+          ./waf configure --board bb2 --nojs
+          ./waf build --onlysdk
+
+      - name: Build basalt SDK
+        run: |
+          ./waf configure --board snowy_bb2
+          ./waf build --onlysdk
+
+      - name: Generate SDK documentation
+        run: |
+          ./waf docs_sdk
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-c
+          path: |
+            build/sdk/aplite/doxygen_sdk
+            build/sdk/basalt/doxygen_sdk
+
+  # TODO: maybe build in pebble-dev/pebble-android-sdk, and publish releases?
+  gendocs-android:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout pebble-android-sdk
+        uses: actions/checkout@v4
+        with:
+          repository: pebble-dev/pebble-android-sdk
+
+      - name: Generate documentation
+        working-directory: PebbleKit
+        run: |
+          ./gradlew releaseJavadoc
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-android
+          path: PebbleKit/PebbleKit/build/docs/javadoc
+
+  # TODO: maybe fork into pebble-dev, build there, and publish releases?
+  gendocs-ios:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout pebble-ios-sdk
+        uses: actions/checkout@v4
+        with:
+          repository: pebble/pebble-ios-sdk
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-ios
+          path: PebbleKit-iOS.docset/Contents/Resources/Documents
+
   build:
     runs-on: ubuntu-24.04
+    needs:
+      - gendocs-c
+      - gendocs-android
+      - gendocs-ios
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download docs artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: docs-*
+          path: /tmp/docs
+
+      - name: Create docs archives
+        working-directory: /tmp/docs
+        run: |
+          cd docs-c
+          zip -r ../PebbleSDK-4.3_docs.zip {aplite,basalt}/doxygen_sdk
+          cd ..
+
+          mv docs-android javadoc
+          zip -r pebblekit_android_4.0.1.zip javadoc
+
+          cd docs-ios
+          zip -r ../pebblekit_ios_4.0.0.zip *
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -20,10 +122,10 @@ jobs:
       - name: Build site
         run: bundle exec jekyll build
         env:
-          URL: http://developer.rebble.io
+          URL: https://developer.rebble.io
           HTTPS_URL: https://developer.rebble.io
           JEKYLL_ENV: production
-          SKIP_DOCS: true # TODO: setup docs generation
+          DOCS_URL: /tmp/docs/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
