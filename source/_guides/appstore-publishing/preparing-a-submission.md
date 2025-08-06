@@ -27,9 +27,9 @@ privately. The appstore is built into the official mobile apps and means that
 every new app can be found and also featured for increased exposure and
 publicity.
 
-> Note: An app can only be published privately while it is not already published
-> publicly. If an app is already public, it must be unpublished before it can be
-> made private.
+# > Note: An app can only be published privately while it is not already published
+# > publicly. If an app is already public, it must be unpublished before it can be
+# > made private.
 
 To build the appstore listing for a new app, the following resources are
 required from the developer. Some may not be required, depending on the type of
@@ -80,6 +80,8 @@ releases.
 
 ## Companion Apps
 
+> This functionality is coming to the Rebble Developer Portal in a future release.
+
 If your app requires an Android or iOS companion app to function, it can be
 listed here by providing the name, icon, and URL that users can use to obtain
 the companion app. When a user install the watchapp, they will be prompted to
@@ -96,9 +98,7 @@ timeline' to obtain API keys used for pushing pins. See the
 ## Promotion
 
 Once published, the key to growth in an app is through promotion. Aside from
-users recommending the app to each other, posting on websites such as the
-[Pebble Forums](https://forums.getpebble.com/categories/watchapp-directory),
-[Reddit](https://www.reddit.com/r/pebble), and [Twitter](https://twitter.com)
+users recommending the app to each other, posting on websites such as [Reddit](https://www.reddit.com/r/pebble) or the [Rebble Discord Server]({{ site.links.discord_invite }})
 can help increase exposure.
 
 

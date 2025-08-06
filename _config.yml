@@ -73,7 +73,8 @@ links:
   pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
   libpebble: https://github.com/pebble-dev/libpebble2
   kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
-  discord_invite: http://discord.gg/aRUAYFN
+  discord_invite: https://rebble.io/discord
+  rebble_tos: https://rebble.io/tos/
 
 # Jekyll collections.
 collections:
