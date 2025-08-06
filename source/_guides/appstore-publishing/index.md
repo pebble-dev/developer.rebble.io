@@ -15,7 +15,7 @@
 
 title: Appstore Publishing
 description: |
-  How to get your app ready for going live in the Pebble appstore.
+  How to get your app ready for going live in the Rebble appstore.
 guide_group: appstore-publishing
 menu: false
 permalink: /guides/appstore-publishing/
@@ -26,9 +26,9 @@ hide_comments: true
 When a developer is happy that their app is feature-complete and stable, they
 can upload the compiled `.pbw` file to the
 [Developer Portal]({{ site.links.devportal }}) to make it available on the
-Pebble appstore for all users with compatible watches to share and enjoy.
+Rebble appstore for all users with compatible watches to share and enjoy.
 
-In order to be successfully listed in the Pebble appstore the developer must:
+In order to be successfully listed in the Rebble appstore the developer must:
 
 * Provide all required assets and marketing material.
 
@@ -38,11 +38,10 @@ In order to be successfully listed in the Pebble appstore the developer must:
 
 * Build their app with a non-beta SDK.
 
-* Ensure their app complies with the various legal agreements.
+* Ensure their app complies with the various [legal agreements]({{ site.links.rebble_tos }}).
 
 Information on how to meet these requirements is given in this group of guides,
-as well as details about available analytical data for published apps and
-example asset material templates.
+as well as details about example asset material templates.
 
 
 ## Contents
