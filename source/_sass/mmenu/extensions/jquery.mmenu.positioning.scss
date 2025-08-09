@@ -2,7 +2,9 @@
 	jQuery.mmenu position extension CSS
 */
 
-@import "../inc/variables";
+@use "../inc/mixins";
+@use "../inc/sizing";
+@use "../inc/variables";
 
 // top
 // bottom
@@ -28,7 +30,7 @@
 	bottom: 0;
 }
 
-@include mm_sizing_right;
+@include sizing.mm_sizing_right;
 
 
 
@@ -42,7 +44,7 @@ html.mm-front
 	.mm-page,
 	#mm-blocker
 	{
-		@include mm-webkit-prefix( 'transform', translate( 0, 0 ) !important );
+		@include mixins.mm-webkit-prefix( 'transform', translate( 0, 0 ) !important );
 		z-index: 0;
 	}
 }
@@ -64,25 +66,25 @@ html.mm-opened.mm-next .mm-page
 	&.mm-front,
 	&.mm-next
 	{
-		-webkit-transition: -webkit-transform $mm_transitionDuration $mm_transitionFunction;
-		transition: transform $mm_transitionDuration $mm_transitionFunction;
+		-webkit-transition: -webkit-transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
+		transition: transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
 
-		@include mm-webkit-prefix( 'transform', translate( -100%, 0 ) );
+		@include mixins.mm-webkit-prefix( 'transform', translate( -100%, 0 ) );
 		
 		&.mm-right
 		{
-			@include mm-webkit-prefix( 'transform', translate( 100%, 0 ) );
+			@include mixins.mm-webkit-prefix( 'transform', translate( 100%, 0 ) );
 		}
 	}
 	&.mm-front
 	{
 		&.mm-top
 		{
-			@include mm-webkit-prefix( 'transform', translate( 0, -100% ) );
+			@include mixins.mm-webkit-prefix( 'transform', translate( 0, -100% ) );
 		}
 		&.mm-bottom
 		{
-			@include mm-webkit-prefix( 'transform', translate( 0, 100% ) );
+			@include mixins.mm-webkit-prefix( 'transform', translate( 0, 100% ) );
 		}
 	}
 }
@@ -91,8 +93,8 @@ html.mm-opening .mm-menu
 	&.mm-front,
 	&.mm-next
 	{
-		@include mm-webkit-prefix( 'transform', translate( 0, 0 ) );
+		@include mixins.mm-webkit-prefix( 'transform', translate( 0, 0 ) );
 	}
 }
 
-@include mm_sizing_zposition;
+@include sizing.mm_sizing_zposition;

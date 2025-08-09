@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "../base/lists";
+@use "../colors";
 @use "sass:color";
 
 .markdown {
@@ -26,11 +28,11 @@
     @extend %default-ol;
   }
 
-  $table-border-color: $gray-06;
+  $table-border-color: colors.$gray-06;
   $table-border: 1px solid $table-border-color;
-  $table-background: $white;
-  $table-header-background: $gray-02;
-  $table-header-color: $white;
+  $table-background: colors.$white;
+  $table-header-background: colors.$gray-02;
+  $table-header-color: colors.$white;
   $table-hover-color: color.adjust($table-background, $lightness: -5%, $space: hsl);
   $table-stripe-color: color.adjust($table-background, $lightness: -4%, $space: hsl);
   $table-stripe-color-hover: color.adjust($table-stripe-color, $lightness: -5%, $space: hsl);
@@ -55,15 +57,15 @@
       padding: $table-padding;
     }
 
-    tr:hover > td,
-    tr:hover > th {
+    tr:hover>td,
+    tr:hover>th {
       background-color: $table-hover-color;
     }
 
     tr:nth-child(even) {
       background-color: $table-stripe-color;
 
-      &:hover > td {
+      &:hover>td {
         background-color: $table-stripe-color-hover;
       }
     }

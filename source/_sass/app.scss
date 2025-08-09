@@ -15,20 +15,24 @@
  */
 
 @use "sass:color";
+@use "sass:meta";
+@use 'bourbon/bourbon';
 
-@import 'bourbon/bourbon';
+@use 'colors';
 
-@import 'colors';
+@forward 'base/base';
+@forward 'responsive/responsive';
+@forward 'font-awesome/font-awesome';
 
-@import 'base/base';
-@import 'responsive/responsive';
-@import 'font-awesome/font-awesome';
-
-@import 'header';
-@import 'footer';
+@use "base/variables";
+@use "bourbon/addons/font-family";
+@use "bourbon/css3/box-sizing";
+@use "responsive/utilities/variables" as utilities-variables;
+@use 'footer';
+@use 'header';
 
 * {
-  @include box-sizing(border-box);
+  @include box-sizing.box-sizing(border-box);
 }
 
 body,
@@ -39,8 +43,8 @@ html {
 }
 
 body {
-  padding-top: $header-height;
-  background-color: $gray-01;
+  padding-top: header.$header-height;
+  background-color: colors.$gray-01;
 }
 
 .anchor[id],
@@ -48,8 +52,8 @@ body {
   &::before {
     content: ' ';
     display: block;
-    height: $header-height;
-    margin-top: -0.7 * $header-height;
+    height: header.$header-height;
+    margin-top: -0.7 * header.$header-height;
     visibility: hidden;
   }
 }
@@ -59,17 +63,17 @@ body {
 }
 
 code {
-  background-color: $white;
+  background-color: colors.$white;
   border-radius: 2px;
-  color: color.adjust($base-font-color, $lightness: -20%, $space: hsl);
-  font-family: $monospace;
-  font-size: $base-font-size;
+  color: color.adjust(variables.$base-font-color, $lightness: -20%, $space: hsl);
+  font-family: font-family.$monospace;
+  font-size: variables.$base-font-size;
   padding: 2px 4px;
   box-shadow: inset 0 0 2px #bbb;
 }
 
 a code {
-  color: color.adjust($base-link-color, $lightness: -10%, $space: hsl);
+  color: color.adjust(variables.$base-link-color, $lightness: -10%, $space: hsl);
 }
 
 .container {
@@ -79,8 +83,8 @@ a code {
 }
 
 .vcenter {
-   display: table-cell;
-   vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .vcenter--wrapper {
@@ -107,7 +111,7 @@ a code {
   line-height: 1.1;
 
   a {
-    color: $base-text-color;
+    color: utilities-variables.$base-text-color;
 
     &:hover {
       text-decoration: underline;
@@ -127,8 +131,7 @@ a code {
   margin-bottom: 1em;
 }
 
-.noscript--hide {
-}
+.noscript--hide {}
 
 .noscript--show {
   display: none;
@@ -157,54 +160,54 @@ a code {
   overflow: hidden;
 }
 
-@import 'elements/alert';
-@import 'elements/buttons';
-@import 'elements/form';
-@import 'elements/mobile-nav';
-@import 'elements/highlight';
-@import 'elements/inline-list';
-@import 'elements/markdown';
-@import 'elements/screenshot';
-@import 'elements/sidebar';
-@import 'elements/spinner';
-@import 'elements/table';
+@include meta.load-css('elements/alert');
+@include meta.load-css('elements/buttons');
+@include meta.load-css('elements/form');
+@include meta.load-css('elements/mobile-nav');
+@include meta.load-css('elements/highlight');
+@include meta.load-css('elements/inline-list');
+@include meta.load-css('elements/markdown');
+@include meta.load-css('elements/screenshot');
+@include meta.load-css('elements/sidebar');
+@include meta.load-css('elements/spinner');
+@include meta.load-css('elements/table');
 // @import 'elements/terminal';
-@import 'elements/toc';
+@include meta.load-css('elements/toc');
 // @import 'elements/typeahead';
 // @import 'elements/video';
-@import 'elements/bigbox';
-@import 'elements/full-height';
-@import 'elements/sectionmenu';
-@import 'elements/search';
-@import 'elements/gray-box';
-@import 'elements/ribbon';
-@import 'elements/pagination';
-@import 'elements/landing-slider';
-@import 'elements/platform-choice';
-@import 'elements/dual-image';
+@include meta.load-css('elements/bigbox');
+@include meta.load-css('elements/full-height');
+@include meta.load-css('elements/sectionmenu');
+@include meta.load-css('elements/search');
+@include meta.load-css('elements/gray-box');
+@include meta.load-css('elements/ribbon');
+@include meta.load-css('elements/pagination');
+@include meta.load-css('elements/landing-slider');
+@include meta.load-css('elements/platform-choice');
+@include meta.load-css('elements/dual-image');
 
-@import 'sections/getting-started';
+@include meta.load-css('sections/getting-started');
 
-@import 'libs/slick';
-@import 'mmenu/jquery.mmenu.all.scss';
+@include meta.load-css('libs/slick');
+@include meta.load-css('mmenu/jquery.mmenu.all.scss');
 
-@import 'sections/events';
-@import 'sections/blog';
-@import 'sections/documentation';
-@import 'sections/examples';
-@import 'sections/guides';
-@import 'sections/retreat';
-@import 'sections/inspiration';
-@import 'sections/round';
-@import 'sections/sdk';
+@include meta.load-css('sections/events');
+@include meta.load-css('sections/blog');
+@include meta.load-css('sections/documentation');
+@include meta.load-css('sections/examples');
+@include meta.load-css('sections/guides');
+@include meta.load-css('sections/retreat');
+@include meta.load-css('sections/inspiration');
+@include meta.load-css('sections/round');
+@include meta.load-css('sections/sdk');
 
-@import 'debug';
+@include meta.load-css('debug');
 
 .mm-page {
   height: 100%;
   position: inherit;
 
-  > div {
+  >div {
     height: 100%;
   }
 }
@@ -216,11 +219,11 @@ a code {
 .mm-opened,
 .mm-opening {
   .mm-page {
-    margin-top: -1 * $header-height;
+    margin-top: -1 * header.$header-height;
   }
 
   .content {
-    padding-top: $header-height;
+    padding-top: header.$header-height;
   }
 }
 
@@ -238,7 +241,7 @@ a code {
 }
 
 .modal-content {
-  background-color: $gray-01;
+  background-color: colors.$gray-01;
 }
 
 .header--skinny {

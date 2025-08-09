@@ -1,8 +1,10 @@
-﻿//==
+@use "breakpoints";
+
+//==
 // Creates visibility classes for each breakpoint.
 //##
 @mixin visibility($bp) {
-    @include bp($bp) {
+    @include breakpoints.bp($bp) {
 
         .hidden-#{$bp} {
             display: none !important;

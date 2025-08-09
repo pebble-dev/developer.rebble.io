@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "../colors";
+
 .pebble-screenshot {
   background-repeat: no-repeat;
   display: inline-block;
@@ -265,8 +267,8 @@
   -webkit-align-items: flex-end;
 
   h4 {
-    background-color: $gray-02;
-    color: $white;
+    background-color: colors.$gray-02;
+    color: colors.$white;
     font-weight: normal;
     text-transform: uppercase;
     font-size: 1.2em;
@@ -286,14 +288,14 @@
 .screenshot-viewer--tabbed {
   .screenshot-viewer__tabs {
     h4 {
-      border: 2px solid $gray-02;
-      background-color: $gray-06;
-      color: $gray-02;
+      border: 2px solid colors.$gray-02;
+      background-color: colors.$gray-06;
+      color: colors.$gray-02;
       cursor: pointer;
 
       &.selected {
-        background-color: $gray-02;
-        color: $white;
+        background-color: colors.$gray-02;
+        color: colors.$white;
       }
     }
   }

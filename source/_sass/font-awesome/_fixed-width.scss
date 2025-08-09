@@ -1,8 +1,10 @@
 // Fixed Width Icons
 // -------------------------
-@use "sass:math";
 
-.#{$fa-css-prefix}-fw {
+@use "sass:math";
+@use "variables";
+
+.#{variables.$fa-css-prefix}-fw {
   width: math.div(18em, 14);
   text-align: center;
 }

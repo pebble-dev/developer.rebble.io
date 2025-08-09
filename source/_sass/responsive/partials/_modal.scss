@@ -1,3 +1,5 @@
+@use "../utilities/variables";
+
 .modal-on,
 .modal-lock > body {
     touch-action: none;
@@ -104,7 +106,7 @@ x::-ms-reveal,
     max-height: 100%;
     overflow: auto;
     padding: 1em;
-    background-color: $modal-content-background-color;
+    background-color: variables.$modal-content-background-color;
     text-align: left;
 
     [dir="rtl"] & {
@@ -139,7 +141,7 @@ x::-ms-reveal,
     padding: .83em;
     font-size: 1.5em;
     font-weight: bold;
-    color: $modal-control-color;
+    color: variables.$modal-control-color;
 
     [dir="rtl"] & {
         right: auto;
@@ -155,7 +157,7 @@ x::-ms-reveal,
     display: block;
     width: 2em;
     padding: .5em;
-    color: $modal-control-color;
+    color: variables.$modal-control-color;
     font-size: 2em;
     font-weight: bold;
     text-align: center;

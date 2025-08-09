@@ -1,19 +1,22 @@
-@function _radial-gradient-parser($image) {
-  $image: unquote($image);
+@use "sass:list";
+@use "sass:string";
+
+@function radial-gradient-parser($image) {
+  $image: string.unquote($image);
   $gradients: ();
-  $start: str-index($image, "(");
-  $end: str-index($image, ",");
-  $first-val: str-slice($image, $start + 1, $end - 1);
+  $start: string.index($image, "(");
+  $end: string.index($image, ",");
+  $first-val: string.slice($image, $start + 1, $end - 1);
 
-  $prefix: str-slice($image, 0, $start);
-  $suffix: str-slice($image, $end, str-length($image));
+  $prefix: string.slice($image, 0, $start);
+  $suffix: string.slice($image, $end, string.length($image));
 
-  $is-spec-syntax: str-index($first-val, "at");
+  $is-spec-syntax: string.index($first-val, "at");
 
   @if $is-spec-syntax and $is-spec-syntax > 1 {
-    $keyword: str-slice($first-val, 1, $is-spec-syntax - 2);
-    $pos: str-slice($first-val, $is-spec-syntax + 3, str-length($first-val));
-    $pos: append($pos, $keyword, comma);
+    $keyword: string.slice($first-val, 1, $is-spec-syntax - 2);
+    $pos: string.slice($first-val, $is-spec-syntax + 3, string.length($first-val));
+    $pos: list.append($pos, $keyword, comma);
 
     $gradients: (
       webkit-image: -webkit- + $prefix + $pos + $suffix,
@@ -22,7 +25,7 @@
   }
 
   @else if $is-spec-syntax == 1 {
-    $pos: str-slice($first-val, $is-spec-syntax + 3, str-length($first-val));
+    $pos: string.slice($first-val, $is-spec-syntax + 3, string.length($first-val));
 
     $gradients: (
       webkit-image: -webkit- + $prefix + $pos + $suffix,
@@ -30,7 +33,7 @@
     )
   }
 
-  @else if str-index($image, "cover") or str-index($image, "contain") {
+  @else if string.index($image, "cover") or string.index($image, "contain") {
     @warn "Radial-gradient needs to be updated to conform to latest spec.";
 
     $gradients: (

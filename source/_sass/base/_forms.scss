@@ -79,7 +79,8 @@ input[type="search"] {
   @include appearance(none);
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline;
   margin-right: $base-line-height * 0.25;
 }

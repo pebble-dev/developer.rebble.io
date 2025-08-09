@@ -4,7 +4,10 @@
 //           @include font-feature-settings("pnum" 1, "kern" 0);
 //           @include font-feature-settings("ss01", "ss02");
 
+@use "../addons/prefixer";
+@use "sass:list";
+
 @mixin font-feature-settings($settings...) {
-  @if length($settings) == 0 { $settings: none; }
-  @include prefixer(font-feature-settings, $settings, webkit moz ms spec);
+  @if list.length($settings) == 0 { $settings: none; }
+  @include prefixer.prefixer(font-feature-settings, $settings, webkit moz ms spec);
 }

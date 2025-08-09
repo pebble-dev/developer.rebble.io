@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
+@use "../base/variables";
+@use "../colors";
+@use "../header";
+@use "../responsive/utilities/mixins/breakpoints";
+@use "../responsive/utilities/variables" as utilities-variables;
 @use "sass:color";
 @use "sass:math";
 
 $sidebar-width: 105px;
-$sidebar--wide-width: $header-logo-width;
+$sidebar--wide-width: header.$header-logo-width;
 $sidebar-hide-at: xs;
 
 .sidebar__wrapper {
@@ -29,7 +34,7 @@ $sidebar-hide-at: xs;
   left: 0;
   z-index: 10;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max ($sidebar-hide-at) {
     display: none;
   }
 }
@@ -38,12 +43,12 @@ $sidebar-hide-at: xs;
   background-color: #f6f6f6;
   bottom: 0;
   left: 0;
-  padding-top: $header-height;
+  padding-top: header.$header-height;
   position: absolute;
   top: 0;
   width: $sidebar-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max ($sidebar-hide-at) {
     display: none;
   }
 }
@@ -54,20 +59,20 @@ $sidebar-hide-at: xs;
 
 .sidebar__header {
   background-color: #222;
-  border-bottom: 2px solid $black;
-  color: $white;
-  font-size: $base-font-size * 1.2;
-  height: $header-height;
+  border-bottom: 2px solid colors.$black;
+  color: colors.$white;
+  font-size: utilities-variables.$base-font-size * 1.2;
+  height: header.$header-height;
   left: 0;
-  padding: math.div($base-line-height, 1.2) 0;
+  padding: math.div(variables.$base-line-height, 1.2) 0;
   position: absolute;
   text-align: center;
   top: 0;
   width: $sidebar-width;
 
   &:hover {
-    background-color: $black;
-    color: $white;
+    background-color: colors.$black;
+    color: colors.$white;
   }
 
   span {
@@ -84,8 +89,8 @@ $sidebar-hide-at: xs;
       display: block;
     }
 
-    > a {
-      background-color: color.adjust($base-link-color, $lightness: 30%, $space: hsl);
+    >a {
+      background-color: color.adjust(variables.$base-link-color, $lightness: 30%, $space: hsl);
       color: #fff;
     }
   }
@@ -99,7 +104,7 @@ $sidebar-hide-at: xs;
   margin-left: $sidebar-width;
   height: 100%;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max ($sidebar-hide-at) {
     margin-left: 0;
   }
 }
@@ -107,7 +112,7 @@ $sidebar-hide-at: xs;
 .content--narrow {
   margin-left: $sidebar--wide-width;
 
-  @include bp-max ($sidebar-hide-at) {
+  @include breakpoints.bp-max ($sidebar-hide-at) {
     margin: 0;
   }
 }
@@ -116,13 +121,13 @@ $sidebar-hide-at: xs;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 3 * $base-line-height;
+  bottom: 3 * utilities-variables.$base-line-height;
   font-size: 0.85em;
   padding: 1em 0;
   text-align: center;
 
   a {
-    color: $gray-03;
+    color: colors.$gray-03;
 
     &:hover {
       text-decoration: underline;
@@ -131,14 +136,14 @@ $sidebar-hide-at: xs;
 }
 
 .sidebar__footer {
-  background-color: $color-appstore;
-  border-right: 1px solid color.adjust($color-appstore, $lightness: -10%, $space: hsl);
+  background-color: colors.$color-appstore;
+  border-right: 1px solid color.adjust(colors.$color-appstore, $lightness: -10%, $space: hsl);
   bottom: 0;
-  color: $white;
+  color: colors.$white;
   font-weight: bold;
-  height: 3 * $base-line-height;
+  height: 3 * utilities-variables.$base-line-height;
   left: 0;
-  padding: $base-line-height 0;
+  padding: utilities-variables.$base-line-height 0;
   position: absolute;
   right: 0;
   text-align: center;
@@ -146,9 +151,9 @@ $sidebar-hide-at: xs;
 
   &:hover,
   &.active {
-    background-color: color.adjust($color-appstore, $lightness: -10%, $space: hsl);
-    border-color: color.adjust($color-appstore, $lightness: -20%, $space: hsl);
-    color: $white;
+    background-color: color.adjust(colors.$color-appstore, $lightness: -10%, $space: hsl);
+    border-color: color.adjust(colors.$color-appstore, $lightness: -20%, $space: hsl);
+    color: colors.$white;
   }
 }
 
@@ -158,8 +163,8 @@ $sidebar-hide-at: xs;
 
     span {
       background-color: #444;
-      border-radius: $base-border-radius;
-      color: $white;
+      border-radius: variables.$base-border-radius;
+      color: colors.$white;
       display: none;
       left: 80px;
       margin-top: -1.2em;
@@ -179,7 +184,7 @@ $sidebar-hide-at: xs;
 }
 
 .mainmenu {
-  border-right: 1px solid $gray-08;
+  border-right: 1px solid colors.$gray-08;
   height: 100%;
   // I would like to enable scrolling on the Y axis but it breaks the tooltips.
   // overflow-x: visible;
@@ -194,7 +199,7 @@ $sidebar-hide-at: xs;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 3em;
-    color: $gray-02;
+    color: colors.$gray-02;
     display: block;
     font-size: 13px;
     font-weight: bold;
@@ -204,7 +209,7 @@ $sidebar-hide-at: xs;
     position: relative;
     text-transform: uppercase;
 
-    @media screen and ( max-height: 640px ){
+    @media screen and (max-height: 640px) {
       margin: 0;
     }
 

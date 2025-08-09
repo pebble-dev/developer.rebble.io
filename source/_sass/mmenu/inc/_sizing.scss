@@ -1,94 +1,91 @@
 //	Sizing left (default)
-@use "sass:math";
 
-@mixin mm_sizing( $cls: "",
-	$width: $mm_width, $minWidth: $mm_minWidth, $maxWidth: $mm_maxWidth
-) {
-	.mm-menu#{$cls}
-	{
-		width: math.percentage( $width );
-		min-width: $minWidth;
-		max-width: $maxWidth;
-	}
-	html.mm-opening#{$cls}
-	{
-		.mm-page,
-		#mm-blocker
-		{
-			@include mm-webkit-prefix( 'transform', translate( math.percentage( $width ), 0 ) );
-		}
-	}
-	@media all and (max-width: math.div($minWidth, $width) ) {
-		html.mm-opening#{$cls}
-		{
-			.mm-page,
-			#mm-blocker
-			{
-				@include mm-webkit-prefix( 'transform', translate( $minWidth, 0 ) );
-			}
-		}
-	}
-	@media all and (min-width: math.div($maxWidth, $width) ) {
-		html.mm-opening#{$cls}
-		{
-			.mm-page,
-			#mm-blocker
-			{
-				@include mm-webkit-prefix( 'transform', translate( $maxWidth, 0 ) );
-			}
-		}
-	}
+@use "mixins";
+@use "sass:math";
+@use "variables";
+
+@mixin mm_sizing($cls: "",
+  $width: variables.$mm_width, $minWidth: variables.$mm_minWidth, $maxWidth: variables.$mm_maxWidth) {
+  .mm-menu#{$cls} {
+    width: math.percentage($width );
+    min-width: $minWidth;
+    max-width: $maxWidth;
+  }
+
+  html.mm-opening#{$cls} {
+
+    .mm-page,
+    #mm-blocker {
+      @include mixins.mm-webkit-prefix('transform', translate(math.percentage($width ), 0));
+    }
+  }
+
+  @media all and (max-width: math.div($minWidth, $width)) {
+    html.mm-opening#{$cls} {
+
+      .mm-page,
+      #mm-blocker {
+        @include mixins.mm-webkit-prefix('transform', translate($minWidth, 0));
+      }
+    }
+  }
+
+  @media all and (min-width: math.div($maxWidth, $width)) {
+    html.mm-opening#{$cls} {
+
+      .mm-page,
+      #mm-blocker {
+        @include mixins.mm-webkit-prefix('transform', translate($maxWidth, 0));
+      }
+    }
+  }
 }
 
 //	Sizing right
-@mixin mm_sizing_right( $cls: "",
-	$width: $mm_width, $minWidth: $mm_minWidth, $maxWidth: $mm_maxWidth
-) {
-	html.mm-right.mm-opening#{$cls}
-	{
-		.mm-page,
-		#mm-blocker
-		{
-			@include mm-webkit-prefix( 'transform', translate( -( math.percentage( $width ) ), 0 ) );
-		}
-	}
-	@media all and ( max-width: math.div($minWidth, $width) ) {
-		html.mm-right.mm-opening#{$cls}
-		{
-			.mm-page,
-			#mm-blocker
-			{
-				@include mm-webkit-prefix( 'transform', translate( -$minWidth, 0 ) );
-			}
-		}
-	}
-	@media all and ( min-width: math.div($maxWidth, $width) ) {
-		html.mm-right.mm-opening#{$cls}
-		{
-			.mm-page,
-			#mm-blocker
-			{
-				@include mm-webkit-prefix( 'transform', translate( -$maxWidth, 0 ) );
-			}
-		}
-	}
+@mixin mm_sizing_right($cls: "",
+  $width: variables.$mm_width, $minWidth: variables.$mm_minWidth, $maxWidth: variables.$mm_maxWidth) {
+  html.mm-right.mm-opening#{$cls} {
+
+    .mm-page,
+    #mm-blocker {
+      @include mixins.mm-webkit-prefix('transform', translate(-(math.percentage($width )), 0));
+    }
+  }
+
+  @media all and (max-width: math.div($minWidth, $width)) {
+    html.mm-right.mm-opening#{$cls} {
+
+      .mm-page,
+      #mm-blocker {
+        @include mixins.mm-webkit-prefix('transform', translate(-$minWidth, 0));
+      }
+    }
+  }
+
+  @media all and (min-width: math.div($maxWidth, $width)) {
+    html.mm-right.mm-opening#{$cls} {
+
+      .mm-page,
+      #mm-blocker {
+        @include mixins.mm-webkit-prefix('transform', translate(-$maxWidth, 0));
+      }
+    }
+  }
 }
 
 //	Sizing z-position
-@mixin mm_sizing_zposition( $cls: "",
-	$height: $mm_height, $minHeight: $mm_minHeight, $maxHeight: $mm_maxHeight
-) {
+@mixin mm_sizing_zposition($cls: "",
+  $height: variables.$mm_height, $minHeight: variables.$mm_minHeight, $maxHeight: variables.$mm_maxHeight) {
 
-	// top
-	// bottom
-	.mm-menu.mm-front#{$cls}
-	{
-		&.mm-top,
-		&.mm-bottom
-		{
-			height: math.percentage( $height );
-			min-height: $minHeight;
-			max-height: $maxHeight;
-		}
-	}
+  // top
+  // bottom
+  .mm-menu.mm-front#{$cls} {
+
+    &.mm-top,
+    &.mm-bottom {
+      height: math.percentage($height );
+      min-height: $minHeight;
+      max-height: $maxHeight;
+    }
+  }
 }

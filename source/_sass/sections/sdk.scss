@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
+@use "../responsive/utilities/mixins/breakpoints";
+
 .sdk4-landing {
   background-image: url('../images/landing-page/devblog.jpg');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     height: 120%;
   }
 }

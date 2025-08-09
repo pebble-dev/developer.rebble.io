@@ -1,3 +1,10 @@
+@use "../helpers/linear-gradient-parser";
+@use "../helpers/radial-gradient-parser";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
 //************************************************************************//
 // Background property for adding multiple backgrounds using shorthand
 // notation.
@@ -10,13 +17,13 @@
   @each $background in $backgrounds {
     $webkit-background: ();
     $spec-background: ();
-    $background-type: type-of($background);
+    $background-type: meta.type-of($background);
 
     @if $background-type == string or list {
-      $background-str: if($background-type == list, nth($background, 1), $background);
+      $background-str: if($background-type == list, list.nth($background, 1), $background);
 
-      $url-str:       str-slice($background-str, 0, 3);
-      $gradient-type: str-slice($background-str, 0, 6);
+      $url-str:       string.slice($background-str, 0, 3);
+      $gradient-type: string.slice($background-str, 0, 6);
 
       @if $url-str == "url" {
         $webkit-background: $background;
@@ -24,15 +31,15 @@
       }
 
       @else if $gradient-type == "linear" {
-        $gradients: _linear-gradient-parser("#{$background}");
-        $webkit-background: map-get($gradients, webkit-image);
-        $spec-background:   map-get($gradients, spec-image);
+        $gradients: linear-gradient-parser.linear-gradient-parser("#{$background}");
+        $webkit-background: map.get($gradients, webkit-image);
+        $spec-background:   map.get($gradients, spec-image);
       }
 
       @else if $gradient-type == "radial" {
-        $gradients: _radial-gradient-parser("#{$background}");
-        $webkit-background: map-get($gradients, webkit-image);
-        $spec-background:   map-get($gradients, spec-image);
+        $gradients: radial-gradient-parser.radial-gradient-parser("#{$background}");
+        $webkit-background: map.get($gradients, webkit-image);
+        $spec-background:   map.get($gradients, spec-image);
       }
 
       @else {
@@ -46,8 +53,8 @@
         $spec-background: $background;
     }
 
-    $webkit-backgrounds: append($webkit-backgrounds, $webkit-background, comma);
-    $spec-backgrounds:   append($spec-backgrounds,   $spec-background,   comma);
+    $webkit-backgrounds: list.append($webkit-backgrounds, $webkit-background, comma);
+    $spec-backgrounds:   list.append($spec-backgrounds,   $spec-background,   comma);
   }
 
   background: $webkit-backgrounds;

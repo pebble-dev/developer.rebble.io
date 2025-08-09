@@ -2,26 +2,26 @@
 	jQuery.mmenu effects extension CSS
 */
 
-@import "../inc/variables";
-
+@use "../inc/mixins";
+@use "../inc/variables";
 
 //	Slide
 html.mm-slide
 {
 	.mm-menu
 	{
-		-webkit-transition: -webkit-transform $mm_transitionDuration $mm_transitionFunction;
-		transition: transform $mm_transitionDuration $mm_transitionFunction;
+		-webkit-transition: -webkit-transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
+		transition: transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
 	}
 
 	//	Left
 	&.mm-opened .mm-menu
 	{
-		@include mm_webkit-prefix( 'transform', translateX( -$mm_subpanelOffset ) );
+		@include mixins.mm_webkit-prefix( 'transform', translateX( -(variables.$mm_subpanelOffset) ) );
 	}
 	&.mm-opening .mm-menu
 	{
-		@include mm_webkit-prefix( 'transform', translateX( 0% ) );
+		@include mixins.mm_webkit-prefix( 'transform', translateX( 0% ) );
 	}
 
 	//	Right
@@ -29,11 +29,11 @@ html.mm-slide
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateX( $mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateX( variables.$mm_subpanelOffset ) );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateX( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateX( 0% ) );
 		}
 	}
 
@@ -42,11 +42,11 @@ html.mm-slide
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateY( -$mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateY( -(variables.$mm_subpanelOffset) ) );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateY( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateY( 0% ) );
 		}
 	}
 
@@ -55,11 +55,11 @@ html.mm-slide
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateY( $mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateY( variables.$mm_subpanelOffset ) );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', translateY( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', translateY( 0% ) );
 		}
 	}
 }
@@ -72,19 +72,19 @@ html.mm-zoom-menu
 {
 	.mm-menu
 	{
-		-webkit-transition: -webkit-transform $mm_transitionDuration $mm_transitionFunction;
-		transition: transform $mm_transitionDuration $mm_transitionFunction;
+		-webkit-transition: -webkit-transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
+		transition: transform variables.$mm_transitionDuration variables.$mm_transitionFunction;
 	}
 
 	//	Left
 	&.mm-opened .mm-menu
 	{
-		@include mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateX( -$mm_subpanelOffset ) );
-		@include mm_webkit-prefix( 'transform-origin', left center );
+		@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateX( -(variables.$mm_subpanelOffset) ) );
+		@include mixins.mm_webkit-prefix( 'transform-origin', left center );
 	}
 	&.mm-opening .mm-menu
 	{
-		@include mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
+		@include mixins.mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
 	}
 
 	//	Right
@@ -92,12 +92,12 @@ html.mm-zoom-menu
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown) translateX( $mm_subpanelOffset ) );
-			@include mm_webkit-prefix( 'transform-origin', right center );
+			@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown) translateX( variables.$mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform-origin', right center );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
 		}
 	}
 
@@ -106,12 +106,12 @@ html.mm-zoom-menu
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateY( -$mm_subpanelOffset ) );
-			@include mm_webkit-prefix( 'transform-origin', center top );
+			@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateY( -(variables.$mm_subpanelOffset) ) );
+			@include mixins.mm_webkit-prefix( 'transform-origin', center top );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( 1, 1 ) translateY( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', scale( 1, 1 ) translateY( 0% ) );
 		}
 	}
 
@@ -120,12 +120,12 @@ html.mm-zoom-menu
 	{
 		&.mm-opened .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateY( $mm_subpanelOffset ) );
-			@include mm_webkit-prefix( 'transform-origin', center bottom );
+			@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateY( variables.$mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform-origin', center bottom );
 		}
 		&.mm-opening .mm-menu
 		{
-			@include mm_webkit-prefix( 'transform', scale( 1, 1 ) translateY( 0% ) );
+			@include mixins.mm_webkit-prefix( 'transform', scale( 1, 1 ) translateY( 0% ) );
 		}
 	}
 }
@@ -134,19 +134,19 @@ html.mm-zoom-menu
 //	Zoom panels
 html.mm-zoom-panels .mm-menu.mm-horizontal > .mm-panel
 {
-	@include mm_webkit-prefix( 'transform', scale( $mm_scaleUp, $mm_scaleUp ) translateX( 100% ) );
-	@include mm_webkit-prefix( 'transform-origin', left center );
+	@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleUp, $mm_scaleUp ) translateX( 100% ) );
+	@include mixins.mm_webkit-prefix( 'transform-origin', left center );
 
 	-webkit-transition-property: -webkit-transform, left;
 	transition-property: transform, left;
 	
 	&.mm-opened
 	{
-		@include mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
+		@include mixins.mm_webkit-prefix( 'transform', scale( 1, 1 ) translateX( 0% ) );
 		
 		&.mm-subopened
 		{
-			@include mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateX( -$mm_subpanelOffset ) );
+			@include mixins.mm_webkit-prefix( 'transform', scale( $mm_scaleDown, $mm_scaleDown ) translateX( -(variables.$mm_subpanelOffset) ) );
 		}
 	}
 }

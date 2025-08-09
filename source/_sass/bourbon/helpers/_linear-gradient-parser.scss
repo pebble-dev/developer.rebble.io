@@ -1,23 +1,29 @@
-@function _linear-gradient-parser($image) {
-  $image: unquote($image);
+@use "is-num";
+@use "linear-angle-parser";
+@use "linear-positions-parser";
+@use "linear-side-corner-parser";
+@use "sass:string";
+
+@function linear-gradient-parser($image) {
+  $image: string.unquote($image);
   $gradients: ();
-  $start: str-index($image, "(");
-  $end: str-index($image, ",");
-  $first-val: str-slice($image, $start + 1, $end - 1);
+  $start: string.index($image, "(");
+  $end: string.index($image, ",");
+  $first-val: string.slice($image, $start + 1, $end - 1);
 
-  $prefix: str-slice($image, 0, $start);
-  $suffix: str-slice($image, $end, str-length($image));
+  $prefix: string.slice($image, 0, $start);
+  $suffix: string.slice($image, $end, string.length($image));
 
-  $has-multiple-vals: str-index($first-val, " ");
-  $has-single-position: unquote(_position-flipper($first-val) + "");
-  $has-angle: _is-num(str-slice($first-val, 0, 0));
+  $has-multiple-vals: string.index($first-val, " ");
+  $has-single-position: string.unquote(linear-positions-parser.position-flipper($first-val) + "");
+  $has-angle: is-num.is-num(string.slice($first-val, 0, 0));
 
   @if $has-multiple-vals {
-    $gradients: _linear-side-corner-parser($image, $first-val, $prefix, $suffix, $has-multiple-vals);
+    $gradients: linear-side-corner-parser.linear-side-corner-parser($image, $first-val, $prefix, $suffix, $has-multiple-vals);
   }
 
   @else if $has-single-position != "" {
-    $pos: unquote($has-single-position + "");
+    $pos: string.unquote($has-single-position + "");
 
     $gradients: (
       webkit-image: -webkit- + $image,
@@ -27,7 +33,7 @@
 
   @else if $has-angle {
     // Rotate degree for webkit
-    $gradients: _linear-angle-parser($image, $first-val, $prefix, $suffix);
+    $gradients: linear-angle-parser.linear-angle-parser($image, $first-val, $prefix, $suffix);
   }
 
   @else {
