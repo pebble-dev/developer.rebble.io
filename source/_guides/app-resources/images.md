@@ -178,3 +178,42 @@ Destroy both the ``GBitmap`` and ``BitmapLayer`` when the app exits:
 gbitmap_destroy(s_bitmap);
 bitmap_layer_destroy(s_bitmap_layer);
 ```
+
+## Menu Icon in the Launcher
+
+The new launcher in firmware 4.0+ allows developers to provide a custom icon for
+their watchapps and watchfaces.
+
+<div class="pebble-dual-image">
+  <div class="panel">
+  {% markdown %}
+  ![Launcher Icon](/images/blog/2016-08-19-pikachu-icon.png)
+  {% endmarkdown %}
+  </div>
+  <div class="panel">
+  {% markdown %}
+  ![Launcher >{pebble-screenshot,pebble-screenshot--time-red}](/images/blog/2016-08-19-pikachu-launcher.png)
+  {% endmarkdown %}
+  </div>
+</div>
+
+You can add a 25x25 `png` to the `resources.media` section of the`package.json`
+file, and set `"menuIcon": true`. Please note that icons that are larger will be
+rejected by the SDK.
+
+```js
+"resources": {
+  "media": [
+    {
+      "type": "bitmap",
+      "name": "MENU_ICON",
+      "file": "images/icon.png",
+      "menuIcon": true
+    }
+  ]
+}
+```
+
+> If your `png` file is color, we will use the luminance of the image to add
+> some subtle gray when rendering it in the launcher, rather than just black
+> and white. Transparency will be preserved.
