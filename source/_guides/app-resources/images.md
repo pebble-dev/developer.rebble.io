@@ -214,6 +214,11 @@ rejected by the SDK.
 }
 ```
 
-> If your `png` file is color, we will use the luminance of the image to add
-> some subtle gray when rendering it in the launcher, rather than just black
-> and white. Transparency will be preserved.
+If your `png` file is color, we will use the luminance of the image to add some
+subtle gray when rendering it in the launcher, rather than just black and white.
+Transparency will be preserved.
+
+The app icons specified during submission to the appstore are independent of
+this image resource (used in other places such as the mobile app and the
+appstore) - the `menuIcon` specified will always be used in the watch
+launcher list.
