@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
+@use "../base/variables";
+@use "../colors";
 @use "sass:color";
+
 @charset "UTF-8";
 
 ul.inline-list {
@@ -31,7 +34,7 @@ ul.inline-list {
 }
 
 .inline-list--piped li::after {
-  color: color.adjust($base-font-color, $lightness: 30%, $space: hsl);
+  color: color.adjust(variables.$base-font-color, $lightness: 30%, $space: hsl);
   content: ' | ';
   display: inline;
 }
@@ -41,7 +44,7 @@ ul.inline-list {
 }
 
 .inline-list--dashed li::after {
-  color: color.adjust($base-font-color, $lightness: 40%, $space: hsl);
+  color: color.adjust(variables.$base-font-color, $lightness: 40%, $space: hsl);
   content: ' — ';
   display: inline;
 }
@@ -55,7 +58,7 @@ ul.inline-list {
   li {
     background-color: #444;
     border-radius: 2px;
-    color: $white;
+    color: colors.$white;
     display: inline-block;
     font-size: 0.65em;
     font-weight: bold;

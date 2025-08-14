@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
+@use "../variables";
 @use "sass:color";
 
 @mixin flash($color) {
   background: $color;
   color: color.adjust($color, $lightness: -60%, $space: hsl);
   font-weight: bold;
-  margin-bottom: $base-line-height * 0.5;
-  padding: $base-line-height * 0.5;
+  margin-bottom: variables.$base-line-height * 0.5;
+  padding: variables.$base-line-height * 0.5;
 
   a {
     color: color.adjust($color, $lightness: -70%, $space: hsl);

@@ -1,3 +1,9 @@
+@use "../helpers/radial-arg-parser";
+@use "../helpers/shape-size-stripper";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+
 // Requires Sass 3.1+
 @mixin radial-gradient($G1,        $G2,
                        $G3: null, $G4: null,
@@ -8,22 +14,22 @@
                        $shape-size: null,
                        $fallback: null) {
 
-  $data: _radial-arg-parser($G1, $G2, $pos, $shape-size);
-  $G1:  nth($data, 1);
-  $G2:  nth($data, 2);
-  $pos: nth($data, 3);
-  $shape-size: nth($data, 4);
+  $data: radial-arg-parser.radial-arg-parser($G1, $G2, $pos, $shape-size);
+  $G1:  list.nth($data, 1);
+  $G2:  list.nth($data, 2);
+  $pos: list.nth($data, 3);
+  $shape-size: list.nth($data, 4);
 
   $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
 
   // Strip deprecated cover/contain for spec
-  $shape-size-spec: _shape-size-stripper($shape-size);
+  $shape-size-spec: shape-size-stripper.shape-size-stripper($shape-size);
 
   // Set $G1 as the default fallback color
-  $first-color: nth($full, 1);
-  $fallback-color: nth($first-color, 1);
+  $first-color: list.nth($full, 1);
+  $fallback-color: list.nth($first-color, 1);
 
-  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+  @if (meta.type-of($fallback) == color) or ($fallback == "transparent") {
     $fallback-color: $fallback;
   }
 
@@ -34,6 +40,6 @@
   $shape-size-spec: if(($shape-size-spec != ' ') and ($pos == null), '#{$shape-size-spec}, ', '#{$shape-size-spec} ');
 
   background-color:  $fallback-color;
-  background-image: -webkit-radial-gradient(unquote(#{$pos}#{$shape-size}#{$full}));
-  background-image: unquote("radial-gradient(#{$shape-size-spec}#{$pos-spec}#{$full})");
+  background-image: -webkit-radial-gradient(string.unquote(#{$pos}#{$shape-size}#{$full}));
+  background-image: string.unquote("radial-gradient(#{$shape-size-spec}#{$pos-spec}#{$full})");
 }

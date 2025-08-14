@@ -2,20 +2,26 @@
 // -------------------------
 
 @use "sass:math";
+@use "variables";
 
-.#{$fa-css-prefix}-ul {
+.#{variables.$fa-css-prefix}-ul {
   padding-left: 0;
-  margin-left: $fa-li-width;
+  margin-left: variables.$fa-li-width;
   list-style-type: none;
-  > li { position: relative; }
+
+  >li {
+    position: relative;
+  }
 }
-.#{$fa-css-prefix}-li {
+
+.#{variables.$fa-css-prefix}-li {
   position: absolute;
-  left: -$fa-li-width;
-  width: $fa-li-width;
+  left: - variables.$fa-li-width;
+  width: variables.$fa-li-width;
   top: math.div(2em, 14);
   text-align: center;
-  &.#{$fa-css-prefix}-lg {
-    left: -$fa-li-width + math.div(4em, 14);
+
+  &.#{variables.$fa-css-prefix}-lg {
+    left: - variables.$fa-li-width + math.div(4em, 14);
   }
 }

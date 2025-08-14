@@ -1,10 +1,14 @@
-@use "sass:color";
-
 // Programatically determines whether a color is light or dark
 // Returns a boolean
 // More details here http://robots.thoughtbot.com/closer-look-color-lightness
 
-@use "sass:math";
+@use "sass:color";
+
+@function is-light($hex-color) {
+  $-local-red: color.red(rgba($hex-color, 1.0));
+  $-local-green: color.green(rgba($hex-color, 1.0));
+  $-local-blue: color.blue(rgba($hex-color, 1.0));
+}
 
 @function is-light($hex-color) {
   $-local-red: color.channel(rgba($hex-color, 1.0), 'red', $space: rgb);
@@ -13,5 +17,5 @@
 
   $-local-lightness: math.div($-local-red * 0.2126 + $-local-green * 0.7152 + $-local-blue * 0.0722, 255);
 
-  @return $-local-lightness > .6;
+  @return $-local-lightness >.6;
 }

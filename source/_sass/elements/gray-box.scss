@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
+@use "../base/variables";
+@use "../colors";
+
 .gray-box {
-  background-color: $gray-04;
-  border-radius: $base-border-radius;
+  background-color: colors.$gray-04;
+  border-radius: variables.$base-border-radius;
   margin-bottom: 1em;
   overflow-x: hidden;
   padding: 1em;
@@ -38,7 +41,7 @@
   }
 
   h3 {
-    color: $gray-02;
+    color: colors.$gray-02;
     font-size: 1.3em;
     font-weight: 600;
     text-transform: uppercase;
@@ -46,7 +49,7 @@
     a,
     a:hover,
     a:active {
-      color: $gray-02;
+      color: colors.$gray-02;
     }
     
     a:hover,
@@ -61,8 +64,8 @@
 }
 
 .white-box {
-  background-color: $white;
-  border-radius: $base-border-radius;
+  background-color: colors.$white;
+  border-radius: variables.$base-border-radius;
   margin-bottom: 1em;
   padding: 0.5em;
 }

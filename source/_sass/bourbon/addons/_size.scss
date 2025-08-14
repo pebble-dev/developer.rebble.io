@@ -1,16 +1,20 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+
 @mixin size($size) {
-  $height: nth($size, 1);
+  $height: list.nth($size, 1);
   $width: $height;
 
-  @if length($size) > 1 {
-    $height: nth($size, 2);
+  @if list.length($size) > 1 {
+    $height: list.nth($size, 2);
   }
 
-  @if $height == auto or (type-of($height) == number and not unitless($height)) {
+  @if $height == auto or (meta.type-of($height) == number and not math.is-unitless($height)) {
     height: $height;
   }
 
-  @if $width == auto or (type-of($width) == number and not unitless($width)) {
+  @if $width == auto or (meta.type-of($width) == number and not math.is-unitless($width)) {
     width: $width;
   }
 }

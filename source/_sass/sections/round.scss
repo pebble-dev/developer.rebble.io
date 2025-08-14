@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
+@use "../colors";
+@use "../elements/sidebar";
+@use "../responsive/utilities/mixins/breakpoints";
+
 .round-landing {
   background-image: url('../images/round/splash.jpg');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     height: 120%;
   }
 }
@@ -28,7 +32,7 @@
 .round-landing__contents {
   max-width: 800px;
   width: 80%;
-  color: $white;
+  color: colors.$white;
   text-align: center;
   padding-top: 5%;
   margin: 0 auto;
@@ -44,7 +48,7 @@
   margin: 0 auto 2rem;
 }
 
-@include bp-max (s) {
+@include breakpoints.bp-max (s) {
   .round-landing__buttons {
     .btn {
       display: block;
@@ -58,7 +62,7 @@
   }
 }
 
-@include bp-min (m) {
+@include breakpoints.bp-min (m) {
   .round-landing__buttons {
     display: -webkit-flex;
     display: flex;
@@ -74,22 +78,22 @@
   font-size: 1.2em;
   font-weight: 300;
   background-color: rgba(200, 200, 200, 0.7);
-  color: $black;
+  color: colors.$black;
   padding: 0.5em 0.8em;
   margin: 1em 0;
 
   a {
-    color: $black;
+    color: colors.$black;
     text-decoration: underline;
 
     &:hover {
-      color: $black;
+      color: colors.$black;
     }
   }
 
-  @include bp-min (m) {
+  @include breakpoints.bp-min (m) {
     position: absolute;
-    left: $sidebar-width + 20px;
+    left: sidebar.$sidebar-width + 20px;
     bottom: 20px;
     width: 50%;
     min-width: 300px;

@@ -14,22 +14,27 @@
  * limitations under the License.
  */
 
+@use "../base/lists";
+@use "../base/variables";
+@use "../colors";
+@use "../header";
 @use "sass:color";
+@use "sass:meta";
 
-$docs-header-color: $gray-06;
+$docs-header-color: colors.$gray-06;
 
 .documentation {
   max-width: 43em;
 
   a,
   a code {
-    color: color.adjust($base-link-color, $lightness: -20%, $space: hsl);
+    color: color.adjust(variables.$base-link-color, $lightness: -20%, $space: hsl);
     font-weight: 600;
   }
 
   a:hover,
   a:active {
-    color: color.adjust($base-link-color, $lightness: -40%, $space: hsl);
+    color: color.adjust(variables.$base-link-color, $lightness: -40%, $space: hsl);
   }
 }
 
@@ -55,7 +60,7 @@ $docs-header-color: $gray-06;
     &:hover,
     &:active,
     &:focus {
-      color: $gray-02;
+      color: colors.$gray-02;
     }
   }
 }
@@ -81,8 +86,8 @@ $docs-header-color: $gray-06;
   &::before {
     content: ' ';
     display: block;
-    height: $header-height;
-    margin-top: -1 * $header-height;
+    height: header.$header-height;
+    margin-top: -1 * header.$header-height;
     visibility: hidden;
   }
 
@@ -107,21 +112,21 @@ $docs-header-color: $gray-06;
   a {
     background-color: color.adjust($docs-header-color, $lightness: 8%, $space: hsl);
     border-radius: 4px 4px 0 0;
-    color: color.adjust($gray-02, $lightness: 10%, $space: hsl);
+    color: color.adjust(colors.$gray-02, $lightness: 10%, $space: hsl);
     display: block;
     padding: 0.4em 0.8em;
     text-transform: uppercase;
 
     &.active {
       background-color: $docs-header-color;
-      color: $gray-02;
+      color: colors.$gray-02;
     }
   }
 }
 
 .docs__item__header {
   background-color: $docs-header-color;
-  color: $gray-02;
+  color: colors.$gray-02;
   font-size: 0.9em;
   font-weight: 600;
   padding: 0.5em;
@@ -129,12 +134,12 @@ $docs-header-color: $gray-06;
   a,
   a:hover,
   a:active {
-    color: $gray-02;
+    color: colors.$gray-02;
   }
 }
 
 .docs__item__name {
-  color: $gray-02;
+  color: colors.$gray-02;
   font-weight: bold;
 }
 
@@ -153,7 +158,7 @@ $docs-header-color: $gray-06;
   padding: 0.5em;
 
   h4 {
-    border-bottom: 1px solid $color-docs;
+    border-bottom: 1px solid colors.$color-docs;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 1.2em;
@@ -181,7 +186,7 @@ $docs-header-color: $gray-06;
 }
 
 .docs__item--missing {
-  border: 1px solid $gray-09;
+  border: 1px solid colors.$gray-09;
   padding: 0.5em;
 
   p {
@@ -190,10 +195,10 @@ $docs-header-color: $gray-06;
 }
 
 .alert--docs-notes {
-  background-color: $gray-05;
-  border-bottom: 2px solid $color-docs;
-  border-top: 2px solid $color-docs;
-  color: $gray-03;
+  background-color: colors.$gray-05;
+  border-bottom: 2px solid colors.$color-docs;
+  border-top: 2px solid colors.$color-docs;
+  color: colors.$gray-03;
   margin: 0 -0.5em 1em;
 
   h5 {
@@ -207,13 +212,13 @@ $docs-header-color: $gray-06;
   &::before {
     content: ' ';
     display: block;
-    height: $header-height;
-    margin-top: -1 * $header-height;
+    height: header.$header-height;
+    margin-top: -1 * header.$header-height;
     visibility: hidden;
   }
 }
 
-@import 'documentation/c';
-@import 'documentation/android';
-@import 'documentation/ios';
-@import 'documentation/js';
+@include meta.load-css('documentation/c');
+@include meta.load-css('documentation/android');
+@include meta.load-css('documentation/ios');
+@include meta.load-css('documentation/js');

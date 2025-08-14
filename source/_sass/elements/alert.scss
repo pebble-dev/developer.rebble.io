@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-@use 'sass:list';
+@use "../base/lists";
+@use "../colors";
+@use "sass:list";
 
 .alert {
   background-color: #ddd;
-  color: $white;
+  color: colors.$white;
   margin-bottom: 1em;
   padding: 0.5em;
 
@@ -50,8 +52,8 @@
   padding: 0.7em;
 }
 
-$alert-colors: $white     $green   $blue   $red   $purple   $yellow   $orange   $lightblue   $dark-red   $color-blog;
-$alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'blog';
+$alert-colors: colors.$white colors.$green colors.$blue colors.$red colors.$purple colors.$yellow colors.$orange colors.$lightblue colors.$dark-red colors.$color-blog;
+$alert-names: 'white' 'green' 'blue' 'red' 'purple' 'yellow' 'orange' 'lightblue' 'dark-red' 'blog';
 
 @each $color in $alert-colors {
   $i: list.index($alert-colors, $color);
@@ -71,11 +73,11 @@ $alert-names:  'white'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'l
 }
 
 .alert--error {
-  background-color: $dark-red;
+  background-color: colors.$dark-red;
   color: #fff;
 }
 
 .alert--success {
-  background-color: $green;
+  background-color: colors.$green;
   color: #fff;
 }

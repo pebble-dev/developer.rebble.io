@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@use "../colors";
+
 .guides__toc {
 
   h2 {
@@ -48,5 +50,5 @@
 
 table td hr {
   margin: 0;
-  border-bottom-color: $gray-06;
+  border-bottom-color: colors.$gray-06;
 }

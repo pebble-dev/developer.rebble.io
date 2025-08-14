@@ -1,15 +1,15 @@
-@import "jquery.mmenu";
+@use "jquery.mmenu";
 
-@import "addons/jquery.mmenu.buttonbars";
-@import "addons/jquery.mmenu.counters";
-@import "addons/jquery.mmenu.dragopen";
-@import "addons/jquery.mmenu.footer";
-@import "addons/jquery.mmenu.header";
-@import "addons/jquery.mmenu.labels";
-@import "addons/jquery.mmenu.searchfield";
-@import "addons/jquery.mmenu.toggles";
+@use "addons/jquery.mmenu.buttonbars" as jquery2;
+@use "addons/jquery.mmenu.counters" as jquery3;
+@use "addons/jquery.mmenu.dragopen" as jquery4;
+@use "addons/jquery.mmenu.footer" as jquery5;
+@use "addons/jquery.mmenu.header" as jquery6;
+@use "addons/jquery.mmenu.labels" as jquery7;
+@use "addons/jquery.mmenu.searchfield" as jquery8;
+@use "addons/jquery.mmenu.toggles" as jquery9;
 
-@import "extensions/jquery.mmenu.effects";
-@import "extensions/jquery.mmenu.fullscreen";
-@import "extensions/jquery.mmenu.positioning";
-@import "extensions/jquery.mmenu.themes";
+@use "extensions/jquery.mmenu.effects" as jquery10;
+@use "extensions/jquery.mmenu.fullscreen" as jquery11;
+@use "extensions/jquery.mmenu.positioning" as jquery12;
+@use "extensions/jquery.mmenu.themes" as jquery13;

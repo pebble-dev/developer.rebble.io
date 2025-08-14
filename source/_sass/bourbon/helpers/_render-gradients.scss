@@ -1,18 +1,21 @@
 // User for linear and radial gradients within background-image or border-image properties
 
+@use "sass:list";
+@use "sass:string";
+
 @function _render-gradients($gradient-positions, $gradients, $gradient-type, $vendor: false) {
   $pre-spec: null;
   $spec: null;
   $vendor-gradients: null;
   @if $gradient-type == linear {
     @if $gradient-positions {
-      $pre-spec: nth($gradient-positions, 1);
-      $spec:     nth($gradient-positions, 2);
+      $pre-spec: list.nth($gradient-positions, 1);
+      $spec:     list.nth($gradient-positions, 2);
     }
   }
   @else if $gradient-type == radial {
-    $pre-spec: nth($gradient-positions, 1);
-    $spec:     nth($gradient-positions, 2);
+    $pre-spec: list.nth($gradient-positions, 1);
+    $spec:     list.nth($gradient-positions, 2);
   }
 
   @if $vendor {
@@ -20,7 +23,7 @@
   }
   @else if $vendor == false {
     $vendor-gradients: "#{$gradient-type}-gradient(#{$spec} #{$gradients})";
-    $vendor-gradients: unquote($vendor-gradients);
+    $vendor-gradients: string.unquote($vendor-gradients);
   }
   @return $vendor-gradients;
 }

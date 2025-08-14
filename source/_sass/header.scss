@@ -14,5 +14,8 @@
  * limitations under the License.
  */
 
-$header-height: 3 * $base-line-height;
+@use "responsive/utilities/variables";
+
+
+$header-height: 3 * variables.$base-line-height;
 $header-logo-width: 226px;

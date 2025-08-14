@@ -1,3 +1,9 @@
+@use "../../base/extends/clearfix";
+@use "../utilities/mixins/grid-state";
+@use "../utilities/mixins/layout";
+@use "../utilities/mixins/push-pull";
+@use "../utilities/mixins/text-align";
+
 /*
  * Clearfix: contain floats
  *
@@ -40,10 +46,10 @@
     }
 }
 // XS, S, M, L viewports.
-@include push-pull(xs);
-@include push-pull(s);
-@include push-pull(m);
-@include push-pull(l);
+@include push-pull.push-pull(xs);
+@include push-pull.push-pull(s);
+@include push-pull.push-pull(m);
+@include push-pull.push-pull(l);
 
 /*
  * Layout helpers
@@ -61,10 +67,10 @@
 }
 
 // XS, S, M, L viewports.
-@include layout(xs);
-@include layout(s);
-@include layout(m);
-@include layout(l);
+@include layout.layout(xs);
+@include layout.layout(s);
+@include layout.layout(m);
+@include layout.layout(l);
 
 /*
  * Text align helpers
@@ -82,10 +88,10 @@
 }
 
 // XS, S, M, L viewports.
-@include text-align(xs);
-@include text-align(s);
-@include text-align(m);
-@include text-align(l);
+@include text-align.text-align(xs);
+@include text-align.text-align(s);
+@include text-align.text-align(m);
+@include text-align.text-align(l);
 
 // Grid state detection.
 .grid-state-indicator {
@@ -101,6 +107,6 @@
     }
 }
 // Breakpoint driven changes
-@include grid-state(s, 1px);
-@include grid-state(m, 2px);
-@include grid-state(l, 3px);
+@include grid-state.grid-state(s, 1px);
+@include grid-state.grid-state(m, 2px);
+@include grid-state.grid-state(l, 3px);

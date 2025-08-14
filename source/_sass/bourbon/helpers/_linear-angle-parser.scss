@@ -1,8 +1,11 @@
+@use "sass:string";
+@use "str-to-num";
+
 // Private function for linear-gradient-parser
-@function _linear-angle-parser($image, $first-val, $prefix, $suffix) {
+@function linear-angle-parser($image, $first-val, $prefix, $suffix) {
   $offset: null;
-  $unit-short:  str-slice($first-val, str-length($first-val) - 2, str-length($first-val));
-  $unit-long:   str-slice($first-val, str-length($first-val) - 3, str-length($first-val));
+  $unit-short:  string.slice($first-val, string.length($first-val) - 2, string.length($first-val));
+  $unit-long:   string.slice($first-val, string.length($first-val) - 3, string.length($first-val));
 
   @if ($unit-long == "grad") or
       ($unit-long == "turn") {
@@ -15,7 +18,7 @@
   }
 
   @if $offset {
-    $num: _str-to-num($first-val);
+    $num: str-to-num.str-to-num($first-val);
 
     @return (
       webkit-image: -webkit- + $prefix + ($offset - $num) + $suffix,

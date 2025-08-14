@@ -1,32 +1,36 @@
+@use "../functions/unpack";
+@use "sass:list";
+@use "sass:meta";
+
 @mixin position ($position: relative, $coordinates: null null null null) {
 
-  @if type-of($position) == list {
+  @if meta.type-of($position) == list {
     $coordinates: $position;
     $position: relative;
   }
 
-  $coordinates: unpack($coordinates);
+  $coordinates: unpack.unpack($coordinates);
 
-  $top: nth($coordinates, 1);
-  $right: nth($coordinates, 2);
-  $bottom: nth($coordinates, 3);
-  $left: nth($coordinates, 4);
+  $top: list.nth($coordinates, 1);
+  $right: list.nth($coordinates, 2);
+  $bottom: list.nth($coordinates, 3);
+  $left: list.nth($coordinates, 4);
 
   position: $position;
 
-  @if ($top and $top == auto) or (type-of($top) == number) {
+  @if ($top and $top == auto) or (meta.type-of($top) == number) {
     top: $top;
   }
 
-  @if ($right and $right == auto) or (type-of($right) == number) {
+  @if ($right and $right == auto) or (meta.type-of($right) == number) {
     right: $right;
   }
 
-  @if ($bottom and $bottom == auto) or (type-of($bottom) == number) {
+  @if ($bottom and $bottom == auto) or (meta.type-of($bottom) == number) {
     bottom: $bottom;
   }
 
-  @if ($left and $left == auto) or (type-of($left) == number) {
+  @if ($left and $left == auto) or (meta.type-of($left) == number) {
     left: $left;
   }
 }

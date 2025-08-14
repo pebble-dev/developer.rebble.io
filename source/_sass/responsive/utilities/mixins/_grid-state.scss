@@ -1,8 +1,10 @@
-﻿//==
+@use "breakpoints";
+
+//==
 // Creates grid state classes for each breakpoint.
 //##
 @mixin grid-state($bp, $width) {
-    @include bp-min($bp) {
+    @include breakpoints.bp-min($bp) {
         .grid-state-indicator {
             width: $width;
         }

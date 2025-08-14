@@ -1,3 +1,5 @@
+@use "modular-scale";
+
 @function golden-ratio($value, $increment) {
-  @return modular-scale($value, $increment, $golden)
+  @return modular-scale.modular-scale($value, $increment, modular-scale.$golden)
 }

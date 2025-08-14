@@ -1,8 +1,10 @@
+@use "variables";
+
 @mixin mm_colors( $cls: "",
-	$baseBg: $mm_backgroundColor, $pageShadow: $mm_pageShadow,
-	$color: $mm_textColor, $dimmedColor: $mm_dimmedTextColor,
-	$emphasizedBg: $mm_emphasizedBackgroundColor, $highlightedBg: $mm_highlightedBackgroundColor,
-	$borderColor: $mm_borderColor
+	$baseBg: variables.$mm_backgroundColor, $pageShadow: variables.$mm_pageShadow,
+	$color: variables.$mm_textColor, $dimmedColor: variables.$mm_dimmedTextColor,
+	$emphasizedBg: variables.$mm_emphasizedBackgroundColor, $highlightedBg: variables.$mm_highlightedBackgroundColor,
+	$borderColor: variables.$mm_borderColor
 ) {
 	html.mm-opened#{$cls} .mm-page
 	{
@@ -68,8 +70,8 @@
 }
 
 @mixin mm_colors_buttonbars( $cls: "",
-	$baseBg: $mm_backgroundColor,
-	$color: $mm_textColor
+	$baseBg: variables.$mm_backgroundColor,
+	$color: variables.$mm_textColor
 ) {
 	.mm-menu#{$cls}
 	{
@@ -93,7 +95,7 @@
 }
 
 @mixin mm_colors_checks( $cls: "",
-	$color: $mm_textColor
+	$color: variables.$mm_textColor
 ) {
 	.mm-menu#{$cls} label.mm-check:before
 	{
@@ -102,7 +104,7 @@
 }
 
 @mixin mm_colors_counters( $cls: "",
-	$dimmedColor: $mm_dimmedTextColor
+	$dimmedColor: variables.$mm_dimmedTextColor
 ) {
 	.mm-menu#{$cls} em.mm-counter
 	{
@@ -111,8 +113,8 @@
 }
 
 @mixin mm_colors_footer( $cls: "",
-	$dimmedColor: $mm_dimmedTextColor,
-	$borderColor: $mm_borderColor
+	$dimmedColor: variables.$mm_dimmedTextColor,
+	$borderColor: variables.$mm_borderColor
 ) {
 	.mm-menu#{$cls}
 	{
@@ -125,8 +127,8 @@
 }
 
 @mixin mm_colors_header( $cls: "",
-	$dimmedColor: $mm_dimmedTextColor,
-	$borderColor: $mm_borderColor
+	$dimmedColor: variables.$mm_dimmedTextColor,
+	$borderColor: variables.$mm_borderColor
 ) {
 	.mm-menu#{$cls}
 	{
@@ -146,7 +148,7 @@
 }
 
 @mixin mm_colors_labels( $cls: "",
-	$highlightedBg: $mm_highlightedBackgroundColor
+	$highlightedBg: variables.$mm_highlightedBackgroundColor
 ) {
 	.mm-menu#{$cls}
 	{
@@ -158,8 +160,8 @@
 }
 
 @mixin mm_colors_searchfield( $cls: "",
-	$inputBg: $mm_dimmedTextColor, $color: $mm_textColor,
-	$dimmedColor: $mm_dimmedTextColor
+	$inputBg: variables.$mm_dimmedTextColor, $color: variables.$mm_textColor,
+	$dimmedColor: variables.$mm_dimmedTextColor
 ) {
 	.mm-menu#{$cls}
 	{
@@ -176,8 +178,8 @@
 }
 
 @mixin mm_colors_toggles( $cls: "",
-	$buttonBg: $mm_backgroundColor,
-	$offBg: $mm_borderColor, $onBg: $mm_toggleCheckedColor
+	$buttonBg: variables.$mm_backgroundColor,
+	$offBg: variables.$mm_borderColor, $onBg: variables.$mm_toggleCheckedColor
 ) {
 	.mm-menu#{$cls}
 	{

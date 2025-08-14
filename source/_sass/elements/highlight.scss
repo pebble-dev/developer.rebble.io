@@ -1,3 +1,8 @@
+@use "../base/variables";
+@use "../bourbon/addons/font-family";
+@use "../colors";
+@use "../responsive/utilities/mixins/breakpoints";
+
 /**
  * Copyright 2025 Google LLC
  *
@@ -15,15 +20,15 @@
  */
 
 .highlight {
-  background-color: $gray-07;
-  border-radius: $base-border-radius;
+  background-color: colors.$gray-07;
+  border-radius: variables.$base-border-radius;
   color: #f8f8f2;
-  font: 13px/1.3em $monospace;
+  font: 13px/1.3em font-family.$monospace;
   margin: 0 0 0.75em;
   padding: 10px;
   position: relative;
 
-  @include bp-max (xs) {
+  @include breakpoints.bp-max (xs) {
     font-size: 12px;
   }
 
@@ -38,9 +43,9 @@
   }
 
   .code-copy-link {
-    background-color: $turquoise;
-    border-radius: $base-border-radius;
-    color: $white;
+    background-color: colors.$turquoise;
+    border-radius: variables.$base-border-radius;
+    color: colors.$white;
     opacity: 0.1;
     padding: 0.3em 0.3em 0.3em 0.35em;
     position: absolute;
@@ -293,5 +298,5 @@
 }
 
 .highlight--large {
-  font: 15px/1.3em $monospace;
+  font: 15px/1.3em font-family.$monospace;
 }

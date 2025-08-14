@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
+@use "../bourbon/addons/font-family";
+@use "../bourbon/functions/px-to-em";
+@use "../colors";
 @use "sass:color";
 
 // Typography
 $sans-serif: 'Open Sans';
-$serif: $georgia;
-$monospace: 'Inconsolata';
+$serif: font-family.$georgia;
+font-family.$monospace: 'Inconsolata';
 $base-font-family: $sans-serif;
 $header-font-family: $base-font-family;
 
@@ -28,14 +31,14 @@ $base-font-size: 15px;
 $base-line-height: 1.4 * $base-font-size;
 $unitless-line-height: 1.4; // Strip units from line-height: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#Prefer_unitless_numbers_for_line-height_values
 $header-line-height: 1.3;
-$base-border-radius: em(3);
+$base-border-radius: px-to-em.em(3);
 
 // Background Color
 $base-background-color: #fff;
 
 // Font Colors
-$base-font-color: $gray-03;
-$base-accent-color: $lightblue;
+$base-font-color: colors.$gray-03;
+$base-accent-color: colors.$lightblue;
 
 // Link Colors
 $base-link-color: $base-accent-color;
@@ -44,20 +47,20 @@ $base-button-color: $base-link-color;
 $hover-button-color: $hover-link-color;
 
 // Border color
-$base-border-color: $gray-03;
+$base-border-color: colors.$gray-03;
 
 // Flash Colors
-$alert-color: $yellow;
-$error-color: $red;
-$notice-color: $yellow;
-$success-color: $green;
+$alert-color: colors.$yellow;
+$error-color: colors.$red;
+$notice-color: colors.$yellow;
+$success-color: colors.$green;
 
 // Forms
 $form-border-color: $base-border-color;
 $form-border-color-hover: color.adjust($base-border-color, $lightness: -10%, $space: hsl);
 $form-border-color-focus: $base-accent-color;
 $form-border-radius: $base-border-radius;
-$form-box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+$form-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(color.adjust($form-border-color-focus, $lightness: -5%, $space: hsl), 0.7);
 $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;

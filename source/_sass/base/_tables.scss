@@ -14,20 +14,24 @@
  * limitations under the License.
  */
 
+@use "variables";
+
 table {
   width: 100%;
 }
 
 th {
   font-weight: bold;
-  padding: ($base-line-height * 0.5) 0;
+  padding: (variables.$base-line-height * 0.5) 0;
   text-align: left;
 }
 
 td {
-  padding: ($base-line-height * 0.5) 0;
+  padding: (variables.$base-line-height * 0.5) 0;
 }
 
-tr, td, th {
+tr,
+td,
+th {
   vertical-align: middle;
 }
