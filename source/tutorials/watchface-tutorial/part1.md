@@ -484,7 +484,6 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
 
-
 static void init() {
   // Create main Window element and assign to pointer
   s_main_window = window_create();
