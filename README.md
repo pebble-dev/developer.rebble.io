@@ -17,6 +17,20 @@ the information in one of the sections below.
 
 ## Getting Started
 
+### Option 1:  Install with Docker
+
+Clone repo to your local machine. From the repo root, enter: 
+
+```
+docker build -t rebble-dev .
+
+docker run --rm -it -p 4000:4000 -v "$PWD":/site -w /site rebble-dev \
+  bundle exec jekyll serve --host 0.0.0.0 --port 4000
+```
+Then open http://localhost:4000
+
+### Option 2:  Install natively (without Docker)
+
 Once you have cloned the project you will need to run `bundle install` to
 install the Ruby dependencies. If you do not have [bundler](http://bundler.io/)
 installed you will need to run `[sudo] gem install bundler` first.
