@@ -17,3 +17,10 @@
  */
 
 @import 'app';
+
+/* Hardware info table overrides */
+table.hardware-info-table { border-collapse: collapse; }
+
+table.hardware-info-table > thead > tr:first-of-type > th {
+  border-bottom: 1px solid #d6d6d6 !important; /* match the left border color */
+}
