@@ -11,3 +11,5 @@ vendor/
 .jekyll-metadata
 .envrc
 .direnv/
+.DS_Store
+.vscode/settings.json
