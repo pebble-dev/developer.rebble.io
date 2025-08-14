@@ -53,9 +53,8 @@ done, you should end up with a watchface looking like this:
 ## First Steps
 
 To continue from the last part, you can either modify your existing Pebble
-project or create a new one, using the code from that project's main `.c` file
-as a starting template. For reference, that should look
-[something like this](https://gist.github.com/pebble-gists/9b9d50b990d742a3ae34).
+project or create a new one, using the code from the end of the last tutorial
+as a starting point. Don't forget also to include changes to `package.json`.
 
 The result of the first part should look something like this - a basic time
 display:
