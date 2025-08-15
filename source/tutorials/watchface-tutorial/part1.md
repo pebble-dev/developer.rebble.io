@@ -70,21 +70,22 @@ this:
 
 The main difference between the two kinds are that watchfaces serve as the
 default display on the watch, with the Up and Down buttons allowing use of the
-Pebble timeline. This means that these buttons are not available for custom
-behavior (Back and Select are also not available to watchfaces). In contrast,
-watchapps are launched from the Pebble system menu. These have more capabilities
-such as button clicks and menu elements, but we will come to those later.
+Pebble timeline and Pebble Health (though these are customisable). This means
+that these buttons are not available for custom behavior (Back and Select are
+also not available to watchfaces). In contrast, watchapps are launched from the
+Pebble system menu. These can have more capabilities such as button clicks and
+menu elements, but we will come to those later.
 
-Finally, set a value for `companyName` and we can start to write some code!
+Now we can start to write some code!
 
 
 ## Watchface Basics
 
 Our first source file is already created for you by the `pebble` command
 line tool and lives in the project's `src` directory. By default, this file
-contains sample code which you can safely remove, since we will be starting from
-scratch. Alternatively, you can avoid this by using the `--simple` flag when
-creating the project.
+contains sample code which you can safely remove completely, since we will be
+starting from scratch. Alternatively, you can avoid this by using the `--simple`
+flag when creating the project.
 
 Let's add the basic code segments which are required by every watchapp. The
 first of these is the main directive to use the Pebble SDK at the top of the
@@ -94,7 +95,7 @@ file like so:
 #include <pebble.h>
 ```
 
-After this first line, we must begin with the recommended app structure,
+After this first line, we should begin with the recommended app structure,
 specifically a standard C `main()` function and two other functions to help us
 organize the creation and destruction of all the Pebble SDK elements. This helps
 make the task of managing memory allocation and deallocation as simple as
@@ -191,8 +192,7 @@ valid after each iterative change, so let's do this now.
 ## First Compilation and Installation
 
 To compile the watchface, make sure you have saved your project files and
-then run `pebble build` from the project's root directory. The installable
-`.pbw` file will be deposited in the `build` directory. After a successful
+then run `pebble build` from the project's root directory. After a successful
 compile you will see a message reading `'build' finished successfully`. If there
 are any problems with your code, the compiler will tell you which lines are in
 error so you can fix them.
@@ -202,11 +202,24 @@ In order to install your watchface on your Pebble, first
 Make sure you are using the latest version of the Pebble app.
 
 Install the watchapp by running `pebble install`, supplying your phone's IP
-address with the `--phone` flag. For example: `pebble install
---phone 192.168.1.78`.
+address with the `--phone` flag. For example: 
+
+```
+pebble install --phone 192.168.1.78
+```
 
 > Instead of using the --phone flag every time you install, set the PEBBLE_PHONE environment variable:
 > `export PEBBLE_PHONE=192.168.1.78` and simply use `pebble install`.
+
+You can also use the emulator by specifying the platform you want to use, for
+example the Pebble Time platform `basalt`:
+
+```
+pebble install --emulator basalt
+```
+
+> Use of the emulator may require more dependencies to be installed depending
+> on your system and configuration.
 
 Congratulations! You should see that you have a new item in the watchface menu,
 but it is entirely blank!
@@ -292,8 +305,7 @@ static void main_window_unload(Window *window) {
 ```
 
 This completes the setup of the basic watchface layout. If you run `pebble
-build && pebble install` (with your phone's IP address) for the new build, you
-should now see the following:
+build && pebble install` for the new build, you should now see the following:
 
 {% screenshot_viewer %}
 {
@@ -339,8 +351,9 @@ tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 ```
 
 The logic to update the time ``TextLayer`` will be created in a function called
-`update_time()`, enabling us to call it both from the ``TickHandler`` as well as
-`main_window_load()` to ensure it is showing a time from the very beginning.
+`update_time()`, using a newly created time object, enabling us to call it both
+from the ``TickHandler`` as well as `main_window_load()` to ensure it is showing
+a time from the very beginning.
 
 This function will use `strftime()`
 ([See here for formatting](http://www.cplusplus.com/reference/ctime/strftime/))
@@ -417,9 +430,93 @@ watchface! To do this we:
    these to a buffer for display in the ``TextLayer``.
 
 If you have problems with your code, check it against the sample source code
-provided using the button below.
+provided below.
 
-[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/9b9d50b990d742a3ae34)
+<details>
+<summary>View source code</summary>
+{% markdown %}
+```c
+#include <pebble.h>
+
+static Window *s_main_window;
+static TextLayer *s_time_layer;
+
+static void update_time() {
+  // Get a tm structure
+  time_t temp = time(NULL);
+  struct tm *tick_time = localtime(&temp);
+
+  // Write the current hours and minutes into a buffer
+  static char s_buffer[8];
+  strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
+                                          "%H:%M" : "%I:%M", tick_time);
+
+  // Display this time on the TextLayer
+  text_layer_set_text(s_time_layer, s_buffer);
+}
+
+static void main_window_load(Window *window) {
+  // Get information about the Window
+  Layer *window_layer = window_get_root_layer(window);
+  GRect bounds = layer_get_bounds(window_layer);
+
+  // Create the TextLayer with specific bounds
+  s_time_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+
+  // Improve the layout to be more like a watchface
+  text_layer_set_background_color(s_time_layer, GColorClear);
+  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text(s_time_layer, "00:00");
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+
+  // Add it as a child layer to the Window's root layer
+  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+}
+
+static void main_window_unload(Window *window) {
+  // Destroy TextLayer
+  text_layer_destroy(s_time_layer);
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+  update_time();
+}
+
+static void init() {
+  // Create main Window element and assign to pointer
+  s_main_window = window_create();
+
+  // Set handlers to manage the elements inside the Window
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload
+  });
+
+  // Show the Window on the watch, with animated=true
+  window_stack_push(s_main_window, true);
+
+  // Register with TickTimerService
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+
+  // Make sure the time is displayed from the start
+  update_time();
+}
+
+static void deinit() {
+  // Destroy Window
+  window_destroy(s_main_window);
+}
+
+int main(void) {
+  init();
+  app_event_loop();
+  deinit();
+}
+```
+{% endmarkdown %}
+</details>
 
 ## What's Next?
 
