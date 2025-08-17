@@ -52,9 +52,8 @@ all its customized glory:
 {% endscreenshot_viewer %}
 
 To continue from the last part, you can either modify your existing Pebble
-project or create a new one, using the code from that project's main `.c` file
-as a starting template. For reference, that should look 
-[something like this](https://gist.github.com/pebble-gists/d216d9e0b840ed296539). 
+project or create a new one, using the code from the end of the last tutorial
+as a starting point. Don't forget also to include changes to `package.json`.
 
 
 ## Preparing the Watchface Layout
@@ -73,11 +72,9 @@ elements. Here is the ``TextLayer`` setup; this should all be familiar to you
 from the previous two tutorial parts:
 
 ```c
-// Create temperature Layer
+// Create weather Layer
 s_weather_layer = text_layer_create(
     GRect(0, PBL_IF_ROUND_ELSE(125, 120), bounds.size.w, 25));
-
-// Style the text
 text_layer_set_background_color(s_weather_layer, GColorClear);
 text_layer_set_text_color(s_weather_layer, GColorWhite);
 text_layer_set_text_alignment(s_weather_layer, GTextAlignmentCenter);
@@ -101,9 +98,9 @@ field to `_20` or similar. Below is an example showing both fonts:
   {
     "type":"font",
     "name":"FONT_PERFECT_DOS_20",
-    "file":"perfect-dos-vga.ttf",
+    "file":"fonts/perfect-dos-vga.ttf",
     "compatibility": "2.7"
-  },
+  }
 ]
 ```
 
@@ -212,7 +209,7 @@ the inbox and outbox size (in bytes):
 
 ```c
 // Open AppMessage
-const int inbox_size = 128;
+const int inbox_size = 256;
 const int outbox_size = 128;
 app_message_open(inbox_size, outbox_size);
 ```
@@ -239,21 +236,18 @@ This template is shown below for you to start your JS file:
 
 ```js
 // Listen for when the watchface is opened
-Pebble.addEventListener('ready', 
-  function(e) {
-    console.log('PebbleKit JS ready!');
-  }
-);
+Pebble.addEventListener('ready', function(e) {
+  console.log('PebbleKit JS ready!');
+});
 
 // Listen for when an AppMessage is received
-Pebble.addEventListener('appmessage',
-  function(e) {
-    console.log('AppMessage received!');
-  }                     
-);
+Pebble.addEventListener('appmessage', function(e) {
+  console.log('AppMessage received!');
+});
 ```
 
-After compiling and installing the watchface, open the app logs.
+After compiling and installing the watchface to the watch or an emulator, open
+the app logs.
 
 You can listen for app logs by running `pebble logs`, supplying your
 phone's IP address with the `--phone` switch. For example: 
@@ -265,7 +259,7 @@ pebble logs --phone 192.168.1.78
 You can also combine these two commands into one: 
 
 ```
-pebble install --logs --phone 192.168.1.78
+pebble install --phone 192.168.1.78 --logs
 ```
 
 You should see a message matching that set to appear using `console.log()` in
@@ -302,6 +296,8 @@ the data:
 
 ```js
 function locationSuccess(pos) {
+  console.log(JSON.stringify(pos));
+
   // We will request the weather here
 }
 
@@ -318,14 +314,12 @@ function getWeather() {
 }
 
 // Listen for when the watchface is opened
-Pebble.addEventListener('ready', 
-  function(e) {
-    console.log('PebbleKit JS ready!');
-    
-    // Get the initial weather
-    getWeather();
-  }
-);
+Pebble.addEventListener('ready', function(e) {
+  console.log('PebbleKit JS ready!');
+
+  // Get the initial weather
+  getWeather();
+});
 ```
 
 Notice that when the `ready` event occurs, `getWeather()` is called, which in
@@ -353,40 +347,35 @@ The three arguments we have to provide when calling `xhrRequest()` are the URL,
 the type of request (`GET` or `POST`, for example) and a callback for when the
 response is received. The URL is specified on the OpenWeatherMap API page, and
 contains the coordinates supplied by `getCurrentPosition()`, the latitude and
-longitude encoded at the end:
+longitude encoded at the end.
 
 {% include guides/owm-api-key-notice.html %}
-
-```js
-var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' +
-  pos.coords.latitude + '&lon=' + pos.coords.longitude + '&appid=' + myAPIKey;
-```
 
 The type of the XHR will be a 'GET' request, to *get* information from the
 service. We will incorporate the callback into the function call for
 readability, and the full code snippet is shown below:
 
 ```js
+var myAPIKey = 'your own key here!';
+
 function locationSuccess(pos) {
   // Construct URL
   var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' +
       pos.coords.latitude + '&lon=' + pos.coords.longitude + '&appid=' + myAPIKey;
-  
+
   // Send request to OpenWeatherMap
-  xhrRequest(url, 'GET', 
-    function(responseText) {
-      // responseText contains a JSON object with weather info
-      var json = JSON.parse(responseText);
-      
-      // Temperature in Kelvin requires adjustment
-      var temperature = Math.round(json.main.temp - 273.15);
-      console.log('Temperature is ' + temperature);
-      
-      // Conditions
-      var conditions = json.weather[0].main;      
-      console.log('Conditions are ' + conditions);
-    }      
-  );
+  xhrRequest(url, 'GET', function(responseText) {
+    // responseText contains a JSON object with weather info
+    var json = JSON.parse(responseText);
+
+    // Temperature in Kelvin requires adjustment
+    var temperature = Math.round(json.main.temp - 273.15);
+    console.log('Temperature is ' + temperature);
+
+    // Conditions
+    var conditions = json.weather[0].main;
+    console.log('Conditions are ' + conditions);
+  });
 }
 ```
 
@@ -396,18 +385,16 @@ conditions obtained. To discover the structure of the JSON object we can use
 `console.log(responseText)` to see its contents.
 
 To see how we arrived at some of the statements above, such as
-`json.weather[0].main`, here is an 
-[example response](https://gist.github.com/pebble-gists/216e6d5a0f0bd2328509#file-example-response-json) 
-for London, UK. We can see that by following the JSON structure from our
-variable called `json` (which represents the root of the structure) we can
+`json.weather[0].main`, we can see that by following the JSON structure from our
+variable called `json` (which represents the top level of the structure) we can
 access any of the data items. So to get the wind speed we would access
 `json.wind.speed`, and so on.
 
 ## Showing Weather on Pebble
 
-The final JS step is to send the weather data back to the watch. To do this we must
-pick some appmessage keys to send back. Since we want to display the temperature
-and current conditions, we'll create one key for each of those.
+The final JS step is to send the weather data back to the watch. To do this we
+must pick some ``AppMessage`` keys to send back. Since we want to display the
+temperature and current conditions, we'll create one key for each of those.
 
 You can add your ``AppMessage`` keys in the `messageKeys` object in
 `package.json` as shown below for the example keys:
@@ -415,7 +402,7 @@ You can add your ``AppMessage`` keys in the `messageKeys` object in
 ```json
 "messageKeys": [
   "TEMPERATURE",
-  "CONDITIONS",
+  "CONDITIONS"
 ]
 ```
 
@@ -431,14 +418,11 @@ var dictionary = {
 };
 
 // Send to Pebble
-Pebble.sendAppMessage(dictionary,
-  function(e) {
-    console.log('Weather info sent to Pebble successfully!');
-  },
-  function(e) {
-    console.log('Error sending weather info to Pebble!');
-  }
-);
+Pebble.sendAppMessage(dictionary, function(e) {
+  console.log('Weather info sent to Pebble successfully!');
+}, function(e) {
+  console.log('Error sending weather info to Pebble!');
+});
 ```
 
 While we are here, let's add another call to `getWeather()` in the `appmessage`
@@ -447,12 +431,12 @@ from the watch to achieve this:
 
 ```js
 // Listen for when an AppMessage is received
-Pebble.addEventListener('appmessage',
-  function(e) {
-    console.log('AppMessage received!');
-    getWeather();
-  }                     
-);
+Pebble.addEventListener('appmessage', function(e) {
+  console.log('AppMessage received!');
+
+  // Get updated weather now
+  getWeather();
+});
 ```
 
 The final step on the Pebble side is to act on the information received from
@@ -460,16 +444,17 @@ PebbleKit JS and show the weather data in the ``TextLayer`` we created for this
 very purpose. To do this, go back to your C code file and find your
 ``AppMessageInboxReceived`` implementation (such as our
 `inbox_received_callback()` earlier). This will now be modified to process the
-received data. When the watch receives an ``AppMessage`` message from the JS
+received data.
+
+When the watch receives an ``AppMessage`` message from the JS
 part of the watchface, this callback will be called and we will be provided a
 dictionary of data in the form of a `DictionaryIterator` object, as seen in the
 callback signature. `MESSAGE_KEY_TEMPERATURE` and `MESSAGE_KEY_CONDITIONS`
-will be automatically provided as we specified them in `package.json`.
+will be automatically defined as we specified them in `package.json`.
 
-Before examining the dictionary we add three character
-buffers; one each for the temperature and conditions and the other for us to
-assemble the entire string. Remember to be generous with the buffer sizes to
-prevent overruns:
+Before examining the dictionary we add three character buffers; one each for the
+temperature and conditions and the other for us to assemble the entire string.
+Remember to be generous with the buffer sizes to prevent overruns:
 
 ```c
 // Store incoming information
@@ -487,7 +472,7 @@ Tuple *temp_tuple = dict_find(iterator, MESSAGE_KEY_TEMPERATURE);
 Tuple *conditions_tuple = dict_find(iterator, MESSAGE_KEY_CONDITIONS);
 
 // If all data is available, use it
-if(temp_tuple && conditions_tuple) {
+if (temp_tuple && conditions_tuple) {
   snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)temp_tuple->value->int32);
   snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
 }
@@ -530,7 +515,7 @@ weather updates every 30 minutes by adding the following code to the end of
 
 ```c
 // Get weather update every 30 minutes
-if(tick_time->tm_min % 30 == 0) {
+if (tick_time->tm_min % 30 == 0) {
   // Begin dictionary
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
@@ -561,10 +546,261 @@ Whew! That was quite a long tutorial, but here's all you've learned:
 Using all this it is possible to `GET` and `POST` to a huge number of web
 services to display data and control these services.
 
-As usual, you can compare your code to the example code provided using the button
-below.
+As usual, you can compare your code to the example code provided below.
 
-[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/216e6d5a0f0bd2328509)
+<details>
+<summary>View C code</summary>
+{% markdown %}
+```c
+#include <pebble.h>
+
+static Window *s_main_window;
+static TextLayer *s_time_layer;
+static BitmapLayer *s_background_layer;
+static TextLayer *s_weather_layer;
+
+static GFont s_time_font;
+static GFont s_weather_font;
+static GBitmap *s_background_bitmap;
+
+static void update_time() {
+  // Get a tm structure
+  time_t temp = time(NULL);
+  struct tm *tick_time = localtime(&temp);
+
+  // Write the current hours and minutes into a buffer
+  static char s_buffer[8];
+  strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
+                                          "%H:%M" : "%I:%M", tick_time);
+
+  // Display this time on the TextLayer
+  text_layer_set_text(s_time_layer, s_buffer);
+}
+
+static void main_window_load(Window *window) {
+  // Get information about the Window
+  Layer *window_layer = window_get_root_layer(window);
+  GRect bounds = layer_get_bounds(window_layer);
+
+  // Create GBitmap
+  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
+
+  // Create BitmapLayer to display the GBitmap
+  s_background_layer = bitmap_layer_create(bounds);
+  bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+  layer_add_child(window_layer, bitmap_layer_get_layer(s_background_layer));
+
+  // Create GFont
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_PERFECT_DOS_48));
+
+  // Create the TextLayer with specific bounds
+  s_time_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+  text_layer_set_background_color(s_time_layer, GColorClear);
+  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text(s_time_layer, "00:00");
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+  text_layer_set_font(s_time_layer, s_time_font);
+  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+
+  // Create weather Layer
+  s_weather_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(125, 120), bounds.size.w, 25));
+  text_layer_set_background_color(s_weather_layer, GColorClear);
+  text_layer_set_text_color(s_weather_layer, GColorWhite);
+  text_layer_set_text_alignment(s_weather_layer, GTextAlignmentCenter);
+  text_layer_set_text(s_weather_layer, "Loading...");
+
+  // Create second custom font, apply it and add to Window
+  s_weather_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_PERFECT_DOS_20));
+  text_layer_set_font(s_weather_layer, s_weather_font);
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_weather_layer));
+}
+
+static void main_window_unload(Window *window) {
+  // Destroy TextLayer
+  text_layer_destroy(s_time_layer);
+
+  // Unload GFont
+  fonts_unload_custom_font(s_time_font);
+
+  // Destroy BitmapLayer
+  bitmap_layer_destroy(s_background_layer);
+
+  // Destroy GBitmap
+  gbitmap_destroy(s_background_bitmap);
+
+  // Destroy weather elements
+  text_layer_destroy(s_weather_layer);
+  fonts_unload_custom_font(s_weather_font);
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+  update_time();
+
+  // Get weather update every 30 minutes
+  if (tick_time->tm_min % 30 == 0) {
+    // Begin dictionary
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+
+    // Add a key-value pair
+    dict_write_uint8(iter, 0, 0);
+
+    // Send the message!
+    app_message_outbox_send();
+  }
+}
+
+static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
+  // Store incoming information
+  static char temperature_buffer[8];
+  static char conditions_buffer[32];
+  static char weather_layer_buffer[32];
+
+  // Read tuples for data
+  Tuple *temp_tuple = dict_find(iterator, MESSAGE_KEY_TEMPERATURE);
+  Tuple *conditions_tuple = dict_find(iterator, MESSAGE_KEY_CONDITIONS);
+
+  // If all data is available, use it
+  if (temp_tuple && conditions_tuple) {
+    snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)temp_tuple->value->int32);
+    snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
+  }
+
+  // Assemble full string and display
+  snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
+  text_layer_set_text(s_weather_layer, weather_layer_buffer);
+}
+
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
+}
+
+static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
+}
+
+static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
+}
+
+static void init() {
+  s_main_window = window_create();
+  window_set_background_color(s_main_window, GColorBlack);
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload
+  });
+  window_stack_push(s_main_window, true);
+
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  update_time();
+
+  // Register callbacks
+  app_message_register_inbox_received(inbox_received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+
+  // Open AppMessage
+  const int inbox_size = 256;
+  const int outbox_size = 128;
+  app_message_open(inbox_size, outbox_size);
+}
+
+static void deinit() {
+  window_destroy(s_main_window);
+}
+
+int main(void) {
+  init();
+  app_event_loop();
+  deinit();
+}
+```
+{% endmarkdown %}
+</details>
+
+<details>
+<summary>View JS code</summary>
+{% markdown %}
+```js
+var myAPIKey = 'your own key here!';
+
+var xhrRequest = function (url, type, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    callback(this.responseText);
+  };
+  xhr.open(type, url);
+  xhr.send();
+};
+
+function locationSuccess(pos) {
+  // Construct URL
+  var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' +
+      pos.coords.latitude + '&lon=' + pos.coords.longitude + '&appid=' + myAPIKey;
+
+  // Send request to OpenWeatherMap
+  xhrRequest(url, 'GET', function(responseText) {
+    // responseText contains a JSON object with weather info
+    var json = JSON.parse(responseText);
+
+    // Temperature in Kelvin requires adjustment
+    var temperature = Math.round(json.main.temp - 273.15);
+    console.log('Temperature is ' + temperature);
+
+    // Conditions
+    var conditions = json.weather[0].main;
+    console.log('Conditions are ' + conditions);
+
+    // Assemble dictionary using our keys
+    var dictionary = {
+      'TEMPERATURE': temperature,
+      'CONDITIONS': conditions
+    };
+
+    // Send to Pebble
+    Pebble.sendAppMessage(dictionary, function(e) {
+      console.log('Weather info sent to Pebble successfully!');
+    }, function(e) {
+      console.log('Error sending weather info to Pebble!');
+    });
+  });
+}
+
+function locationError(err) {
+  console.log('Error requesting location!');
+}
+
+function getWeather() {
+  navigator.geolocation.getCurrentPosition(
+    locationSuccess,
+    locationError,
+    {timeout: 15000, maximumAge: 60000}
+  );
+}
+
+// Listen for when the watchface is opened
+Pebble.addEventListener('ready', function(e) {
+  console.log('PebbleKit JS ready!');
+
+  // Get the initial weather
+  getWeather();
+});
+
+// Listen for when an AppMessage is received
+Pebble.addEventListener('appmessage', function(e) {
+  console.log('AppMessage received!');
+
+  // Get updated weather now
+  getWeather();
+});
+```
+{% endmarkdown %}
+</details>
 
 
 ## What's Next?
