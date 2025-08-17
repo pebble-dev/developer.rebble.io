@@ -58,13 +58,14 @@ structure required for a basic Rocky.js application.
 
 ## Watchface Basics
 
-Watchface are essentially long running applications that update the display at
+Watchfaces are essentially long running applications that update the display at
 a regular interval (typically once a minute, or when specific events occur). By
 minimizing the frequency that the screen is updated, we help to conserve
 battery life on the watch.
 
 The main entry point for the watchface is `/src/rocky/index.js`, so we'll
-start by editing this file.
+start by editing this file. You can remove the sample content provided for the
+code given below.
 
 The very first thing we must do is include the Rocky.js library, which gives us
 access to the APIs we need to create a Pebble watchface.
@@ -198,7 +199,9 @@ Another minute with your Pebble!
 ```
 
 > Note: You should prevent execution of the log statements by commenting the
-code, if you aren't using them. e.g. `//console.log();`
+> code, if you aren't using them. e.g. `// console.log();` before publishing the
+> watchface.
+
 
 ## Creating an Analog Watchface
 
@@ -221,7 +224,8 @@ representing the minute hand.
 
 We need to implement a function to draw the hands, to prevent duplicating the
 same drawing code for hours and minutes.  We're going to use a series of
-``CanvasRenderingContext2D`` methods to accomplish the desired effect.
+``CanvasRenderingContext2D`` methods to accomplish the desired effect in the
+`draw` callback we added earlier.
 
 First we need to find the center point in our display:
 
@@ -268,6 +272,9 @@ ctx.stroke();
 ```
 
 ### Putting It All Together
+
+This is the complete code assembled so far, including a helpful function for
+drawing the hands and converting a time fraction to a Radian angle.
 
 ```js
 var rocky = require('rocky');
@@ -421,8 +428,7 @@ output, it probably means there is an issue in the preceding code.
 ### I'm still having problems!
 
 If you've tried the steps above and you're still having problems, there are
-plenty of places to get help. You can post your question and code on the
-[Pebble Forums](https://forums.pebble.com/c/development) or join our
+plenty of places to get help. You can post your question and code on our
 [Discord Server]({{ site.links.discord_invite }}) and ask for assistance.
 
 
@@ -438,9 +444,7 @@ watchface using JavaScript! To do this we:
 5. Used drawing commands to draw text and lines on the display.
 
 If you have problems with your code, check it against the sample source code
-provided using the button below.
-
-[View Source Code >{center,bg-lightblue,fg-white}](https://github.com/pebble-examples/rocky-watchface-tutorial-part1)
+provided above.
 
 ## What's Next
 
