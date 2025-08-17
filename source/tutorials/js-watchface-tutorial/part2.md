@@ -69,7 +69,8 @@ To send a message from the smartwatch to the mobile device, use the
 object:
 
 ```js
-// rocky index.js
+// File: rocky/index.js
+
 var rocky = require('rocky');
 
 // Send a message from the smartwatch
@@ -80,7 +81,7 @@ To send a message from the mobile device to the smartwatch, use the
 ``Pebble.postMessage`` method:
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
 // Send a message from the mobile device
 Pebble.postMessage({'test': 'hello from mobile device'});
@@ -92,7 +93,7 @@ We can create a message listener in our smartwatch code using the ``rocky.on``
 method:
 
 ```js
-// rocky index.js
+// File: rocky/index.js
 
 // On the smartwatch, begin listening for a message from the mobile device
 rocky.on('message', function(event) {
@@ -105,7 +106,7 @@ We can also create a message listener in our `pkjs` code using the ``Pebble.on``
 method:
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
 // On the phone, begin listening for a message from the smartwatch
 Pebble.on('message', function(event) {
@@ -126,12 +127,12 @@ In order to use this functionality, your application must include the
 array of your `package.json` file.
 
 ```js
-// file: package.json
-// ...
-  "pebble": {
-    "capabilities": ["location"]
-  }
-// ...
+// File: package.json
+
+"pebble": {
+  // ...
+  "capabilities": ["location"]
+}
 ```
 
 Once we've added the `location` flag, we can access GPS coordinates using the
@@ -140,7 +141,7 @@ In this example, we're going to request the user's location when we receive the
 "fetch" message from the smartwatch.
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
 Pebble.on('message', function(event) {
   // Get the message that was passed
@@ -166,14 +167,14 @@ services.
 
 In this tutorial, we will interface with
 [Open Weather Map](http://openweathermap.org/) – a common weather API used by
-the [Pebble Developer Community](https://forums.pebble.com/c/development).
+many Pebble watchfaces.
 
 The `XMLHttpRequest` object is quite powerful, but can be intimidating to get
 started with. To make things a bit simpler, we'll wrap the object with a helper
 function which makes the request, then raises a callback:
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
 function request(url, type, callback) {
   var xhr = new XMLHttpRequest();
@@ -199,7 +200,8 @@ followed by the API key:
 {% include guides/owm-api-key-notice.html %}
 
 ```js
-var myAPIKey = '1234567';
+var myAPIKey = 'your own key here!';
+
 var url = 'http://api.openweathermap.org/data/2.5/weather' +
           '?lat=' + pos.coords.latitude +
           '&lon=' + pos.coords.longitude +
@@ -209,9 +211,9 @@ var url = 'http://api.openweathermap.org/data/2.5/weather' +
 All together, our message handler should now look like the following:
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
-var myAPIKey = '1234567';
+var myAPIKey = 'your own key here!';
 
 Pebble.on('message', function(event) {
   // Get the message that was passed
@@ -242,7 +244,7 @@ Once we receive the weather data from OpenWeatherMap, we need to send it to the
 smartwatch using ``Pebble.postMessage``:
 
 ```js
-// pkjs index.js
+// File: pkjs/index.js
 
 // ...
 request(url, 'GET', function(respText) {
@@ -263,8 +265,11 @@ On the smartwatch, we'll need to create a message handler to listen for a
 `weather` message, and store the information so it can be drawn on screen.
 
 ```js
-// rocky index.js
+// File: rocky/index.js
+
 var rocky = require('rocky');
+
+// ...
 
 // Global object to store weather data
 var weather;
@@ -287,13 +292,13 @@ We also need to send the 'fetch' command from the smartwatch to ask for weather
 data when the application starts, then every hour:
 
 ```js
-// rocky index.js
+// File: rocky/index.js
 
 // ...
 
 rocky.on('hourchange', function(event) {
   // Send a message to fetch the weather information (on startup and every hour)
-  rocky.postMessage({'fetch': true});
+  rocky.postMessage({ fetch: true });
 });
 ```
 
@@ -301,7 +306,7 @@ Finally, we'll need some new code in our Rocky `draw` handler to display the
 temperature and conditions:
 
 ```js
-// rocky index.js
+// File: rocky/index.js
 var rocky = require('rocky');
 
 // ...
@@ -334,6 +339,171 @@ rocky.on('draw', function(event) {
 });
 ```
 
+Once it is compiled and run, it should look something like the preview at the
+start of the tutorial section:
+
+![rocky >{pebble-screenshot,pebble-screenshot--time-red}](/images/tutorials/js-watchface-tutorial/tictoc-weather.png)
+
+
+### Putting It All Together
+
+This is the complete code for this tutorial, separated by JS file. Compare it
+to yours if you have problems with any part of it or it is not working as
+expected.
+
+```js
+// File: rocky/index.js
+
+var rocky = require('rocky');
+
+// Global object to store weather data
+var weather;
+
+function fractionToRadian(fraction) {
+  return fraction * 2 * Math.PI;
+}
+
+function drawHand(ctx, cx, cy, angle, length, color) {
+  // Find the end points
+  var x2 = cx + Math.sin(angle) * length;
+  var y2 = cy - Math.cos(angle) * length;
+
+  // Configure how we want to draw the hand
+  ctx.lineWidth = 8;
+  ctx.strokeStyle = color;
+
+  // Begin drawing
+  ctx.beginPath();
+
+  // Move to the center point, then draw the line
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(x2, y2);
+
+  // Stroke the line (output to display)
+  ctx.stroke();
+}
+
+function drawWeather(ctx, weather) {
+  // Create a string describing the weather
+  //var weatherString = weather.celcius + 'ºC, ' + weather.desc;
+  var weatherString = weather.fahrenheit + 'ºF, ' + weather.desc;
+
+  // Draw the text, top center
+  ctx.fillStyle = 'lightgray';
+  ctx.textAlign = 'center';
+  ctx.font = '14px Gothic';
+  ctx.fillText(weatherString, ctx.canvas.unobstructedWidth / 2, 2);
+}
+
+rocky.on('draw', function(event) {
+  var ctx = event.context;
+  var d = new Date();
+
+  // Clear the screen
+  ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+
+  // Draw the conditions (before clock hands, so it's drawn underneath them)
+  if (weather) {
+    drawWeather(ctx, weather);
+  }
+
+  // Determine the width and height of the display
+  var w = ctx.canvas.unobstructedWidth;
+  var h = ctx.canvas.unobstructedHeight;
+
+  // Determine the center point of the display
+  // and the max size of watch hands
+  var cx = w / 2;
+  var cy = h / 2;
+
+  // -20 so we're inset 10px on each side
+  var maxLength = (Math.min(w, h) - 20) / 2;
+
+  // Calculate the minute hand angle
+  var minuteFraction = (d.getMinutes()) / 60;
+  var minuteAngle = fractionToRadian(minuteFraction);
+
+  // Draw the minute hand
+  drawHand(ctx, cx, cy, minuteAngle, maxLength, "white");
+
+  // Calculate the hour hand angle
+  var hourFraction = (d.getHours() % 12 + minuteFraction) / 12;
+  var hourAngle = fractionToRadian(hourFraction);
+
+  // Draw the hour hand
+  drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, "lightblue");
+});
+
+rocky.on('minutechange', function(event) {
+  // Request the screen to be redrawn on next pass
+  rocky.requestDraw();
+});
+
+rocky.on('hourchange', function(event) {
+  // Send a message to fetch the weather information (on startup and every hour)
+  rocky.postMessage({ fetch: true });
+});
+
+rocky.on('message', function(event) {
+  // Receive a message from the mobile device (pkjs)
+  var message = event.data;
+
+  if (message.weather) {
+    // Save the weather data
+    weather = message.weather;
+
+    // Request a redraw so we see the information
+    rocky.requestDraw();
+  }
+});
+```
+
+```js
+// File: pkjs/index.js
+
+var myAPIKey = 'your own key here!';
+
+function request(url, type, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    callback(this.responseText);
+  };
+  xhr.open(type, url);
+  xhr.send();
+}
+
+Pebble.on('message', function(event) {
+  // Get the message that was passed
+  var message = event.data;
+
+  if (message.fetch) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      var url = 'http://api.openweathermap.org/data/2.5/weather' +
+              '?lat=' + pos.coords.latitude +
+              '&lon=' + pos.coords.longitude +
+              '&appid=' + myAPIKey;
+
+      request(url, 'GET', function(respText) {
+        var weatherData = JSON.parse(respText);
+
+        Pebble.postMessage({
+          'weather': {
+            // Convert from Kelvin
+            'celcius': Math.round(weatherData.main.temp - 273.15),
+            'fahrenheit': Math.round((weatherData.main.temp - 273.15) * 9 / 5 + 32),
+            'desc': weatherData.weather[0].main
+          }
+        });
+      });
+    }, function(err) {
+      console.error('Error getting location');
+    },
+    { timeout: 15000, maximumAge: 60000 });
+  }
+});
+```
+
+
 ## Conclusion
 
 So there we have it, we successfully added web content to our JavaScript
@@ -352,15 +522,9 @@ request the weather data when the application starts and every hour.
 8. Then finally we drew the weather conditions on the screen as text.
 
 If you have problems with your code, check it against the sample source code
-provided using the button below.
-
-[View Source Code >{center,bg-lightblue,fg-white}](https://github.com/pebble-examples/rocky-watchface-tutorial-part2)
+provided above.
 
 ## What's Next
 
 We hope you enjoyed this tutorial and that it inspires you to make something
 awesome!
-
-Why not let us know what you've created by tweeting
-[@pebbledev](https://twitter.com/pebbledev), or join our epic developer
-community on [Discord]({{ site.links.discord_invite }}).
