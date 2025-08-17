@@ -26,8 +26,7 @@ Introduced in SDK v4.0, the ``AppExitReason`` API allows developers to provide a
 reason when terminating their application. The system uses these reasons to
 determine where the user should be sent when the current application terminates.
 
-At present there are only 2 ``AppExitReason`` states when exiting an application,
-but this may change in future updates.
+At present, there are only two ``AppExitReason`` states when exiting an application, but this may change in future updates.
 
 ### APP_EXIT_NOT_SPECIFIED
 
@@ -39,7 +38,7 @@ this state will be used automatically.
 static void prv_deinit() {
     // Optional, default behavior
     // App will exit to the previous location in the system
-    app_exit_reason_set(APP_EXIT_NOT_SPECIFIED);
+    exit_reason_set(APP_EXIT_NOT_SPECIFIED);
 }
 ```
 
@@ -52,6 +51,6 @@ to the default watchface.
 ```c
 static void prv_deinit() {
     // App will exit to default watchface
-    app_exit_reason_set(APP_EXIT_ACTION_PERFORMED_SUCCESSFULLY);
+    exit_reason_set(APP_EXIT_ACTION_PERFORMED_SUCCESSFULLY);
 }
 ```
