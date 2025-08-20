@@ -152,13 +152,14 @@ With a suitable color app installed, the emulator will load and display it:
 
 The Pebble physical buttons are emulated with the following mapping:
 
-* Back - Left arrow key
+| Button | Key |
+|--------|-----|
+| Back | `Q` |
+| Up | `W` |
+| Select | `S` |
+| Down | `X` |
 
-* Up - Up arrow key
-
-* Select - Right arrow key
-
-* Down - Down arrow key
+On some systems the arrow keys may also be supported.
 
 
 ## Pebble Timeline in the Emulator
