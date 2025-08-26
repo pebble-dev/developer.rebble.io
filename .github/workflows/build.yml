@@ -132,7 +132,7 @@ jobs:
           ALGOLIA_PREFIX: developer-rebble-io-prod-
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           name: site-build
           path: __public__
