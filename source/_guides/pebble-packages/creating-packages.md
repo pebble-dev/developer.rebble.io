@@ -20,11 +20,6 @@ generate_toc: true
 guide_group: pebble-packages
 ---
 
-{% alert notice %}
-Currently package _creation_ is only supported by the native SDK.
-However, you can still use packages in CloudPebble.
-{% endalert %}
-
 ## Getting Started
 
 To get started creating a package, run `pebble new-package some-name`.

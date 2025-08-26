@@ -196,10 +196,9 @@ int main(void) {
 text_layer_set_text(some_layer, _("Meal application"));
 ```
 
-* Save all source files (this will require downloading and extracting the
-  project from 'Settings' on CloudPebble), then run `get_dict.py` from the
-  project root directory to get a JSON file containing the hashed strings to be
-  translated. This file will look like the one below:
+* Save all source files, then run `get_dict.py` from the project root directory
+  to get a JSON file containing the hashed strings to be translated. This file
+  will look like the one below:
 
 ```
 {

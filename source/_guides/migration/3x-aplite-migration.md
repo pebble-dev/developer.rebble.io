@@ -56,8 +56,7 @@ To be compatible with users who update their Pebble Classic or Pebble Steel to
 firmware 3.x the following important changes **MUST** be made:
 
 * If you are adding support for Aplite, add `aplite` to your `targetPlatforms`
-  array in `package.json`, or tick the 'Build Aplite' box in 'Settings' on
-  CloudPebble.
+  array in `package.json`.
 
 * Recompile your app with at least Pebble SDK 3.8 (coming soon!). The 3.x on
   Aplite files will reside in `/aplite/` instead of the `.pbw` root folder.

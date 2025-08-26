@@ -21,11 +21,10 @@ guide_group: tools-and-resources
 order: 3
 ---
 
-In order to install apps from the local SDK using the `pebble` tool or from
-[CloudPebble]({{ site.links.cloudpebble }}), the Pebble Android or iOS app must
-be set up to allow a connection from the computer to the watch. This enables
-viewing logs and installing apps directly from the development environment,
-speeding up development.
+In order to install apps from the local SDK using the `pebble` tool, the Pebble
+Android or iOS app must be set up to allow a connection from the computer to the
+watch. This enables viewing logs and installing apps directly from the
+development environment, speeding up development.
 
 Follow the steps illustrated below to get started.
 
@@ -48,8 +47,7 @@ In the Pebble mobile app:
   
   ![](/images/guides/publishing-tools/enable-dev-android-4.png =300x)
   
-* If using the `pebble` tool, make note of the 'Server IP'. If using
-  CloudPebble, this will be handled automatically.
+* Make note of the 'Server IP' and use it with the `--phone` argument.
 
 
 ## iOS Instructions
@@ -69,5 +67,4 @@ In the Pebble mobile app:
 
   ![](/images/guides/publishing-tools/enable-dev-ios-3.png =300x)
   
-* If using the `pebble` tool, make note of the phone's 'Listening on' IP
-  address. If using CloudPebble, this will be handled automatically.
+* Make note of the 'Server IP' and use it with the `--phone` argument.

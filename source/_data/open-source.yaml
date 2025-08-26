@@ -12,21 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: CloudPebble
-  slug: cloudpebble
-  projects:
-    - name: CloudPebble
-      github: pebble/cloudpebble
-      summary: Web-based IDE for Pebble development.
-      license: MIT
-    - name: CloudPebble QEMU Controller
-      github: pebble/cloudpebble-qemu-controller
-      summary: Controls QEMUs
-      license: MIT
-    - name: CloudPebble ycmd Proxy
-      github: pebble/cloudpebble-ycmd-proxy
-      summary: Handles communication with the autocompletion daemon(s) on behalf of CloudPebble clients.
-      license: MIT
 - name: Pebble SDK
   slug: pebble-sdk
   projects:

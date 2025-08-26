@@ -18,10 +18,7 @@
  * @namespace console
  * @desc This provides an interface to the app's debugging console. 
  * 
- *   If you're using {@link https://cloudpebble.net CloudPebble}, these logs 
- *   will appear when you press 'View Logs' after launching your application.
- *
- *   If you're using the local SDK, you can use the `$ pebble logs` command or: 
+ *   Use the `$ pebble logs` command or: 
  *
  *   `$ pebble install --emulator basalt --logs`
  *

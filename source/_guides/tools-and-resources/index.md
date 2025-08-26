@@ -26,9 +26,9 @@ hide_comments: true
 
 This section of the developer guides contains information and resources
 surrounding management of SDK projects themselves, as well as additional
-information on using the Pebble emulator, CloudPebble, and the local SDK
-command-line utility. Developers looking to add internationalization support can
-also find information and tools for that purpose here.
+information on using the Pebble emulator and the local SDK command-line utility.
+Developers looking to add internationalization support can also find information
+and tools for that purpose here.
 
 
 ## Contents

@@ -139,8 +139,7 @@ graphics_draw_text(ctx, text, s_font, bounds, GTextOverflowModeWordWrap,
 The font rendering process was improved in SDK 2.8. However, in some cases this
 may cause the appearance of custom fonts to change slightly. To revert to the
 old rendering process, add `"compatibility": "2.7"` to your font's object in the
-`media` array (shown above) in `package.json` or set the 'Compatibility'
-property in the font's resource view in CloudPebble to '2.7 and earlier'.
+`media` array (shown above) in `package.json`.
 
 
 ## Choosing Font Characters

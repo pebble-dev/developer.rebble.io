@@ -918,19 +918,6 @@ experience to each individual user.
 
 ## Testing Pins
 
-**Using CloudPebble**
-
-When editing a CloudPebble project, developers can test inserting and deleting
-any pin using the 'Timeline' tab at the top left of the screen. Use the text
-field to construct the pin, then one of the two buttons to test it out.
-
-> Note: Once a pin with a specific `id` has been deleted, that `id` cannot be
-> reused.
-
-![](/images/guides/timeline/cloudpebble-ui.png)
-
-**Push Pins with the Pebble Tool**
-
 It is also possible to push new timeline pins using the `pebble`
 {% guide_link tools-and-resources/pebble-tool %}. Prepare your pin in a JSON
 file, such as `example-pin.json` shown below:

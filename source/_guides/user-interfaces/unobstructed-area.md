@@ -321,9 +321,6 @@ To disable Timeline Quick View, you can use:
 $ pebble emu-set-timeline-quick-view off
 ```
 
-> [CloudPebble]({{site.links.cloudpebble}}) does not currently support toggling
-> Timeline Quick View, but it will be added as part of a future update.
-
 
 ### Additional Considerations
 

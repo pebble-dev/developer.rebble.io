@@ -47,8 +47,8 @@ apps, and API calls will return values to reflect this.
 
 In addition, any app using the ``HealthService`` API must declare the 'health'
 capability in order to be accepted by the
-[developer portal]({{ site.links.devportal }}). This can be done in
-CloudPebble 'Settings', or in `package.json` in the local SDK:
+[developer portal]({{ site.links.devportal }}). This can be done in `package.json`
+in the SDK:
 
 ```js
 "capabilities": [ "health" ]

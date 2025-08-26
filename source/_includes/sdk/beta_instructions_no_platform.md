@@ -16,8 +16,7 @@
 
 ### Windows
 
-Installing the Pebble SDK directly on Windows is not supported at this time. We
-recommend you use [CloudPebble]({{ site.links.cloudpebble }}) instead.
+Installing the Pebble SDK directly on Windows is not supported at this time.
 
 Alternatively, you can run a Linux virtual machine:
 

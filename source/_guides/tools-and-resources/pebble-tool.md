@@ -21,15 +21,9 @@ order: 2
 toc_max_depth: 2
 ---
 
-{% alert notice %}
-This page applies only to developers using the SDK on their local machine;
-CloudPebble allows you to use many of these features in 'Compilation'.
-{% endalert %}
-
 The Pebble SDK includes a command line tool called `pebble`. This tool allows
-developers to create new projects, build projects, install apps on a watch and debug
-them. This tool is part of the SDK, but many of these functions are made
-available on [CloudPebble]({{ site.links.cloudpebble }}).
+developers to create new projects, build projects, install apps on a watch and
+debug them.
 
 
 ## Enabling the Developer Connection
@@ -43,8 +37,7 @@ The `pebble` tool requires two configuration steps:
 1. Enable the {% guide_link tools-and-resources/developer-connection %} in the
    Pebble mobile application.
 2. Give the phone IP address to the `pebble` tool as shown below to communicate
-   with a watch. This is not required when using the emulator or connecting via
-   CloudPebble.
+   with a watch. This is not required when using the emulator.
 
 
 ## Connecting to a Pebble
@@ -76,14 +69,6 @@ is the path to the device file. On OS X, this is similar to
 $ pebble install --serial SERIAL
 ```
 
-Alternatively, connect to a watch connected to the phone via the CloudPebble
-proxy, instead of local Wi-Fi. This removes the need for local inter-device
-communication, but still requires an internet connection on both devices:
-
-```nc|text
-$ pebble install --cloudpebble
-```
-
 
 ## Configure the Pebble Tool
 
@@ -105,14 +90,6 @@ Save the default instance of QEMU:
 $ export PEBBLE_QEMU=localhost:12344
 ```
 
-{% comment %}
-Always use the CloudPebble proxy:
-
-```text
-$ export PEBBLE_CLOUDPEBBLE
-```
-{% endcomment %}
-
 
 ## Debugging Output
 
@@ -131,8 +108,8 @@ $ pebble install -vvvv
 ## Installing Watchapps
 
 In addition to interacting with a physical Pebble watch, the Pebble emulator
-included in the local SDK (as well as on CloudPebble) can be used to run and
-debug apps without any physical hardware.
+included in the local SDK can be used to run and debug apps without any physical
+hardware.
 
 Build an app, then use `pebble install` with the `--emulator` flag to choose
 between an emulator platform with `aplite`, `basalt`, or `chalk`. This allows

@@ -45,13 +45,6 @@ scripts:
           {{ example.description | markdownify }}
           <p>
             <a href="https://github.com/{{ example.repo }}/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
-            {% unless example.no_cloudpebble %}
-              {% if example.beta_cloudpebble %}
-              <a href="{{ site.links.cloudpebble_beta }}ide/import/github/{{ example.repo }}/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
-              {% else %}
-            <a href="{{ site.links.cloudpebble }}ide/import/github/{{ example.repo }}/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
-              {% endif %}
-            {% endunless %}
           </p>
         </div>
       </div>

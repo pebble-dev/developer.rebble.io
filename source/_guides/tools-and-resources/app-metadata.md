@@ -21,11 +21,6 @@ guide_group: tools-and-resources
 order: 0
 ---
 
-{% alert notice %}
-This page applies only to developers using the SDK on their local machine;
-CloudPebble allows you to manages this part of development in 'Settings'.
-{% endalert %}
-
 ## Project Defaults
 
 After creating a new local SDK Pebble project, additional setup of the project
