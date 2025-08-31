@@ -154,12 +154,10 @@ The Pebble physical buttons are emulated with the following mapping:
 
 | Button | Key |
 |--------|-----|
-| Back | `Q` |
-| Up | `W` |
-| Select | `S` |
-| Down | `X` |
-
-On some systems the arrow keys may also be supported.
+| Back | `Q`, left arrow |
+| Up | `W`, up arrow |
+| Select | `S`, right arrow |
+| Down | `X`, down arrow |
 
 
 ## Pebble Timeline in the Emulator
