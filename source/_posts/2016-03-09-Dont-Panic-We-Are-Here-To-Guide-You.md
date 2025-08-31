@@ -38,7 +38,7 @@ along your path to becoming an awesome Pebble developer!
   [*Appstore Publishing*](/guides/appstore-publishing) to help you get your hard
   work into the hands (onto the wrists?) of others.
 
-* We’ve added new guides for {% guide_link tools-and-resources/cloudpebble %},
+* We’ve added new guides for
   [*Pebble Draw Commands*](/guides/graphics-and-animations/vector-graphics), and
   more areas of Pebble development.
 
