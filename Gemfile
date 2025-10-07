@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source 'https://rubygems.org'
+source 'https://gem.coop'
 ruby file: '.ruby-version'
 
 gem 'slugize', '>= 0.0.3'
