@@ -53,9 +53,8 @@ done, you should end up with a watchface looking like this:
 ## First Steps
 
 To continue from the last part, you can either modify your existing Pebble
-project or create a new one, using the code from that project's main `.c` file
-as a starting template. For reference, that should look
-[something like this](https://gist.github.com/pebble-gists/9b9d50b990d742a3ae34).
+project or create a new one, using the code from the end of the last tutorial
+as a starting point. Don't forget also to include changes to `package.json`.
 
 The result of the first part should look something like this - a basic time
 display:
@@ -77,23 +76,26 @@ Let's improve it!
 
 App resources (fonts and images etc.) are managed in the `package.json`
 file in the project's root directory, as detailed in
-[*App Resources*](/guides/app-resources/). All image files and fonts must 
-reside in subfolders of the `/resources` folder of your project. Below is an 
-example entry in the `media` array:
+[*App Resources*](/guides/app-resources/). Below is an  example entry in the
+`resources` section:
 
 ```json
-"media": [
-  {
-    "type": "font",
-    "name": "FONT_PERFECT_DOS_48",
-    "file": "fonts/perfect-dos-vga.ttf",
-    "compatibility":"2.7"
-  }
-]
+"resources": {
+  "media": [
+    {
+      "type": "font",
+      "name": "FONT_PERFECT_DOS_48",
+      "file": "fonts/perfect-dos-vga.ttf",
+      "compatibility":"2.7"
+    }
+  ]
+}
 ```
 
-In the example above, we would place our `perfect-dos-vga.ttf` file in the
-`/resources/fonts/` folder of our project.
+All image files and fonts must reside in subfolders of the `/resources` folder
+of your project. In the example above, we would place our `perfect-dos-vga.ttf`
+file in the `/resources/fonts/` folder of our project. So, create this if it
+doesn't already exist. 
 
 A custom font file must be a
 [TrueType](http://en.wikipedia.org/wiki/TrueType) font in the `.ttf` file format.
@@ -103,7 +105,8 @@ A custom font file must be a
 Now we will substitute the system font used before (`FONT_KEY_BITHAM_42_BOLD`)
 for our newly imported one.
 
-To do this, we will declare a ``GFont`` globally.
+To do this, we will declare a ``GFont`` globally near the top of the source
+file.
 
 ```c
 // Declare globally
@@ -121,7 +124,7 @@ void main_window_load() {
   // Create GFont
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_PERFECT_DOS_48));
 
-  // Apply to TextLayer
+  // Apply custom font to TextLayer
   text_layer_set_font(s_time_layer, s_time_font);
   // ...
 }
@@ -157,11 +160,12 @@ An example screenshot is shown below:
 
 ## Adding a Bitmap
 
-The Pebble SDK also allows you to use a 2-color (black and white) bitmap image
-in your watchface project. You can ensure that you meet this requirement by
-checking the export settings in your graphics package, or by purely using only
-white (`#FFFFFF`) and black (`#000000`) in the image's creation. Another
-alternative is to use a dithering tool such as
+The Pebble SDK also allows you to use images in your project and handles the
+process of preparing them for the watch. In this tutorial we will use a 2-color
+(black and white) bitmap image as an example. You can ensure that you meet this
+requirement by checking the export settings in your graphics package, or by
+purely using only white (`#FFFFFF`) and black (`#000000`) in the image's
+creation. Another alternative is to use a dithering tool such as
 [HyperDither](http://2002-2010.tinrocket.com/software/hyperdither/index.html).
 This will be loaded from the watchface's resources into a ``GBitmap`` data
 structure before being displayed using a ``BitmapLayer`` element. These two
@@ -181,7 +185,7 @@ object will have a `type` of `bitmap`. Below is an example:
 ```
 
 As before, here is an example bitmap we have created for you to use, which looks
-like this:
+as shown below. Be sure to save it to a `resources/images` directory.
 
 [![background](/images/getting-started/watchface-tutorial/background.png "background")]({{ site.asset_path }}/images/getting-started/watchface-tutorial/background.png)
 
@@ -219,17 +223,18 @@ As always, the final step should be to ensure we free up the memory consumed by
 these new elements in `main_window_unload()`:
 
 ```c
-// Destroy GBitmap
-gbitmap_destroy(s_background_bitmap);
-
 // Destroy BitmapLayer
 bitmap_layer_destroy(s_background_layer);
+
+// Destroy GBitmap
+gbitmap_destroy(s_background_bitmap);
 ```
 
 The final step is to set the background color of the main ``Window`` to match
-the background image. Do this in `init()`:
+the background image. Do this in `init()` after `window_create()`:
 
 ```c
+// Change the background color
 window_set_background_color(s_main_window, GColorBlack);
 ```
 
@@ -259,9 +264,125 @@ the same way as the time display one to show the current date (hint: look at the
 available for `strftime()`!)
 
 As with last time, you can compare your own code to the example source code
-using the button below.
+provided below.
 
-[View Source Code >{center,bg-lightblue,fg-white}](https://gist.github.com/d216d9e0b840ed296539)
+<details>
+<summary>View source code</summary>
+{% markdown %}
+```c
+#include <pebble.h>
+
+static Window *s_main_window;
+static TextLayer *s_time_layer;
+static BitmapLayer *s_background_layer;
+
+static GFont s_time_font;
+static GBitmap *s_background_bitmap;
+
+static void update_time() {
+  // Get a tm structure
+  time_t temp = time(NULL);
+  struct tm *tick_time = localtime(&temp);
+
+  // Write the current hours and minutes into a buffer
+  static char s_buffer[8];
+  strftime(s_buffer, sizeof(s_buffer), clock_is_24h_style() ?
+                                          "%H:%M" : "%I:%M", tick_time);
+
+  // Display this time on the TextLayer
+  text_layer_set_text(s_time_layer, s_buffer);
+}
+
+static void main_window_load(Window *window) {
+  // Get information about the Window
+  Layer *window_layer = window_get_root_layer(window);
+  GRect bounds = layer_get_bounds(window_layer);
+
+  // Create GBitmap
+  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
+
+  // Create BitmapLayer to display the GBitmap
+  s_background_layer = bitmap_layer_create(bounds);
+
+  // Set the bitmap onto the layer and add to the window
+  bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+  layer_add_child(window_layer, bitmap_layer_get_layer(s_background_layer));
+
+  // Create GFont
+  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_PERFECT_DOS_48));
+
+  // Create the TextLayer with specific bounds
+  s_time_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
+
+  // Improve the layout to be more like a watchface
+  text_layer_set_background_color(s_time_layer, GColorClear);
+  text_layer_set_text_color(s_time_layer, GColorBlack);
+  text_layer_set_text(s_time_layer, "00:00");
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+
+  // Apply custom font to TextLayer
+  text_layer_set_font(s_time_layer, s_time_font);
+
+  // Add it as a child layer to the Window's root layer
+  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+}
+
+static void main_window_unload(Window *window) {
+  // Destroy TextLayer
+  text_layer_destroy(s_time_layer);
+
+  // Unload GFont
+  fonts_unload_custom_font(s_time_font);
+
+  // Destroy BitmapLayer
+  bitmap_layer_destroy(s_background_layer);
+
+  // Destroy GBitmap
+  gbitmap_destroy(s_background_bitmap);
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+  update_time();
+}
+
+static void init() {
+  // Create main Window element and assign to pointer
+  s_main_window = window_create();
+
+  // Change the background color
+  window_set_background_color(s_main_window, GColorBlack);
+
+  // Set handlers to manage the elements inside the Window
+  window_set_window_handlers(s_main_window, (WindowHandlers) {
+    .load = main_window_load,
+    .unload = main_window_unload
+  });
+
+  // Show the Window on the watch, with animated=true
+  window_stack_push(s_main_window, true);
+
+  // Register with TickTimerService
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+
+  // Make sure the time is displayed from the start
+  update_time();
+}
+
+static void deinit() {
+  // Destroy Window
+  window_destroy(s_main_window);
+}
+
+int main(void) {
+  init();
+  app_event_loop();
+  deinit();
+}
+```
+{% endmarkdown %}
+</details>
 
 
 ## What's Next?
