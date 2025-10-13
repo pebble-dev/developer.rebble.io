@@ -62,7 +62,7 @@ hidden when reconnected. Save the image below for use in this project:
 
 Add this icon to your project by copying the above icon image to the
 `/resources/images` project directory, and adding a new JSON object to the
-`media` array in `package.json` such as the following:
+`media` array in `package.json`:
 
 ```js
 {
@@ -138,8 +138,9 @@ twice. It may take a few seconds for the watch to register the disconnection.
 
 ## Conclusion
 
-Now our watchface shows the watch's remaining battery level! It's discreet,
-but very useful.
+Now our watchface shows the watch's connection status, which is useful if the
+user goes out of range of their phone or might want to be aware notifications
+might not come through when disconnected.
 
 As usual, you can compare your code to the example code provided below.
 

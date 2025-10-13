@@ -276,6 +276,9 @@ ctx.stroke();
 This is the complete code assembled so far, including a helpful function for
 drawing the hands and converting a time fraction to a Radian angle.
 
+<details>
+<summary>View watchface source code</summary>
+{% markdown %}
 ```js
 var rocky = require('rocky');
 
@@ -342,6 +345,9 @@ rocky.on('minutechange', function(event) {
   rocky.requestDraw();
 });
 ```
+{% endmarkdown %}
+</details>
+
 
 Now compile and run your project in the emulator to see the results!
 

@@ -54,7 +54,7 @@ done, you should end up with a watchface looking like this:
 
 To continue from the last part, you can either modify your existing Pebble
 project or create a new one, using the code from the end of the last tutorial
-as a starting point. Don't forget also to include changes to `package.json`.
+as a starting point. Don't forget to also include changes to `package.json`.
 
 The result of the first part should look something like this - a basic time
 display:
@@ -76,7 +76,7 @@ Let's improve it!
 
 App resources (fonts and images etc.) are managed in the `package.json`
 file in the project's root directory, as detailed in
-[*App Resources*](/guides/app-resources/). Below is an  example entry in the
+[*App Resources*](/guides/app-resources/). Below is an example entry in the
 `resources` section:
 
 ```json

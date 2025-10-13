@@ -83,9 +83,9 @@ Now we can start to write some code!
 
 Our first source file is already created for you by the `pebble` command
 line tool and lives in the project's `src` directory. By default, this file
-contains sample code which you can safely remove completely, since we will be
-starting from scratch. Alternatively, you can avoid this by using the `--simple`
-flag when creating the project.
+contains sample code which you can safely remove, since we will be starting from
+scratch. Alternatively, you can avoid this by using the `--simple` flag when
+creating the project.
 
 Let's add the basic code segments which are required by every watchapp. The
 first of these is the main directive to use the Pebble SDK at the top of the
@@ -95,7 +95,7 @@ file like so:
 #include <pebble.h>
 ```
 
-After this first line, we should begin with the recommended app structure,
+After this first line, we begin with the recommended app structure,
 specifically a standard C `main()` function and two other functions to help us
 organize the creation and destruction of all the Pebble SDK elements. This helps
 make the task of managing memory allocation and deallocation as simple as

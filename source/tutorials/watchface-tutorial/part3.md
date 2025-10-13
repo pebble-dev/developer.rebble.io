@@ -208,7 +208,7 @@ missed. The code snippet below shows this process using two variables to specify
 the inbox and outbox size (in bytes):
 
 ```c
-// Open AppMessage
+// Open AppMessage with some useful example buffer sizes
 const int inbox_size = 256;
 const int outbox_size = 128;
 app_message_open(inbox_size, outbox_size);
@@ -704,7 +704,7 @@ static void init() {
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
 
-  // Open AppMessage
+  // Open AppMessage with some useful example buffer sizes
   const int inbox_size = 256;
   const int outbox_size = 128;
   app_message_open(inbox_size, outbox_size);

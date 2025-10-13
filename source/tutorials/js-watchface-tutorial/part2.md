@@ -351,6 +351,9 @@ This is the complete code for this tutorial, separated by JS file. Compare it
 to yours if you have problems with any part of it or it is not working as
 expected.
 
+<details>
+<summary>View watchface source code</summary>
+{% markdown %}
 ```js
 // File: rocky/index.js
 
@@ -457,7 +460,12 @@ rocky.on('message', function(event) {
   }
 });
 ```
+{% endmarkdown %}
+</details>
 
+<details>
+<summary>View PKJS source code</summary>
+{% markdown %}
 ```js
 // File: pkjs/index.js
 
@@ -502,6 +510,8 @@ Pebble.on('message', function(event) {
   }
 });
 ```
+{% endmarkdown %}
+</details>
 
 
 ## Conclusion
@@ -528,3 +538,7 @@ provided above.
 
 We hope you enjoyed this tutorial and that it inspires you to make something
 awesome!
+
+Why not let us know what you've created on Fediverse
+[@rebble](https://mastodon.social/@rebble), or join our epic developer
+community on [Discord]({{ site.links.discord_invite }}).
