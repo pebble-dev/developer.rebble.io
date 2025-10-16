@@ -218,9 +218,6 @@ example the Pebble Time platform `basalt`:
 pebble install --emulator basalt
 ```
 
-> Use of the emulator may require more dependencies to be installed depending
-> on your system and configuration.
-
 Congratulations! You should see that you have a new item in the watchface menu,
 but it is entirely blank!
 
