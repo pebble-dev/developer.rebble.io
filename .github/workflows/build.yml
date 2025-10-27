@@ -40,7 +40,7 @@ jobs:
           ./waf docs_sdk
 
       - name: Publish docs artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docs-c
           path: |
@@ -63,7 +63,7 @@ jobs:
           ./gradlew releaseJavadoc
 
       - name: Publish docs artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docs-android
           path: PebbleKit/PebbleKit/build/docs/javadoc
@@ -79,7 +79,7 @@ jobs:
           repository: pebble/pebble-ios-sdk
 
       - name: Publish docs artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docs-ios
           path: PebbleKit-iOS.docset/Contents/Resources/Documents
