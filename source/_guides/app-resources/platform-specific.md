@@ -28,18 +28,18 @@ platform.
 
 The follows tags exist for each platform:
 
-| Aplite  | Basalt     | Chalk      | Diorite | Emery      |
-|---------|------------|------------|---------|------------|
-| rect    | rect       | round      | rect    | rect       |
-| bw      | color      | color      | bw      | color      |
-| aplite  | basalt     | chalk      | diroite | emery      |
-| 144w    | 144w       | 180w       | 144w    | 220w       |
-| 168h    | 168h       | 180h       | 168h    | 228h       |
-| compass | compass    | compass    |         | compass    |
-|         | mic        | mic        | mic     | mic        |
-|         | strap      | strap      | strap   | strap      |
-|         | strappower | strappower |         | strappower |
-|         | health     | health     | health  | health     |
+| Aplite  | Basalt     | Chalk      | Diorite | Emery      | Flint   |
+|---------|------------|------------|---------|------------|---------|
+| rect    | rect       | round      | rect    | rect       | rect    |
+| bw      | color      | color      | bw      | color      | bw      |
+| aplite  | basalt     | chalk      | diroite | emery      | flint   |
+| 144w    | 144w       | 180w       | 144w    | 220w       | 144w    |
+| 168h    | 168h       | 180h       | 168h    | 228h       | 168h    |
+| compass | compass    | compass    |         | compass    | compass |
+|         | mic        | mic        | mic     | mic        | mic     |
+|         | strap      | strap      | strap   | strap      |         |
+|         | strappower | strappower |         | strappower |         |
+|         | health     | health     | health  | health     | health  |
 
 
 To tag a resource, add the tags after the file's using tildes (`~`) — for

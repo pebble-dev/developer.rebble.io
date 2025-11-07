@@ -27,6 +27,7 @@ platforms:
   - chalk
   - diorite
   - emery
+  - flint
 ---
 
 Some of the best Pebble apps make good use of the ``Animation`` and the

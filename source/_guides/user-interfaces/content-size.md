@@ -68,7 +68,7 @@ and `ContentSize`:
 
 Platform | Text Size: Small | Text Size: Medium | Text Size: Large
 ---------|------------------|-------------------|-----------------
-Aplite, Basalt, Chalk, Diorite | ContentSize: Small | ContentSize: Medium | ContentSize: Large
+Aplite, Basalt, Chalk, Diorite, Flint | ContentSize: Small | ContentSize: Medium | ContentSize: Large
 Emery | ContentSize: Medium | ContentSize: Large | ContentSize: Extra Large
 
 > *At present the Text Size setting only affects notifications and some system

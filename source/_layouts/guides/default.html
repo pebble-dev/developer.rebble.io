@@ -30,6 +30,14 @@ regenerate: true
         (Pebble Classic, Pebble Steel).
       </p>
     </div>
+    {% elsif page.platforms contains 'basalt' and page.platforms contains 'chalk' and page.platforms contains 'diorite' %}
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide does not apply to apps built to run on the Aplite, Emery or Flint platforms
+        (Pebble Classic, Pebble Steel, Pebble Time 2* and Pebble 2 Duo).
+      </p>
+    </div>
     {% elsif page.platforms contains 'basalt' and page.platforms contains 'chalk' %}
     <div class="alert alert--fg-white alert--bg-purple alert--medium">
       <p>

@@ -24,6 +24,7 @@ platforms:
   - chalk
   - diorite
   - emery
+  - flint
 related_docs:
   - HealthService
 related_examples:

@@ -22,8 +22,8 @@ order: 0
 The difference in capabilities between the various Pebble hardware platforms are
 listed in
 {% guide_link tools-and-resources/hardware-information %}. For example, the
-Basalt, Chalk and Emery platforms support 64 colors, whereas the Aplite and
-Diorite platforms only support two colors. This can make developing apps with
+Basalt, Chalk and Emery platforms support 64 colors, whereas the Aplite, Diorite
+and Flint platforms only support two colors. This can make developing apps with
 rich color layouts difficult when considering compatibility with other non-color
 hardware. Another example is using platform specific APIs such as Health or
 Dictation.
@@ -101,6 +101,7 @@ better used to select an entire block of code.
 | `PBL_PLATFORM_CHALK` | None | Built for Pebble Time Round. |
 | `PBL_PLATFORM_DIORITE` | None | Built for Pebble 2. |
 | `PBL_PLATFORM_EMERY` | None | Built for Pebble Time 2. |
+| `PBL_PLATFORM_FLINT` | None | Built for Pebble 2 Duo. |
 | `PBL_SDK_2` | None | Compiling with SDK 2.x (deprecated). |
 | `PBL_SDK_3` | None | Compiling with SDK 3.x. or 4.x. |
 
@@ -135,7 +136,7 @@ static void window_load(Window *window) {
 ```
 
 The hardcoded width and height of this layer will cover the entire screen on
-Aplite, Basalt and Diorite, but not on Chalk or Emery. This kind of screen
+Aplite, Basalt, Diorite and Flint, but not on Chalk or Emery. This kind of screen
 size-dependant calculation should use the ``UnobstructedArea`` bounds of the
 ``Window`` itself:
 
@@ -323,7 +324,7 @@ With the availability of color support on Basalt, Chalk and Emery, developers
 may wish to include color versions of resources that had previously been
 pre-processed for Pebble's black and white display. Including both versions of
 the resource is expensive from a resource storage perspective, and lays the
-burden of packing redundant color resources in an Aplite or Diorite app when
+burden of packing redundant color resources in an Aplite, Diorite or Flint app when
 built for multiple platforms.
 
 To solve this problem, the Pebble SDK allows developers to specify which version

@@ -23,6 +23,7 @@ platforms:
   - chalk
   - diorite
   - emery
+  - flint
 related_docs:
   - Dictation
 related_examples:
