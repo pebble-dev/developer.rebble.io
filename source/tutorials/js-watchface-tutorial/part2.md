@@ -539,6 +539,6 @@ provided above.
 We hope you enjoyed this tutorial and that it inspires you to make something
 awesome!
 
-Why not let us know what you've created on Fediverse
+Why not let us know what you've created on the Fediverse
 [@rebble](https://mastodon.social/@rebble), or join our epic developer
 community on [Discord]({{ site.links.discord_invite }}).
