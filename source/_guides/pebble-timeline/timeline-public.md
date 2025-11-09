@@ -46,7 +46,7 @@ every 30 seconds.
 Developers can push data to the timeline using their own backend servers. Pins
 are created and updated using HTTPS requests to the Pebble timeline web API.
 
-> Pins pushed to the Pebble timeline web API may take **up to** 15 minutes to
+> Pins pushed to the Pebble timeline web API may take **up to** 30 minutes to
 > appear on a user's watch. Although most pins can arrive faster than this, we
 > recommend developers do not design apps that rely on near-realtime updating of
 > pins.
@@ -58,7 +58,7 @@ To create a pin, send a `PUT` request to the following URL scheme, where `ID` is
 the `id` of the pin object. For example 'reservation-1395203':
 
 ```text
-PUT https://timeline-api.getpebble.com/v1/user/pins/ID
+PUT https://timeline-api.rebble.io/v1/user/pins/ID
 ```
 
 Use the following headers, where `X-User-Token` is the user's
@@ -90,7 +90,7 @@ sample of an object is shown below:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
     -d @pin.json
@@ -104,7 +104,7 @@ To update a pin, send a `PUT` request with a new JSON object with the **same
 `id`**.
 
 ```text
-PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203
 
 ```
 
@@ -134,7 +134,7 @@ included. The example below shows an event updated with a new `time`:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
     -d @pin.json
@@ -147,7 +147,7 @@ OK
 Delete a pin by issuing a HTTP `DELETE` request.
 
 ```text
-DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+DELETE https://timeline-api.rebble.io/v1/user/pins/reservation-1395203
 ```
 
 Remember to include the user token in the headers.
@@ -164,7 +164,7 @@ event's details so that it can remain visible and useful to the user.
 #### Curl Example
 
 ```bash
-$ curl -X DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 \
+$ curl -X DELETE https://timeline-api.rebble.io/v1/user/pins/reservation-1395203 \
     --header "Content-Type: application/json" \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"
 OK
@@ -211,7 +211,7 @@ The pin body remains the same:
 #### Curl Example
 
 ```bash
-$ curl -X PUT https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 \
+$ curl -X PUT https://timeline-api.rebble.io/v1/shared/pins/giants-game-1 \
     --header "Content-Type: application/json" \
     --header "X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9" \
     --header "X-Pin-Topics: giants,redsox,baseball" \
@@ -240,7 +240,7 @@ X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9
 #### Curl Example
 
 ```bash
-$ curl -X DELETE https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 \
+$ curl -X DELETE https://timeline-api.rebble.io/v1/shared/pins/giants-game-1 \
     --header "Content-Type: application/json" \
     --header "X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9" \
 OK
@@ -266,7 +266,7 @@ X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
 #### Curl Example
 
 ```bash
-$ curl -X GET https://timeline-api.getpebble.com/v1/user/subscriptions \
+$ curl -X GET https://timeline-api.rebble.io/v1/user/subscriptions \
     --header "X-User-Token: a70b23d3820e9ee640aeb590fdf03a56" \
 ```
 
@@ -310,33 +310,3 @@ of the following responses.
 | 410 | `{ "errorCode": "INVALID_USER_TOKEN" }` | The user token has been invalidated, or does not exist. All further updates with this user token will fail. You should not send further updates for this user token. A user token can become invalidated when a user uninstalls an app for example. |
 | 429 | `{ "errorCode": "RATE_LIMIT_EXCEEDED" }` | Server is sending updates too quickly, and has been rate limited (see [*Rate Limiting*](#rate-limiting) below). |
 | 503 | `{ "errorCode": "SERVICE_UNAVAILABLE" }` | Could not save pin due to a temporary server error. |
-
-
-## Rate Limiting
-
-For requests using API Keys, developers can make up to 5000 requests per minute.
-For requests using User Tokens, up to 300 requests every 15 minutes can be made.
-Check the returned HTTP headers of any API request to see the current rate limit
-status:
-
-```text
-$ curl -i https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
-
-HTTP/1.1 429 OK
-date: Wed, 13 May 2015 21:36:58 GMT
-x-ratelimit-percent: 100
-retry-after: 43
-```
-
-The headers contain information about the current rate limit status:
-
-| Header Name | Description |
-|-------------|-------------|
-| `x-ratelimit-percent` | The percentage of the rate limit currently utilized. |
-| `retry-after` | When `x-ratelimit-percent` has reached `100`, this header will be set to the number of seconds after which the rate limit will reset. |
-
-When the rate limit is exceeded, the response body also reports the error:
-
-```text
-{ "errorCode":"RATE_LIMIT_EXCEEDED" }
-```

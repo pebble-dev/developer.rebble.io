@@ -55,6 +55,22 @@ APIs, you will receive an error similar to the following message:
 [INFO    ] No token available for this app and user.
 ```
 
+### Shared Pins
+
+For best compatibility with applications, when using shared pins, it is
+recommended to define the following in your PebbleKit JS code:
+
+```js
+var getTimelineSubscribeToTopicURL = function(topic) {
+    var encodedTopic = encodeURIComponent(topic);
+    return "https://timeline-api.rebble.io/v1/user/subscriptions/" + encodedTopic;
+};
+
+var getTimelineSubscriptionsListURL = function() {
+    return "https://timeline-api.rebble.io/v1/user/subscriptions";
+};
+```
+
 
 ## Get a Timeline Token
 
