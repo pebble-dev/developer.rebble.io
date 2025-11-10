@@ -241,56 +241,37 @@ function init() {
 
   function buildMap(events) {
     if (!map) {
-      var mapOptions = {
-        center: new google.maps.LatLng(37.442362, -122.162224),
-        zoom: 8,
-        maxZoom: 8,
-        streetViewControl: false,
-        scrollwheel: false
-      };
-      bounds = new google.maps.LatLngBounds();
-      map = new google.maps.Map(document.getElementById('js-events__map'), mapOptions);
+      map = L.map('js-events__map').setView([37.442362, -122.162224], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      bounds = map.getBounds();
+      map.on('popupopen', function(e) {
+        highlightEvent(e);
+      });
+      map.on('popupclose', function(e) {
+        removeHighlights();
+      });
     }
     events.forEach(function (event) {
       if (event.latitude && event.longitude) {
-        var loc = new google.maps.LatLng(event.latitude, event.longitude);
-        var infoWindow = new google.maps.InfoWindow({
-          content: event.title
+        var loc = L.latLng(event.latitude, event.longitude);
+        var icon = L.icon({
+          iconUrl: '{{ '/assets/images/community/events/marker.svg' | absolute_url }}',
+          iconSize: [25, 25],
+          iconAnchor: [12, 25],
+          popupAnchor: [0, -26],
         });
-        var icon = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
-        if (!event.startDate) {
-          // It's a group, geocode the location
-          icon = 'http://maps.google.com/mapfiles/ms/icons/yellow.png';
-          $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+escape(event.location)+'&sensor=false', null, function (data) {
-              var loc = data.results[0].geometry.location;
-              var marker = new google.maps.Marker({
-                position: loc,
-                map: map,
-                title: event.website + ' : ' + event.title,
-                icon: icon,
-                size: new google.maps.Size(32, 32),
-                zIndex: 1
-              });
-              google.maps.event.addListener(marker, 'click', function() {
-                window.open('https://www.meetup.com/' + event.website);
-              });
-              fitMap(map, loc, bounds);
-          });
-        } else {
-          // It's an event
-          var marker = new google.maps.Marker({
-            position: loc,
-            map: map,
-            title: event.location + ' : ' + event.title,
-            icon: icon,
-            size: new google.maps.Size(32, 32),
-            zIndex: 2
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            scrollToEvent(event);
-          });
-          fitMap(map, loc, bounds);
-        }
+        var marker = L.marker([event.latitude, event.longitude], { icon: icon }).addTo(map);
+
+        popup_content = `<h5>${event.location}</h5>`
+        popup_content += `<b>${event.title}</b>`
+        popup_content += `<p>${event.startDate} - ${event.endDate}</p>`
+        popup_content += `<p><a href="${event.website}">Website</a></p>`
+        var popup = L.popup({ content: popup_content, className: `${event.number}` });
+        marker.bindPopup(popup);
+        fitMap(map, loc, bounds);
       }
     });
     $('.js-events__map').css('display', 'block');
@@ -299,13 +280,22 @@ function init() {
   function fitMap(map, loc, bounds) {
     bounds.extend(loc);
     map.fitBounds(bounds);
-    map.panToBounds(bounds);
+    map.panInsideBounds(bounds);
+  }
+
+  function highlightEvent(event) {
+    var number = event.popup.options.className;
+    var $event = $('.event[data-event-number="' + number + '"]');
+    $event.addClass('event--highlighted');
+  }
+
+  function removeHighlights() {
+    $('.event.event--highlighted').removeClass('event--highlighted');
   }
 
   function scrollToEvent(event) {
-    var $event = $('.event[data-event-number="' + event.number + '"]');
-    $('.event.event--highlighted').removeClass('event--highlighted');
-    $event.addClass('event--highlighted');
+    removeHighlights();
+    highlightEvent(event);
     $('body').scrollTo($event.get(0), 200, {
       offset: function () {
         return {
@@ -317,7 +307,4 @@ function init() {
   }
 };
 
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&callback=init';
-document.body.appendChild(script);
+init();
