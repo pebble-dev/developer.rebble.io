@@ -98,8 +98,8 @@ timeline' to obtain API keys used for pushing pins. See the
 Once published, the key to growth in an app is through promotion. Aside from
 users recommending the app to each other, posting on websites such as the
 [Discord server]({{ site.links.discord_invite }}),
-[Reddit]({{ site.links.reddit }}), and [Twitter]({{ site.links.twitter }})
-can help increase exposure.
+[Reddit]({{ site.links.reddit }}), [Bluesky]({{ site.links.bluesky }}),
+and [Mastodon]({{ site.links.mastodon }}) can help increase exposure.
 
 
 ## Developer Retreat Video

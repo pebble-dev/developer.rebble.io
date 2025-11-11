@@ -71,6 +71,8 @@ links:
   libpebble: https://github.com/pebble-dev/libpebble2
   kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
   discord_invite: http://discord.gg/aRUAYFN
+  bluesky: https://bsky.app/profile/rebble.io
+  mastodon: https://mastodon.social/@rebble
 
 # Jekyll collections.
 collections:
