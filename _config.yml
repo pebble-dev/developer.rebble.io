@@ -54,12 +54,11 @@ links:
   pebble: https://rebble.io
   jobs: https://www.pebble.com/jobs/
   twitter: https://twitter.com/pebbledev/
+  reddit: https://www.reddit.com/r/pebble
   devportal: https://dev-portal.rebble.io/
   site_repo: https://github.com/pebble-dev/developer.rebble.io
   community_resources_repo: https://github.com/pebble/community-resources/
   github: https://github.com/pebble-dev/
-  forums: https://forums.pebble.com
-  forums_developer: https://forums.pebble.com/c/development
   pebblekit_android: https://github.com/pebble/pebble-android-sdk/
   pebblekit_ios: https://github.com/pebble/pebble-ios-sdk/
   examples_org: https://github.com/pebble-examples

@@ -30,8 +30,7 @@ love to see our developers tackling.
 We hope that this list provides you with ideas, inspiration, and a
 glimpse into what we hope to see more of in the future. If you have
 any suggestions for ideas or categories we should add to this list,
-please fill out
-[this form](https://docs.google.com/forms/d/1S6_C4JP5HREK9jAolDXjOepEI1mkZpTTBm_GK6XIzg4/viewform)
+please mention it on [our Discord server]({{ site.links.discord_invite }})
 and let us know what you think!
 
 If you want to show us what you're working on, [reach out to us](/contact). We'd
@@ -60,7 +59,7 @@ dramatically and lets us keep our phones in our pockets at the right time.
 How awesome would it be if Pebblers all over the world were able to have
 that same luxury? Can we incorporate the Pebble timeline into that experience?
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28486/transportation-apps#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Workout Companions
 
@@ -72,7 +71,7 @@ what you did. There are some great timers, stopwatches, running & biking
 trackers, and rep counters out there, but we haven’t yet seen the whole
 package come together.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28487/workout-companions#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Gift Cards, Loyalty, Ticketing
 
@@ -90,7 +89,7 @@ made a lot of sense - get events on your Pebble timeline and launch your tickets
 right from your wrist. How can we get everyone’s tickets and cards onto
 their wrists?
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28498/gift-cards-loyalty-cards-and-ticketing#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Local Discovery
 
@@ -102,7 +101,7 @@ landing right on your timeline. We love using services like Eventbrite,
 Meetup, Songkick, and Bandsintown to discover what’s going on near us —
 how can we bring this to Pebble?
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28488/local-discovery#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Pebble to Pebble Communication
 
@@ -114,7 +113,7 @@ Pebblers without even needing a phone?
 [Boopy](https://apps.rebble.io/application/556211d49853b8c3f30000b9)
 is an awesome start - how far can we take this?
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28489/watch-to-watch-communication#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Tasks, Reminders, Todo Lists
 
@@ -124,7 +123,7 @@ With timeline as a core experience on the Pebble Time and the Voice API
 coming soon, we’re excited to see how developers can make Pebble the
 ultimate tool for productivity.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28490/tasks-reminders-to-dos#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Addictive Games
 
@@ -139,7 +138,7 @@ And don’t forget, you’ve got a few tricks up your sleeve to keep them
 coming back… (e.g. [timeline pins](/guides/pebble-timeline/), the
 [Wakeup API](/guides/events-and-services/wakeups/)).
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28491/addictive-games#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Home
 
@@ -151,7 +150,7 @@ more connected, Pebble can become the primary controller and monitor for everyth
 [Leaf](https://apps.rebble.io/applications/52ccd42551a80d792600002c)
 is an awesome example -- let’s keep it going.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28492/pebble-for-the-home#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Security
 
@@ -162,7 +161,7 @@ has shown us the power of Pebble for easy two factor authentication. Whether
 it’s for physical or digital spaces, a watch that’s always on you is the perfect
 tool to keep what matters safe. Let’s see what else Pebble can unlock...
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28493/pebble-for-security#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Enterprise
 
@@ -173,7 +172,7 @@ services, retailers, and brands. At the same time, employees and managers
 have a newfound ability to notify, organize, coordinate, and learn from
 one another. The grass is green and the sky’s the limit.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28494/pebble-for-businesses#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## On Demand
 
@@ -185,7 +184,7 @@ click away from something awesome.
 
 Let’s give Pebble a few more superpowers…
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28495/pebble-for-on-demand#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Stay in the Know
 
@@ -201,7 +200,7 @@ wherever they are.
 Maybe you even want to find ways to time-travel into
 the future? We’re listening.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28496/pebble-and-staying-in-the-know#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ## Time
 
@@ -212,7 +211,7 @@ sorts of awesome watchfaces -- dynamic, digital, analog, weather... but
 there’s always more that can be done. If you can think up and create new,
 innovative ways to tell time, we’re interested.
 
-[Join the Discussion >{more}](https://forums.getpebble.com/discussion/28497/time#latest)
+[Join the Discussion >{more}]({{ '/community/online/' | absolute_url }})
 
 ---
 

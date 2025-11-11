@@ -259,7 +259,7 @@ blog post!
 
 If there is anything else you would like to know, [this
 thread](http://www.reddit.com/r/pebbledevelopers/comments/314uvg/what_would_you_like_to_know_about_pebble_sdk_30/)
-is just [one]({{site.links.forums_developer}}) [of
+is just [one](https://forums.pebble.com/c/development) [of
 the](https://twitter.com/pebbledev) [many
 ways](/contact) [to get in touch](http://www.meetup.com/pro/pebble/)
 with us and get answers!
