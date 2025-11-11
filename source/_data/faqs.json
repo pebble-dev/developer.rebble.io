@@ -82,15 +82,6 @@
     ]
   },
   {
-    "title": "Hardware Issues",
-    "questions": [
-      {
-        "question": "My screen is artifacting/flashing/ customer support issues",
-        "answer": "Contact [support@getpebble.com](mailto:support@getpebble.com) for RMA issues."
-      }
-    ]
-  },
-  {
     "title": "Pebble SDK 1.x Migration",
     "questions": [
       {
