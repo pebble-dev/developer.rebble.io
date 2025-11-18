@@ -18,7 +18,7 @@ ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 ENV URL=http://developer.rebble.io
 ENV HTTPS_URL=https://developer.rebble.io
-ENV EXTERNAL_SERVER=https://example.com
+ENV EXTERNAL_SERVER=https://events.rebble.io
 ENV SKIP_DOCS=true
 ENV JEKYLL_ENV=production
 

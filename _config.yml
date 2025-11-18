@@ -16,7 +16,7 @@ url: https://developer.rebble.io
 https_url: https://developer.rebble.io
 baseurl:
 asset_path: /assets
-external_server: https://developer-api.getpebble.com
+external_server: https://events.rebble.io
 
 title: Pebble Developers
 description: The official developer website for the Pebble smartwatch.
