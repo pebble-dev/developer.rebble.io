@@ -47,9 +47,13 @@
   {% endif %}
   {% else %}
   <meta property="og:type" content="website" />
+  {% if layout.menu_section_icon %}
+  <meta property="og:image" content="{{ site.asset_path | append: layout.menu_section_icon | absolute_url }}" />
+  {% else %}
   <meta property="og:image" content="{{ site.asset_path | append: '/images/rebble.png' | absolute_url }}" />
   {% endif %}
-  <meta name="theme-color" content="#ff4700">
+  {% endif %}
+  <meta name="theme-color" content="{% if layout.menu_section_color %}{{ layout.menu_section_color }}{% else %}#ff4700{% endif %}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url }}">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
