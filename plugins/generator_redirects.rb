@@ -71,6 +71,7 @@ module Jekyll
       process(@name)
       read_yaml(File.join(base, '_layouts', 'utils'), 'redirect_permanent.html')
       data['redirect_to'] = redirect_to.delete_suffix('index.html')
+      data['sitemap'] = false
     end
   end
 end

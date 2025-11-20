@@ -27,7 +27,9 @@ plugins_dir: plugins/
 
 debug: true
 
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Blog Options
 permalink: none
@@ -138,4 +140,11 @@ defaults:
     values:
       layout: sdk/changelog
       generate_toc: true
-
+  - scope:
+      path: developer.pebble.com
+    values:
+      sitemap: false
+  - scope:
+      path: developer.getpebble.com
+    values:
+      sitemap: false
