@@ -54,15 +54,6 @@ $bigbox--green: #22a048;
 $bigbox--darkgreen: color.adjust($bigbox--green, $lightness: -20%, $space: hsl);
 $bigbox--dark-blue: color.adjust($darkerlightblue, $lightness: -20%, $space: hsl);
 
-$color-guides: $yellow;
-$color-docs: $pink;
-$color-community: $purple;
-$color-more: $green;
-$color-getting-started: $dark-red;
-$color-sdk: $lightblue;
-$color-appstore: $orange;
-$color-other: $dark-grey;
-
 $gray-01: #f4f4f4;
 $gray-02: #444;
 $gray-03: #484848;
@@ -86,6 +77,7 @@ $color-more: $green;
 $color-getting-started: $dark-red;
 $color-sdk: $lightblue;
 $color-appstore: $gray-03;
+$color-other: $dark-grey;
 $color-blog: $orange-02;
 $color-examples: #2c67ce;
 $color-devportal: #00c3fd;
