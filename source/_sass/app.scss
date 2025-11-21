@@ -40,7 +40,8 @@ html {
 
 body {
   padding-top: $header-height;
-  background-color: $gray-01;
+  background-color: var(--dev-bg-primary);
+  color: var(--dev-fg-primary);
 }
 
 .anchor[id],
@@ -59,9 +60,9 @@ body {
 }
 
 code {
-  background-color: $white;
+  background-color: var(--dev-bg-secondary);
   border-radius: 2px;
-  color: color.adjust($base-font-color, $lightness: -20%, $space: hsl);
+  color: var(--dev-fg-tertiary);
   font-family: $monospace;
   font-size: $base-font-size;
   padding: 2px 4px;
@@ -69,7 +70,7 @@ code {
 }
 
 a code {
-  color: color.adjust($base-link-color, $lightness: -10%, $space: hsl);
+  color: var(--dev-fg-tertiary);
 }
 
 .container {
@@ -238,7 +239,7 @@ a code {
 }
 
 .modal-content {
-  background-color: $gray-01;
+  background-color: var(--dev-bg-primary);
 }
 
 .header--skinny {

@@ -17,8 +17,8 @@
 @use "sass:color";
 
 .blog__meta {
-  border-bottom: 1px solid $gray-05;
-  border-top: 1px solid $gray-05;
+  border-bottom: 1px solid var(--dev-border-tertiary);
+  border-top: 1px solid var(--dev-border-tertiary);
   padding: 0.5em;
   margin-bottom: 1em;
 }
@@ -53,7 +53,7 @@
     font-size: 0.9em;
 
     a {
-      color: color.adjust($gray-05, $lightness: -20%, $space: hsl);
+      color: var(--dev-fg-secondary);
     }
   }
 
@@ -65,7 +65,7 @@
     }
 
     p {
-      color: $gray-05;
+      color: var(--dev-fg-muted);
       font-size: 0.85em;
       text-align: center;
     }

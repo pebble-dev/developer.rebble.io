@@ -43,6 +43,6 @@
 .toc__item--active {
   font-weight: 600;
   a {
-    color: color.adjust($base-link-color, $lightness: -20%, $space: hsl);
+    color: $base-link-color;
   }
 }

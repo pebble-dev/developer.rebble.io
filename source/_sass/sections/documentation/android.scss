@@ -27,12 +27,12 @@
   }
 
   .detail, .serialized-class-details {
-    border: 1px solid $gray-04;
+    border: 1px solid var(--dev-border-primary);
 
     h3 {
       font-size: 0.9em;
       padding: 8px;
-      background-color: $gray-04;
+      background-color: var(--dev-border-primary);
     }
 
     & > :not(h3) {
@@ -73,7 +73,7 @@
    * Styles for page header and footer.
    */
   .title {
-    color:#2c4557;
+    color:var(--dev-fg-primary);
     margin:10px 0;
   }
   .sub-title {
@@ -101,8 +101,8 @@
   body.class-declaration-page .summary h3,
   body.class-declaration-page .details h3,
   body.class-declaration-page .summary .inherited-list h2 {
-    background-color:#dee3e9;
-    border:1px solid #d0d9e0;
+    background-color:var(--dev-fg-tertiary);
+    border:1px solid var(--dev-border-secondary);
     margin:0 0 6px -8px;
     padding:7px 5px;
   }
@@ -189,14 +189,14 @@
   .summary-table, .details-table {
     width:100%;
     border-spacing:0;
-    border:1px solid $gray-04;
+    border:1px solid var(--dev-border-primary);
     padding:0;
   }
   .caption {
     position:relative;
     text-align:left;
     background-repeat:no-repeat;
-    color:#253441;
+    color:var(--dev-fg-primary);
     font-weight:bold;
     clear:none;
     overflow:hidden;
@@ -276,7 +276,7 @@
     padding-bottom:3px;
   }
   .table-header {
-    background:$gray-04;
+    background:var(--dev-border-primary);
     font-weight: bold;
     font-size:0.9em;
   }
@@ -299,13 +299,13 @@
     font-weight:bold;
   }
   .table-sub-heading-color {
-    background-color:#EEEEFF;
+    background-color:var(--dev-bg-tertiary);
   }
   .even-row-color, .even-row-color .table-header {
-    background-color:#FFFFFF;
+    background-color:var(--dev-bg-secondary);
   }
   .odd-row-color, .odd-row-color .table-header {
-    background-color:$gray-01;
+    background-color:var(--dev-bg-primary);
   }
   /*
    * Styles for contents.

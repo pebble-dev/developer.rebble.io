@@ -17,8 +17,8 @@
 @use "sass:math";
 
 .search {
-  background-color: $white;
-  border-bottom: 1px solid $gray-04;
+  background-color: var(--dev-bg-secondary);
+  border-bottom: 1px solid var(--dev-border-primary);
   height: $header-height;
   left: $sidebar-width;
   padding: math.div($base-font-size, 1.2);
@@ -40,6 +40,7 @@
     padding: $base-font-size * 0.5;
     padding-left: 2em;
     width: 100%;
+    background-color: transparent;
 
     @include bp-max ($sidebar-hide-at) {
       padding-left: 0;
@@ -85,8 +86,8 @@
 }
 
 .quicksearch {
-  background-color: #fff;
-  border-bottom: 1px solid #d9d9d9;
+  background-color: var(--dev-bg-primary);
+  border-bottom: 1px solid var(--dev-border-secondary);
   bottom: 10%;
   left: $sidebar-width;
   overflow-y: scroll;
@@ -121,7 +122,6 @@
 .quicksearch__block--guides {
   h3 {
     background-color: $color-guides;
-    color: $base-font-color;
   }
 }
 
@@ -185,16 +185,16 @@
   margin: 0;
   font-size: 0.75em;
   text-transform: uppercase;
-  color: $gray-07;
+  color: var(--dev-fg-secondary);
   font-weight: bold;
   width: auto;
   display: table;
 }
 
 .quicksearch__result--active {
-  background-color: $gray-01;
-  border-left: 2px solid $gray-08;
-  border-right: 2px solid $gray-08;
+  background-color: var(--dev-bg-primary);
+  border-left: 2px solid var(--dev-fg-primary);
+  border-right: 2px solid var(--dev-fg-primary);
   margin: -5px -5px 2.5px;
   padding: 5px;
 }
@@ -204,7 +204,7 @@
   font-weight: 300;
   text-align: center;
   padding: 1em;
-  color: $gray-05;
+  color: var(--dev-fg-muted);
 }
 
 .content--narrow .quicksearch {
