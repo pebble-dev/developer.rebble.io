@@ -20,7 +20,7 @@
 $hamburger-width: $header-height;
 
 .mobile-nav {
-  background-color: $gray-03;
+  background-color: $gray-08;
   bottom: 0;
   left: 0;
   overflow-y: auto;
@@ -45,13 +45,13 @@ $hamburger-width: $header-height;
     text-transform: uppercase;
 
     &:hover {
-      background-color: color.adjust($gray-03, $lightness: 10%, $space: hsl);
+      background-color: color.adjust($gray-08, $lightness: 10%, $space: hsl);
     }
   }
 
   .mainmenu__item.active a {
-    background-color: $gray-06;
-    color: $gray-03;
+    background-color: $gray-04;
+    color: $gray-08;
   }
 }
 
@@ -59,7 +59,7 @@ $hamburger-width: $header-height;
   display: none;
 
   @include bp-max (xs) {
-    border-bottom: 1px solid $gray-10;
+    border-bottom: 1px solid $gray-04;
     display: block;
     position: fixed;
     background-color: $white;
@@ -70,11 +70,11 @@ $hamburger-width: $header-height;
     padding: math.div($base-font-size, 1.5) 0;
     font-size: $base-font-size * 2;
     text-align: center;
-    color: $gray-03;
+    color: $gray-08;
 
     &:hover,
     &:active {
-      color: $gray-03;
+      color: $gray-08;
     }
   }
 }

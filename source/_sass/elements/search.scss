@@ -18,7 +18,7 @@
 
 .search {
   background-color: $white;
-  border-bottom: 1px solid $gray-10;
+  border-bottom: 1px solid $gray-04;
   height: $header-height;
   left: $sidebar-width;
   padding: math.div($base-font-size, 1.2);
@@ -185,7 +185,7 @@
   margin: 0;
   font-size: 0.75em;
   text-transform: uppercase;
-  color: $gray-11;
+  color: $gray-07;
   font-weight: bold;
   width: auto;
   display: table;
@@ -193,8 +193,8 @@
 
 .quicksearch__result--active {
   background-color: $gray-01;
-  border-left: 2px solid $gray-03;
-  border-right: 2px solid $gray-03;
+  border-left: 2px solid $gray-08;
+  border-right: 2px solid $gray-08;
   margin: -5px -5px 2.5px;
   padding: 5px;
 }
@@ -204,7 +204,7 @@
   font-weight: 300;
   text-align: center;
   padding: 1em;
-  color: $gray-09;
+  color: $gray-05;
 }
 
 .content--narrow .quicksearch {

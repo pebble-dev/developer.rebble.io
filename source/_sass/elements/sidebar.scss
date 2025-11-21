@@ -127,7 +127,7 @@ $sidebar-hide-at: xs;
   text-align: center;
 
   a {
-    color: $gray-03;
+    color: $gray-08;
 
     &:hover {
       text-decoration: underline;
@@ -191,7 +191,7 @@ $sidebar-hide-at: xs;
 }
 
 .mainmenu {
-  border-right: 1px solid $gray-08;
+  border-right: 1px solid $gray-04;
   height: 100%;
   // I would like to enable scrolling on the Y axis but it breaks the tooltips.
   // overflow-x: visible;
@@ -206,7 +206,7 @@ $sidebar-hide-at: xs;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 3em;
-    color: $gray-02;
+    color: $gray-08;
     display: block;
     font-size: 13px;
     font-weight: bold;

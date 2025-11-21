@@ -38,8 +38,8 @@ submit.btn {
   font-size: inherit;
 }
 
-$btn-colors: $white  $gray-02   $green   $blue   $red   $purple   $yellow   $orange   $lightblue   $dark-red $orange-02 $android-green;
-$btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'orange-02' 'android-green';
+$btn-colors: $white  $dark-grey   $green   $blue   $red   $purple   $yellow   $orange   $lightblue   $dark-red $orange-02 $android-green;
+$btn-names:  'white' 'dark-grey'  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'orange-02' 'android-green';
 
 @each $color in $btn-colors {
   $i: list.index($btn-colors, $color);

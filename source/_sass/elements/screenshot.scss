@@ -243,7 +243,7 @@
   -webkit-align-items: flex-end;
 
   h4 {
-    background-color: $gray-02;
+    background-color: $gray-08;
     color: $white;
     font-weight: normal;
     text-transform: uppercase;
@@ -264,13 +264,13 @@
 .screenshot-viewer--tabbed {
   .screenshot-viewer__tabs {
     h4 {
-      border: 2px solid $gray-02;
-      background-color: $gray-06;
-      color: $gray-02;
+      border: 2px solid $gray-08;
+      background-color: $gray-04;
+      color: $gray-08;
       cursor: pointer;
 
       &.selected {
-        background-color: $gray-02;
+        background-color: $gray-08;
         color: $white;
       }
     }
