@@ -31,7 +31,7 @@ ul.inline-list {
 }
 
 .inline-list--piped li::after {
-  color: color.adjust($base-font-color, $lightness: 30%, $space: hsl);
+  color: var(--dev-fg-secondary);
   content: ' | ';
   display: inline;
 }
@@ -41,7 +41,7 @@ ul.inline-list {
 }
 
 .inline-list--dashed li::after {
-  color: color.adjust($base-font-color, $lightness: 40%, $space: hsl);
+  color: var(--dev-fg-secondary);
   content: ' — ';
   display: inline;
 }

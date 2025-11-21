@@ -25,7 +25,7 @@
 
 .events__calendar {
   width: 100%;
-  background-color: $white;
+  background-color: var(--dev-bg-secondary);
   margin-bottom: 1em;
 
   th,
@@ -36,9 +36,9 @@
 
   .calendar__month,
   .calendar__arrow {
-    background-color: $gray-05;
+    background-color: var(--dev-bg-tertiary);
     font-weight: 700;
-    color: $white;
+    color: var(--dev-fg-secondary);
   }
 
   .calendar__arrow {
@@ -46,7 +46,7 @@
     padding: 0;
 
     a {
-      color: $white;
+      color: var(--dev-fg-secondary);
     }
   }
 
@@ -94,7 +94,7 @@
 
     .event__meta {
       font-size: 0.9em;
-      color: color.adjust($gray-05, $lightness: -20%, $space: hsl);
+      color: var(--dev-fg-muted);
       margin-bottom: 0.5em;
     }
   }
@@ -107,7 +107,7 @@
 
   .event--past {
     a {
-      color: color.adjust($base-link-color, $lightness: 15%, $space: hsl);
+      color: $hover-link-color;
     }
   }
 }

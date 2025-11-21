@@ -23,13 +23,13 @@ $docs-header-color: $gray-04;
 
   a,
   a code {
-    color: color.adjust($base-link-color, $lightness: -20%, $space: hsl);
+    color: $base-link-color;
     font-weight: 600;
   }
 
   a:hover,
   a:active {
-    color: color.adjust($base-link-color, $lightness: -40%, $space: hsl);
+    color: $hover-link-color;
   }
 }
 

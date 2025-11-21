@@ -22,9 +22,10 @@
   }
 
   a {
-    border: 1px solid $gray-04;
+    border: 1px solid var(--dev-border-secondary);
     border-radius: $base-border-radius;
-    color: $gray-08;
+    color: var(--dev-fg-primary);
+    background-color: var(--dev-bg-secondary);
     display: block;
     padding: 0.5rem 1rem;
 
@@ -37,7 +38,7 @@
 
   .active a {
     background-color: $base-link-color;
-    color: $white;
+    color: var(--dev-border-primary);
     font-weight: bold;
     border-color: $base-link-color;
   }

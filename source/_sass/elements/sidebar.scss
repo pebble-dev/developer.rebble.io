@@ -35,7 +35,7 @@ $sidebar-hide-at: xs;
 }
 
 .sidebar {
-  background-color: #f6f6f6;
+  background-color: var(--dev-bg-primary);
   bottom: 0;
   left: 0;
   padding-top: $header-height;
@@ -90,7 +90,7 @@ $sidebar-hide-at: xs;
     }
 
     > a {
-      background-color: color.adjust($base-link-color, $lightness: 30%, $space: hsl);
+      background-color: $hover-link-color;
       color: #fff;
     }
   }
@@ -127,7 +127,7 @@ $sidebar-hide-at: xs;
   text-align: center;
 
   a {
-    color: $gray-08;
+    color: var(--dev-fg-primary);
 
     &:hover {
       text-decoration: underline;
@@ -191,7 +191,7 @@ $sidebar-hide-at: xs;
 }
 
 .mainmenu {
-  border-right: 1px solid $gray-04;
+  border-right: 1px solid var(--dev-border-primary);
   height: 100%;
   // I would like to enable scrolling on the Y axis but it breaks the tooltips.
   // overflow-x: visible;
@@ -206,7 +206,7 @@ $sidebar-hide-at: xs;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 3em;
-    color: $gray-08;
+    color: var(--dev-fg-primary);
     display: block;
     font-size: 13px;
     font-weight: bold;
@@ -221,7 +221,7 @@ $sidebar-hide-at: xs;
     }
 
     &:hover {
-      background-color: #e3e3e3;
+      background-color: var(--dev-bg-secondary);
     }
 
     @media screen and (max-height: 600px) {
@@ -232,7 +232,7 @@ $sidebar-hide-at: xs;
   }
 
   .mainmenu__item.active a {
-    background-color: #e3e3e3;
+    background-color: var(--dev-bg-secondary);
   }
 
   .mainmenu__item--overview a {

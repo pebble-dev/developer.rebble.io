@@ -59,7 +59,7 @@ $gray-02: #eee;
 $gray-03: #e5e4e4;
 $gray-04: #d9d9d9;
 $gray-05: #bebebe;
-$gray-06: ;
+$gray-06: #beef69;
 $gray-07: #666;
 $gray-08: #444;
 $gray-09: #272822;
@@ -88,3 +88,41 @@ $modifier-colors: $color-guides, $color-docs, $color-community, $color-more,
                   $color-blog;
 
 $modifier-colors-fg: $white $white $white $white $white $white $white $white;
+
+@media all {
+  :root {
+    /* Dark Mode Support */
+    color-scheme: light dark;
+
+    --dev-bg-primary: #{$gray-01};
+    --dev-bg-secondary: #{$white};
+    --dev-bg-tertiary: #{$gray-03};
+    --dev-bg-prominent: #{$gray-02};
+    --dev-fg-primary: #{$gray-08};
+    --dev-fg-secondary: #{$gray-07};
+    --dev-fg-tertiary: #{$gray-09};
+    --dev-fg-muted: #{$gray-05};
+    --dev-border-primary: #{$gray-04};
+    --dev-border-secondary: #{$gray-03};
+    --dev-border-tertiary: #{$gray-05};
+    --dev-link: #{$pebble-blue};
+    --dev-link-hover: #{$pebble-blue-alt};
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --dev-bg-primary: #{$gray-10};
+    --dev-bg-secondary: #{$gray-09};
+    --dev-bg-tertiary: #{$black};
+    --dev-bg-prominent: #{$gray-08};
+    --dev-fg-primary: #{$white};
+    --dev-fg-secondary: #{$breakfast-room-white};
+    --dev-fg-tertiary: #{$gray-01};
+    --dev-border-primary: #{$black};
+    --dev-border-secondary: #{$gray-10};
+    --dev-border-tertiary: #{$gray-09};
+    --dev-link: #{color.adjust(#16b5d8, $lightness: 20%, $space: hsl)};
+    --dev-link-hover: #{$pebble-blue};
+  }
+}

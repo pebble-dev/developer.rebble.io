@@ -76,7 +76,7 @@ a {
 }
 
 hr {
-  border-bottom: 1px solid $base-border-color;
+  border-bottom: 1px solid var(--dev-fg-primary);
   border-left: none;
   border-right: none;
   border-top: none;
@@ -89,14 +89,14 @@ img {
 }
 
 blockquote {
-  border-left: 2px solid $base-border-color;
-  color: color.adjust($base-font-color, $lightness: 15%, $space: hsl);
+  border-left: 2px solid var(--dev-fg-primary);
+  color: var(--dev-fg-secondary);
   margin: $base-line-height 0;
   padding-left: $base-line-height * 0.5;
 }
 
 cite {
-  color: color.adjust($base-font-color, $lightness: 25%, $space: hsl);
+  color: var(--dev-fg-secondary);
   font-style: italic;
 
   &:before {

@@ -24,11 +24,11 @@
   input,
   select,
   textarea {
-    background-color: white;
-    border: 1px solid $gray-04;
+    background-color: var(--dev-bg-secondary);
+    border: 1px solid var(--dev-border-primary);
     border-left: none;
     border-radius: 0 5px 5px 0;
-    color: $gray-08;
+    color: var(--dev-fg-primary);
     display: table-cell;
     font-family: $sans-serif;
     font-size: 15px;
@@ -57,11 +57,11 @@
   }
 
   .select-style {
-    background-color: white;
+    background-color: var(--dev-bg-secondary);
     border-radius: 0 5px 5px 0;
-    border: 1px solid $gray-04;
+    border: 1px solid var(--dev-border-primary);
     border-left-width: 0;
-    color: color.adjust(#444, $alpha: -0.5);
+    color: var(--dev-fg-secondary);
     display: table-cell;
     font-family: $sans-serif;
     font-size: 15px;
@@ -91,11 +91,11 @@
   }
 
   label {
-    background-color: #fff;
-    border: 1px solid $gray-04;
+    background-color: var(--dev-bg-secondary);
+    border: 1px solid var(--dev-border-primary);
     border-right: none;
     border-radius: 5px 0 0 5px;
-    color: #111;
+    color: var(--dev-fg-tertiary);
     display: table-cell;
     font-size: 14px;
     font-weight: 400;
