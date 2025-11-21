@@ -36,7 +36,7 @@
 
   .calendar__month,
   .calendar__arrow {
-    background-color: $gray-09;
+    background-color: $gray-05;
     font-weight: 700;
     color: $white;
   }
@@ -62,7 +62,7 @@
   }
 
   .calendar__day--past {
-    color: $gray-06;
+    color: $gray-04;
   }
 
   .calendar__day--event {
@@ -71,7 +71,7 @@
   }
 
   .calendar__day--past-event {
-    background-color: $gray-06;
+    background-color: $gray-04;
     color: #fff;
   }
 
@@ -94,7 +94,7 @@
 
     .event__meta {
       font-size: 0.9em;
-      color: color.adjust($gray-09, $lightness: -20%, $space: hsl);
+      color: color.adjust($gray-05, $lightness: -20%, $space: hsl);
       margin-bottom: 0.5em;
     }
   }

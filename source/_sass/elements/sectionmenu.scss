@@ -24,7 +24,7 @@ $section-menu-width: 240px;
 }
 
 .section-menu {
-  border-right: 1px solid $gray-08;
+  border-right: 1px solid $gray-04;
   bottom: 0;
   left: $sidebar-width;
   margin-top: $header-height;
@@ -97,7 +97,7 @@ $section-menu-width: 240px;
 .section-menu__item {
 
   > a {
-    color: $gray-02;
+    color: $gray-08;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
@@ -117,7 +117,7 @@ $section-menu-width: 240px;
 .section-menu__subitem {
 
   > a {
-    color: $gray-02;
+    color: $gray-08;
     display: block;
     font-size: 13px;
     font-weight: 600;
@@ -142,7 +142,7 @@ $section-menu-width: 240px;
 .section-menu__subsubitem {
 
   > a {
-    color: $gray-02;
+    color: $gray-08;
     display: block;
     font-size: 12px;
     font-weight: normal;
@@ -169,7 +169,7 @@ $section-menu-width: 240px;
   .section-menu__subsubitem.active > a span {
     background-color: $white;
     border-radius: $base-border-radius;
-    color: $gray-02;
+    color: $gray-08;
   }
 }
 
@@ -178,13 +178,13 @@ $section-menu-width: 240px;
   &,
   a,
   .section-menu__header a {
-    color: $gray-02;
+    color: $gray-08;
   }
 
   .section-menu__item.active > a,
   .section-menu__subitem.active > a,
   .section-menu__subsubitem.active > a span {
-    background-color: $gray-02;
+    background-color: $gray-08;
     border-radius: $base-border-radius;
     color: $white;
   }

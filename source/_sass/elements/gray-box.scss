@@ -15,7 +15,7 @@
  */
 
 .gray-box {
-  background-color: $gray-04;
+  background-color: $gray-02;
   border-radius: $base-border-radius;
   margin-bottom: 1em;
   overflow-x: hidden;
@@ -38,7 +38,7 @@
   }
 
   h3 {
-    color: $gray-02;
+    color: $gray-08;
     font-size: 1.3em;
     font-weight: 600;
     text-transform: uppercase;
@@ -46,7 +46,7 @@
     a,
     a:hover,
     a:active {
-      color: $gray-02;
+      color: $gray-08;
     }
     
     a:hover,

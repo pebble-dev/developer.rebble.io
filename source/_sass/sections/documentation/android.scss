@@ -27,12 +27,12 @@
   }
 
   .detail, .serialized-class-details {
-    border: 1px solid $gray-06;
+    border: 1px solid $gray-04;
 
     h3 {
       font-size: 0.9em;
       padding: 8px;
-      background-color: $gray-06;
+      background-color: $gray-04;
     }
 
     & > :not(h3) {
@@ -189,7 +189,7 @@
   .summary-table, .details-table {
     width:100%;
     border-spacing:0;
-    border:1px solid $gray-06;
+    border:1px solid $gray-04;
     padding:0;
   }
   .caption {
@@ -276,7 +276,7 @@
     padding-bottom:3px;
   }
   .table-header {
-    background:$gray-06;
+    background:$gray-04;
     font-weight: bold;
     font-size:0.9em;
   }
