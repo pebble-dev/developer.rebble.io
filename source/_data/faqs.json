@@ -3,8 +3,8 @@
     "title": "Pebble SDK",
     "questions": [
       {
-        "question": "What are the Aplite, Basalt, and Chalk platforms?",
-        "answer": "These are the platform names we use to describe our different generations of watches. Aplite refers to the original Pebble and Pebble Steel. Basalt refers to Pebble Time. Chalk refers to Pebble Time Round."
+        "question": "What are the Aplite, Basalt, Chalk, Diorite, Emery and Flint platforms?",
+        "answer": "These are the platform names used to describe different generations of watches. For example, Aplite refers to the original Pebble and Pebble Steel. You can find a full list, as well as information about the capabilities of each platform, on the [Hardware Information page](/guides/tools-and-resources/hardware-information)"
       },
       {
         "question": "I cannot find the \"Developer Mode\" or \"Developer Connection\" toggle in the iOS or Android application",
@@ -55,29 +55,6 @@
       {
         "question": "Can one app invoke another app to get around app size limits?",
         "answer": "You can use the PebbleKit iOS or Android to launch any application on Pebble."
-      }
-    ]
-  },
-  {
-    "title": "App Publishing",
-    "questions": [
-      {
-        "question": "My companion app got rejected",
-        "answer": "It probably hasn't been accepted yet. You will get a confirmation email from pebbledev after it has been submitted to Apple. After this, it will be 2-3 days for it to be officially in the MFi program."
-      }
-    ],
-    "hidden-questions": [
-      {
-        "question": "When is JS bundling?",
-        "answer": "Check tweets from @pebbledev and the bundling [forum thread](https://forums.getpebble.com/discussion/12451/pebble-js-bundling-updates)"
-      },
-      {
-        "question": "Why does this app say 'coming soon'?",
-        "answer": "See 'When is JS bundling?'"
-      },
-      {
-        "question": "I don't want this app to show 'coming soon'",
-        "answer": "Publish the release, but don't press 'Make Public'. The JS will still be included in the next bundling. Once it has been bundled, make it public."
       }
     ]
   },
