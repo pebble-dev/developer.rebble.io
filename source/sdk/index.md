@@ -30,7 +30,7 @@ scripts:
 You'll need Python 3.10 or above, not the MacOS default installation of 3.9. To install a newer version of Python using [Homebrew](https://brew.sh/), run:
 
 ```bash
-brew install python
+brew install python node
 ```
 
 #### Ubuntu
