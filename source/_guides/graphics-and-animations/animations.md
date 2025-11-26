@@ -175,6 +175,13 @@ static void implementation_update(Animation *animation,
 static void implementation_teardown(Animation *animation) {
   APP_LOG(APP_LOG_LEVEL_INFO, "Animation finished!");
 }
+
+// This needs to exist while the event loop runs
+static const AnimationImplementation s_implementation = {
+  .setup = implementation_setup,
+  .update = implementation_update,
+  .teardown = implementation_teardown
+};
 ```
 
 Once these are in place, create a new ``Animation`` , specifying the new custom
@@ -187,12 +194,7 @@ animation_set_delay(animation, 1000);
 animation_set_duration(animation, 1000);
 
 // Create the AnimationImplementation
-const AnimationImplementation implementation = {
-  .setup = implementation_setup,
-  .update = implementation_update,
-  .teardown = implementation_teardown
-};
-animation_set_implementation(animation, &implementation);
+animation_set_implementation(animation, &s_implementation);
 
 // Play the Animation
 animation_schedule(animation);
