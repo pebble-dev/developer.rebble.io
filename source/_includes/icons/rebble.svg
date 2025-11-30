@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23" height="25" fill="currentColor" version="1.1" viewBox="0 0 23 25" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<path class="hands hour" d="m12.25 13-3.4641-2" stroke="#f50" stroke-width="1.5"/>
+<path class="hands minute" d="m12.25 13 4.7631-2.75" stroke="#f50" stroke-width="1.5"/>
+<style>
+  .hands {
+    transform-origin: 12.25px 13px;
+  }
+</style>
+<script>
+  let hour = document.getElementsByClassName('hour')[0];
+  let minute = document.getElementsByClassName('minute')[0];
+  let hourOffset = -60; // initialy hour arrow is on 10 o'clock.
+  let minuteOffset = 60; // initialy minute arrow is on 2 o'clock.
+  let degHour = 30;
+  let degMinute = 6;
+  let degMinuteInHour = 0.5;
+
+  function setTime() {
+    let curentHour = new Date().getHours() % 12;
+    let curentMinute = new Date().getMinutes();
+    hour.style.transform = `rotate(${curentHour * degHour - hourOffset + curentMinute * degMinuteInHour}deg)`;
+    minute.style.transform = `rotate(${curentMinute * degMinute - minuteOffset}deg)`;
+  }
+
+  setTime();
+  setInterval(setTime(), 60000);
+</script>
+<circle cx="12.25" cy="13" r=".75" fill="#f50"/>
+<path d="m7 1v5.6425c-.2016.16678-.39518.34248-.5801.52735l-1.6699-1.6699v4.5h4.5l-1.7783-1.7783c1.2204-1.2204 2.9097-1.9717 4.7783-1.9717 3.7368 0 6.75 3.0131 6.75 6.75 0 .78995-.13609 1.5463-.38379 2.25h1.5703c.20346-.71595.31348-1.4699.31348-2.25 0-2.5552-1.169-4.8428-3-6.3575v-5.6425zm1.5 1.5h7.5v3.1523c-1.1258-.57725-2.4007-.90235-3.75-.90235-1.3494 0-2.6242.32497-3.75.90235zm-4.1894 8.25c-.20303.7152-.31054 1.4708-.31054 2.25 0 2.5552 1.169 4.8428 3 6.3575v5.6425h10.5v-5.6425c.2016-.16686.39518-.34238.5801-.52735l1.6699 1.6699v-4.5h-4.5l1.7754 1.7754c-1.2201 1.2207-2.9069 1.9746-4.7754 1.9746-3.7368 0-6.75-3.0131-6.75-6.75 0-.78905.13372-1.547.38086-2.25zm4.1894 9.5975c1.1258.57725 2.4007.90235 3.75.90235s2.6242-.32507 3.75-.90235v3.1523h-7.5z"/>
+</svg>

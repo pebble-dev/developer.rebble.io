@@ -19,7 +19,7 @@ layout: master
 <div class="sidebar__wrapper">
   <div class="sidebar sidebar--wide">
     <a href="/" class="sidebar__header">
-      <span>pebble</span><span>|</span><span>developer</span>
+      {% include icons/rebble.svg %}<span>Rebble</span><span>|</span><span>developer</span>
     </a>
     <ul class="mainmenu">
       {% include mainmenu.html %}
@@ -29,7 +29,7 @@ layout: master
       &middot;
       <a href="{{ site.links.legal.cookies }}" target="_blank">Cookie Policy</a>
     </div>
-    <a href="{{ site.links.devportal }}" target="_blank" class="sidebar__footer">Publish your app <i class="fa fa-angle-right fa-fw"></i></a>
+    <a href="{{ site.links.devportal }}" target="_blank" class="sidebar__footer">Publish your app <img src="{{ '/images/menu/rocket.svg' | prepend: site.asset_path }}" alt=""/></a>
   </div>
 </div>
 <div class="content content--narrow">

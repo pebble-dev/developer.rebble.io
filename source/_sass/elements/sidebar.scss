@@ -70,6 +70,11 @@ $sidebar-hide-at: xs;
     color: $white;
   }
 
+  svg {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
   span {
     display: inline-block;
   }
@@ -131,10 +136,10 @@ $sidebar-hide-at: xs;
 }
 
 .sidebar__footer {
-  background-color: $color-appstore;
-  border-right: 1px solid color.adjust($color-appstore, $lightness: -10%, $space: hsl);
+  background-color: $color-devportal;
+  border-right: 1px solid color.adjust($color-devportal, $lightness: -10%, $space: hsl);
   bottom: 0;
-  color: $white;
+  color: $black;
   font-weight: bold;
   height: 3 * $base-line-height;
   left: 0;
@@ -143,11 +148,18 @@ $sidebar-hide-at: xs;
   right: 0;
   text-align: center;
   text-transform: uppercase;
+  transition-duration: 0.5s;
+  transition-property: background, color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 
   &:hover,
   &.active {
-    background-color: color.adjust($color-appstore, $lightness: -10%, $space: hsl);
-    border-color: color.adjust($color-appstore, $lightness: -20%, $space: hsl);
+    background-color: color.adjust($color-devportal, $lightness: -40%, $space: hsl);
+    background-image: url('/assets/images/menu/devportal-background.svg');
+    border-color: color.adjust($color-devportal, $lightness: -50%, $space: hsl);
     color: $white;
   }
 }
