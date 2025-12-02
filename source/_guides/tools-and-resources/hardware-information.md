@@ -32,6 +32,3 @@ The table below details the differences between hardware platforms:
 See
 {% guide_link best-practices/building-for-every-pebble#available-defines-and-macros "Available Defines and Macros" %}
 for a complete list of compile-time defines available.
-
-**NOTE:** We'll be updating the "Building for Every Pebble Guide" and "Available
-Defines and Macros" list when we release the first preview version of SDK 4.0.
