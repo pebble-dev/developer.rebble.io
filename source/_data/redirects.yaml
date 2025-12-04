@@ -2748,3 +2748,15 @@
 -
  - /guides/pebble-imeline/pin-structure
  - /guides/pebble-timeline/pin-structure/
+-
+ - /sdk/download/
+ - /sdk
+-
+ - /sdk/install/mac/
+ - /sdk/#macos
+-
+ - /sdk/install/linux/
+ - /sdk/#ubuntu
+-
+ - /sdk/install/windows/
+ - /sdk/#windows
