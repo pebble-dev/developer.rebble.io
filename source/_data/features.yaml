@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- title: Rebble's All New Developer Forum!
+  url: https://forum.rebble.io
+  background_image: /images/landing-page/forum.png
+  button_text: Participate
+  button_fg: white
+  button_bg: orange-02
+  duration: 3000
 - title: SDK 4.0 Now Available!
   url: /sdk4
   background_image: /images/landing-page/devblog.jpg
