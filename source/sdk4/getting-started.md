@@ -28,27 +28,9 @@ guides listed below to help familiarize themselves with the new functionality.
 
 ## Getting Started
 
-#### Mac OS X (Homebrew)
+Install the SDK by following the [installation instructions](/sdk).
 
-```bash
-$ brew update && brew upgrade pebble-sdk && pebble sdk install latest
-````
-
-#### Mac OS X (Manual)
-1. Download the
-   [SDK package]({{ site.links.pebble_tool_root }}pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-mac.tar.bz2).
-
-2. Follow the [Mac manual installation instructions](/sdk/install/mac/).
-
-####Linux
-Linux users should install the SDK manually using the instructions below:
-
-1. Download the relevant package:
-   [Linux (32-bit)]({{ site.links.pebble_tool_root }}pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux32.tar.bz2) |
-   [Linux (64-bit)]({{ site.links.pebble_tool_root }}pebble-sdk-{{ site.data.sdk.pebble_tool.version }}-linux64.tar.bz2).
-
-2. Install the SDK by following the
-   [manual installation instructions](/sdk/install/linux/).
+You can also make use of the [Cloud IDE](/sdk/cloud).
 
 ## Blog Posts
 
