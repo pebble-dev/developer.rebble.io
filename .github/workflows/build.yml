@@ -27,7 +27,7 @@ jobs:
 
       - name: Build aplite SDK
         run: |
-          ./waf configure --board bb2 --nojs
+          ./waf configure --board bb2 --js-engine none
           ./waf build --onlysdk
 
       - name: Build basalt SDK
