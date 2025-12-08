@@ -39,17 +39,6 @@ detract from the user's battery life. Several common causes of battery drain in
 apps are discussed in this guide, alongside suggestions to help avoid them.
 
 
-## Battery Ratings
-
-Any app published in the [Developer Portal]({{ site.links.devportal }})
-will have a battery grade associated with it, once a minimum threshold of data
-has been collected. This can be used to get a rough idea of how much battery
-power the app consumes. For watchfaces and apps that will be launched for long
-periods of time, making sure this grade is in the A - C range should be a
-priority. Read {% guide_link appstore-publishing/appstore-analytics %} to learn
-more about this rating system.
-
-
 ## Time Awake
 
 Because the watch tries to sleep as much as possible to conserve power, any app
