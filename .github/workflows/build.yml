@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Download docs artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           pattern: docs-*
           path: /tmp/docs
