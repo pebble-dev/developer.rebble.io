@@ -26,7 +26,7 @@ related_examples:
 Many watchfaces and watchapps in the Pebble appstore include the ability to
 customize their behavior or appearance through the use of a configuration page.
 
-[Clay for Pebble](https://github.com/pebble/clay) is the recommended approach
+[Clay for Pebble](https://github.com/pebble-dev/clay) is the recommended approach
 for creating configuration pages, and is what will be covered in this guide.
 If you need to host your own configuration pages, please follow our
 {% guide_link user-interfaces/app-configuration-static "Manual Setup" %} guide.
@@ -61,7 +61,7 @@ takes minimal effort to install.
 Within your project folder, just type:
 
 ```nc|text
-$ pebble package install pebble-clay
+$ pebble package install @rebble/clay
 ```
 
 
@@ -93,18 +93,18 @@ The Clay configuration file (`config.js`) should be created in your
 `src/pkjs/` folder. It allows the easy definition of each type of HTML form
 entity that is required. These types include:
 
-* [Section](https://github.com/pebble/clay#section)
-* [Heading](https://github.com/pebble/clay#heading)
-* [Text](https://github.com/pebble/clay#text)
-* [Input](https://github.com/pebble/clay#input)
-* [Toggle](https://github.com/pebble/clay#toggle)
-* [Select](https://github.com/pebble/clay#select)
-* [Color Picker](https://github.com/pebble/clay#color-picker)
-* [Radio Group](https://github.com/pebble/clay#radio-group)
-* [Checkbox Group](https://github.com/pebble/clay#checkbox-group)
-* [Generic Button](https://github.com/pebble/clay#generic-button)
-* [Range Slider](https://github.com/pebble/clay#range-slider)
-* [Submit Button](https://github.com/pebble/clay#submit)
+* [Section](https://github.com/pebble-dev/clay#section)
+* [Heading](https://github.com/pebble-dev/clay#heading)
+* [Text](https://github.com/pebble-dev/clay#text)
+* [Input](https://github.com/pebble-dev/clay#input)
+* [Toggle](https://github.com/pebble-dev/clay#toggle)
+* [Select](https://github.com/pebble-dev/clay#select)
+* [Color Picker](https://github.com/pebble-dev/clay#color-picker)
+* [Radio Group](https://github.com/pebble-dev/clay#radio-group)
+* [Checkbox Group](https://github.com/pebble-dev/clay#checkbox-group)
+* [Generic Button](https://github.com/pebble-dev/clay#generic-button)
+* [Range Slider](https://github.com/pebble-dev/clay#range-slider)
+* [Submit Button](https://github.com/pebble-dev/clay#submit)
 
 In our example configuration page, we will add some introductory text, and group
 our fields into two sections. All configuration pages must have a submit button
@@ -182,7 +182,7 @@ your `index.js` file.
 
 ```js
 // Import the Clay package
-var Clay = require('pebble-clay');
+var Clay = require('@rebble/clay');
 // Load our Clay configuration file
 var clayConfig = require('./config');
 // Initialize Clay
@@ -299,14 +299,14 @@ configuration pages, you're mistaken.
 Developers can extend the functionality of Clay in a number of ways:
 
 * Define a
-[custom function](https://github.com/pebble/clay#custom-function) to enhance the
+[custom function](https://github.com/pebble-dev/clay#custom-function) to enhance the
 interactivity of the page.
-* [Override events](https://github.com/pebble/clay#handling-the-showconfiguration-and-webviewclosed-events-manually)
+* [Override events](https://github.com/pebble-dev/clay#handling-the-showconfiguration-and-webviewclosed-events-manually)
 and transform the format of the data before it's transferred to the watch.
 * Create and share your own
-[custom components](https://github.com/pebble/clay#custom-components).
+[custom components](https://github.com/pebble-dev/clay#custom-components).
 
-Why not find out more about [Clay for Pebble](https://github.com/pebble/clay)
+Why not find out more about [Clay for Pebble](https://github.com/pebble-dev/clay)
 and perhaps even
-[contribute](https://github.com/pebble/clay/blob/master/CONTRIBUTING.md) to the
+[contribute](https://github.com/pebble-dev/clay/blob/master/CONTRIBUTING.md) to the
 project, it's open source!

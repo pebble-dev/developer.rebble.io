@@ -317,7 +317,7 @@ rocky.on('draw', function(event) {
 
 ## App Configuration
 
-[Clay](https://github.com/pebble/clay#) is a JavaScript library that makes it
+[Clay](https://github.com/pebble-dev/clay#) is a JavaScript library that makes it
 easy to add offline configuration pages to your Pebble apps. Out of the box,
 Clay is not currently compatible with Rocky.js, but it can be made to work by
 manually including the clay.js file and overriding the default events.

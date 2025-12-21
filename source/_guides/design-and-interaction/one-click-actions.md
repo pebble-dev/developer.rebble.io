@@ -107,7 +107,7 @@ key. You can generate your own virtual lockitron UUID and access code on the
 
 > Never publish your actual Lockitron access token in the appstore, unless you
 want strangers unlocking your door! Ideally you would make these fields
-configurable using [Clay for Pebble](https://github.com/pebble/clay).
+configurable using [Clay for Pebble](https://github.com/pebble-dev/clay).
 
 We’re going to need a simple enum for the state of our lock, where 0 is
 unlocked, 1 is locked and anything else is unknown.
