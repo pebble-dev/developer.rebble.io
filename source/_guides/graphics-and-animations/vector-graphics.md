@@ -95,6 +95,7 @@ Add the PDC file to the project resources in `package.json` with the
     "file": "example_image.pdc"
   }
 ]
+```
 
 Drawing a Pebble Draw Command image is just as simple as drawing a normal
 PNG image to a graphics context, requiring only one draw call. First, load the
