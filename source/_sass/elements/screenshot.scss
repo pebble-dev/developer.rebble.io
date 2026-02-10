@@ -14,53 +14,63 @@
  * limitations under the License.
  */
 
+
 .pebble-screenshot {
+  --pebble-width: 246px;
+  --pebble-height: 403px;
+  --pebble-screen-width: 144px;
+  --pebble-screen-height: 168px;
+  --pebble-offset-x: 0px;
+  --pebble-offset-y: -10px;
+  --pebble-padding-top: calc((var(--pebble-height) - var(--pebble-screen-height) + var(--pebble-offset-y)) / 2);
+  --pebble-padding-right: calc((var(--pebble-width) - var(--pebble-screen-width) + var(--pebble-offset-x)) / 2);
+  --pebble-padding-bottom: calc((var(--pebble-height) - var(--pebble-screen-height) - var(--pebble-offset-y)) / 2);
+  --pebble-padding-left: calc((var(--pebble-width) - var(--pebble-screen-width) - var(--pebble-offset-x)) / 2);
   background-repeat: no-repeat;
   display: inline-block;
-  height: 407px;
-  padding: 112px 49px 127px;
+  height: var(--pebble-height);
+  padding-top: var(--pebble-padding-top);
+  padding-right: var(--pebble-padding-right);
+  padding-bottom: var(--pebble-padding-bottom);
+  padding-left: var(--pebble-padding-left);
   text-align: left;
-  width: 242px;
+  width: var(--pebble-width);
   background-size: contain;
 }
 
 .pebble-screenshot--steel-black,
 .pebble-screenshot--steel-stainless {
-  height: 424px;
-  padding: 113px 50px 143px;
-  width: 244px;
+  --pebble-width: 264px;
+  --pebble-height: 394px;
+  --pebble-offset-x: 6px;
+  --pebble-offset-y: -33px;
 }
 
 .pebble-screenshot--time-black,
 .pebble-screenshot--time-white,
 .pebble-screenshot--time-red {
-  height: 350px;
-  padding-top: 91px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 91px;
-  width: 244px;
+  --pebble-width: 268px;
+  --pebble-height: 403px;
+  --pebble-offset-y: -1px;
 }
 
 .pebble-screenshot--time-round-black-20,
 .pebble-screenshot--time-round-silver-20 {
-  height: 390px;
-  padding-top: 110px;
-  padding-left: 55px;
-  padding-right: 54px;
-  padding-bottom: 100px;
-  width: 289px;
+  --pebble-width: 291px;
+  --pebble-height: 426px;
+  --pebble-screen-width: 180px;
+  --pebble-screen-height: 180px;
+  --pebble-offset-y: 0px;
 }
 
 .pebble-screenshot--time-round-red-14,
 .pebble-screenshot--time-round-rosegold-14,
 .pebble-screenshot--time-round-silver-14 {
-  height: 390px;
-  padding-top: 107px;
-  padding-left: 58px;
-  padding-right: 56px;
-  padding-bottom: 103px;
-  width: 294px;
+  --pebble-width: 291px;
+  --pebble-height: 426px;
+  --pebble-screen-width: 180px;
+  --pebble-screen-height: 180px;
+  --pebble-offset-y: 0px;
 }
 
 .pebble-screenshot--pebble2-black,
@@ -68,169 +78,137 @@
 .pebble-screenshot--pebble2-black-red,
 .pebble-screenshot--pebble2-white,
 .pebble-screenshot--pebble2-white-teal {
-  height: 390px;
-  padding-top: 103px;
-  padding-left: 48px;
-  padding-right: 86px;
-  padding-bottom: 100px;
-  width: 294px;
+  --pebble-width: 221px;
+  --pebble-height: 402px;
+  --pebble-offset-y: 2px;
 }
 
-.pebble-screenshot--steel-black {
-  background-image: url('/assets/images/pebbles/steel_black.png');
+.pebble-screenshot--core-time2-red,
+.pebble-screenshot--core-time2-blue {
+  --pebble-width: 293px;
+  --pebble-height: 432px;
+  --pebble-screen-height: 228px;
+  --pebble-screen-width: 200px;
+  --pebble-offset-y: 0px;
 }
 
-.pebble-screenshot--steel-stainless {
-  background-image: url('/assets/images/pebbles/steel_stainless.png');
-}
-
-.pebble-screenshot--time-black {
-  background-image: url('/assets/images/pebbles/snowy-black.png');
-}
-
-.pebble-screenshot--time-red {
-  background-image: url('/assets/images/pebbles/snowy-red.png');
-}
-
-.pebble-screenshot--time-white {
-  background-image: url('/assets/images/pebbles/snowy-white.png');
+.pebble-screenshot--core-time-round2-rosegold-14,
+.pebble-screenshot--core-time-round2-black-20 {
+  --pebble-width: 330px;
+  --pebble-height: 460px;
+  --pebble-screen-height: 260px;
+  --pebble-screen-width: 260px;
+  --pebble-offset-x: -1px;
+  --pebble-offset-y: 0px;
 }
 
 .pebble-screenshot--red {
-  background-image: url('/assets/images/pebbles/red.png');
+  background-image: url('/assets/images/pebbles/pebble-red.svg');
 }
 
 .pebble-screenshot--black {
-  background-image: url('/assets/images/pebbles/black.png');
+  background-image: url('/assets/images/pebbles/pebble-black.svg');
 }
 
 .pebble-screenshot--orange {
-  background-image: url('/assets/images/pebbles/orange.png');
+  background-image: url('/assets/images/pebbles/pebble-orange.svg');
 }
 
 .pebble-screenshot--white {
-  background-image: url('/assets/images/pebbles/white.png');
+  background-image: url('/assets/images/pebbles/pebble-white.svg');
 }
 
 .pebble-screenshot--grey {
-  background-image: url('/assets/images/pebbles/grey.png');
+  background-image: url('/assets/images/pebbles/pebble-grey.svg');
 }
 
 .pebble-screenshot--white-black {
-  background-image: url('/assets/images/pebbles/white_black.png');
+  background-image: url('/assets/images/pebbles/pebble-white.svg');
+}
+
+.pebble-screenshot--steel-black {
+  background-image: url('/assets/images/pebbles/pebble-steel-black.svg');
+}
+
+.pebble-screenshot--steel-stainless {
+  background-image: url('/assets/images/pebbles/pebble-steel-stainless.svg');
+}
+
+.pebble-screenshot--time-black {
+  background-image: url('/assets/images/pebbles/pebble-time-black.svg');
+}
+
+.pebble-screenshot--time-red {
+  background-image: url('/assets/images/pebbles/pebble-time-red.svg');
+}
+
+.pebble-screenshot--time-white {
+  background-image: url('/assets/images/pebbles/pebble-time-white.svg');
 }
 
 .pebble-screenshot--time-round-black-20,
 .pebble-screenshot--time-round-silver-20 {
-  background-image: url('/assets/images/pebbles/time-round-black-20.png');
+  background-image: url('/assets/images/pebbles/pebble-time-round-black-20.svg');
 }
 
 .pebble-screenshot--time-round-red-14,
 .pebble-screenshot--time-round-rosegold-14,
 .pebble-screenshot--time-round-silver-14 {
-  background-image: url('/assets/images/pebbles/time-round-red-14.png');
+  background-image: url('/assets/images/pebbles/pebble-time-round-red-14.svg');
 }
 
 .pebble-screenshot--pebble2-black {
-  background-image: url('/assets/images/pebbles/device_pebble2_black.png');
+  background-image: url('/assets/images/pebbles/pebble2-black.svg');
 }
 
 .pebble-screenshot--pebble2-black-lime {
-  background-image: url('/assets/images/pebbles/device_pebble2_blacklime.png');
+  background-image: url('/assets/images/pebbles/pebble2-lime.svg');
 }
 
 .pebble-screenshot--pebble2-black-red {
-  background-image: url('/assets/images/pebbles/device_pebble2_blackred.png');
+  background-image: url('/assets/images/pebbles/pebble2-flame.svg');
 }
 
 .pebble-screenshot--pebble2-white {
-  background-image: url('/assets/images/pebbles/device_pebble2_white.png');
+  background-image: url('/assets/images/pebbles/pebble2-white.svg');
 }
 
 .pebble-screenshot--pebble2-white-teal {
-  background-image: url('/assets/images/pebbles/device_pebble2_whiteteal.png');
+  background-image: url('/assets/images/pebbles/pebble2-aqua.svg');
 }
 
-.pebble-screenshot--strapless {
-  background-position: 0 -34px;
-  height: 339px;
-  padding-bottom: 93px;
-  padding-top: 78px;
+.pebble-screenshot--core-time2-blue {
+  background-image: url('/assets/images/pebbles/core-time2-blue.svg');
+}
 
-  &.pebble-screenshot--steel-black,
-  &.pebble-screenshot--steel-stainless {
-    background-position: 0 -50px;
-    height: 324px;
-    padding-top: 63px;
-  }
+.pebble-screenshot--core-time2-red {
+  background-image: url('/assets/images/pebbles/core-time2-red.svg');
+}
+
+.pebble-screenshot--core-time-round2-rosegold-14 {
+  background-image: url('/assets/images/pebbles/core-time-round2-rosegold-14.svg');
+}
+
+.pebble-screenshot--core-time-round2-black-20 {
+  background-image: url('/assets/images/pebbles/core-time-round2-black-20.svg');
 }
 
 .pebble-screenshot--smaller {
-
-  &.pebble-screenshot--steel-black,
-  &.pebble-screenshot--steel-stainless {
-    height: 212px;
-    padding: 56px 25px 72px;
-    width: 122px;
-  }
-
-  &.pebble-screenshot--time-black,
-  &.pebble-screenshot--time-white,
-  &.pebble-screenshot--time-red {
-    height: 175px;
-    padding-top: 45px;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-bottom: 45px;
-    width: 122px;
-  }
-
-  &.pebble-screenshot--time-round-black-20,
-  &.pebble-screenshot--time-round-red-14,
-  &.pebble-screenshot--time-round-rosegold-14,
-  &.pebble-screenshot--time-round-silver-14,
-  &.pebble-screenshot--time-round-silver-20 {
-    height: 175px;
-    padding-top: 41px;
-    padding-left: 17px;
-    padding-right: 19px;
-    padding-bottom: 42px;
-    width: 128px;
-  }
+  height: calc(var(--pebble-height) * 0.5);
+  padding-top: calc(var(--pebble-padding-top) * 0.5);
+  padding-right: calc(var(--pebble-padding-right) * 0.5);
+  padding-bottom: calc(var(--pebble-padding-bottom) * 0.5);
+  padding-left: calc(var(--pebble-padding-left) * 0.5);
+  width: calc(var(--pebble-width) * 0.5);
 }
 
 .pebble-screenshot--small {
-
-  &.pebble-screenshot--steel-black,
-  &.pebble-screenshot--steel-stainless {
-    height: 318px;
-    padding: 82px 38px 107px 37px;
-    width: 183px;
-  }
-
-  &.pebble-screenshot--time-black,
-  &.pebble-screenshot--time-white,
-  &.pebble-screenshot--time-red {
-    height: 263px;
-    padding-top: 68px;
-    padding-left: 37px;
-    padding-right: 38px;
-    padding-bottom: 68px;
-    width: 183px;
-  }
-
-  &.pebble-screenshot--time-round-black-20,
-  &.pebble-screenshot--time-round-red-14,
-  &.pebble-screenshot--time-round-rosegold-14,
-  &.pebble-screenshot--time-round-silver-14,
-  &.pebble-screenshot--time-round-silver-20 {
-    height: 263px;
-    padding-top: 62px;
-    padding-left: 26px;
-    padding-right: 25px;
-    padding-bottom: 64px;
-    width: 188px;
-  }
+  height: calc(var(--pebble-height) * 0.75);
+  padding-top: calc(var(--pebble-padding-top) * 0.75);
+  padding-right: calc(var(--pebble-padding-right) * 0.75);
+  padding-bottom: calc(var(--pebble-padding-bottom) * 0.75);
+  padding-left: calc(var(--pebble-padding-left) * 0.75);
+  width: calc(var(--pebble-width) * 0.75);
 }
 
 .screenshot-viewer {
