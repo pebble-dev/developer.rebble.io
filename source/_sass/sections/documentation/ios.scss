@@ -26,7 +26,7 @@
   code {
     // font-family: Courier, Consolas, monospace;
     // font-size: 13px;
-    color: #666;
+    color: var(--dev-fg-secondary);
   }
 
   pre {
@@ -34,9 +34,9 @@
     font-size: 13px;
     line-height: 18px;
     tab-interval: 0.5em;
-    border: 1px solid #C7CFD5;
-    background-color: #F1F5F9;
-    color: #666;
+    border: 1px solid var(--dev-border-primary);
+    background-color: var(--dev-bg-primary);
+    color: var(--dev-fg-secondary);
     padding: 0.3em 1em;
   }
 
@@ -50,17 +50,16 @@
 
   a, a code {
     text-decoration: none;
-    color: #36C;
+    color: var(--dev-link);
   }
 
   a:hover, a:hover code {
     text-decoration: underline;
-    color: #36C;
+    color: var(--dev-link-hover);
   }
 
   h2 {
-    border-bottom: 1px solid #8391A8;
-    color: #3C4C6C;
+    color: var(--dev-fg-primary);
     font-size: 187%;
     font-weight: normal;
     margin-top: 1.75em;
@@ -71,18 +70,19 @@
       margin-bottom: 4em;
       border-collapse:collapse;
       vertical-align: middle;
+      background-color: var(--dev-bg-tertiary);
   }
 
   td {
-      border: 1px solid #9BB3CD;
+      border: 1px solid var(--dev-border-primary);
       padding: .667em;
       font-size: 100%;
   }
 
   th {
-      border: 1px solid #9BB3CD;
+      border: 1px solid var(--dev-border-primary);
       padding: .3em .667em .3em .667em;
-      background: #93A5BB;
+      background: var(--dev-bg-secondary);
       font-size: 103%;
       font-weight: bold;
       color: white;
@@ -178,8 +178,7 @@
   }
 
   #top_header #title {
-    background: url("../img/title_background.png") repeat-x 0 0 #8A98A9;
-    border-bottom: 1px solid #757575;
+    background: url("../img/title_background.png") repeat-x 0 0 var(--dev-bg-secondary);
     height: 25px;
     overflow: hidden;
   }
@@ -194,10 +193,10 @@
   }
 
   #headerButtons {
-    background-color: #D8D8D8;
+    background-color: var(--dev-bg-secondary);
     background-image: url("../img/button_bar_background.png");
-    border-bottom: 0px solid #EDEDED;
-    border-top: 0px solid #a8a8a8;
+    border-bottom: 0px solid var(--dev-border-secondary);
+    border-top: 0px solid var(--dev-border-primary);
     font-size: 8pt;
     height: 28px;
     left: 0;
@@ -219,8 +218,9 @@
   }
 
   #toc_button button {
-      background-color: #EBEEF1;
-    border-color: #ACACAC;
+      background-color: var(--dev-bg-secondary);
+    color: var(--dev-fg-secondary);
+    border-color: var(--dev-border-secondary);
     border-style: none solid none none;
     border-width: 0 1px 0 0;
     height: 28px;
@@ -244,7 +244,7 @@
 
 
   #tocContainer.isShowingTOC {
-    border-right: 1px solid #ACACAC;
+    border-right: 1px solid var(--dev-border-secondary);
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
@@ -252,8 +252,9 @@
   }
 
   #tocContainer {
-    background-color: #EBEEF1;
-    border-top: 1px solid #ACACAC;
+    background-color: var(--dev-bg-secondary);
+    color: var(--dev-fg-secondary);
+    border-top: 1px solid var(--dev-border-secondary);
     bottom: 0;
     display: none;
     left: 0;
@@ -280,7 +281,7 @@
   }
 
   #tocContainer > ul#toc > li > .sectionName a {
-    color: #000000;
+    color: var(--dev-fg-primary);
     font-weight: bold;
   }
 
@@ -338,7 +339,7 @@
   }
 
   #tocContainer > ul#toc > li > ul a {
-      color: #4F4F4F;
+      color: var(--dev-fg-muted);
   }
 
   .index-title {
@@ -385,8 +386,7 @@
   .subtitle {
     font-weight: normal;
     font-size: 180%;
-    color: #3C4C6C;
-    border-bottom: 1px solid #5088C5;
+    color: var(--dev-fg-secondary);
   }
 
   .subsubtitle {
@@ -396,8 +396,8 @@
   }
 
   .note {
-    border: 1px solid #5088C5;
-    background-color: white;
+    border: 1px solid var(--dev-border-tertiary);
+    background-color: var(--dev-bg-tertiary);
     margin: 1.667em 0 1.75em 0;
     padding: 0 .667em .083em .750em;
   }
@@ -405,6 +405,7 @@
   .warning {
     border: 1px solid #5088C5;
     background-color: #F0F3F7;
+    color: #000;
     margin-bottom: 0.5em;
     padding: 0.3em 0.8em;
   }
@@ -412,6 +413,7 @@
   .bug {
     border: 1px solid #000;
     background-color: #ffffcc;
+    color: #000;
     margin-bottom: 0.5em;
     padding: 0.3em 0.8em;
   }
@@ -432,12 +434,12 @@
 
   .section-specification table {
       margin-bottom: 0em;
-    border-top: 1px solid #d6e0e5;
+    border-top: 1px solid var(--dev-border-secondary);
   }
 
   .section-specification td {
     vertical-align: top;
-    border-bottom: 1px solid #d6e0e5;
+    border-bottom: 1px solid var(--dev-border-secondary);
     border-left-width: 0px;
     border-right-width: 0px;
     border-top-width: 0px;
@@ -458,7 +460,7 @@
   }
 
   .task-item-suffix {
-    color: #996;
+    color: var(--dev-fg-secondary);
     font-size: 12px;
     font-style: italic;
     margin-left: 0.5em;
@@ -468,9 +470,9 @@
     font-size: 1.0em;
     display: none;
     padding: 0.3em;
-    border: 1px solid #aaa;
-    background-color: #fdfec8;
-    color: #000;
+    border: 1px solid var(--dev-border-primary);
+    background-color: var(--dev-bg-primary);
+    color: var(--dev-fg-primary);
     text-align: left;
   }
 
@@ -505,11 +507,11 @@
 
   .method-declaration code {
     font:14px Courier, Consolas, monospace;
-    color:#000;
+    color: var(--dev-fg-primary);
   }
 
   .declaration {
-    color: #000;
+    color: var(--dev-fg-primary);
   }
 
   .termdef {
@@ -558,7 +560,7 @@
   }
 
   .declared-in-ref {
-    color: #666;
+    color: var(--dev-fg-secondary);
   }
 
   #tocContainer.hideInXcode {
