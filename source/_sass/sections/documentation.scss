@@ -16,8 +16,6 @@
 
 @use "sass:color";
 
-$docs-header-color: $gray-04;
-
 .documentation {
   max-width: 43em;
 
@@ -55,7 +53,7 @@ $docs-header-color: $gray-04;
     &:hover,
     &:active,
     &:focus {
-      color: $gray-08;
+      color: var(--dev-fg-primary);
     }
   }
 }
@@ -105,23 +103,23 @@ $docs-header-color: $gray-04;
   }
 
   a {
-    background-color: color.adjust($docs-header-color, $lightness: 8%, $space: hsl);
+    background-color: var(--dev-bg-primary);
     border-radius: 4px 4px 0 0;
-    color: color.adjust($gray-08, $lightness: 10%, $space: hsl);
+    color: var(--dev-fg-secondary);
     display: block;
     padding: 0.4em 0.8em;
     text-transform: uppercase;
 
     &.active {
-      background-color: $docs-header-color;
-      color: $gray-08;
+      background-color: var(--dev-bg-tertiary);
+      color: var(--dev-fg-primary);
     }
   }
 }
 
 .docs__item__header {
-  background-color: $docs-header-color;
-  color: $gray-08;
+  background-color: var(--dev-bg-tertiary);
+  color: var(--dev-fg-primary);
   font-size: 0.9em;
   font-weight: 600;
   padding: 0.5em;
@@ -129,12 +127,12 @@ $docs-header-color: $gray-04;
   a,
   a:hover,
   a:active {
-    color: $gray-08;
+    color: var(--dev-fg-primary);
   }
 }
 
 .docs__item__name {
-  color: $gray-08;
+  color: var(--dev-fg-primary);
   font-weight: bold;
 }
 
@@ -148,7 +146,7 @@ $docs-header-color: $gray-04;
 }
 
 .docs__item__body {
-  border: 1px solid $docs-header-color;
+  border: 1px solid var(--dev-border-primary);
   border-top: 0;
   padding: 0.5em;
 
@@ -181,7 +179,7 @@ $docs-header-color: $gray-04;
 }
 
 .docs__item--missing {
-  border: 1px solid $gray-05;
+  border: 1px solid var(--dev-border-tertiary);
   padding: 0.5em;
 
   p {
@@ -190,10 +188,10 @@ $docs-header-color: $gray-04;
 }
 
 .alert--docs-notes {
-  background-color: $gray-03;
+  background-color: var(--dev-bg-tertiary);
   border-bottom: 2px solid $color-docs;
   border-top: 2px solid $color-docs;
-  color: $gray-08;
+  color: var(--dev-fg-primary);
   margin: 0 -0.5em 1em;
 
   h5 {
