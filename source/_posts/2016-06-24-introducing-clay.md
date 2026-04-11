@@ -30,8 +30,8 @@ It is with great pleasure that I present to you, Clay, a Pebble package that mak
 This post aims to provide high level explanation of how the framework works and how it came to be. Below is a quick overview of how easy it is to make your app configurable with Clay. If you would like to learn how to integrate Clay into your project, read our guide on [app configuration](/guides/user-interfaces/app-configuration/) or read the full documentation on the project [GitHub repository.](https://github.com/pebble/clay#clay)
 
 **1) Install the module via [Pebble Packages](/guides/pebble-packages/using-packages/)**
- - SDK: `$ pebble package install pebble-clay`
- - CloudPebble: Add `pebble-clay`, version `^1.0.0` to your project dependencies.
+ - SDK: `$ pebble package install @rebble/clay`
+ - CloudPebble: Add `@rebble/clay`, version `^1.0.0` to your project dependencies.
 
 **2) Create a configuration file that looks something like:**
 
@@ -70,7 +70,7 @@ module.exports = [
 **4) Add a few lines to your `index.js`**
 
 ```js
-var Clay = require('pebble-clay');
+var Clay = require('@rebble/clay');
 var clayConfig = require('./config');
 var clay = new Clay(clayConfig);
 ```
