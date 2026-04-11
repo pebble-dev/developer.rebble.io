@@ -31,7 +31,7 @@ code within the mobile application on a user's phone, rather than on the watch.
 Making Pebble.js a Pebble Package means Pebble.js projects can be converted to
 standard Pebble C projects. This gives benefits like the ability to
 easily utilize other Pebble Packages, such as
-[Clay for Pebble](https://www.npmjs.com/package/pebble-clay), or easily
+[Clay for Pebble](https://www.npmjs.com/package/@rebble/clay), or easily
 importing and exporting the project with
 [CloudPebble]({{ site.links.cloudpebble }}).
 
