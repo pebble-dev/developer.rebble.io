@@ -64,7 +64,6 @@ links:
   pebblekit_android: https://github.com/pebble/pebble-android-sdk/
   pebblekit_ios: https://github.com/pebble/pebble-ios-sdk/
   examples_org: https://github.com/pebble-examples
-  pebblekit_android_jar: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0-eclipse.jar
   legal:
     privacy: https://rebble.io/privacy/
     cookies: https://www.pebble.com/legal/cookies/
@@ -72,7 +71,7 @@ links:
   pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
   libpebble: https://github.com/pebble-dev/libpebble2
   kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
-  discord_invite: http://discord.gg/aRUAYFN
+  discord_invite: http://rebble.io/discord
   bluesky: https://bsky.app/profile/rebble.io
   mastodon: https://mastodon.social/@rebble
   forum: https://forum.rebble.io

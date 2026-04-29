@@ -21,7 +21,7 @@ menu_subsection: libraries
           </tr>
         </thead>
         <tbody>
-        {% for library in site.community_libraries | sort_by: 'name' %}
+        {% for library in site.community_libraries %}
           <tr>
             <td><a href="{{ site.baseurl }}{{ library.url }}">{{ library.name }}</a></td>
             <td>{{ library.creator }}</td>

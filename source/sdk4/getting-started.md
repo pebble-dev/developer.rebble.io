@@ -17,6 +17,8 @@ title: Getting Started with SDK 4
 description: |
   Details on all the new features and APIs available for use in SDK 4
 layout: sdk/markdown
+menu_section: sdk
+menu_subsection: getting-started
 permalink: /sdk4/getting-started/
 search_index: true
 ---
