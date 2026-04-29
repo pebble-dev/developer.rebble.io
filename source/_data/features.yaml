@@ -18,18 +18,11 @@
   button_text: Participate
   button_fg: white
   button_bg: orange-02
-  duration: 3000
+  duration: 5000
 - title: SDK 4.0 Now Available!
   url: /sdk4
   background_image: /images/landing-page/devblog.jpg
   button_text: Find out more
   button_fg: white
   button_bg: red
-  duration: 4000
-- title: Pebble's Global Community of Meetups!
-  url: /community/events/
-  background_image: https://pebble-developer-site-server.herokuapp.com/events/upcoming.png
-  button_text: Find A Meetup Near You
-  button_fg: white
-  button_bg: purple
-  duration: 3000
+  duration: 5000
