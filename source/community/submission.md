@@ -98,9 +98,9 @@ contains the following properties.
 
 ```yaml
 ---
-name: Watchface Generator
-creator: Paul Rode
-link: http://watchface-generator.de
+name: My Resources
+creator: Some Name
+link: http://example.com/pebble
 ---
 ```
 

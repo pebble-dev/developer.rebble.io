@@ -44,8 +44,6 @@ Pretty awesome!
 
 We already knew that you could load your [starbucks card][pebble-starbucks]  in a watchface and use it to pay for drinks at Starbucks. This has also been [reported to work][tesco] at Tesco in the UK. 
 
-So far the [technique used][barcodetechnique] involved generating an image online and creating a new watchface with that image embedded (thanks to http://www.watchface-generator.de/ for example).
-
 This is now getting even easier thanks to [frethop][frethop] _Wear Your Barcode_ watchface. It is available on [mypebblefaces.com][watchapp] and works with a companion [Android app][androidapp]: It supports carrying several barcodes in one watchface and you can save existing barcodes by scanning them with your phone.
 
 So what barcode will you wear? Let us know in the comments!

@@ -30,7 +30,7 @@ Now if there is one more thing we would like to see here, it's an iPhone version
 
 ## Pebble Canvas - Create new watchface from your phone
 
-Most of you are probably familiar with [watchface-generator.de](http://http://www.watchface-generator.de/) to generate new watchface online without any coding. [Steve Penna](https://twitter.com/stevepenna) took that concept and wrote [Pebble Canvas](https://play.google.com/store/apps/details?id=com.pennas.pebblecanvas) an Android application that allows you to create new watchfaces directly from your phone.
+[Steve Penna](https://twitter.com/stevepenna) wrote [Pebble Canvas](https://play.google.com/store/apps/details?id=com.pennas.pebblecanvas) an Android application that allows you to create new watchfaces directly from your phone.
 
 Not only can you create watchfaces, [Pebble Canvas](https://play.google.com/store/apps/details?id=com.pennas.pebblecanvas) can also include dynamic information from your phone such as cell-coverage, battery status, unread emails, etc.
 
