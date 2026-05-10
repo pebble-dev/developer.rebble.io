@@ -55,7 +55,9 @@ are available below. Use these when creating color image resources:
 
 * [Illustrator `.ai`](/assets/other/pebble_colors_64.ai)
 
-* [GIMP `.pal`](/assets/other/pebble_colors_64.pal)
+* [GIMP `.gpl`](/assets/other/pebble_colors_64.gpl)
+
+* [GIMP `.pal`](/assets/other/pebble_colors_64.pal) (old RIFF format)
 
 * [ImageMagick `.gif`](/assets/other/pebble_colors_64.gif)
 
