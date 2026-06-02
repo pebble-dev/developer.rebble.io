@@ -25,6 +25,12 @@ function init() {
     nextMonth();
   });
 
+  window.addEventListener('hashchange', function () {
+    loadStartDate();
+    build();
+  });
+
+
   $('#js-events-form').on('submit', function (event) {
     $('#form-errors').html('').hide().removeClass('alert--success').removeClass('alert--error');
 
@@ -35,12 +41,8 @@ function init() {
     submission.location = { text: $('#event-location').val() };
     submission.type = $('#event-type').val();
     submission.website = $('#event-website').val();
-    submission.submission = {
-      name: $('#event-name').val(),
-      email: $('#event-email').val()
-    };
-    submission.startDate = moment.utc($('#event-start-date').val(), 'YYYY-MM-DD').toDate();
-    submission.endDate = moment.utc($('#event-end-date').val(), 'YYYY-MM-DD').toDate();
+    submission.startDate = Date.parse($('#event-start-date').val());
+    submission.endDate = Date.parse($('#event-end-date').val());
     submission.isAllDay = true;
     if (!dateRegex.test($('#event-start-date').val())) {
       return setError('Start date is not valid', 'Please use the format YYYY-MM-DD', 'alert--error');
@@ -54,33 +56,60 @@ function init() {
     if (submission.endDate < new Date()) {
       return setError('End date is not valid', 'Please enter a end date that is in the future', 'alert--error');
     }
-    $.post('{{ site.external_server }}/events/submit.json', submission, function (res) {
-      if (res && res.message) {
-        setError(res.message, 'We will review the details of your event and contact you when it has been approved for inclusion on our site.', 'alert--success');
-        $('#js-events-form').get(0).reset();
-      }
-      else {
-        console.log(res);
-      }
-    }).fail(function (res) {
-      console.log(res.responseJSON);
-      if (res.responseJSON && res.responseJSON.error && res.responseJSON.error.name == 'ValidationError') {
-        $('#form-errors').append($('<p/>').text(res.responseJSON.error.details[0].message));
-      }
-      else if (res.responseJSON && res.responseJSON.error && res.responseJSON.error.details) {
-        $('#form-errors').text(res.responseJSON.error.details.messsage).show();
-      }
-      else {
-        $('#form-errors').append($('<p/>').text('An unknown error has occurred!'));
-      }
-      $('#form-errors').addClass('alert--error').show();
+    fetchLongLat(submission).finally(updated => {
+      if (!updated)
+          updated = submission;
+      var output = "";
+      Object.keys(updated).forEach((key, index) => {
+        if (updated[key] === null || updated[key] === '')
+          return
+        if (index === 0)
+          output += '- '
+        else
+          output += '  '
+        output += key + ': '
+        if (typeof updated[key] === 'object')
+          output += `"${updated[key]['text']}"`;
+        else if (typeof updated[key] === 'number')
+          output += new moment(updated[key]).format('YYYY-MM-DD');
+        else if (typeof updated[key] === 'boolean' || key === 'longitude' || key === 'latitude')
+          output += updated[key];
+        else if (key === 'description') {
+          output += '|'
+          updated[key].split("\n").forEach((line) => {
+            output += "\n"
+            output += '    '
+            output += line
+          });
+        } else
+          output += `"${updated[key]}"`;
+        output += "\n"
+      });
+      $('#js-events-form-output').html(output);
     });
   });
 
-  window.addEventListener('hashchange', function () {
-    loadStartDate();
-    build();
-  });
+  async function fetchLongLat(submission) {
+    if (!submission.location || !submission.location.text) return submission;
+
+    try {
+      const res = await fetch(
+        'https://nominatim.openstreetmap.org/search?format=jsonv2&q=' + encodeURIComponent(submission.location)
+      );
+
+      const data = await res.json();
+
+      if (data.length > 0) {
+        const result = data[0];
+        submission.longitude = result.lon;
+        submission.latitude = result.lat;
+      }
+    } catch (err) {
+      console.error('Location Lookup failed:', err);
+    }
+
+    return submission;
+  }
 
   function setError(title, body, cssClass) {
     $('#form-errors').append($('<h4/>').text(title));
@@ -178,7 +207,7 @@ function init() {
   }
 
   function loadLocations() {
-    var locationsUrl = '{{ site.external_server }}/events/locations';
+    var locationsUrl = '{{ site.external_server }}/locations.json';
     $.getJSON(locationsUrl, function (locations) {
       if (locations && locations.length > 0) {
         buildMap(locations);
@@ -189,108 +218,92 @@ function init() {
   function loadEvents() {
     $('.js-events__list').html('<span class="spinner spinner--padded spinner--large spinner--center"></span>');
     var tplInfo = Handlebars.templates['events-info'];
-    var eventsUrl = '{{ site.external_server }}/events/upcoming.json?limit=60&start=' +
-                    startDate.format('YYYY/MM/DD') + '&end=' + endDate.format('YYYY/MM/DD');
+    var eventsUrl = `{{ site.external_server }}/events-${startDate.format('YYYY-MM')}.json`
 
-    $.getJSON(eventsUrl, function (events) {
-      if (events.length === 0) {
-        $('.js-events__list').html(Handlebars.templates['events-info-none']({ month: startDate.format('MMMM YYYY') }));
-      }
-      else {
-        $('.js-events__list').html('');
-        var today = new Date(); today.setHours(0,0,0,0);
+    fetch(eventsUrl)
+      .then(response => {
+        return response.json();
+      })
+      .then(events => {
+        if (events.length === 0) {
+          $('.js-events__list').html(Handlebars.templates['events-info-none']({ month: startDate.format('MMMM YYYY') }));
+        }
+        else {
+          $('.js-events__list').html('');
+          var today = new Date(); today.setHours(0,0,0,0);
 
-        events.forEach(function (event, index) {
-          var eventDate = new moment(event.startDate);
+          events.forEach(function (event, index) {
+            var eventDate = new moment(event.startDate);
 
-          event.number = index + 1;
-          event.description = event.description.replace(/\n\n\n/g, '<br><br>');
-          event.description = event.description.replace(/\n/g, '<br>');
-          event.dateString = eventDate.format("YYYY-MM-DD");
+            event.number = index + 1;
+            event.description = event.description.replace(/\n\n\n/g, '<br><br>');
+            event.description = event.description.replace(/\n/g, '<br>');
+            event.dateString = eventDate.format("YYYY-MM-DD");
 
-          var $event = $(tplInfo(event));
+            var $event = $(tplInfo(event));
 
-          if (index % 2 === 0 && index > 0) $event.addClass('reset-m');
-          if (eventDate < today) $event.children('article').addClass("event--past");
+            if (index % 2 === 0 && index > 0) $event.addClass('reset-m');
+            if (eventDate < today) $event.children('article').addClass("event--past");
 
-          var descToggle = $event.find(".event__toggle");
-          descToggle.click(function(e) {
-            e.preventDefault();
+            var descToggle = $event.find(".event__toggle");
+            descToggle.click(function(e) {
+              e.preventDefault();
 
-            var desc = $event.find(".event__description");
-            if (desc.attr("hidden")) {
-              desc.removeAttr("hidden");
-              desc.removeClass("hidden");
+              var desc = $event.find(".event__description");
+              if (desc.attr("hidden")) {
+                desc.removeAttr("hidden");
+                desc.removeClass("hidden");
 
-              this.innerText = "Less..";
-            } else {
-              desc.attr("hidden", "true");
-              desc.addClass("hidden");
+                this.innerText = "Less..";
+              } else {
+                desc.attr("hidden", "true");
+                desc.addClass("hidden");
 
-              this.innerText = "More..";
-            }
+                this.innerText = "More..";
+              }
+            });
+
+            $('.js-events__list').append($event);
+            addEventToCalendar(event);
           });
-
-          $('.js-events__list').append($event);
-          addEventToCalendar(event);
-        });
-      }
-      buildMap(events);
-    });
+        }
+        buildMap(events);
+      });
   }
 
   function buildMap(events) {
     if (!map) {
-      var mapOptions = {
-        center: new google.maps.LatLng(37.442362, -122.162224),
-        zoom: 8,
-        maxZoom: 8,
-        streetViewControl: false,
-        scrollwheel: false
-      };
-      bounds = new google.maps.LatLngBounds();
-      map = new google.maps.Map(document.getElementById('js-events__map'), mapOptions);
+      map = L.map('js-events__map').setView([37.442362, -122.162224], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      bounds = map.getBounds();
+      map.on('popupopen', function(e) {
+        highlightEvent(e);
+      });
+      map.on('popupclose', function(e) {
+        removeHighlights();
+      });
     }
     events.forEach(function (event) {
       if (event.latitude && event.longitude) {
-        var loc = new google.maps.LatLng(event.latitude, event.longitude);
-        var infoWindow = new google.maps.InfoWindow({
-          content: event.title
+        var loc = L.latLng(event.latitude, event.longitude);
+        var icon = L.icon({
+          iconUrl: '{{ '/assets/images/community/events/marker.svg' | absolute_url }}',
+          iconSize: [25, 25],
+          iconAnchor: [12, 25],
+          popupAnchor: [0, -26],
         });
-        var icon = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
-        if (!event.startDate) {
-          // It's a group, geocode the location
-          icon = 'http://maps.google.com/mapfiles/ms/icons/yellow.png';
-          $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+escape(event.location)+'&sensor=false', null, function (data) {
-              var loc = data.results[0].geometry.location;
-              var marker = new google.maps.Marker({
-                position: loc,
-                map: map,
-                title: event.website + ' : ' + event.title,
-                icon: icon,
-                size: new google.maps.Size(32, 32),
-                zIndex: 1
-              });
-              google.maps.event.addListener(marker, 'click', function() {
-                window.open('https://www.meetup.com/' + event.website);
-              });
-              fitMap(map, loc, bounds);
-          });
-        } else {
-          // It's an event
-          var marker = new google.maps.Marker({
-            position: loc,
-            map: map,
-            title: event.location + ' : ' + event.title,
-            icon: icon,
-            size: new google.maps.Size(32, 32),
-            zIndex: 2
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            scrollToEvent(event);
-          });
-          fitMap(map, loc, bounds);
-        }
+        var marker = L.marker([event.latitude, event.longitude], { icon: icon }).addTo(map);
+
+        popup_content = `<h5>${event.location}</h5>`
+        popup_content += `<b>${event.title}</b>`
+        popup_content += `<p>${new moment(event.startDate).format('YYYY-MM-DD')} - ${new moment(event.endDate).format('YYYY-MM-DD')}</p>`
+        popup_content += `<p><a href="${event.website}">Website</a></p>`
+        var popup = L.popup({ content: popup_content, className: `${event.number}` });
+        marker.bindPopup(popup);
+        fitMap(map, loc, bounds);
       }
     });
     $('.js-events__map').css('display', 'block');
@@ -299,13 +312,22 @@ function init() {
   function fitMap(map, loc, bounds) {
     bounds.extend(loc);
     map.fitBounds(bounds);
-    map.panToBounds(bounds);
+    map.panInsideBounds(bounds);
+  }
+
+  function highlightEvent(event) {
+    var number = event.popup.options.className;
+    var $event = $('.event[data-event-number="' + number + '"]');
+    $event.addClass('event--highlighted');
+  }
+
+  function removeHighlights() {
+    $('.event.event--highlighted').removeClass('event--highlighted');
   }
 
   function scrollToEvent(event) {
-    var $event = $('.event[data-event-number="' + event.number + '"]');
-    $('.event.event--highlighted').removeClass('event--highlighted');
-    $event.addClass('event--highlighted');
+    removeHighlights();
+    highlightEvent(event);
     $('body').scrollTo($event.get(0), 200, {
       offset: function () {
         return {
@@ -317,7 +339,4 @@ function init() {
   }
 };
 
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&callback=init';
-document.body.appendChild(script);
+init();

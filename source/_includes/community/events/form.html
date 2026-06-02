@@ -15,17 +15,20 @@ limitations under the License.
 {% endcomment %}
 
 <form action="{{ site.data_server }}/events/submit" method="post" id="js-events-form">
-  <div class="gray-box">
-    <h3>Add an Event</h3>
+  <div>
+    <h3>Adding a new event</h3>
+    <p>You can add events to the list (<code>events.yml</code>) by
+    <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">creating a Pull Request</a>
+    targetting the
+    <a href="https://github.com/pebble-dev/rebble-events">Events GitHub repository</a>.</p>
+
+    <p>We don't just accept submission by the event organizers, we want to create a
+    comprehensive list, so if you are aware of a trustworthy public event, we would
+    like to know about it.</p>
+    <p>Below is a convinience form to help you submit properly formatted YAML with all the details we need in the submissions.</p>
     <div class="alert" id="form-errors" style="display: none;"></div>
     <div class="row">
       <div class="col-m-6">
-        <div class="form__group">
-          <label for="submission_name">Your Name</label><input type="text" id="event-name" name="submission_name">
-        </div>
-        <div class="form__group">
-          <label for="email">Email Address</label><input type="email" id="event-email" name="submission_email">
-        </div>
         <div class="form__group">
           <label for="title">Event Title</label><input type="text" id="event-title" name="title">
         </div>
@@ -57,8 +60,10 @@ limitations under the License.
         <div class="form__group">
           <label for="details">Details</label><textarea id="event-description" name="details" rows=5></textarea></div>
 
-        <p style="text-right"><input type="submit" value="Submit" class="btn btn--fg-white btn--bg-green"></p>
+        <p style="text-right"><input type="submit" value="Generate" class="btn btn--fg-white btn--bg-green"></p>
       </div>
     </div>
+    <p>Output:</p>
+    <pre class="gray-box" id="js-events-form-output"></pre>
   </div>
 </form>
