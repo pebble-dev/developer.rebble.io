@@ -205,9 +205,18 @@ their watchapps and watchfaces.
   </div>
 </div>
 
-You can add a 25x25 `png` to the `resources.media` section of the`package.json`
-file, and set `"menuIcon": true`. Please note that icons that are larger will be
-rejected by the SDK.
+The recommended properties of the menuIcon depend on the platform and type of
+an app. An icon for a watchapp should always have the size of **25x25**. For
+watchfaces on rectangular watches the icon should have the dimensions of
+**24x28**, and on round watches the icon should be **25x25**.
+
+On watches with a color display the watchface icons can be colorful! Watchapp
+icons will be translated into a 4 color grayscale icon with transparency,
+which is a great opportunity for black and white icon with antialiasing.
+
+You can add the icon in `png` format to the `resources.media` section of the
+`package.json` file, and set `"menuIcon": true`. Please note that watchapp icons
+that are larger than 25x25 will be rejected by the SDK.
 
 ```js
 "resources": {
