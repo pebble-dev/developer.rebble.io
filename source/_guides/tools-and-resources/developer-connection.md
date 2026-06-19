@@ -21,10 +21,7 @@ guide_group: tools-and-resources
 order: 3
 ---
 
-In order to install apps from the local SDK using the `pebble` tool, the Pebble
-Android or iOS app must be set up to allow a connection from the computer to the
-watch. This enables viewing logs and installing apps directly from the
-development environment, speeding up development.
+In order to install apps from the local SDK using the `pebble` tool, the Pebble Android or iOS app must be set up to allow a connection from the computer to the watch. First, developer mode must be enabled for the mobile application. Second, the watch must have its dev connection enabled from within the mobile application This enables viewing logs and installing apps directly from the development environment, speeding up development.
 
 Follow the steps illustrated below to get started.
 
@@ -47,24 +44,29 @@ In the Pebble mobile app:
   
   ![](/images/guides/publishing-tools/enable-dev-android-4.png =300x)
   
-* Make note of the 'Server IP' and use it with the `--phone` argument.
+* Make note of the 'Server IP' and use it with the `--phone <mobile_device_ip>` argument.
 
 
 ## iOS Instructions
 
 In the Pebble mobile app:
 
-* Open the left-hand menu and tap the *Settings* item.
+* Open the *Settings* item in the tab bar.
   
-  ![](/images/guides/publishing-tools/enable-dev-ios-1.png =300x)
+  ![](/images/guides/publishing-tools/enable-dev-ios-1.1.png =300x)
   
-* Enable the Developer Mode using the toggle.
+* Enable the *Use LAN developer connection* setting.
   
-  ![](/images/guides/publishing-tools/enable-dev-ios-2.png =300x)
+  ![](/images/guides/publishing-tools/enable-dev-ios-1.2.png =300x)
 
-* Return to the menu, then tap the *Developer* item. Enable the Developer
-  Connection using the toggle at the top-right.
+* Open the *Devices* item in the tab bar.
+  Select your Pebble device.
 
-  ![](/images/guides/publishing-tools/enable-dev-ios-3.png =300x)
-  
-* Make note of the 'Server IP' and use it with the `--phone` argument.
+  ![](/images/guides/publishing-tools/enable-dev-ios-2.1.png =300x)
+
+* Enable the *Dev Connection* toggle.
+
+  ![](/images/guides/publishing-tools/enable-dev-ios-2.2.png =300x)
+
+* From the device's Settings app, note down your device's IP Address.
+  Use it with the `--phone <mobile_device_ip>` argument.
